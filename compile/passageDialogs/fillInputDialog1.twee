@@ -1,0 +1,8 @@
+:: FillInputDialog1
+
+<p class="tac">
+Nejprve prosím<br>
+do textového políčka<br>
+vepiš vlastní slova...
+</p>
+<<dialogCloseButton "OK">>

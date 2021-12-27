@@ -1,0 +1,13 @@
+:: DialogCloseButton [widget]
+
+<<widget "dialogCloseButton">>
+/*_args[0] is the TEXT on THE BUTTON*/
+/*_args[1] (optional) if TRUE, outer <p> is omitted, default FALSE*/
+    <<if !_args[1]>>
+	    <p class="tac">
+		    <<include "TempDialCloseButton">>
+	    </p>
+	<<else>>
+	    <<include "TempDialCloseButton">>
+	<</if>>
+<</widget>>

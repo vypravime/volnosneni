@@ -1,0 +1,58 @@
+:: ExampleBasic1
+
+<h3>Příběhová kartička</h3>
+<div class="story-card-1">
+<p>
+''<<=setup.whoseTurn()>>'':
+</p>
+<hr>
+<p>
+"''<<=setup.whoseTurn()>>'' jede na dovolenou do Itálie,<br>
+vezme si s sebou nové tyrkysové plavky,<br>
+cestou si koupí perfektní pizzu<br>
+a ubytuje se v soukromém apartmá<br>
+s výhledem na malebný mořský záliv."
+</p>
+<p class="complic">
+"Ale když přijede a ubytuje se, zjistí, že ji někdo ukradl všechny peníze..."
+</p>
+</div>
+<hr>
+<hr>
+<h3>Okrajové poznámky</h3>
+<p class="tac">
+Můžeš o sobě psát jako ''já'':<br>
+//"''Jedu'' na dovolenou do itálie, ..."//<br>
+Nebo sebe zmiň svým ''jménem'' jako ''on/ona'':<br>
+//"''<<=setup.whoseTurn()>> jede'' na dovolenou do Itálie, ..."//
+</p>
+<hr>
+<p class="tar">
+(Doporučujeme, aby ses v tomto svém tahu<br>
+držel jedné události či tématu<br>
+- třeba //"začátek dovolené v itálii"//...<br>
+je ale výhodné, když svůj děj<br>
+''vyšperkuješ jakýmikoliv žádanými detaily''<br>
+- třeba //"nové plavky, pizza cestou a krásné ubytování"//...)
+</p>
+<hr>
+<p class="tal">
+Až se příště dostaneš na řadu,<br>
+můžeš opět tuto svou událost<br>
+nějak rozvíjet, posunout, prohlubovat, ...<br>
+a nebo změníš zase téma na něco docela jiného,<br>
+ať už plynulým líčením přechodu nebo skokem.
+</p>
+<hr>
+<p class="tac">
+ABY SIS HRU VOLNOSNĚNÍ SILNĚJI VYCHUTNAL,<br>
+PIŠ O TOM, PO ČEM UPŘÍMNĚ PRAHNEŠ<br>
+A K ČEMU MÁŠ CITOVÝ VZTAH!<br>
+</p>
+
+<<dialogCloseButton "OK">>
+<<done>>
+<<run $('.complic').ariaClick(function() {
+    $(this).toggleClass('solved');
+});>>
+<</done>>

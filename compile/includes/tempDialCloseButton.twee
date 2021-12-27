@@ -1,0 +1,5 @@
+:: TempDialCloseButton
+
+<<button `"&nbsp;" + _args[0] + "&nbsp;"`>>
+    <<run Dialog.close()>>
+<</button>>

@@ -1,0 +1,15 @@
+:: PassageFooter
+
+<hr>
+<div class="tar">
+<<button "Nápověda">>
+    <<passageDialog "Nápověda" "Help">>
+<</button>>&nbsp;
+<<button "Přepni lištu">>
+    <<if UIBar.isStowed()>>
+        <<run UIBar.unstow()>>
+	<<else>>
+	    <<run UIBar.stow()>>
+	<</if>>
+<</button>>
+</div>

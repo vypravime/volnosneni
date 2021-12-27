@@ -1,0 +1,40 @@
+sugarcube-2:
+  macros:
+    compLink:
+      name: compLink
+      container: true
+      description: |-
+        **Like classic `<<link>>` macro, but INSIDE OUT:**
+
+        `<<link "Anchor text">>`Code to be done after click`<</link>>`
+        
+        ||
+
+        ```
+        <<compLink "CODE TO BE DONE AFTER CLICK">>ANCHOR TEXT<</compLink>>
+        ```
+        *(useful for highly computed achor texts)*
+    dialogCloseButton:
+      name: dialogCloseButton
+      description: |-
+        **Shows button closing dialog window.**
+        
+        Usage:
+        ```
+        <<dialogCloseButton "TextOnButton" [omit outer <p>?]>>
+        ```
+        *(If the second argument /default is FALSE/ is set to TRUE,
+          then the enclosing paragraph around the button is ommited.)*
+    passageDialog:
+      name: ctpHead
+      description: |-
+        **Opens given Passage in Dialog window.**
+        
+        Usage:
+        ```
+        <<passageDialog "Dialog Heading" "passageName">>
+        ```
+        *(If there was already opened another dialog window,
+          it will close it at first
+          before opening the new passage dialog window.
+          It seems prettier)*
