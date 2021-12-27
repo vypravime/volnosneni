@@ -1,0 +1,30 @@
+name: Build Dev1
+
+on:
+  push:
+    branches:
+      - dev1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Go 1.17
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.17.x
+
+      - name: build game
+        run: |
+          go get github.com/tmedwards/tweego
+          export PATH=$PATH:$(go env GOPATH)/bin
+          tweego -o dist/dev1.html start.twee compile
+
+      - name: Deploy to Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOYMENT_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./dist
