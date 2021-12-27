@@ -1,0 +1,41 @@
+:: SetNamesOfPlayers [alignCenter]
+<<set _nextRoom = 'BeforeStartControl'>>
+
+<<if $pOrder.length > 1>>
+<h2>Zadej jména hráčů:</h2>
+<<else>>
+<h2>Zadej jméno hráče:</h2>
+<</if>>
+
+<p>
+<<for _i = 0; _i < $pOrder.length; _i++>>
+    <<set _autofocus = _i === 0 ? "autofocus" : "">>
+	<<set _last = _i + 1 < $pOrder.length ? false : true>>
+	<<set _name = $players[_i] ? $players[_i].name : "Hráč" + (_i+1)>>
+	<<set $players[_i] = setup.addPlayer(_name)>>
+    <<capture _i>>
+	    <<textbox "$players[_i].name" $players[_i].name
+		  "SetNamesOfPlayers" _autofocus>>
+		  <<if !_last>><br><br><</if>>
+	<</capture>>
+<</for>>
+<<set $players.length = $pOrder.length>>
+</p>
+
+<p>
+([[zvýšit či snížit počet hráčů|SetNumbOfPlayers]])
+</p>
+
+<div class="tar">
+//(jména či přezdívky by se měly vzájemně lišit)//
+</div>
+
+<p>
+<<if $pOrder.length > 1>>
+    ''<<button "HRÁT V TOMTO POŘADÍ" _nextRoom>><<set $pOrderShuffled = false>><</button>>''
+    <br><br>
+    <<link "Hrát v náhodném pořadí" _nextRoom>><<run $pOrder.shuffle().shuffle().shuffle().shuffle()>><<set $pOrderShuffled = true>><</link>>
+<<else>>
+    ''<<button "HRÁT sám/sama BEZ SPOLUHRÁČŮ" _nextRoom>><<set $pOrderShuffled = false>><</button>>''
+<</if>>
+</p>

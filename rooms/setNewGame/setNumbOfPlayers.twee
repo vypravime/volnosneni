@@ -1,0 +1,31 @@
+:: SetNumbOfPlayers [alignCenter]
+
+<<set _count = $pOrder.length>>
+<p>
+Počet hráčů:<br>
+<<button "-">>
+    <<if _count > 1>>
+        <<set _count -= 1>>
+	    <<replace "#players-count">>_count<</replace>>
+    <</if>>
+<</button>>
+''&nbsp;@@#players-count;_count@@&nbsp;''
+<<button "+">>
+    <<set _count += 1>>
+	<<replace "#players-count">>_count<</replace>>
+<</button>>
+</p>
+<p>
+''<<button [[POTVRDIT|SetNamesOfPlayers]]>>
+    <<set $pOrder = []>>
+    <<for _i = 0; _i < _count; _i++>>
+	    <<set $pOrder[_i] = _i>>
+	<</for>>
+<</button>>''
+</p>
+<p class="tar">
+//(doporučeno je jeden až šest hráčů)//
+</p>
+<<link "Pokročilá nastavení...">>
+    <<run UI.settings()>>
+<</link>>
