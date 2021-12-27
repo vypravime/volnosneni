@@ -1,0 +1,12 @@
+:: WhoIsOnTurn [alignCenter]
+
+<h2>//''<<=setup.whoseTurn()>>''// přebírá<br>
+právě teď tah!
+</h2>
+<p>
+''<<button `"//" + setup.whoseTurn() +
+    "://<br><br>VSTOUPIT DO SVĚTA FANTAZIE..."`
+	"FantasyEnter">>
+<</button>>''
+<br>&nbsp;
+</p>

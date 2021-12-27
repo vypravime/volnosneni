@@ -1,0 +1,37 @@
+:: FantasyEnter
+
+<h2>//<<=setup.whoseTurn()>>// se nachází ve světě fantazie,<br>
+kde je možné cokoliv...</h2>
+<<if !$gameCards.current[0]>>
+    <<set $gameCards.current[0] = setup.addGameCard()>>
+<</if>>
+<p>//Co nyní udělá? Co podnikne?//</p>
+<p>//Na co má teď ''<<=setup.whoseTurn()>>'' opravdu chuť?//</p>
+
+<p>
+//(<<link "číst&nbsp;příklad">>
+	<<passageDialog "Ukázka:" "ExampleBasic1">>
+<</link>>)&nbsp;&nbsp;&nbsp;(<<link "BÝT&nbsp;TOLERANTNÍ">>
+	<<passageDialog "Zásady společné zábavy:" "BeNiceInfo">>
+<</link>>)&nbsp;&nbsp;&nbsp;(<<link "dosavadní&nbsp;příběh">>
+	<<passageDialog "Nástěnka příběhu" "CardsBoard">>
+<</link>>)//<br>
+<<set _default = $gameCards.current[0].text.trim() ?
+    $gameCards.current[0].text.trim() : ''>>
+<<textarea "$gameCards.current[0].text" _default>>
+
+''<<button "Pokračovat...">>
+<<if !$gameCards.current[0].text.trim()>>
+<<passageDialog "Vyplň prosím políčko!" "FillInputDialog1">>
+<<elseif ($gameCards.givenUp.length > 0) || ($gameCards.waiting.length > 0)>>
+<<goto [[CheckDisallowedThemes]]>>
+<<else>>
+<<goto [[FantasyEnter]]>>
+<</if>>
+<</button>>''
+</p>
+
+<<done>>
+<<set _preDefault = "SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n- vyřeš třeba starou komplikaci\r\n- nebo nějak rozviň předešlý DĚJ\r\n- či začni úplně nové téma, ... (anebo vše najednou)">>
+<<run $('textarea').attr('placeholder', _preDefault)>>
+<</done>>
