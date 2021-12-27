@@ -1,0 +1,85 @@
+html {
+    font: 16px/1 sans-serif;
+}
+h3 {
+    font-style: italic;
+}
+
+.tal {
+    text-align: left;
+}
+.tac, .passage.aligncenter, .passage h1, .passage h2 {
+    text-align: center;
+}
+.tar {
+    text-align: right;
+}
+
+p {
+    margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+hr {
+    margin-top: 0.9rem;
+	margin-bottom: 0.9rem;
+}
+.mt6 {
+    margin-top: 0.6rem;
+}
+.mb6 {
+    margin-bottom: 0.6rem
+}
+
+button {
+    background-color: #240;
+    border: 1px solid #350;
+}
+button:hover {
+    background-color: #250;
+    border-color: #461;
+}
+a {
+    color: #ef4;
+    text-decoration: underline;
+}
+a:hover {
+    color: #fc5;
+}
+
+button, input, select, textarea {
+    border-radius: 0.2rem;
+}
+
+#ui-dialog-titlebar {
+    background-color: #420;
+    border: 1px solid #530;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-bottom: none;
+}
+#ui-dialog-body {
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-top: none;
+}
+.story-card-1 {
+    border: 4px double #530;
+    background-color: #efc;
+    color: #204;
+  	font-size: 1.2rem;
+    font-style: italic;
+    border-radius: 0.3rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 0.1rem;
+}
+.story-card-1 p {
+    padding: 0.5rem;
+    margin: 0;
+}
+.story-card-1 p.complic {
+    padding: 0;
+    border: 0.5rem dotted #fc5
+}
+.story-card-1 p.complic.solved {
+    border-color: #250;
+}

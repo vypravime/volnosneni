@@ -1,0 +1,11 @@
+:: Start [alignCenter]
+
+Ahoj
+
+Jak se Ti daří teď?
+
+[[Další místnost|NewRoom]]
+
+:: NewRoom
+
+A toto je další místnost.
