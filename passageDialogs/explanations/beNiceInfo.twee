@@ -1,0 +1,46 @@
+:: BeNiceInfo
+
+<p>
+I když je ve světě fantazie možné cokoliv,<br>
+nepoužívej prosím své vyprávění<br>
+k provokaci či šikaně svých spoluhráčů.
+</p>
+<p class="tac">
+Zkus vylíčit něco potěšujícího,<br>
+vřelého či krásného...<br>
+i tak zůstává nebřeberně možností,<br>
+co do příběhu vložit.
+</p>
+<p class="tar">
+//Je lepší, když v textu svých kartiček<br>
+nebudeš zmiňovat ostatní hráče.<br>
+Mluv sám za sebe...<br>
+a nech ostatní, aby se během jejich vlastních tahů<br>
+případně sami dobrovolně rozhodli<br>
+se ke Tvé kartičce přidat.//
+</p>
+<hr>
+<p>
+Pokud se Ti děj týkající se druhého hráče nelíbí,<br>
+(může Ti třeba připadat příliš šokující či riskantní)<br>
+- nesnaž se prosím svým vlastním dějem<br>
+druhému hráči překážet či odporovat.<br>
+Lepší je neúčastnit se toho, co Tě neláká<br>
+nedotýkat se toho ve svých kartičkách<br>
+a nezávisle bokem odvyprávět své části příběhu,<br>
+které se týkají Tebe a Tebe uspokojují.
+</p>
+<p class="tac">
+''Každá postava se tedy může část hry nebo celou hru<br>
+zabývat něčím, k čemu se ostaní nepřipojí, nechtějí-li.''
+</p>
+<p class="tar">
+//Naopak, pokud Tě kartička Tvého spoluhráče<br>
+zaujme nebo nadchne - klidně ten nápad<br>
+během svého tahu rozviň svou vlastní kartičkou...<br>
+Mluv na své kartičce ale opět pouze za sebe,<br>
+ať už se původní autor nápadu ke Tvému rozvinutí<br>
+později dobrovolně přidruží či ne.//
+</p>
+
+<<dialogCloseButton "OK">>

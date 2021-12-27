@@ -1,0 +1,40 @@
+:: BeforeStartFPInfo
+
+<p>
+@@font-size:1.2rem;
+Pokud nevíš, co jsou to ''osudové kameny'',<br>
+''NELAM SI S TÍM HLAVU...''<br>
+protože během hry to postupně pochopíš.
+@@
+</p>
+<<dialogCloseButton "OK">>
+<hr>
+<hr>
+<p class="tar">
+//Obecně:<br>
+občas padne na kostce nízké číslo,<br>
+takže hráč je nucen přijmout nečekaný příběhový zvrat<br>
+- jako revanž za to obdrží jeden ''osudový kámen''.<br>
+Když hráč těchto kamenů nasbírá více,<br>
+může jich několik utratit, aby se příběhovému zvratu vyhnul...<br>
+a rovnou posunul děj přesně tak, jak zamýšlel.//
+</p>
+<p class="tac">
+''(Za příběhové komplikace tedy kameny získaváš...<br>
+a když se chceš naopak komplikacím vyhnout - získané kameny spotřebuješ.)''
+</p>
+<hr>
+<p>Doporučený počet ''osudových kamenů'' do startu:<br>
+''@@font-size:1.2rem;<<=setup.fPStartADefault>>@@''
+</p>
+<p>//Právě teď máš nastaveno:<br>
+''<<=settings.fPStartAmount>>''//
+</p>
+<p class="tar">//Pokud to chceš jinak,<br>
+otevři si ještě před startem<br>
+- takže třeba teď:<br>
+<<link "pokročilá nastavení...">>
+<<run Dialog.close()>>
+<<run UI.settings()>>
+<</link>>//
+</p>

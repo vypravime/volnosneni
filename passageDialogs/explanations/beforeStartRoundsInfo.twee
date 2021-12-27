@@ -1,0 +1,21 @@
+:: BeforeStartRoundsInfo
+
+<p class="tac">''Hra se hraje stále dokola,<br>
+dokud to zúčastněné baví...''
+</p>
+<p>
+Poté, co ''poslední'' hráč skončí svůj tah,<br>
+jde na řadu ''opět'' hráč ''první''...<br>
+a pak znovu, znovu a znovu.
+</p>
+<p class="tar">
+//(Ovšem kdokoliv si může dát pauzu a být dočasně přeskočen,<br>
+nebo od hry definitivně odejít...<br>
+navíc je možné přidávat nové hráče i později v průběhu hry,<br>
+apod.)//
+</p>
+<p class="tac">Hra tedy ''končí'',<br>
+buď když už jsou ''všichni spokojeni'' a stačí jim,<br>
+nebo když z jakéhokoliv důvodu ''odejde poslední'' přítomný hráč.
+</p>
+<<dialogCloseButton "OK">>
