@@ -1,0 +1,5 @@
+:: CompLink [widget]
+
+<<widget "compLink" container>>
+    <<link _contents>>_args[0]<</link>>
+<</widget>>

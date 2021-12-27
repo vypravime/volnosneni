@@ -1,0 +1,10 @@
+:: StoryInit
+
+<<set $players = []>>
+<<set $pOrder = [0,1,2]>>
+<<set $pOrderShuffled = false>>
+<<set $roundCounter = 0>>
+<<set $gameCards = {}>>
+<<set $gameCards.current = []>>
+<<set $gameCards.waiting = []>>
+<<set $gameCards.givenUp = []>>

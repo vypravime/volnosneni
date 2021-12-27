@@ -1,11 +1,11 @@
-:: Start [alignCenter]
+:: Start
 
-Ahoj
-
-Jak se Ti daří teď?
-
-[[Další místnost|NewRoom]]
-
-:: NewRoom
-
-A toto je další místnost.
+<h1>Vítej ve hře "VolnoSnění"</h1>
+<p>
+''<<button [[NOVÁ HRA|SetNumbOfPlayers]]>><</button>>''
+</p>
+<p>
+<<button "Pokračovat v dřívější hře...">>
+    <<run UI.saves()>>
+<</button>>
+</p>
