@@ -29,6 +29,9 @@ hr {
 .mb6 {
     margin-bottom: 0.6rem
 }
+textarea {
+    min-width: 23rem;
+}
 
 button {
     background-color: #240;
@@ -54,6 +57,7 @@ button, input, select, textarea {
     border-left: 1px solid #444;
     border-right: 1px solid #444;
     background-color: #111;
+    overflow-x: auto;
 }
 #my-header, #my-footer, #ui-dialog-titlebar {
     background-color: #420;
@@ -68,6 +72,7 @@ button, input, select, textarea {
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     border-top: none;
+    overflow-x: auto;
 }
 .story-card-1 {
     border: 4px double #530;
@@ -89,6 +94,9 @@ button, input, select, textarea {
 }
 .story-card-1 p.complic.solved {
     border-color: #250;
+}
+textarea {
+    background-color: #120;
 }
 body {
     background-color: #000;
