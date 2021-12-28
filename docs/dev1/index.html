@@ -130,7 +130,13 @@ hr {
     margin-bottom: 0.6rem
 }
 textarea {
-    min-width: 23rem;
+    min-width: 20rem;
+}
+input[type="text"] {
+    min-width: 10rem;
+}
+.pa5 {
+    padding: 0.5rem;
 }
 
 button {
@@ -287,7 +293,12 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #3: "i-main.js" */
+/* twine-user-script #3: "p-backdetect.min.js" */
+/* jQuery backDetect:
+https://github.com/ianrogren/jquery-backDetect/
+*/
+!function(e){var a=e,r="undefined"!=typeof window&&window,f={frameLoaded:0,frameTry:0,frameTime:0,frameDetect:null,frameSrc:null,frameCallBack:null,frameThis:null,frameNavigator:window.navigator.userAgent,frameDelay:0,frameDataSrc:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"};a.fn.backDetect=function(e,r){f.frameThis=this,f.frameCallBack=e,null!==r&&(f.frameDelay=r),f.frameNavigator.indexOf("MSIE ")>-1||f.frameNavigator.indexOf("Trident")>-1?setTimeout(function(){a('<iframe src="'+f.frameDataSrc+'?loading" style="display:none;" id="backDetectFrame" onload="jQuery.fn.frameInit();""></iframe>').appendTo(f.frameThis)},f.frameDelay):setTimeout(function(){a("<iframe src='about:blank?loading' style='display:none;' id='backDetectFrame' onload='jQuery.fn.frameInit();'></iframe>").appendTo(f.frameThis)},f.frameDelay)},a.fn.frameInit=function(){f.frameDetect=document.getElementById("backDetectFrame"),f.frameLoaded>1&&2===f.frameLoaded&&(f.frameCallBack.call(this),r.history.go(-1)),f.frameLoaded+=1,1===f.frameLoaded&&(f.frameTime=setTimeout(function(){e.fn.setupFrames()},500))},a.fn.setupFrames=function(){clearTimeout(f.frameTime),f.frameSrc=f.frameDetect.src,1===f.frameLoaded&&-1===f.frameSrc.indexOf("historyLoaded")&&(f.frameNavigator.indexOf("MSIE ")>-1||f.frameNavigator.indexOf("Trident")>-1?f.frameDetect.src=f.frameDataSrc+"?historyLoaded":f.frameDetect.src="about:blank?historyLoaded")}}(jQuery);
+/* twine-user-script #4: "q-main.js" */
 "use strict";
 
 /*
@@ -303,19 +314,34 @@ TO DO:
 
 
 Setting.addList('diceType',{
-    label: "''Jak hážeš KOSTKOU?''",
-    desc: '//(Šestistěnnou kostkou po staru na stole,<br>či losovacím tlačítkem v této aplikaci.)//<hr>',
-    list: setup.diceTypes,
-    default: setup.diceTypes[0],
+  label: "''Jak hážeš KOSTKOU?''",
+  desc: '//(Šestistěnnou kostkou po staru na stole,<br>či losovacím tlačítkem v této aplikaci.)//<hr>',
+  list: setup.diceTypes,
+  default: setup.diceTypes[0],
 });
 Setting.addList('fPStartAmount',{
-    label: "''S kolika OSUDOVÝMI KAMENY hráč začíná?''",
-    desc: '//(Čím víc, tím je start hry snazší, přímočařejší, ale nudnější.)//<hr>',
-    list: [0,1,2,3,4,5,6,7,8],
-    default: setup.fPStartADefault,
-	onChange: setup.fPStartAOnChange
+  label: "''S kolika OSUDOVÝMI KAMENY hráč začíná?''",
+  desc: '//(Čím víc, tím je start hry snazší, přímočařejší, ale nudnější.)//<hr>',
+  list: [0,1,2,3,4,5,6,7,8],
+  default: setup.fPStartADefault,
+  onChange: setup.fPStartAOnChange
 });
-/* twine-user-script #4: "z-l10nStrings.js" */
+
+$(document).ready(function(){
+  $('body').backDetect(function(){
+    // Callback function
+    alert(`
+Stiskl jsi MIMOHERNÍ tlačítko ZPĚT,\r\n
+které Tě rovnou vyhodí\r\n
+z celé aplikace VolnoSnění...\r\n
+\r\n
+Spustíš-li před zavřením prohlížeče znovu naši hru,\r\n
+například tlačítkem VPŘED,\r\n
+bude obnoven Tvůj dosavadní herní postup.\r\n
+    `);
+  });
+});
+/* twine-user-script #5: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/
@@ -466,6 +492,7 @@ Pokud nevíš, co jsou to &#39;&#39;osudové kameny&#39;&#39;,&lt;br&gt;
 protože během hry to postupně pochopíš.
 @@
 &lt;/p&gt;
+&lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
 &lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;
 &lt;hr&gt;
 &lt;hr&gt;
@@ -496,7 +523,9 @@ otevři si ještě před startem&lt;br&gt;
 &lt;&lt;run Dialog.close()&gt;&gt;
 &lt;&lt;run UI.settings()&gt;&gt;
 &lt;&lt;/link&gt;&gt;//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="6" name="BeforeStartRoundsInfo" tags="" position="725,100" size="100,100">&lt;p class=&quot;tac&quot;&gt;&#39;&#39;Hra se hraje stále dokola,&lt;br&gt;
+&lt;/p&gt;
+&lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="BeforeStartRoundsInfo" tags="" position="725,100" size="100,100">&lt;p class=&quot;tac&quot;&gt;&#39;&#39;Hra se hraje stále dokola,&lt;br&gt;
 dokud to zúčastněné baví...&#39;&#39;
 &lt;/p&gt;
 &lt;p&gt;
@@ -528,7 +557,9 @@ a ubytuje se v soukromém apartmá&lt;br&gt;
 s výhledem na malebný mořský záliv.&quot;
 &lt;/p&gt;
 &lt;p class=&quot;complic&quot;&gt;
-&quot;Ale když přijede a ubytuje se, zjistí, že ji někdo ukradl všechny peníze...&quot;
+&quot;Ale když přijede a ubytuje se, zjistí,&lt;br&gt;
+že ani v peněžence, ani na účtu&lt;br&gt;
+nemá vůbec žádné peníze...&quot;
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
