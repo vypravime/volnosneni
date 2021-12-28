@@ -30,7 +30,10 @@ hr {
     margin-bottom: 0.6rem
 }
 textarea {
-    min-width: 23rem;
+    min-width: 20rem;
+}
+input[type="text"] {
+    min-width: 10rem;
 }
 
 button {
