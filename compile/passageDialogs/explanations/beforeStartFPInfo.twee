@@ -7,6 +7,7 @@ Pokud nevíš, co jsou to ''osudové kameny'',<br>
 protože během hry to postupně pochopíš.
 @@
 </p>
+<div class="pa5"></div>
 <<dialogCloseButton "OK">>
 <hr>
 <hr>
@@ -38,3 +39,5 @@ otevři si ještě před startem<br>
 <<run UI.settings()>>
 <</link>>//
 </p>
+<div class="pa5"></div>
+<<dialogCloseButton "OK">>

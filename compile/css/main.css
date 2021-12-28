@@ -35,6 +35,9 @@ textarea {
 input[type="text"] {
     min-width: 10rem;
 }
+.pa5 {
+    padding: 0.5rem;
+}
 
 button {
     background-color: #240;
