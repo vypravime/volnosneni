@@ -49,15 +49,22 @@ a:hover {
 button, input, select, textarea {
     border-radius: 0.2rem;
 }
-
-#ui-dialog-titlebar {
+#my-header, #my-footer, .passage > .my-passage {
+    padding: 0.5rem;
+    border-left: 1px solid #444;
+    border-right: 1px solid #444;
+    background-color: #111;
+}
+#my-header, #my-footer, #ui-dialog-titlebar {
     background-color: #420;
     border: 1px solid #530;
+}
+#ui-dialog-titlebar, #my-header {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     border-bottom: none;
 }
-#ui-dialog-body {
+#ui-dialog-body, #my-footer {
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     border-top: none;
@@ -82,4 +89,7 @@ button, input, select, textarea {
 }
 .story-card-1 p.complic.solved {
     border-color: #250;
+}
+body {
+    background-color: #000;
 }

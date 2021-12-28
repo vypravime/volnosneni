@@ -1,15 +1,19 @@
 :: PassageFooter
 
 <hr>
+
 <div class="tar">
-<<button "Nápověda">>
+
+  <<button "Nápověda">>
     <<passageDialog "Nápověda" "Help">>
-<</button>>&nbsp;
-<<button "Přepni lištu">>
+  <</button>>&nbsp;
+
+  <<button "Přepni lištu">>
     <<if UIBar.isStowed()>>
-        <<run UIBar.unstow()>>
-	<<else>>
-	    <<run UIBar.stow()>>
-	<</if>>
-<</button>>
+      <<run UIBar.unstow()>>
+    <<else>>
+      <<run UIBar.stow()>>
+    <</if>>
+  <</button>>
+
 </div>

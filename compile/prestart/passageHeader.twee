@@ -1,15 +1,20 @@
 :: PassageHeader
 
 <div class="tal">
-<<if $roundCounter > 0>>
-<<button "DĚJ">>
-    <<passageDialog "Nástěnka příběhu" "CardsBoard">>
-<</button>>&nbsp;
-<<button "Hráči">>
+
+  <<if $roundCounter > 0>>
+    <<button "DĚJ">>
+      <<passageDialog "Nástěnka příběhu" "CardsBoard">>
+    <</button>>&nbsp;
+
+    <<button "Hráči">>
     
-<</button>>&nbsp;
-<</if>>
-''$roundCounter.''&nbsp;tah:&nbsp;<<if $roundCounter > 0>><<= setup.whoseTurn("//zatím&nbsp;''nikdo''&nbsp;ne//táhne", "''//", "//''")>><<else>>//zatím&nbsp;''nikdo''&nbsp;ne//táhne<</if>>
-//(<<= turns()>>.&nbsp;krok)//
+    <</button>>&nbsp;
+  <</if>>
+
+  ''$roundCounter.''&nbsp;tah:&nbsp;<<if $roundCounter > 0>><<= setup.whoseTurn("//zatím&nbsp;''nikdo''&nbsp;ne//táhne", "''//", "//''")>><<else>>//zatím&nbsp;''nikdo''&nbsp;ne//táhne<</if>>
+  //(<<= turns()>>.&nbsp;krok)//
+
 </div>
+
 <hr>
