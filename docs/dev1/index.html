@@ -293,12 +293,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #3: "p-backdetect.min.js" */
-/* jQuery backDetect:
-https://github.com/ianrogren/jquery-backDetect/
-*/
-!function(e){var a=e,r="undefined"!=typeof window&&window,f={frameLoaded:0,frameTry:0,frameTime:0,frameDetect:null,frameSrc:null,frameCallBack:null,frameThis:null,frameNavigator:window.navigator.userAgent,frameDelay:0,frameDataSrc:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"};a.fn.backDetect=function(e,r){f.frameThis=this,f.frameCallBack=e,null!==r&&(f.frameDelay=r),f.frameNavigator.indexOf("MSIE ")>-1||f.frameNavigator.indexOf("Trident")>-1?setTimeout(function(){a('<iframe src="'+f.frameDataSrc+'?loading" style="display:none;" id="backDetectFrame" onload="jQuery.fn.frameInit();""></iframe>').appendTo(f.frameThis)},f.frameDelay):setTimeout(function(){a("<iframe src='about:blank?loading' style='display:none;' id='backDetectFrame' onload='jQuery.fn.frameInit();'></iframe>").appendTo(f.frameThis)},f.frameDelay)},a.fn.frameInit=function(){f.frameDetect=document.getElementById("backDetectFrame"),f.frameLoaded>1&&2===f.frameLoaded&&(f.frameCallBack.call(this),r.history.go(-1)),f.frameLoaded+=1,1===f.frameLoaded&&(f.frameTime=setTimeout(function(){e.fn.setupFrames()},500))},a.fn.setupFrames=function(){clearTimeout(f.frameTime),f.frameSrc=f.frameDetect.src,1===f.frameLoaded&&-1===f.frameSrc.indexOf("historyLoaded")&&(f.frameNavigator.indexOf("MSIE ")>-1||f.frameNavigator.indexOf("Trident")>-1?f.frameDetect.src=f.frameDataSrc+"?historyLoaded":f.frameDetect.src="about:blank?historyLoaded")}}(jQuery);
-/* twine-user-script #4: "q-main.js" */
+/* twine-user-script #3: "q-main.js" */
 "use strict";
 
 /*
@@ -328,20 +323,14 @@ Setting.addList('fPStartAmount',{
 });
 
 $(document).ready(function(){
-  $('body').backDetect(function(){
-    // Callback function
-    alert(`
-Stiskl jsi MIMOHERNÍ tlačítko ZPĚT,\r\n
-které Tě rovnou vyhodí\r\n
-z celé aplikace VolnoSnění...\r\n
-\r\n
-Spustíš-li před zavřením prohlížeče znovu naši hru,\r\n
-například tlačítkem VPŘED,\r\n
-bude obnoven Tvůj dosavadní herní postup.\r\n
-    `);
+  window.addEventListener('beforeunload', function (e) {
+    // Cancel the event
+    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+    // Chrome requires returnValue to be set
+    e.returnValue = 'Hra VolnoSnění vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
   });
 });
-/* twine-user-script #5: "z-l10nStrings.js" */
+/* twine-user-script #4: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/
