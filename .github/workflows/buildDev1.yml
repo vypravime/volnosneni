@@ -20,7 +20,7 @@ jobs:
         run: |
           go get github.com/tmedwards/tweego
           export PATH=$PATH:$(go env GOPATH)/bin
-          tweego start.twee compile -o dist/dev1.html
+          tweego start.twee compile -o dist/index.html
 
       - name: Deploy to Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -28,3 +28,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./dist
+          destination_dir: docs/dev1
