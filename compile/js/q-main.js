@@ -27,16 +27,10 @@ Setting.addList('fPStartAmount',{
 });
 
 $(document).ready(function(){
-  $('body').backDetect(function(){
-    // Callback function
-    alert(`
-Stiskl jsi MIMOHERNÍ tlačítko ZPĚT,\r\n
-které Tě rovnou vyhodí\r\n
-z celé aplikace VolnoSnění...\r\n
-\r\n
-Spustíš-li před zavřením prohlížeče znovu naši hru,\r\n
-například tlačítkem VPŘED,\r\n
-bude obnoven Tvůj dosavadní herní postup.\r\n
-    `);
+  window.addEventListener('beforeunload', function (e) {
+    // Cancel the event
+    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+    // Chrome requires returnValue to be set
+    e.returnValue = 'Hra VolnoSnění vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
   });
 });
