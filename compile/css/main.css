@@ -74,10 +74,24 @@ button, input, select, textarea {
     border-top: none;
     overflow-x: auto;
 }
-.story-card-1 {
-    border: 4px double #530;
+.story-card-1, textarea, input[type="text"] {
     background-color: #efc;
     color: #204;
+}
+textarea, input[type="text"]{
+    border-color: #461;
+    transition: 0.3s;
+}
+input[type="text"]:not(:disabled):focus,
+input[type="text"]:not(:disabled):hover,
+textarea:not(:disabled):focus,
+textarea:not(:disabled):hover {
+    background-color: #fff;
+    border-color: #000;
+    box-shadow: 0 0 16px 0 #ef4;
+}
+.story-card-1 {
+    border: 4px double #530;
   	font-size: 1.2rem;
     font-style: italic;
     border-radius: 0.3rem;
@@ -93,10 +107,7 @@ button, input, select, textarea {
     border: 0.5rem dotted #fc5
 }
 .story-card-1 p.complic.solved {
-    border-color: #250;
-}
-textarea {
-    background-color: #120;
+    border-color: #350;
 }
 body {
     background-color: #000;
