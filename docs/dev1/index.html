@@ -129,6 +129,9 @@ hr {
 .mb6 {
     margin-bottom: 0.6rem
 }
+textarea {
+    min-width: 23rem;
+}
 
 button {
     background-color: #240;
@@ -149,23 +152,47 @@ a:hover {
 button, input, select, textarea {
     border-radius: 0.2rem;
 }
-
-#ui-dialog-titlebar {
+#my-header, #my-footer, .passage > .my-passage {
+    padding: 0.5rem;
+    border-left: 1px solid #444;
+    border-right: 1px solid #444;
+    background-color: #111;
+    overflow-x: auto;
+}
+#my-header, #my-footer, #ui-dialog-titlebar {
     background-color: #420;
     border: 1px solid #530;
+}
+#ui-dialog-titlebar, #my-header {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     border-bottom: none;
 }
-#ui-dialog-body {
+#ui-dialog-body, #my-footer {
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     border-top: none;
+    overflow-x: auto;
+}
+.story-card-1, textarea, input[type="text"] {
+    background-color: #efc;
+    color: #204;
+}
+textarea, input[type="text"]{
+    border-color: #461;
+    border-width: 5px;
+    transition: 0.6s;
+}
+input[type="text"]:not(:disabled):focus,
+input[type="text"]:not(:disabled):hover,
+textarea:not(:disabled):focus,
+textarea:not(:disabled):hover {
+    background-color: #fff;
+    border-color: #7a2;
+    box-shadow: 0 0 0.65rem 0 rgba(238, 255, 68, 0.6);
 }
 .story-card-1 {
     border: 4px double #530;
-    background-color: #efc;
-    color: #204;
   	font-size: 1.2rem;
     font-style: italic;
     border-radius: 0.3rem;
@@ -178,10 +205,14 @@ button, input, select, textarea {
 }
 .story-card-1 p.complic {
     padding: 0;
-    border: 0.5rem dotted #fc5
+    border: 0.5rem dotted #fc5;
+    transition: 0.3s;
 }
 .story-card-1 p.complic.solved {
-    border-color: #250;
+    border-color: #350;
+}
+body {
+    background-color: #000;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "c-config.js" */
 "use strict";
 
@@ -193,6 +224,21 @@ Config.saves.id = "volnosneni";
 Config.saves.version = 1;
 
 Config.passages.nobr = true;
+/*Wrap every processed pasage text into additional div
+  (the div gets either class 'my-passage',
+   or id 'PassageHeader'/'PassageFooter')
+*/
+Config.passages.onProcess = function (p) {
+    let attrsStr = '';
+    if (p.title === 'PassageHeader') {
+        attrsStr = ' id="my-header"';
+    } else if (p.title === 'PassageFooter') {
+        attrsStr = ' id="my-footer"';
+    } else {
+        attrsStr = ' class="my-passage"'
+    }
+	return p.text = `<div${attrsStr}>${p.text}</div>`;
+};
 /* twine-user-script #2: "f-setup.js" */
 "use strict";
 
@@ -538,31 +584,36 @@ vepiš vlastní slova...
 &lt;h3 class=&quot;tac&quot;&gt;[[tom-urban@post.cz|mailto:tom-urban@post.cz]]&lt;/h3&gt;
 &lt;p class=&quot;tar&quot;&gt;
 //(zeptej se, navrhni zlepšení, postěžuj si, poděkuj, ...)//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="10" name="PassageFooter" tags="" position="1225,100" size="100,100">&lt;hr&gt;
-&lt;div class=&quot;tar&quot;&gt;
-&lt;&lt;button &quot;Nápověda&quot;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="10" name="PassageFooter" tags="" position="1225,100" size="100,100">&lt;div class=&quot;tar&quot;&gt;
+
+  &lt;&lt;button &quot;Nápověda&quot;&gt;&gt;
     &lt;&lt;passageDialog &quot;Nápověda&quot; &quot;Help&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;&amp;nbsp;
-&lt;&lt;button &quot;Přepni lištu&quot;&gt;&gt;
+  &lt;&lt;/button&gt;&gt;&amp;nbsp;
+
+  &lt;&lt;button &quot;Přepni lištu&quot;&gt;&gt;
     &lt;&lt;if UIBar.isStowed()&gt;&gt;
-        &lt;&lt;run UIBar.unstow()&gt;&gt;
-	&lt;&lt;else&gt;&gt;
-	    &lt;&lt;run UIBar.stow()&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+      &lt;&lt;run UIBar.unstow()&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+      &lt;&lt;run UIBar.stow()&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
+
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="PassageHeader" tags="" position="100,225" size="100,100">&lt;div class=&quot;tal&quot;&gt;
-&lt;&lt;if $roundCounter &gt; 0&gt;&gt;
-&lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
-    &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;CardsBoard&quot;&gt;&gt;
-&lt;&lt;/button&gt;&gt;&amp;nbsp;
-&lt;&lt;button &quot;Hráči&quot;&gt;&gt;
+
+  &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
+    &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
+      &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;CardsBoard&quot;&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&amp;nbsp;
+
+    &lt;&lt;button &quot;Hráči&quot;&gt;&gt;
     
-&lt;&lt;/button&gt;&gt;&amp;nbsp;
-&lt;&lt;/if&gt;&gt;
-&#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
-//(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
-&lt;/div&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="12" name="StoryInit" tags="" position="225,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&amp;nbsp;
+  &lt;&lt;/if&gt;&gt;
+
+  &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
+  //(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="StoryInit" tags="" position="225,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
 &lt;&lt;set $pOrder = [0,1,2]&gt;&gt;
 &lt;&lt;set $pOrderShuffled = false&gt;&gt;
 &lt;&lt;set $roundCounter = 0&gt;&gt;
@@ -575,40 +626,55 @@ vepiš vlastní slova...
 [[www.vypravime.cz|https://www.vypravime.cz/]]
 &lt;/p&gt;
 &lt;hr&gt;</tw-passagedata><tw-passagedata pid="14" name="CheckDisallowedThemes" tags="" position="475,225" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="15" name="FantasyEnter" tags="" position="600,225" size="100,100">&lt;h2&gt;//&lt;&lt;=setup.whoseTurn()&gt;&gt;// se nachází ve světě fantazie,&lt;br&gt;
-kde je možné cokoliv...&lt;/h2&gt;
-&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="15" name="FantasyEnter" tags="" position="600,225" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+&lt;&lt;set _default = $gameCards.current[0].text.trim() ?
+  $gameCards.current[0].text.trim() : &#39;&#39;&gt;&gt;
+
+&lt;h2&gt;//&lt;&lt;=setup.whoseTurn()&gt;&gt;// se nachází ve světě fantazie,&lt;br&gt;
+  kde je možné cokoliv...&lt;/h2&gt;
+
 &lt;p&gt;//Co nyní udělá? Co podnikne?//&lt;/p&gt;
 &lt;p&gt;//Na co má teď &#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39; opravdu chuť?//&lt;/p&gt;
 
 &lt;p&gt;
-//(&lt;&lt;link &quot;číst&amp;nbsp;příklad&quot;&gt;&gt;
-	&lt;&lt;passageDialog &quot;Ukázka:&quot; &quot;ExampleBasic1&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;)&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;&lt;link &quot;BÝT&amp;nbsp;TOLERANTNÍ&quot;&gt;&gt;
-	&lt;&lt;passageDialog &quot;Zásady společné zábavy:&quot; &quot;BeNiceInfo&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;)&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;&lt;link &quot;dosavadní&amp;nbsp;příběh&quot;&gt;&gt;
-	&lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;CardsBoard&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;)//&lt;br&gt;
-&lt;&lt;set _default = $gameCards.current[0].text.trim() ?
-    $gameCards.current[0].text.trim() : &#39;&#39;&gt;&gt;
-&lt;&lt;textarea &quot;$gameCards.current[0].text&quot; _default&gt;&gt;
 
-&#39;&#39;&lt;&lt;button &quot;Pokračovat...&quot;&gt;&gt;
-&lt;&lt;if !$gameCards.current[0].text.trim()&gt;&gt;
-&lt;&lt;passageDialog &quot;Vyplň prosím políčko!&quot; &quot;FillInputDialog1&quot;&gt;&gt;
-&lt;&lt;elseif ($gameCards.givenUp.length &gt; 0) || ($gameCards.waiting.length &gt; 0)&gt;&gt;
-&lt;&lt;goto [[CheckDisallowedThemes]]&gt;&gt;
-&lt;&lt;else&gt;&gt;
-&lt;&lt;goto [[FantasyEnter]]&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;&#39;&#39;
+//(&lt;&lt;link &quot;číst&amp;nbsp;příklad&quot;&gt;&gt;
+	    &lt;&lt;passageDialog &quot;Ukázka:&quot; &quot;ExampleBasic1&quot;&gt;&gt;
+   &lt;&lt;/link&gt;&gt;)&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;&lt;link &quot;BÝT&amp;nbsp;VSTŘÍCNÝ&quot;&gt;&gt;
+	    &lt;&lt;passageDialog &quot;Zásady společné zábavy:&quot; &quot;BeNiceInfo&quot;&gt;&gt;
+   &lt;&lt;/link&gt;&gt;)&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;&lt;link &quot;předešlý&amp;nbsp;děj&quot;&gt;&gt;
+      &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;CardsBoard&quot;&gt;&gt;
+   &lt;&lt;/link&gt;&gt;)//&lt;br&gt;
+
+  &lt;&lt;textarea &quot;$gameCards.current[0].text&quot; _default&gt;&gt;
+
+  &#39;&#39;&lt;&lt;button &quot;Pokračovat...&quot;&gt;&gt;
+      &lt;&lt;if !$gameCards.current[0].text.trim()&gt;&gt;
+        &lt;&lt;passageDialog &quot;Vyplň prosím políčko!&quot; &quot;FillInputDialog1&quot;&gt;&gt;
+      &lt;&lt;elseif ($gameCards.givenUp.length &gt; 0) || ($gameCards.waiting.length &gt; 0)&gt;&gt;
+        &lt;&lt;goto [[CheckDisallowedThemes]]&gt;&gt;
+      &lt;&lt;else&gt;&gt;
+        &lt;&lt;goto [[FantasyEnter]]&gt;&gt;
+      &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&#39;&#39;
+
 &lt;/p&gt;
 
 &lt;&lt;done&gt;&gt;
-&lt;&lt;set _preDefault = &quot;SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n- vyřeš třeba starou komplikaci\r\n- nebo nějak rozviň předešlý DĚJ\r\n- či začni úplně nové téma, ... (anebo vše najednou)&quot;&gt;&gt;
-&lt;&lt;run $(&#39;textarea&#39;).attr(&#39;placeholder&#39;, _preDefault)&gt;&gt;
+
+  &lt;&lt;set _preDefault = `
+SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
+- vyřeš třeba starou komplikaci\r\n
+- nebo nějak rozviň předešlý DĚJ\r\n
+- či začni úplně nové téma, ...\r\n
+(anebo vše najednou)`&gt;&gt;
+
+  &lt;&lt;run $(&#39;textarea&#39;).attr(
+      &#39;placeholder&#39;, _preDefault).attr(
+      &#39;rows&#39;, 6)&gt;&gt;
+
 &lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="Go For Dice" tags="" position="725,225" size="100,100">ToDo:
 --Go For Dice--</tw-passagedata><tw-passagedata pid="17" name="WhoIsOnTurn" tags="alignCenter" position="850,225" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
@@ -698,34 +764,53 @@ pořadí:
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="SetNumbOfPlayers" tags="alignCenter" position="1225,225" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+
+&lt;h2&gt;Pro svou novou hru&lt;br&gt;
+  ZADEJ POČET HRÁČŮ&lt;/h2&gt;
+
 &lt;p&gt;
-Počet hráčů:&lt;br&gt;
-&lt;&lt;button &quot;-&quot;&gt;&gt;
+  Počet hráčů:&lt;br&gt;
+
+  &lt;&lt;button &quot;-&quot;&gt;&gt;
     &lt;&lt;if _count &gt; 1&gt;&gt;
-        &lt;&lt;set _count -= 1&gt;&gt;
+      &lt;&lt;set _count -= 1&gt;&gt;
 	    &lt;&lt;replace &quot;#players-count&quot;&gt;&gt;_count&lt;&lt;/replace&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-&#39;&#39;&amp;nbsp;@@#players-count;_count@@&amp;nbsp;&#39;&#39;
-&lt;&lt;button &quot;+&quot;&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
+
+  &#39;&#39;&amp;nbsp;@@#players-count;_count@@&amp;nbsp;&#39;&#39;
+
+  &lt;&lt;button &quot;+&quot;&gt;&gt;
     &lt;&lt;set _count += 1&gt;&gt;
-	&lt;&lt;replace &quot;#players-count&quot;&gt;&gt;_count&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/button&gt;&gt;
+	  &lt;&lt;replace &quot;#players-count&quot;&gt;&gt;_count&lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
+
 &lt;/p&gt;
+
 &lt;p&gt;
-&#39;&#39;&lt;&lt;button [[POTVRDIT|SetNamesOfPlayers]]&gt;&gt;
-    &lt;&lt;set $pOrder = []&gt;&gt;
-    &lt;&lt;for _i = 0; _i &lt; _count; _i++&gt;&gt;
-	    &lt;&lt;set $pOrder[_i] = _i&gt;&gt;
-	&lt;&lt;/for&gt;&gt;
-&lt;&lt;/button&gt;&gt;&#39;&#39;
+
+  &#39;&#39;&lt;&lt;button [[POTVRDIT|SetNamesOfPlayers]]&gt;&gt;
+      &lt;&lt;set $pOrder = []&gt;&gt;
+      &lt;&lt;for _i = 0; _i &lt; _count; _i++&gt;&gt;
+	      &lt;&lt;set $pOrder[_i] = _i&gt;&gt;
+	    &lt;&lt;/for&gt;&gt;
+  &lt;&lt;/button&gt;&gt;&#39;&#39;
+
 &lt;/p&gt;
+
 &lt;p class=&quot;tar&quot;&gt;
-//(doporučeno je jeden až šest hráčů)//
+
+  //(doporučeno je jeden až šest hráčů)//
+
 &lt;/p&gt;
-&lt;&lt;link &quot;Pokročilá nastavení...&quot;&gt;&gt;
+
+&lt;p&gt;
+
+  &lt;&lt;link &quot;Pokročilá nastavení...&quot;&gt;&gt;
     &lt;&lt;run UI.settings()&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="CompLink" tags="widget" position="100,350" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="21" name="CompLink" tags="widget" position="100,350" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="DialogCloseButton" tags="widget" position="225,350" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
 /*_args[0] is the TEXT on THE BUTTON*/
