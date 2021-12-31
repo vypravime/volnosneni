@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5// --><tw-storydata name="VolnoSnění" startnode="1" creator="Tweego" creator-version="2.1.1" ifid="10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">html {
+	<!-- UUID://10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5// --><tw-storydata name="VolnoSnění" startnode="20" creator="Tweego" creator-version="2.1.1" ifid="10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">html {
     font: 16px/1 sans-serif;
 }
 h3 {
@@ -421,17 +421,9 @@ $(document).ready(function(){
 	/* Macros. */
 	l10nStrings.macroBackText   = 'Zrušit poslední krok!';
 	l10nStrings.macroReturnText = 'Přijmout a vrátit se\u2026';
-})();</script><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
-&lt;p&gt;
-&#39;&#39;&lt;&lt;button [[NOVÁ HRA|SetNumbOfPlayers]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;
-&lt;p&gt;
-&lt;&lt;button &quot;Pokračovat v dřívější hře...&quot;&gt;&gt;
-    &lt;&lt;run UI.saves()&gt;&gt;
-&lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="2" name="TempDialCloseButton" tags="" position="225,100" size="100,100">&lt;&lt;button `&quot;&amp;nbsp;&quot; + _args[0] + &quot;&amp;nbsp;&quot;`&gt;&gt;
+})();</script><tw-passagedata pid="1" name="TempDialCloseButton" tags="" position="100,100" size="100,100">&lt;&lt;button `&quot;&amp;nbsp;&quot; + _args[0] + &quot;&amp;nbsp;&quot;`&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="CardsBoard" tags="" position="350,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="4" name="BeNiceInfo" tags="" position="475,100" size="100,100">&lt;p&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="CardsBoard" tags="" position="225,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="3" name="BeNiceInfo" tags="" position="350,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
 nepoužívej prosím své vyprávění&lt;br&gt;
 k provokaci či šikaně svých spoluhráčů.
@@ -474,7 +466,7 @@ ať už se původní autor nápadu ke Tvému rozvinutí&lt;br&gt;
 později dobrovolně přidruží či ne.//
 &lt;/p&gt;
 
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="BeforeStartFPInfo" tags="" position="600,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="BeforeStartFPInfo" tags="" position="475,100" size="100,100">&lt;p&gt;
 @@font-size:1.2rem;
 Pokud nevíš, co jsou to &#39;&#39;osudové kameny&#39;&#39;,&lt;br&gt;
 &#39;&#39;NELAM SI S TÍM HLAVU...&#39;&#39;&lt;br&gt;
@@ -514,7 +506,7 @@ otevři si ještě před startem&lt;br&gt;
 &lt;&lt;/link&gt;&gt;//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="BeforeStartRoundsInfo" tags="" position="725,100" size="100,100">&lt;p class=&quot;tac&quot;&gt;&#39;&#39;Hra se hraje stále dokola,&lt;br&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="BeforeStartRoundsInfo" tags="" position="600,100" size="100,100">&lt;p class=&quot;tac&quot;&gt;&#39;&#39;Hra se hraje stále dokola,&lt;br&gt;
 dokud to zúčastněné baví...&#39;&#39;
 &lt;/p&gt;
 &lt;p&gt;
@@ -532,7 +524,7 @@ apod.)//
 buď když už jsou &#39;&#39;všichni spokojeni&#39;&#39; a stačí jim,&lt;br&gt;
 nebo když z jakéhokoliv důvodu &#39;&#39;odejde poslední&#39;&#39; přítomný hráč.
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="ExampleBasic1" tags="" position="850,100" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="ExampleBasic1" tags="" position="725,100" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
 &lt;div class=&quot;story-card-1&quot;&gt;
 &lt;p&gt;
 &#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;:
@@ -589,12 +581,12 @@ A K ČEMU MÁŠ CITOVÝ VZTAH!&lt;br&gt;
 &lt;&lt;run $(&#39;.complic&#39;).ariaClick(function() {
     $(this).toggleClass(&#39;solved&#39;);
 });&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="FillInputDialog1" tags="" position="975,100" size="100,100">&lt;p class=&quot;tac&quot;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="FillInputDialog1" tags="" position="850,100" size="100,100">&lt;p class=&quot;tac&quot;&gt;
 Nejprve prosím&lt;br&gt;
 do textového políčka&lt;br&gt;
 vepiš vlastní slova...
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="Help" tags="" position="1100,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Help" tags="" position="975,100" size="100,100">&lt;p&gt;
 //Nefunguje-li něco...&lt;br&gt;
 či není-li Ti něco jasné,&lt;br&gt;//
 &lt;/p&gt;
@@ -606,7 +598,7 @@ vepiš vlastní slova...
 //(zeptej se, navrhni zlepšení, postěžuj si, poděkuj, ...)//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="PassageFooter" tags="" position="1225,100" size="100,100">&lt;div class=&quot;tar&quot;&gt;
+&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="PassageFooter" tags="" position="1100,100" size="100,100">&lt;div class=&quot;tar&quot;&gt;
 
   &lt;&lt;button &quot;Nápověda&quot;&gt;&gt;
     &lt;&lt;passageDialog &quot;Nápověda&quot; &quot;Help&quot;&gt;&gt;
@@ -620,7 +612,7 @@ vepiš vlastní slova...
     &lt;&lt;/if&gt;&gt;
   &lt;&lt;/button&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="PassageHeader" tags="" position="100,225" size="100,100">&lt;div class=&quot;tal&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="PassageHeader" tags="" position="1225,100" size="100,100">&lt;div class=&quot;tal&quot;&gt;
 
   &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
     &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
@@ -635,20 +627,20 @@ vepiš vlastní slova...
   &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
   //(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="StoryInit" tags="" position="225,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="StoryInit" tags="" position="100,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
 &lt;&lt;set $pOrder = [0,1,2]&gt;&gt;
 &lt;&lt;set $pOrderShuffled = false&gt;&gt;
 &lt;&lt;set $roundCounter = 0&gt;&gt;
 &lt;&lt;set $gameCards = {}&gt;&gt;
 &lt;&lt;set $gameCards.current = []&gt;&gt;
 &lt;&lt;set $gameCards.waiting = []&gt;&gt;
-&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="StorySubtitle" tags="" position="350,225" size="100,100">//verze// &#39;&#39;0.1.0a&#39;&#39;
+&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="StorySubtitle" tags="" position="225,225" size="100,100">//verze// &#39;&#39;0.1.0a&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://www.vypravime.cz/]]
 &lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="14" name="CheckDisallowedThemes" tags="" position="475,225" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="15" name="FantasyEnter" tags="" position="600,225" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="13" name="CheckDisallowedThemes" tags="" position="350,225" size="100,100">ToDo:
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="14" name="FantasyEnter" tags="" position="475,225" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set _default = $gameCards.current[0].text.trim() ?
@@ -697,8 +689,8 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="Go For Dice" tags="" position="725,225" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="17" name="WhoIsOnTurn" tags="alignCenter" position="850,225" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="Go For Dice" tags="" position="600,225" size="100,100">ToDo:
+--Go For Dice--</tw-passagedata><tw-passagedata pid="16" name="WhoIsOnTurn" tags="alignCenter" position="725,225" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;
@@ -707,7 +699,7 @@ právě teď tah!
 	&quot;FantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="18" name="BeforeStartControl" tags="" position="975,225" size="100,100">&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="17" name="BeforeStartControl" tags="" position="850,225" size="100,100">&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
 &lt;&lt;run setup.fPStartAOnChange()&gt;&gt;/*protože uživatel by na této stránce mohl vlézt do nastavení a změnit hodnotu počátečních FP... nová hodnota by se měla sice vepsat jak do objektů hráčů (vlastnost .fp), tak do objektu settings, neboť při změně v nastaveních Settings je funkce výše volána SugarCubem automaticky. Jenže pak by se mohl uživatel vrátit v historii tlačítkem zpět, takže by se vlastnosti FP v objektech hráčů změnily na minulou hodnotu, jenže hodnota objektu settings zvolená v nastaveních by zůstala nová (settings narozdíl od $players nereaguje na skoky v historii). A pak, když by se uživatel proklikl opět do této místnosti - by nesouhlasil render následujících odstavců (nová hodnota vlastnosti v objektu settings podle akt. nastavení) s vlastností .fp uvnitř objektů hráčů (hodnota z historie). Volání funkce výše však nesoulad srovná tím, že upraví objekty hráčů opět podle nové aktuální hodnoty z nastavení, která jde zároveň do renderu v následujících odstavcích.*/
 &lt;p class=&quot;tac&quot;&gt;
 &lt;&lt;set _fPAm = settings.fPStartAmount&gt;&gt;
@@ -746,7 +738,7 @@ pořadí:
 &#39;&#39;&lt;&lt;button [[SOUHLASÍ - ODSTARTOVAT|WhoIsOnTurn]]&gt;&gt;
     &lt;&lt;set $roundCounter = 1&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="19" name="SetNamesOfPlayers" tags="alignCenter" position="1100,225" size="100,100">&lt;&lt;set _nextRoom = &#39;BeforeStartControl&#39;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="18" name="SetNamesOfPlayers" tags="alignCenter" position="975,225" size="100,100">&lt;&lt;set _nextRoom = &#39;BeforeStartControl&#39;&gt;&gt;
 
 &lt;&lt;if $pOrder.length &gt; 1&gt;&gt;
 &lt;h2&gt;Zadej jména hráčů:&lt;/h2&gt;
@@ -785,7 +777,7 @@ pořadí:
 &lt;&lt;else&gt;&gt;
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="SetNumbOfPlayers" tags="alignCenter" position="1225,225" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="19" name="SetNumbOfPlayers" tags="alignCenter" position="1100,225" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
 
 &lt;h2&gt;Pro svou novou hru&lt;br&gt;
   ZADEJ POČET HRÁČŮ&lt;/h2&gt;
@@ -832,6 +824,14 @@ pořadí:
     &lt;&lt;run UI.settings()&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="Start" tags="" position="1225,225" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
+&lt;p&gt;
+&#39;&#39;&lt;&lt;button [[NOVÁ HRA|SetNumbOfPlayers]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;&lt;button &quot;Pokračovat v dřívější hře...&quot;&gt;&gt;
+    &lt;&lt;run UI.saves()&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="21" name="CompLink" tags="widget" position="100,350" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="DialogCloseButton" tags="widget" position="225,350" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
