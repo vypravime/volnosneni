@@ -21,30 +21,30 @@ setup.AjaxAnimation = class {
     setOn() {
         this._active = true;
         let that = this;
-        let innerAnimManager = elements => {   
+        let innerAnimManager = elements => {
+            let cyklusOffset = that._basicTiming * elements.length;  
             elements.each(function(i) {
-                if (that.isSetOn()) {
-                    console.log($(this));
-                    console.log(that._basicTiming * (i+1));
-                    $(this)
-                        .delay(that._basicTiming * (i+1))
-                        .toggleClass('active');
-                } else {
-                    elements.removeClass('active');
-                    return false;
-                }
+                let jQthat = $(this);
+                let addClassOffset = (i+1)*that._basicTiming;
+                let removeClassOffset = cyklusOffset + addClassOffset;
+                    setTimeout(function(){
+                        if(that.isSetOn()) {
+                            jQthat.addClass('active');
+                        } else {
+                            jQthat.removeClass('active')
+                        }
+                    },addClassOffset);
+                    setTimeout(function(){
+                        jQthat.removeClass('active');
+                    },removeClassOffset);
             });
-            setTimeout(
-                () => {
-                    if(this.isSetOn()) {
+            setTimeout(function(){
+                    if(that.isSetOn()) {
                         innerAnimManager(elements);
                     }
-                },
-                this._basicTiming * elements.length,
-            );
+            },cyklusOffset * 2);
         }
         let letters = $(`#${this._elementId} > span`);
-        console.log(this._basicTiming * letters.length);
         innerAnimManager(letters);
     }
 
