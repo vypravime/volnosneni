@@ -1,12 +1,12 @@
 "use strict";
 
-let AjaxAnimation = class {
+setup.AjaxAnimation = class {
     _elementId = "ajax-anim-1";
     _basicTiming = 150;
     _active = false;
     constructor(basicTiming,elementId) {
-        this._elementId = elementId;
-        this._basicTiming = basicTiming;
+        this._elementId = elementId || this._elementId;
+        this._basicTiming = basicTiming || this._basicTiming;
     }
     isSetOn() {
         if (this._active === true) {
@@ -20,14 +20,18 @@ let AjaxAnimation = class {
     }
     setOn() {
         this._active = true;
-        let innerAnimManager = elements => {    
-            elements.forEach(el => {
-                if (this.isSetOn()) {
-                    el.toggleClass('active');
-                    wait(this._basicTiming);
+        let that = this;
+        let innerAnimManager = elements => {   
+            elements.each(function(i) {
+                if (that.isSetOn()) {
+                    console.log($(this));
+                    console.log(that._basicTiming * (i+1));
+                    $(this)
+                        .delay(that._basicTiming * (i+1))
+                        .toggleClass('active');
                 } else {
                     elements.removeClass('active');
-                    break;
+                    return false;
                 }
             });
             setTimeout(
@@ -36,10 +40,11 @@ let AjaxAnimation = class {
                         innerAnimManager(elements);
                     }
                 },
-                this._basicTiming * elements.size(),
+                this._basicTiming * elements.length,
             );
         }
         let letters = $(`#${this._elementId} > span`);
+        console.log(this._basicTiming * letters.length);
         innerAnimManager(letters);
     }
 
