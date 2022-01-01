@@ -9,10 +9,3 @@
     <<run UI.saves()>>
 <</button>>
 </p>
-<<set $ajaxAnimation = new setup.AjaxAnimation();>>
-<<button "AJAX ON">>
-    <<run $ajaxAnimation.setOn()>>
-<</button>>
-<<button "AJAX OFF">>
-    <<run $ajaxAnimation.setOff()>>
-<</button>>

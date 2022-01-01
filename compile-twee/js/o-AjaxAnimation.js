@@ -2,7 +2,7 @@
 
 setup.AjaxAnimation = class {
     _elementId = "ajax-anim-1";
-    _basicTiming = 150;
+    _basicTiming = 100;
     _active = false;
     constructor(basicTiming,elementId) {
         this._elementId = elementId || this._elementId;

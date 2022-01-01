@@ -29,14 +29,22 @@ hr {
 .mb6 {
     margin-bottom: 0.6rem
 }
+.mt0 {
+    margin-top: 0rem;
+}
+.mb0 {
+    margin-bottom: 0rem
+}
+
+.pa5 {
+    padding: 0.5rem;
+}
+
 textarea {
     min-width: 20rem;
 }
 input[type="text"] {
     min-width: 10rem;
-}
-.pa5 {
-    padding: 0.5rem;
 }
 
 button {
@@ -130,7 +138,7 @@ body {
     color: transparent
 }
 #ajax-anim-1 span {
-    transition: 1.5s;
+    transition: 1s;
 }
 #ajax-anim-1 span.active {
     color: #eb4;
