@@ -5,7 +5,7 @@
   <<button "Nápověda">>
     <<passageDialog "Nápověda" "Help">>
   <</button>>&nbsp;
-
+  
   <<button "Přepni lištu">>
     <<if UIBar.isStowed()>>
       <<run UIBar.unstow()>>
@@ -15,3 +15,18 @@
   <</button>>
 
 </div>
+
+<p class="tar mt6 mb0">
+
+  <<set $ajaxAnimation = new setup.AjaxAnimation();>>
+  <<button "AJAX ON">>
+    <<run $ajaxAnimation.setOn()>>
+  <</button>>&nbsp;
+  
+  <<button "AJAX OFF">>
+    <<run $ajaxAnimation.setOff()>>
+  <</button>>
+
+</p>
+
+<<include "AjaxAnim1">>

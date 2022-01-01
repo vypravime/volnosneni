@@ -29,14 +29,22 @@ hr {
 .mb6 {
     margin-bottom: 0.6rem
 }
+.mt0 {
+    margin-top: 0rem;
+}
+.mb0 {
+    margin-bottom: 0rem
+}
+
+.pa5 {
+    padding: 0.5rem;
+}
+
 textarea {
     min-width: 20rem;
 }
 input[type="text"] {
     min-width: 10rem;
-}
-.pa5 {
-    padding: 0.5rem;
 }
 
 button {
@@ -119,4 +127,19 @@ textarea:not(:disabled):hover {
 }
 body {
     background-color: #000;
+}
+
+#ajax-anim-1 {
+    position: fixed;
+    top: 50px;
+    right: 0px;
+    font-style: italic;
+    z-index: 100100100;
+    color: transparent
+}
+#ajax-anim-1 span {
+    transition: 1s;
+}
+#ajax-anim-1 span.active {
+    color: #eb4;
 }

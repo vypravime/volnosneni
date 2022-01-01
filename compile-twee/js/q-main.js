@@ -3,6 +3,7 @@
 /*
 TO DO:
 # odstranit při interním restartu varování "chceš opustit stránku?"
+# AjaxAnimation: přidat clone a json metody pro kompatibilitu s SugarCube
 # povolit autosave: CONFIG.SAVES.AUTOSAVE = ... {return ... false : TRUE}
 # UIBarSubtitle - dodat přesný link na novější verze ke stažení
 # možnost přidávat nové hráče během hry (viz BeforeStartControlInfo1)
