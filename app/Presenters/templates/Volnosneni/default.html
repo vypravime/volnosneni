@@ -142,6 +142,7 @@ input[type="text"] {
 button {
     background-color: #240;
     border: 1px solid #350;
+    transition: 0.6s;
 }
 button:hover {
     background-color: #250;
@@ -194,8 +195,7 @@ input[type="text"]:not(:disabled):hover,
 textarea:not(:disabled):focus,
 textarea:not(:disabled):hover {
     background-color: #fff;
-    border-color: #7a2;
-    box-shadow: 0 0 0.65rem 0 rgba(238, 255, 68, 0.6);
+    border-color: #eb4;
 }
 .story-card-1 {
     border: 4px double #530;
@@ -298,6 +298,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 
 /*
 TO DO:
+# odstranit při interním restartu varování "chceš opustit stránku?"
 # povolit autosave: CONFIG.SAVES.AUTOSAVE = ... {return ... false : TRUE}
 # UIBarSubtitle - dodat přesný link na novější verze ke stažení
 # možnost přidávat nové hráče během hry (viz BeforeStartControlInfo1)
