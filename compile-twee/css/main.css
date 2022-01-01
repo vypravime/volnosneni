@@ -120,3 +120,18 @@ textarea:not(:disabled):hover {
 body {
     background-color: #000;
 }
+
+#ajax-anim-1 {
+    position: fixed;
+    top: 50px;
+    right: 0px;
+    font-style: italic;
+    z-index: 100100100;
+    color: transparent
+}
+#ajax-anim-1 span {
+    transition: 1.5s;
+}
+#ajax-anim-1 span.active {
+    color: #eb4;
+}
