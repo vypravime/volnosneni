@@ -15,7 +15,7 @@
   <<script>>
     $(document).ready(function(){
       $.post(
-        '/volnosneni/',
+        'https://www.vypravim.cz/volnosneni/',
         {
           test1: State.variables.test1,
           test2: State.variables.test2
