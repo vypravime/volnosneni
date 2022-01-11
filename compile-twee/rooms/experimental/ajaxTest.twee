@@ -1,0 +1,40 @@
+:: AjaxTest
+
+<h2>Hello!<br>Let's play with AJAX</h2>
+
+<p>
+<<textbox "$test1" "První testovací hodnota">>
+</p>
+<p>
+<<textbox "$test2" "Druhá testovací hodnota">>
+</p>
+
+<ul id="received-data"></ul>
+
+<<button "Odešli dotaz">>
+  <<script>>
+    $(document).ready(function(){
+      $.post(
+        '/volnosneni/',
+        {
+          test1: State.variables.test1,
+          test2: State.variables.test2
+        },
+        function(data){
+          let content = '';
+          $.each(data, function(name,prop){
+            content = $('<li></li>').html(`<em>${name}</em>: <strong>${prop}</strong>`);
+            $('#received-data').append(content);
+          });
+        },
+        'json'
+      ).done(function(){
+        console.log('second success');
+      }).fail(function(){
+        console.log('error');
+      }).always(function(){
+        console.log('finished');
+      });
+    });
+  <</script>>
+<</button>>
