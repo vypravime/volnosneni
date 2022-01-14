@@ -15,7 +15,7 @@
   <<script>>
     $(document).ready(function(){
       $.post(
-        'https://www.vypravim.cz/volnosneni/',
+        'https://www.vypravim.cz/volnosneni/ajax/',
         {
           test1: State.variables.test1,
           test2: State.variables.test2
@@ -26,6 +26,7 @@
             content = $('<li></li>').html(`<em>${name}</em>: <strong>${prop}</strong>`);
             $('#received-data').append(content);
           });
+          $('#received-data').append('<hr>');
         },
         'json'
       ).done(function(){
