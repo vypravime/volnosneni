@@ -809,7 +809,7 @@ právě teď tah!
   &lt;&lt;script&gt;&gt;
     $(document).ready(function(){
       $.post(
-        &#39;https://www.vypravim.cz/volnosneni/&#39;,
+        &#39;https://www.vypravim.cz/volnosneni/ajax/&#39;,
         {
           test1: State.variables.test1,
           test2: State.variables.test2
@@ -820,6 +820,7 @@ právě teď tah!
             content = $(&#39;&lt;li&gt;&lt;/li&gt;&#39;).html(`&lt;em&gt;${name}&lt;/em&gt;: &lt;strong&gt;${prop}&lt;/strong&gt;`);
             $(&#39;#received-data&#39;).append(content);
           });
+          $(&#39;#received-data&#39;).append(&#39;&lt;hr&gt;&#39;);
         },
         &#39;json&#39;
       ).done(function(){
