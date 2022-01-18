@@ -1,5 +1,7 @@
 config/local.neon
 /composer.lock
 vendor/
-temp/
-log/
+temp/*
+!temp/void.txt
+log/*
+!log/void.txt
