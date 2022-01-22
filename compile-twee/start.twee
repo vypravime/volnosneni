@@ -1,11 +1,9 @@
 :: Start
 
-<h1>Vítej ve hře "VolnoSnění"</h1>
 <p>
-''<<button [[NOVÁ HRA|SetNumbOfPlayers]]>><</button>>''
+''<<button [[VolnoSnění|StartVolnoSneni]]>><</button>>''
 </p>
 <p>
-<<button "Pokračovat v dřívější hře...">>
-    <<run UI.saves()>>
-<</button>>
+''<<button [[TěloTaj|StartTeloTaj]]>><</button>>''
 </p>
+
