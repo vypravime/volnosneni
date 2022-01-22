@@ -734,8 +734,46 @@ vepiš vlastní slova...
 //stáhni novější://
 [[www.vypravime.cz|https://www.vypravime.cz/]]
 &lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="14" name="CheckDisallowedThemes" tags="" position="475,225" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="15" name="FantasyEnter" tags="" position="600,225" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="14" name="AjaxTest" tags="" position="475,225" size="100,100">&lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
+
+&lt;p&gt;
+&lt;&lt;textbox &quot;$test1&quot; &quot;První testovací hodnota&quot;&gt;&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;&lt;textbox &quot;$test2&quot; &quot;Druhá testovací hodnota&quot;&gt;&gt;
+&lt;/p&gt;
+
+&lt;ul id=&quot;received-data&quot;&gt;&lt;/ul&gt;
+
+&lt;&lt;button &quot;Odešli dotaz&quot;&gt;&gt;
+  &lt;&lt;script&gt;&gt;
+    $(document).ready(function(){
+      $.post(
+        &#39;https://www.vypravim.cz/volnosneni/ajax/&#39;,
+        {
+          test1: State.variables.test1,
+          test2: State.variables.test2
+        },
+        function(data){
+          let content = &#39;&#39;;
+          $.each(data, function(name,prop){
+            content = $(&#39;&lt;li&gt;&lt;/li&gt;&#39;).html(`&lt;em&gt;${name}&lt;/em&gt;: &lt;strong&gt;${prop}&lt;/strong&gt;`);
+            $(&#39;#received-data&#39;).append(content);
+          });
+          $(&#39;#received-data&#39;).append(&#39;&lt;hr&gt;&#39;);
+        },
+        &#39;json&#39;
+      ).done(function(){
+        console.log(&#39;second success&#39;);
+      }).fail(function(){
+        console.log(&#39;error&#39;);
+      }).always(function(){
+        console.log(&#39;finished&#39;);
+      });
+    });
+  &lt;&lt;/script&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="CheckDisallowedThemes" tags="" position="600,225" size="100,100">ToDo:
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="16" name="FantasyEnter" tags="" position="725,225" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set _default = $gameCards.current[0].text.trim() ?
@@ -784,8 +822,8 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="Go For Dice" tags="" position="725,225" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="17" name="WhoIsOnTurn" tags="alignCenter" position="850,225" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Go For Dice" tags="" position="850,225" size="100,100">ToDo:
+--Go For Dice--</tw-passagedata><tw-passagedata pid="18" name="WhoIsOnTurn" tags="alignCenter" position="975,225" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;
@@ -794,45 +832,7 @@ právě teď tah!
 	&quot;FantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="18" name="AjaxTest" tags="" position="975,225" size="100,100">&lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
-
-&lt;p&gt;
-&lt;&lt;textbox &quot;$test1&quot; &quot;První testovací hodnota&quot;&gt;&gt;
-&lt;/p&gt;
-&lt;p&gt;
-&lt;&lt;textbox &quot;$test2&quot; &quot;Druhá testovací hodnota&quot;&gt;&gt;
-&lt;/p&gt;
-
-&lt;ul id=&quot;received-data&quot;&gt;&lt;/ul&gt;
-
-&lt;&lt;button &quot;Odešli dotaz&quot;&gt;&gt;
-  &lt;&lt;script&gt;&gt;
-    $(document).ready(function(){
-      $.post(
-        &#39;https://www.vypravim.cz/volnosneni/ajax/&#39;,
-        {
-          test1: State.variables.test1,
-          test2: State.variables.test2
-        },
-        function(data){
-          let content = &#39;&#39;;
-          $.each(data, function(name,prop){
-            content = $(&#39;&lt;li&gt;&lt;/li&gt;&#39;).html(`&lt;em&gt;${name}&lt;/em&gt;: &lt;strong&gt;${prop}&lt;/strong&gt;`);
-            $(&#39;#received-data&#39;).append(content);
-          });
-          $(&#39;#received-data&#39;).append(&#39;&lt;hr&gt;&#39;);
-        },
-        &#39;json&#39;
-      ).done(function(){
-        console.log(&#39;second success&#39;);
-      }).fail(function(){
-        console.log(&#39;error&#39;);
-      }).always(function(){
-        console.log(&#39;finished&#39;);
-      });
-    });
-  &lt;&lt;/script&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="BeforeStartControl" tags="" position="1100,225" size="100,100">&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="19" name="BeforeStartControl" tags="" position="1100,225" size="100,100">&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
 &lt;&lt;run setup.fPStartAOnChange()&gt;&gt;/*protože uživatel by na této stránce mohl vlézt do nastavení a změnit hodnotu počátečních FP... nová hodnota by se měla sice vepsat jak do objektů hráčů (vlastnost .fp), tak do objektu settings, neboť při změně v nastaveních Settings je funkce výše volána SugarCubem automaticky. Jenže pak by se mohl uživatel vrátit v historii tlačítkem zpět, takže by se vlastnosti FP v objektech hráčů změnily na minulou hodnotu, jenže hodnota objektu settings zvolená v nastaveních by zůstala nová (settings narozdíl od $players nereaguje na skoky v historii). A pak, když by se uživatel proklikl opět do této místnosti - by nesouhlasil render následujících odstavců (nová hodnota vlastnosti v objektu settings podle akt. nastavení) s vlastností .fp uvnitř objektů hráčů (hodnota z historie). Volání funkce výše však nesoulad srovná tím, že upraví objekty hráčů opět podle nové aktuální hodnoty z nastavení, která jde zároveň do renderu v následujících odstavcích.*/
 &lt;p class=&quot;tac&quot;&gt;
 &lt;&lt;set _fPAm = settings.fPStartAmount&gt;&gt;
