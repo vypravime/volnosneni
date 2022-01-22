@@ -6,20 +6,11 @@ namespace App\Presenters;
 
 use Nette;
 use Nette\Utils\FileSystem;
-use Nette\Application\Responses\TextResponse;
 
 
-final class VolnosneniPresenter extends Nette\Application\UI\Presenter
+final class AjaxPresenter extends Nette\Application\UI\Presenter
 {    
-    public function actionDefault() {
-        if($this->isAjax()) {
-            $this->actionAjax();
-        } else {
-            $rawHtml = FileSystem::Read(__DIR__ . '/templates/Volnosneni/default.html');
-            $this->sendResponse(new TextResponse($rawHtml));
-        }
-    }
-    public function actionAjax() {
+    public function actionVolnosneni() {
             $this->getHttpResponse()->setHeader('Access-Control-Allow-Origin', '*');
             $request = $this->getHttpRequest();
             $postData = $request->getPost();
