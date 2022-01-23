@@ -1,5 +1,24 @@
 "use strict";
 
+setup.page = {};
+setup.page.onLeave = function (e) {
+	if (setup.page.onLeave.prevent) {
+		// Cancel the event
+		e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+		// Chrome requires returnValue to be set
+		e.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
+	}
+}
+setup.page.onLeave.prevent = true;
+setup.page.globalReady = function(){
+	window.addEventListener('beforeunload', setup.page.onLeave);
+
+	$(document).one(':enginerestart', function (ev) {
+	  setup.page.onLeave.prevent = false;
+	});
+}
+
+
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
 setup.fPStartADefault = 3;
 setup.fPStartAGetDesc = function(){

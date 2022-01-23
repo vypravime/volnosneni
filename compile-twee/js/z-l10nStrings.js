@@ -70,8 +70,8 @@
 	l10nStrings.settingsReset = 'Obnovit výchozí hodnoty';
 
 	/* Restart. */
-	l10nStrings.restartTitle  = 'Začít odznova';
-	l10nStrings.restartPrompt = 'Opravdu chceš hru restartovat?';
+	l10nStrings.restartTitle  = 'Zpět do menu';
+	l10nStrings.restartPrompt = '<strong>Opravdu zpět na úvodní rozcestník?</strong><br><em>(neuložený postup hrou může být ztracen)</em>';
 
 	/* Share. */
 	l10nStrings.shareTitle = 'Sdílet';

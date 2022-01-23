@@ -276,6 +276,25 @@ Config.passages.onProcess = function (p) {
 /* twine-user-script #2: "f-setup.js" */
 "use strict";
 
+setup.page = {};
+setup.page.onLeave = function (e) {
+	if (setup.page.onLeave.prevent) {
+		// Cancel the event
+		e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+		// Chrome requires returnValue to be set
+		e.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
+	}
+}
+setup.page.onLeave.prevent = true;
+setup.page.globalReady = function(){
+	window.addEventListener('beforeunload', setup.page.onLeave);
+
+	$(document).one(':enginerestart', function (ev) {
+	  setup.page.onLeave.prevent = false;
+	});
+}
+
+
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
 setup.fPStartADefault = 3;
 setup.fPStartAGetDesc = function(){
@@ -404,14 +423,7 @@ Setting.addList('fPStartAmount',{
   onChange: setup.fPStartAOnChange
 });
 
-$(document).ready(function(){
-  window.addEventListener('beforeunload', function (e) {
-    // Cancel the event
-    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-    // Chrome requires returnValue to be set
-    e.returnValue = 'Hra VolnoSnění vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
-  });
-});
+$(document).ready(setup.page.globalReady);
 /* twine-user-script #5: "z-l10nStrings.js" */
 "use strict";
 
@@ -485,8 +497,8 @@ $(document).ready(function(){
 	l10nStrings.settingsReset = 'Obnovit výchozí hodnoty';
 
 	/* Restart. */
-	l10nStrings.restartTitle  = 'Začít odznova';
-	l10nStrings.restartPrompt = 'Opravdu chceš hru restartovat?';
+	l10nStrings.restartTitle  = 'Zpět do menu';
+	l10nStrings.restartPrompt = '<strong>Opravdu zpět na úvodní rozcestník?</strong><br><em>(neuložený postup hrou může být ztracen)</em>';
 
 	/* Share. */
 	l10nStrings.shareTitle = 'Sdílet';

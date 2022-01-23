@@ -28,11 +28,4 @@ Setting.addList('fPStartAmount',{
   onChange: setup.fPStartAOnChange
 });
 
-$(document).ready(function(){
-  window.addEventListener('beforeunload', function (e) {
-    // Cancel the event
-    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-    // Chrome requires returnValue to be set
-    e.returnValue = 'Hra VolnoSnění vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
-  });
-});
+$(document).ready(setup.page.globalReady);
