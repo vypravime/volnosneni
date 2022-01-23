@@ -140,6 +140,10 @@ hr {
     padding: 0.5rem;
 }
 
+.fs12 {
+    font-size: 1.2rem;
+}
+
 textarea {
     min-width: 20rem;
 }
@@ -255,21 +259,77 @@ Config.saves.version = 1;
 Config.passages.nobr = true;
 /*Wrap every processed pasage text into additional div
   (the div gets either class 'my-passage',
-   or id 'PassageHeader'/'PassageFooter')
+   or id 'PassageHeader'/'PassageFooter').
+  If the passage has the tag 'noAutoWrapDiv', no wrapping is done.
 */
 Config.passages.onProcess = function (p) {
-    let attrsStr = '';
-    if (p.title === 'PassageHeader') {
-        attrsStr = ' id="my-header"';
-    } else if (p.title === 'PassageFooter') {
-        attrsStr = ' id="my-footer"';
+    if (p.tags.includes('noAutoWrapDiv')) {
+        return p.text;
     } else {
-        attrsStr = ' class="my-passage"'
+        let attrsStr = '';
+        if (p.title === 'PassageHeader') {
+            attrsStr = ' id="my-header"';
+        } else if (p.title === 'PassageFooter') {
+            attrsStr = ' id="my-footer"';
+        } else {
+            attrsStr = ' class="my-passage"'
+        }
+    	return p.text = `<div${attrsStr}>${p.text}</div>`;
     }
-	return p.text = `<div${attrsStr}>${p.text}</div>`;
 };
 /* twine-user-script #2: "f-setup.js" */
 "use strict";
+
+setup.page = {};
+setup.page.onLeave = {
+	_preventing: true,
+	tryPrevent: function (ev) {
+		if (this._preventing) {
+			// Cancel the event
+			ev.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+			// Chrome requires returnValue to be set
+			ev.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
+		}
+	},
+	disablePreventation: function() {
+		this._preventing = false;
+	}
+};
+
+setup.page.onReady = {
+	execute: function(){
+		window.addEventListener(
+			'beforeunload',
+			function(ev) {
+				setup.page.onLeave.tryPrevent(ev);
+			}
+		);
+	
+		$(document).one(
+			':enginerestart',
+			function (ev) {
+				setup.page.onLeave.disablePreventation();
+			}
+		);
+	}
+};
+
+setup.app = {
+	init: function(appDataObjPath) {
+		this._dataRef = State.variables[appDataObjPath];
+		this._dataRef.navigation = {
+			_basic: "Hlavní ''MENU''"
+		};
+	},
+	setBasicNavigation: function(string) {
+		this._dataRef.navigation._basic = string;
+	},
+	getBasicNavigation: function() {
+		return this._dataRef.navigation._basic;
+	}
+}
+
+
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
 setup.fPStartADefault = 3;
@@ -373,7 +433,6 @@ setup.AjaxAnimation = class {
 
 /*
 TO DO:
-# odstranit při interním restartu varování "chceš opustit stránku?"
 # AjaxAnimation: přidat clone a json metody pro kompatibilitu s SugarCube
 # povolit autosave: CONFIG.SAVES.AUTOSAVE = ... {return ... false : TRUE}
 # UIBarSubtitle - dodat přesný link na novější verze ke stažení
@@ -399,13 +458,8 @@ Setting.addList('fPStartAmount',{
   onChange: setup.fPStartAOnChange
 });
 
-$(document).ready(function(){
-  window.addEventListener('beforeunload', function (e) {
-    // Cancel the event
-    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-    // Chrome requires returnValue to be set
-    e.returnValue = 'Hra VolnoSnění vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
-  });
+$(document).ready(function() {
+  setup.page.onReady.execute();
 });
 /* twine-user-script #5: "z-l10nStrings.js" */
 "use strict";
@@ -480,8 +534,8 @@ $(document).ready(function(){
 	l10nStrings.settingsReset = 'Obnovit výchozí hodnoty';
 
 	/* Restart. */
-	l10nStrings.restartTitle  = 'Začít odznova';
-	l10nStrings.restartPrompt = 'Opravdu chceš hru restartovat?';
+	l10nStrings.restartTitle  = 'Zpět do menu';
+	l10nStrings.restartPrompt = 'Opravdu chceš <strong>zobrazit úvodní rozcestník?</strong><br><br><em>(neuložený postup hrou může být ztracen)</em>';
 
 	/* Share. */
 	l10nStrings.shareTitle = 'Sdílet';
@@ -498,7 +552,7 @@ $(document).ready(function(){
 	/* Macros. */
 	l10nStrings.macroBackText   = 'Zrušit poslední krok!';
 	l10nStrings.macroReturnText = 'Přijmout a vrátit se\u2026';
-})();</script><tw-passagedata pid="1" name="AjaxAnim1" tags="" position="100,100" size="100,100">&lt;div id=&quot;ajax-anim-1&quot; class=&quot;tac&quot;&gt;&lt;span class=&quot;e0&quot;&gt;N&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e1&quot;&gt;A&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e2&quot;&gt;Č&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e3&quot;&gt;Í&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e4&quot;&gt;T&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e5&quot;&gt;Á&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e6&quot;&gt;M&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e7&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e8&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e9&quot;&gt;.&lt;/span&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="TempDialCloseButton" tags="" position="225,100" size="100,100">&lt;&lt;button `&quot;&amp;nbsp;&quot; + _args[0] + &quot;&amp;nbsp;&quot;`&gt;&gt;
+})();</script><tw-passagedata pid="1" name="AjaxAnim1" tags="noAutoWrapDiv" position="100,100" size="100,100">&lt;div id=&quot;ajax-anim-1&quot; class=&quot;tac&quot;&gt;&lt;span class=&quot;e0&quot;&gt;N&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e1&quot;&gt;A&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e2&quot;&gt;Č&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e3&quot;&gt;Í&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e4&quot;&gt;T&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e5&quot;&gt;Á&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e6&quot;&gt;M&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e7&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e8&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e9&quot;&gt;.&lt;/span&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="TempDialCloseButton" tags="" position="225,100" size="100,100">&lt;&lt;button `&quot;&amp;nbsp;&quot; + _args[0] + &quot;&amp;nbsp;&quot;`&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="CardsBoard" tags="" position="350,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="4" name="BeNiceInfo" tags="" position="475,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
@@ -691,36 +745,46 @@ vepiš vlastní slova...
 
 &lt;/div&gt;
 
-&lt;p class=&quot;tar mt6 mb0&quot;&gt;
-
-  &lt;&lt;button [[Test AJAX|AjaxTest]]&gt;&gt;
-  &lt;&lt;/button&gt;&gt;&amp;nbsp;
-
-  &lt;&lt;set $ajaxAnimation = new setup.AjaxAnimation();&gt;&gt;
-  &lt;&lt;button &quot;AJAX ON&quot;&gt;&gt;
-    &lt;&lt;run $ajaxAnimation.setOn()&gt;&gt;
-  &lt;&lt;/button&gt;&gt;&amp;nbsp;
+&lt;&lt;if setup.experimental&gt;&gt;
+  &lt;p class=&quot;tar mt6 mb0&quot;&gt;
   
-  &lt;&lt;button &quot;AJAX OFF&quot;&gt;&gt;
-    &lt;&lt;run $ajaxAnimation.setOff()&gt;&gt;
-  &lt;&lt;/button&gt;&gt;
-
-&lt;/p&gt;
-
-&lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="PassageHeader" tags="" position="100,225" size="100,100">&lt;div class=&quot;tal&quot;&gt;
-
-  &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
-    &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
-      &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;CardsBoard&quot;&gt;&gt;
+    &lt;&lt;button [[Test AJAX|AjaxTest]]&gt;&gt;
     &lt;&lt;/button&gt;&gt;&amp;nbsp;
-
-    &lt;&lt;button &quot;Hráči&quot;&gt;&gt;
+  
+    &lt;&lt;set $ajaxAnimation = new setup.AjaxAnimation();&gt;&gt;
+    &lt;&lt;button &quot;AJAX ON&quot;&gt;&gt;
+      &lt;&lt;run $ajaxAnimation.setOn()&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&amp;nbsp;
     
-    &lt;&lt;/button&gt;&gt;&amp;nbsp;
-  &lt;&lt;/if&gt;&gt;
+    &lt;&lt;button &quot;AJAX OFF&quot;&gt;&gt;
+      &lt;&lt;run $ajaxAnimation.setOff()&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  
+  &lt;/p&gt;
+&lt;&lt;/if&gt;&gt;
 
-  &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
-  //(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
+&lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="PassageHeader" tags="" position="100,225" size="100,100">&lt;&lt;set _baseNav = setup.app.getBasicNavigation()&gt;&gt;
+
+&lt;div class=&quot;tal&quot;&gt;
+
+  //&lt;&lt;= _baseNav&gt;&gt;... //
+
+  &lt;&lt;if _baseNav === &quot;VolnoSnění&quot;&gt;&gt;
+
+    &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
+      &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
+        &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;CardsBoard&quot;&gt;&gt;
+      &lt;&lt;/button&gt;&gt;&amp;nbsp;
+  
+      &lt;&lt;button &quot;Hráči&quot;&gt;&gt;
+      
+      &lt;&lt;/button&gt;&gt;&amp;nbsp;
+    &lt;&lt;/if&gt;&gt;
+  
+    &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
+    //(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
+
+  &lt;&lt;/if&gt;&gt;
 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="StoryInit" tags="" position="225,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
 &lt;&lt;set $pOrder = [0,1,2]&gt;&gt;
@@ -729,7 +793,10 @@ vepiš vlastní slova...
 &lt;&lt;set $gameCards = {}&gt;&gt;
 &lt;&lt;set $gameCards.current = []&gt;&gt;
 &lt;&lt;set $gameCards.waiting = []&gt;&gt;
-&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="StorySubtitle" tags="" position="350,225" size="100,100">//verze// &#39;&#39;0.2.0a&#39;&#39;
+&lt;&lt;set $gameCards.givenUp = []&gt;&gt;
+
+&lt;&lt;set $appData = {}&gt;&gt;
+&lt;&lt;run setup.app.init(&quot;appData&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="StorySubtitle" tags="" position="350,225" size="100,100">//verze// &#39;&#39;0.2.0a&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://www.vypravime.cz/]]
@@ -968,7 +1035,9 @@ pořadí:
 &lt;&lt;button &quot;Pokračovat v dřívější hře...&quot;&gt;&gt;
     &lt;&lt;run UI.saves()&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="24" name="Start" tags="" position="475,350" size="100,100">&lt;p&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="24" name="Start" tags="alignCenter" position="475,350" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
+&lt;p class=&quot;fs12&quot;&gt;//- úvodní &#39;&#39;MENU:&#39;&#39;//&lt;/p&gt;
+&lt;p&gt;
 &#39;&#39;&lt;&lt;button [[VolnoSnění|StartVolnoSneni]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;/p&gt;
 &lt;p&gt;
