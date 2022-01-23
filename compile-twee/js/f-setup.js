@@ -35,18 +35,17 @@ setup.page.onReady = {
 };
 
 setup.app = {
-	initAppData: function() {
-		return {
-			navigation: {
-				_basic: 'Hlavní rozcestník'
-			}
+	init: function(appDataObjPath) {
+		this._dataRef = State.variables[appDataObjPath];
+		this._dataRef.navigation = {
+			_basic: "Hlavní ''MENU''"
 		};
 	},
 	setBasicNavigation: function(string) {
-		State.variables.appData.navigation._basic = string;
+		this._dataRef.navigation._basic = string;
 	},
 	getBasicNavigation: function() {
-		return State.variables.appData.navigation._basic;
+		return this._dataRef.navigation._basic;
 	}
 }
 

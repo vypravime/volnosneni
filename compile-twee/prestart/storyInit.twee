@@ -9,4 +9,5 @@
 <<set $gameCards.waiting = []>>
 <<set $gameCards.givenUp = []>>
 
-<<set $appData = setup.app.initAppData()>>
+<<set $appData = {}>>
+<<run setup.app.init("appData")>>
