@@ -16,20 +16,22 @@
 
 </div>
 
-<p class="tar mt6 mb0">
-
-  <<button [[Test AJAX|AjaxTest]]>>
-  <</button>>&nbsp;
-
-  <<set $ajaxAnimation = new setup.AjaxAnimation();>>
-  <<button "AJAX ON">>
-    <<run $ajaxAnimation.setOn()>>
-  <</button>>&nbsp;
+<<if setup.experimental>>
+  <p class="tar mt6 mb0">
   
-  <<button "AJAX OFF">>
-    <<run $ajaxAnimation.setOff()>>
-  <</button>>
-
-</p>
+    <<button [[Test AJAX|AjaxTest]]>>
+    <</button>>&nbsp;
+  
+    <<set $ajaxAnimation = new setup.AjaxAnimation();>>
+    <<button "AJAX ON">>
+      <<run $ajaxAnimation.setOn()>>
+    <</button>>&nbsp;
+    
+    <<button "AJAX OFF">>
+      <<run $ajaxAnimation.setOff()>>
+    <</button>>
+  
+  </p>
+<</if>>
 
 <<include "AjaxAnim1">>

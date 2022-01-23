@@ -40,6 +40,10 @@ hr {
     padding: 0.5rem;
 }
 
+.fs12 {
+    font-size: 1.2rem;
+}
+
 textarea {
     min-width: 20rem;
 }

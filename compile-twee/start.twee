@@ -1,5 +1,7 @@
-:: Start
+:: Start [alignCenter]
 
+<h1>Hra "Vyprávíme"</h1>
+<p class="fs12">//- úvodní ''MENU:''//</p>
 <p>
 ''<<button [[VolnoSnění|StartVolnoSneni]]>><</button>>''
 </p>

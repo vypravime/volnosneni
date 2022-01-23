@@ -140,6 +140,10 @@ hr {
     padding: 0.5rem;
 }
 
+.fs12 {
+    font-size: 1.2rem;
+}
+
 textarea {
     min-width: 20rem;
 }
@@ -726,21 +730,23 @@ vepiš vlastní slova...
 
 &lt;/div&gt;
 
-&lt;p class=&quot;tar mt6 mb0&quot;&gt;
-
-  &lt;&lt;button [[Test AJAX|AjaxTest]]&gt;&gt;
-  &lt;&lt;/button&gt;&gt;&amp;nbsp;
-
-  &lt;&lt;set $ajaxAnimation = new setup.AjaxAnimation();&gt;&gt;
-  &lt;&lt;button &quot;AJAX ON&quot;&gt;&gt;
-    &lt;&lt;run $ajaxAnimation.setOn()&gt;&gt;
-  &lt;&lt;/button&gt;&gt;&amp;nbsp;
+&lt;&lt;if setup.experimental&gt;&gt;
+  &lt;p class=&quot;tar mt6 mb0&quot;&gt;
   
-  &lt;&lt;button &quot;AJAX OFF&quot;&gt;&gt;
-    &lt;&lt;run $ajaxAnimation.setOff()&gt;&gt;
-  &lt;&lt;/button&gt;&gt;
-
-&lt;/p&gt;
+    &lt;&lt;button [[Test AJAX|AjaxTest]]&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&amp;nbsp;
+  
+    &lt;&lt;set $ajaxAnimation = new setup.AjaxAnimation();&gt;&gt;
+    &lt;&lt;button &quot;AJAX ON&quot;&gt;&gt;
+      &lt;&lt;run $ajaxAnimation.setOn()&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&amp;nbsp;
+    
+    &lt;&lt;button &quot;AJAX OFF&quot;&gt;&gt;
+      &lt;&lt;run $ajaxAnimation.setOff()&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  
+  &lt;/p&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="PassageHeader" tags="" position="100,225" size="100,100">&lt;div class=&quot;tal&quot;&gt;
 
@@ -1003,7 +1009,9 @@ pořadí:
 &lt;&lt;button &quot;Pokračovat v dřívější hře...&quot;&gt;&gt;
     &lt;&lt;run UI.saves()&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="24" name="Start" tags="" position="475,350" size="100,100">&lt;p&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="24" name="Start" tags="alignCenter" position="475,350" size="100,100">&lt;h1&gt;Hra &quot;Vyprávíme&quot;&lt;/h1&gt;
+&lt;p class=&quot;fs12&quot;&gt;//- úvodní &#39;&#39;MENU:&#39;&#39;//&lt;/p&gt;
+&lt;p&gt;
 &#39;&#39;&lt;&lt;button [[VolnoSnění|StartVolnoSneni]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;/p&gt;
 &lt;p&gt;
