@@ -1,18 +1,26 @@
 :: PassageHeader
 
+<<set _baseNav = setup.app.getBasicNavigation()>>
+
 <div class="tal">
 
-  <<if $roundCounter > 0>>
-    <<button "DĚJ">>
-      <<passageDialog "Nástěnka příběhu" "CardsBoard">>
-    <</button>>&nbsp;
+  //<<= _baseNav>>... //
 
-    <<button "Hráči">>
-    
-    <</button>>&nbsp;
+  <<if _baseNav === "VolnoSnění">>
+
+    <<if $roundCounter > 0>>
+      <<button "DĚJ">>
+        <<passageDialog "Nástěnka příběhu" "CardsBoard">>
+      <</button>>&nbsp;
+  
+      <<button "Hráči">>
+      
+      <</button>>&nbsp;
+    <</if>>
+  
+    ''$roundCounter.''&nbsp;tah:&nbsp;<<if $roundCounter > 0>><<= setup.whoseTurn("//zatím&nbsp;''nikdo''&nbsp;ne//táhne", "''//", "//''")>><<else>>//zatím&nbsp;''nikdo''&nbsp;ne//táhne<</if>>
+    //(<<= turns()>>.&nbsp;krok)//
+
   <</if>>
-
-  ''$roundCounter.''&nbsp;tah:&nbsp;<<if $roundCounter > 0>><<= setup.whoseTurn("//zatím&nbsp;''nikdo''&nbsp;ne//táhne", "''//", "//''")>><<else>>//zatím&nbsp;''nikdo''&nbsp;ne//táhne<</if>>
-  //(<<= turns()>>.&nbsp;krok)//
 
 </div>

@@ -1,6 +1,6 @@
 :: Start [alignCenter]
 
-<h1>Hra "Vyprávíme"</h1>
+<h1>Svět<br>"Vyprávíme"</h1>
 <p class="fs12">//- úvodní ''MENU:''//</p>
 <p>
 ''<<button [[VolnoSnění|StartVolnoSneni]]>><</button>>''

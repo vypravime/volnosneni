@@ -34,6 +34,22 @@ setup.page.onReady = {
 	}
 };
 
+setup.app = {
+	initAppData: function() {
+		return {
+			navigation: {
+				_basic: 'Hlavní rozcestník'
+			}
+		};
+	},
+	setBasicNavigation: function(string) {
+		State.variables.appData.navigation._basic = string;
+	},
+	getBasicNavigation: function() {
+		return State.variables.appData.navigation._basic;
+	}
+}
+
 
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];

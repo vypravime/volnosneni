@@ -314,6 +314,22 @@ setup.page.onReady = {
 	}
 };
 
+setup.app = {
+	initAppData: function() {
+		return {
+			navigation: {
+				_basic: 'Hlavní rozcestník'
+			}
+		};
+	},
+	setBasicNavigation: function(string) {
+		State.variables.appData.navigation._basic = string;
+	},
+	getBasicNavigation: function() {
+		return State.variables.appData.navigation._basic;
+	}
+}
+
 
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
@@ -748,20 +764,28 @@ vepiš vlastní slova...
   &lt;/p&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="PassageHeader" tags="" position="100,225" size="100,100">&lt;div class=&quot;tal&quot;&gt;
+&lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="PassageHeader" tags="" position="100,225" size="100,100">&lt;&lt;set _baseNav = setup.app.getBasicNavigation()&gt;&gt;
 
-  &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
-    &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
-      &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;CardsBoard&quot;&gt;&gt;
-    &lt;&lt;/button&gt;&gt;&amp;nbsp;
+&lt;div class=&quot;tal&quot;&gt;
 
-    &lt;&lt;button &quot;Hráči&quot;&gt;&gt;
-    
-    &lt;&lt;/button&gt;&gt;&amp;nbsp;
+  //&lt;&lt;= _baseNav&gt;&gt;... //
+
+  &lt;&lt;if _baseNav === &quot;VolnoSnění&quot;&gt;&gt;
+
+    &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
+      &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
+        &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;CardsBoard&quot;&gt;&gt;
+      &lt;&lt;/button&gt;&gt;&amp;nbsp;
+  
+      &lt;&lt;button &quot;Hráči&quot;&gt;&gt;
+      
+      &lt;&lt;/button&gt;&gt;&amp;nbsp;
+    &lt;&lt;/if&gt;&gt;
+  
+    &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
+    //(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
+
   &lt;&lt;/if&gt;&gt;
-
-  &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
-  //(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
 
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="StoryInit" tags="" position="225,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
 &lt;&lt;set $pOrder = [0,1,2]&gt;&gt;
@@ -770,7 +794,9 @@ vepiš vlastní slova...
 &lt;&lt;set $gameCards = {}&gt;&gt;
 &lt;&lt;set $gameCards.current = []&gt;&gt;
 &lt;&lt;set $gameCards.waiting = []&gt;&gt;
-&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="StorySubtitle" tags="" position="350,225" size="100,100">//verze// &#39;&#39;0.2.0a&#39;&#39;
+&lt;&lt;set $gameCards.givenUp = []&gt;&gt;
+
+&lt;&lt;set $appData = setup.app.initAppData()&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="StorySubtitle" tags="" position="350,225" size="100,100">//verze// &#39;&#39;0.2.0a&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://www.vypravime.cz/]]
@@ -1009,7 +1035,7 @@ pořadí:
 &lt;&lt;button &quot;Pokračovat v dřívější hře...&quot;&gt;&gt;
     &lt;&lt;run UI.saves()&gt;&gt;
 &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="24" name="Start" tags="alignCenter" position="475,350" size="100,100">&lt;h1&gt;Hra &quot;Vyprávíme&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="24" name="Start" tags="alignCenter" position="475,350" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 &lt;p class=&quot;fs12&quot;&gt;//- úvodní &#39;&#39;MENU:&#39;&#39;//&lt;/p&gt;
 &lt;p&gt;
 &#39;&#39;&lt;&lt;button [[VolnoSnění|StartVolnoSneni]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
