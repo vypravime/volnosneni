@@ -255,18 +255,23 @@ Config.saves.version = 1;
 Config.passages.nobr = true;
 /*Wrap every processed pasage text into additional div
   (the div gets either class 'my-passage',
-   or id 'PassageHeader'/'PassageFooter')
+   or id 'PassageHeader'/'PassageFooter').
+  If the passage has the tag 'noAutoWrapDiv', no wrapping is done.
 */
 Config.passages.onProcess = function (p) {
-    let attrsStr = '';
-    if (p.title === 'PassageHeader') {
-        attrsStr = ' id="my-header"';
-    } else if (p.title === 'PassageFooter') {
-        attrsStr = ' id="my-footer"';
+    if (p.tags.includes('noAutoWrapDiv')) {
+        return p.text;
     } else {
-        attrsStr = ' class="my-passage"'
+        let attrsStr = '';
+        if (p.title === 'PassageHeader') {
+            attrsStr = ' id="my-header"';
+        } else if (p.title === 'PassageFooter') {
+            attrsStr = ' id="my-footer"';
+        } else {
+            attrsStr = ' class="my-passage"'
+        }
+    	return p.text = `<div${attrsStr}>${p.text}</div>`;
     }
-	return p.text = `<div${attrsStr}>${p.text}</div>`;
 };
 /* twine-user-script #2: "f-setup.js" */
 "use strict";
@@ -498,7 +503,7 @@ $(document).ready(function(){
 	/* Macros. */
 	l10nStrings.macroBackText   = 'Zrušit poslední krok!';
 	l10nStrings.macroReturnText = 'Přijmout a vrátit se\u2026';
-})();</script><tw-passagedata pid="1" name="AjaxAnim1" tags="" position="100,100" size="100,100">&lt;div id=&quot;ajax-anim-1&quot; class=&quot;tac&quot;&gt;&lt;span class=&quot;e0&quot;&gt;N&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e1&quot;&gt;A&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e2&quot;&gt;Č&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e3&quot;&gt;Í&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e4&quot;&gt;T&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e5&quot;&gt;Á&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e6&quot;&gt;M&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e7&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e8&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e9&quot;&gt;.&lt;/span&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="TempDialCloseButton" tags="" position="225,100" size="100,100">&lt;&lt;button `&quot;&amp;nbsp;&quot; + _args[0] + &quot;&amp;nbsp;&quot;`&gt;&gt;
+})();</script><tw-passagedata pid="1" name="AjaxAnim1" tags="noAutoWrapDiv" position="100,100" size="100,100">&lt;div id=&quot;ajax-anim-1&quot; class=&quot;tac&quot;&gt;&lt;span class=&quot;e0&quot;&gt;N&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e1&quot;&gt;A&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e2&quot;&gt;Č&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e3&quot;&gt;Í&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e4&quot;&gt;T&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e5&quot;&gt;Á&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e6&quot;&gt;M&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e7&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e8&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e9&quot;&gt;.&lt;/span&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="TempDialCloseButton" tags="" position="225,100" size="100,100">&lt;&lt;button `&quot;&amp;nbsp;&quot; + _args[0] + &quot;&amp;nbsp;&quot;`&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="CardsBoard" tags="" position="350,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="4" name="BeNiceInfo" tags="" position="475,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
