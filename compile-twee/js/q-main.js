@@ -2,7 +2,6 @@
 
 /*
 TO DO:
-# odstranit při interním restartu varování "chceš opustit stránku?"
 # AjaxAnimation: přidat clone a json metody pro kompatibilitu s SugarCube
 # povolit autosave: CONFIG.SAVES.AUTOSAVE = ... {return ... false : TRUE}
 # UIBarSubtitle - dodat přesný link na novější verze ke stažení
@@ -28,4 +27,6 @@ Setting.addList('fPStartAmount',{
   onChange: setup.fPStartAOnChange
 });
 
-$(document).ready(setup.page.globalReady);
+$(document).ready(function() {
+  setup.page.onReady.execute();
+});

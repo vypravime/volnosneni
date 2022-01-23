@@ -277,22 +277,39 @@ Config.passages.onProcess = function (p) {
 "use strict";
 
 setup.page = {};
-setup.page.onLeave = function (e) {
-	if (setup.page.onLeave.prevent) {
-		// Cancel the event
-		e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-		// Chrome requires returnValue to be set
-		e.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
+setup.page.onLeave = {
+	_preventing: true,
+	tryPrevent: function (ev) {
+		if (this._preventing) {
+			// Cancel the event
+			ev.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+			// Chrome requires returnValue to be set
+			ev.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
+		}
+	},
+	disablePreventation: function() {
+		this._preventing = false;
 	}
-}
-setup.page.onLeave.prevent = true;
-setup.page.globalReady = function(){
-	window.addEventListener('beforeunload', setup.page.onLeave);
+};
 
-	$(document).one(':enginerestart', function (ev) {
-	  setup.page.onLeave.prevent = false;
-	});
-}
+setup.page.onReady = {
+	execute: function(){
+		window.addEventListener(
+			'beforeunload',
+			function(ev) {
+				setup.page.onLeave.tryPrevent(ev);
+			}
+		);
+	
+		$(document).one(
+			':enginerestart',
+			function (ev) {
+				setup.page.onLeave.disablePreventation();
+			}
+		);
+	}
+};
+
 
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
@@ -397,7 +414,6 @@ setup.AjaxAnimation = class {
 
 /*
 TO DO:
-# odstranit při interním restartu varování "chceš opustit stránku?"
 # AjaxAnimation: přidat clone a json metody pro kompatibilitu s SugarCube
 # povolit autosave: CONFIG.SAVES.AUTOSAVE = ... {return ... false : TRUE}
 # UIBarSubtitle - dodat přesný link na novější verze ke stažení
@@ -423,7 +439,9 @@ Setting.addList('fPStartAmount',{
   onChange: setup.fPStartAOnChange
 });
 
-$(document).ready(setup.page.globalReady);
+$(document).ready(function() {
+  setup.page.onReady.execute();
+});
 /* twine-user-script #5: "z-l10nStrings.js" */
 "use strict";
 
@@ -498,7 +516,7 @@ $(document).ready(setup.page.globalReady);
 
 	/* Restart. */
 	l10nStrings.restartTitle  = 'Zpět do menu';
-	l10nStrings.restartPrompt = '<strong>Opravdu zpět na úvodní rozcestník?</strong><br><em>(neuložený postup hrou může být ztracen)</em>';
+	l10nStrings.restartPrompt = 'Opravdu chceš <strong>zobrazit úvodní rozcestník?</strong><br><br><em>(neuložený postup hrou může být ztracen)</em>';
 
 	/* Share. */
 	l10nStrings.shareTitle = 'Sdílet';
