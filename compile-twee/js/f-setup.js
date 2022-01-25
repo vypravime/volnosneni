@@ -38,7 +38,7 @@ setup.app = {
 	init: function(appDataObjPath) {
 		this._dataRef = State.variables[appDataObjPath];
 		this._dataRef.navigation = {
-			_basic: "Hlavní ''MENU''"
+			_basic: "Úvodní ''MENU''"
 		};
 	},
 	setBasicNavigation: function(string) {
