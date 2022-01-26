@@ -1,5 +1,5 @@
-:: SetNamesOfPlayers [alignCenter]
-<<set _nextRoom = 'BeforeStartControl'>>
+:: VS_setNamesOfPlayers [alignCenter]
+<<set _nextRoom = 'VS_beforeStartControl'>>
 
 <<if $pOrder.length > 1>>
 <h2>Zadej jména hráčů:</h2>
@@ -15,7 +15,7 @@
 	<<set $players[_i] = setup.addPlayer(_name)>>
     <<capture _i>>
 	    <<textbox "$players[_i].name" $players[_i].name
-		  "SetNamesOfPlayers" _autofocus>>
+		  `passage()` _autofocus>>
 		  <<if !_last>><br><br><</if>>
 	<</capture>>
 <</for>>
@@ -23,7 +23,7 @@
 </p>
 
 <p>
-([[zvýšit či snížit počet hráčů|SetNumbOfPlayers]])
+([[zvýšit či snížit počet hráčů|VS_setNumbOfPlayers]])
 </p>
 
 <div class="tar">

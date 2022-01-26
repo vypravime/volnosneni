@@ -1,8 +1,9 @@
-:: SetNumbOfPlayers [alignCenter]
+:: VS_setNumbOfPlayers [alignCenter]
 
 <<set _count = $pOrder.length>>
 
 <h2>Pro svou novou hru<br>
+  //VolnoSnění//<br>
   ZADEJ POČET HRÁČŮ</h2>
 
 <p>
@@ -26,7 +27,7 @@
 
 <p>
 
-  ''<<button [[POTVRDIT|SetNamesOfPlayers]]>>
+  ''<<button [[POTVRDIT|VS_setNamesOfPlayers]]>>
       <<set $pOrder = []>>
       <<for _i = 0; _i < _count; _i++>>
 	      <<set $pOrder[_i] = _i>>

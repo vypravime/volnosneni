@@ -1,4 +1,4 @@
-:: WhoIsOnTurn [alignCenter]
+:: VS_whoIsOnTurn [alignCenter]
 
 <h2>//''<<=setup.whoseTurn()>>''// přebírá<br>
 právě teď tah!
@@ -6,7 +6,7 @@ právě teď tah!
 <p>
 ''<<button `"//" + setup.whoseTurn() +
     "://<br><br>VSTOUPIT DO SVĚTA FANTAZIE..."`
-	"FantasyEnter">>
+	"VS_fantasyEnter">>
 <</button>>''
 <br>&nbsp;
 </p>

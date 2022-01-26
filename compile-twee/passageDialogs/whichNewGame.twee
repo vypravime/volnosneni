@@ -1,0 +1,15 @@
+:: WhichNewGame [alignCenter]
+
+<h2>
+Kterou hru ze světa "Vyprávíme" si teď přeješ založit?
+</h2>
+<p>
+''<<button [[VolnoSnění|VS_setNumbOfPlayers]]>>
+    <<run Dialog.close()>>
+  <</button>>''
+</p>
+<p>
+''<<button [[TěloTaj|TT_go]]>>
+    <<run Dialog.close()>>
+  <</button>>''
+</p>

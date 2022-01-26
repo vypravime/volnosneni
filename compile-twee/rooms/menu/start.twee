@@ -1,0 +1,16 @@
+:: MM_start [alignCenter]
+
+<h1>Svět<br>"Vyprávíme"</h1>
+
+<p>
+''<<button "NOVÁ HRA">>
+    <<passageDialog "Nová hra" "WhichNewGame">>
+  <</button>>''
+</p>
+
+<p>
+  <<button "Pokračovat v dřívější hře...">>
+    <<run UI.saves()>>
+  <</button>>
+</p>
+

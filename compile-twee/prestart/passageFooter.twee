@@ -19,7 +19,7 @@
 <<if setup.experimental>>
   <p class="tar mt6 mb0">
   
-    <<button [[Test AJAX|AjaxTest]]>>
+    <<button [[Test AJAX|EX_ajaxTest]]>>
     <</button>>&nbsp;
   
     <<set $ajaxAnimation = new setup.AjaxAnimation();>>

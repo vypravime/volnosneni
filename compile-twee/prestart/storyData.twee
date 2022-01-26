@@ -2,5 +2,6 @@
 {
     "ifid": "10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5",
     "format": "SugarCube",
-    "format-version": "2.36.1"
+    "format-version": "2.36.1",
+    "start": "MM_start"
 }

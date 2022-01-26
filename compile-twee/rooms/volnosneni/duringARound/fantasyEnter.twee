@@ -1,4 +1,4 @@
-:: FantasyEnter
+:: VS_fantasyEnter
 
 <<if !$gameCards.current[0]>>
     <<set $gameCards.current[0] = setup.addGameCard()>>
@@ -28,9 +28,9 @@
       <<if !$gameCards.current[0].text.trim()>>
         <<passageDialog "Vyplň prosím políčko!" "FillInputDialog1">>
       <<elseif ($gameCards.givenUp.length > 0) || ($gameCards.waiting.length > 0)>>
-        <<goto [[CheckDisallowedThemes]]>>
+        <<goto [[VS_checkDisallowedThemes]]>>
       <<else>>
-        <<goto [[FantasyEnter]]>>
+        <<goto [[passage()]]>>
       <</if>>
     <</button>>''
 
