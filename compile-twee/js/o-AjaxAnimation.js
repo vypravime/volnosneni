@@ -1,11 +1,11 @@
 "use strict";
 
 setup.AjaxAnimation = class {
-    _elementId = "ajax-anim-1";
+    _elementClass = "ajax-anim-1";
     _basicTiming = 100;
     _active = false;
-    constructor(basicTiming,elementId) {
-        this._elementId = elementId || this._elementId;
+    constructor(basicTiming,elementClass) {
+        this._elementClass = elementClass || this._elementClass;
         this._basicTiming = basicTiming || this._basicTiming;
     }
     isSetOn() {
@@ -44,8 +44,11 @@ setup.AjaxAnimation = class {
                     }
             },cyklusOffset * 2);
         }
-        let letters = $(`#${this._elementId} > span`);
-        innerAnimManager(letters);
+        let animations = $(`.${this._elementClass}`);
+        animations.each(function(i) {
+            let lettersOfOneAnimation = $(this).children('span');
+            innerAnimManager(lettersOfOneAnimation);
+        });
     }
 
 }

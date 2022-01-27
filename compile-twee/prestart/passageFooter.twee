@@ -34,4 +34,6 @@
   </p>
 <</if>>
 
-<<include "AjaxAnim1">>
+<div id="ajax-anim-right">
+  <<include "AjaxAnim1">>
+</div>

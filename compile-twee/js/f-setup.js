@@ -1,5 +1,7 @@
 "use strict";
 
+// setup.experimental = true;
+
 setup.page = {};
 setup.page.onLeave = {
 	_preventing: true,

@@ -133,17 +133,20 @@ body {
     background-color: #000;
 }
 
-#ajax-anim-1 {
+#ajax-anim-right .ajax-anim-1 {
     position: fixed;
     top: 50px;
     right: 0px;
-    font-style: italic;
     z-index: 100100100;
-    color: transparent
 }
-#ajax-anim-1 span {
+.ajax-anim-1 {
+    display: inline-block;
+    color: transparent;
+    font-style: italic;
+}
+.ajax-anim-1 span {
     transition: 1s;
 }
-#ajax-anim-1 span.active {
+.ajax-anim-1 span.active {
     color: #eb4;
 }
