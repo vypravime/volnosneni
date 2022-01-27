@@ -27,7 +27,7 @@ setup.page.onReady = {
 	
 		$(document).one(
 			':enginerestart',
-			function (ev) {
+			function(ev) {
 				setup.page.onLeave.disablePreventation();
 			}
 		);
@@ -35,18 +35,40 @@ setup.page.onReady = {
 };
 
 setup.app = {
-	init: function(appDataObjPath) {
-		this._dataRef = State.variables[appDataObjPath];
-		this._dataRef.navigation = {
-			_basic: "Úvodní ''MENU''"
-		};
+	_subGameClass: '',
+	_subGameClassDefaultVal: 'MM',
+	_subGameBreadCrumbs: {
+		MM: 'Úvodní menu',
+		VS: 'VolnoSnění',
+		TT: 'TěloTaj'
 	},
-	setBasicNavigation: function(string) {
-		this._dataRef.navigation._basic = string;
+	init: function() {},
+	setSubGameFrom: function(passageTitle) {
+		let subGameClass = passageTitle[0] + passageTitle[1];
+		this._setSubGameClass(subGameClass);
 	},
-	getBasicNavigation: function() {
-		return this._dataRef.navigation._basic;
-	}
+	getSubGameBreadCrumb: function() {
+		return this._subGameBreadCrumbs[
+			this.getSubGameClass()
+			];
+	},
+	getSubGameClass: function() {
+		if (!this._subGameClass) {
+			console.log(`
+WARNING in the passage "${State.passage}":
+You cannot get subGameClass (or appropriate subGameBreadCrumb)
+before calling setup.app.setSubGameFrom(passageTitle);
+setup.app._subGameClassDefaultVal returned
+(instead of correct value)! 
+			`);
+			return this._subGameClassDefaultVal;
+		} else {
+			return this._subGameClass;
+		}
+	},
+	_setSubGameClass: function(subGameClass) {
+		this._subGameClass = subGameClass;
+	},
 }
 
 

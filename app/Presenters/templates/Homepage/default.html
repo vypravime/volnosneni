@@ -307,7 +307,7 @@ setup.page.onReady = {
 	
 		$(document).one(
 			':enginerestart',
-			function (ev) {
+			function(ev) {
 				setup.page.onLeave.disablePreventation();
 			}
 		);
@@ -315,18 +315,40 @@ setup.page.onReady = {
 };
 
 setup.app = {
-	init: function(appDataObjPath) {
-		this._dataRef = State.variables[appDataObjPath];
-		this._dataRef.navigation = {
-			_basic: "Úvodní ''MENU''"
-		};
+	_subGameClass: '',
+	_subGameClassDefaultVal: 'MM',
+	_subGameBreadCrumbs: {
+		MM: 'Úvodní menu',
+		VS: 'VolnoSnění',
+		TT: 'TěloTaj'
 	},
-	setBasicNavigation: function(string) {
-		this._dataRef.navigation._basic = string;
+	init: function() {},
+	setSubGameFrom: function(passageTitle) {
+		let subGameClass = passageTitle[0] + passageTitle[1];
+		this._setSubGameClass(subGameClass);
 	},
-	getBasicNavigation: function() {
-		return this._dataRef.navigation._basic;
-	}
+	getSubGameBreadCrumb: function() {
+		return this._subGameBreadCrumbs[
+			this.getSubGameClass()
+			];
+	},
+	getSubGameClass: function() {
+		if (!this._subGameClass) {
+			console.log(`
+WARNING in the passage "${State.passage}":
+You cannot get subGameClass (or appropriate subGameBreadCrumb)
+before calling setup.app.setSubGameFrom(passageTitle);
+setup.app._subGameClassDefaultVal returned
+(instead of correct value)! 
+			`);
+			return this._subGameClassDefaultVal;
+		} else {
+			return this._subGameClass;
+		}
+	},
+	_setSubGameClass: function(subGameClass) {
+		this._subGameClass = subGameClass;
+	},
 }
 
 
@@ -775,13 +797,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;/p&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="PassageHeader" tags="" position="225,225" size="100,100">&lt;&lt;set _baseNav = setup.app.getBasicNavigation()&gt;&gt;
+&lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="PassageHeader" tags="" position="225,225" size="100,100">&lt;&lt;run setup.app.setSubGameFrom(passage())&gt;&gt;
+&lt;&lt;set _baseNav = setup.app.getSubGameBreadCrumb()&gt;&gt;
 
 &lt;div class=&quot;tal&quot;&gt;
 
-  //&lt;&lt;= _baseNav&gt;&gt;... //
-
-  &lt;&lt;if _baseNav === &quot;VolnoSnění&quot;&gt;&gt;
+  &lt;&lt;if setup.app.getSubGameClass() === &quot;VS&quot;&gt;&gt;
 
     &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
       &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
@@ -792,9 +813,14 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
       
       &lt;&lt;/button&gt;&gt;&amp;nbsp;
     &lt;&lt;/if&gt;&gt;
+
+  &lt;&lt;/if&gt;&gt;
+
+  //&#39;&#39;&lt;&lt;= _baseNav&gt;&gt;&#39;&#39; (&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)... //
+
+  &lt;&lt;if setup.app.getSubGameClass() === &quot;VS&quot;&gt;&gt;
   
     &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
-    //(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
 
   &lt;&lt;/if&gt;&gt;
 
@@ -805,10 +831,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;set $gameCards = {}&gt;&gt;
 &lt;&lt;set $gameCards.current = []&gt;&gt;
 &lt;&lt;set $gameCards.waiting = []&gt;&gt;
-&lt;&lt;set $gameCards.givenUp = []&gt;&gt;
-
-&lt;&lt;set $appData = {}&gt;&gt;
-&lt;&lt;run setup.app.init(&quot;appData&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="StorySubtitle" tags="" position="475,225" size="100,100">//verze// &#39;&#39;0.2.0a&#39;&#39;
+&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="StorySubtitle" tags="" position="475,225" size="100,100">//verze// &#39;&#39;0.2.0a&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://www.vypravime.cz/]]

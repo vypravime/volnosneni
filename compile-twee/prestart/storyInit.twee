@@ -8,6 +8,3 @@
 <<set $gameCards.current = []>>
 <<set $gameCards.waiting = []>>
 <<set $gameCards.givenUp = []>>
-
-<<set $appData = {}>>
-<<run setup.app.init("appData")>>
