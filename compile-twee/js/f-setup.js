@@ -40,7 +40,8 @@ setup.app = {
 	_subGameBreadCrumbs: {
 		MM: 'Úvodní menu',
 		VS: 'VolnoSnění',
-		TT: 'TěloTaj'
+		TT: 'TěloTaj',
+		EX: 'Experimenty'
 	},
 	init: function() {},
 	setSubGameFrom: function(passageTitle) {

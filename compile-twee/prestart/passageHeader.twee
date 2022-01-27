@@ -19,11 +19,11 @@
 
   <</if>>
 
-  //''<<= _baseNav>>'' (<<= turns()>>.&nbsp;krok)... //
+  Krok&nbsp;<<= turns()>>: //''<<= _baseNav>>''... //
 
   <<if setup.app.getSubGameClass() === "VS">>
   
-    ''$roundCounter.''&nbsp;tah:&nbsp;<<if $roundCounter > 0>><<= setup.whoseTurn("//zatím&nbsp;''nikdo''&nbsp;ne//táhne", "''//", "//''")>><<else>>//zatím&nbsp;''nikdo''&nbsp;ne//táhne<</if>>
+    ''$roundCounter.''&nbsp;kolo:&nbsp;<<if $roundCounter > 0>><<= setup.whoseTurn("//zatím&nbsp;''nikdo''&nbsp;ne//táhne", "''//", "//''")>><<else>>//zatím&nbsp;''nikdo''&nbsp;ne//táhne<</if>>
 
   <</if>>
 
