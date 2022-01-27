@@ -9,11 +9,17 @@
 <<textbox "$test2" "Druhá testovací hodnota">>
 </p>
 
-<ul id="received-data"></ul>
+<ul id="received-data" style="overflow-y: hidden;"></ul>
 
 <<button "Odešli dotaz">>
+  <<set _ajaxAnim = new setup.AjaxAnimation();>>
+  <<run _ajaxAnim.setOn()>>
   <<script>>
     $(document).ready(function(){
+      let dataReceiver = $('#received-data');
+      dataReceiver
+        .height(dataReceiver.height())
+        .css({overflowY: 'hidden'});
       $.post(
         'https://www.vypravim.cz/ajax/volnosneni/',
         {
@@ -24,18 +30,34 @@
           let content = '';
           $.each(data, function(name,prop){
             content = $('<li></li>').html(`<em>${name}</em>: <strong>${prop}</strong>`);
-            $('#received-data').append(content);
+            dataReceiver.append(content);
           });
-          $('#received-data').append('<hr>');
+          dataReceiver.append('<hr>');
         },
         'json'
       ).done(function(){
         console.log('second success');
       }).fail(function(){
-        console.log('error');
+        UI.alert(`
+Nepodařilo se <strong>spojit se serverem</strong>,<br>
+prosím <strong>zkontrolujte své internetové připojení</strong>...<br>
+a zkuste akci opakovat.<br><br>
+
+<em>(Pokud si myslíte, že problém přetrvává na naší straně,<br>
+dejte mi prosím vědět na email uvedený v nápovědě.)</em>
+        `);
       }).always(function(){
-        console.log('finished');
+        State.temporary.ajaxAnim.setOff();
+        let newHeight = dataReceiver.prop('scrollHeight');
+        dataReceiver.animate(
+          {height: newHeight},
+          900,
+          undefined,
+          function() {
+            dataReceiver.height('auto');
+          }
+        );
       });
     });
   <</script>>
-<</button>>
+<</button>>&nbsp;<<include "AjaxAnim1noBr">>

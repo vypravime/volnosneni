@@ -44,6 +44,10 @@ hr {
     font-size: 1.2rem;
 }
 
+.fwb {
+    font-weight: bold;
+}
+
 textarea {
     min-width: 20rem;
 }
@@ -145,7 +149,7 @@ body {
     font-style: italic;
 }
 .ajax-anim-1 span {
-    transition: 1s;
+    transition: 0.9s;
 }
 .ajax-anim-1 span.active {
     color: #eb4;

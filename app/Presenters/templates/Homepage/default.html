@@ -144,6 +144,10 @@ hr {
     font-size: 1.2rem;
 }
 
+.fwb {
+    font-weight: bold;
+}
+
 textarea {
     min-width: 20rem;
 }
@@ -245,7 +249,7 @@ body {
     font-style: italic;
 }
 .ajax-anim-1 span {
-    transition: 1s;
+    transition: 0.9s;
 }
 .ajax-anim-1 span.active {
     color: #eb4;
@@ -583,7 +587,7 @@ $(document).ready(function() {
 	/* Macros. */
 	l10nStrings.macroBackText   = 'Zrušit poslední krok!';
 	l10nStrings.macroReturnText = 'Přijmout a vrátit se\u2026';
-})();</script><tw-passagedata pid="1" name="AjaxAnim1" tags="noAutoWrapDiv" position="100,100" size="100,100">&lt;div class=&quot;ajax-anim-1&quot; class=&quot;tac&quot;&gt;&lt;span class=&quot;e0&quot;&gt;N&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e1&quot;&gt;A&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e2&quot;&gt;Č&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e3&quot;&gt;Í&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e4&quot;&gt;T&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e5&quot;&gt;Á&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e6&quot;&gt;M&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e7&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e8&quot;&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;e9&quot;&gt;.&lt;/span&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="AjaxAnim1noBr" tags="noAutoWrapDiv" position="225,100" size="100,100">&lt;div class=&quot;ajax-anim-1&quot; class=&quot;tac&quot;&gt;&lt;span class=&quot;e0&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;e1&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;e2&quot;&gt;Č&lt;/span&gt;&lt;span class=&quot;e3&quot;&gt;Í&lt;/span&gt;&lt;span class=&quot;e4&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;e5&quot;&gt;Á&lt;/span&gt;&lt;span class=&quot;e6&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;e7&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;e8&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;e9&quot;&gt;.&lt;/span&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="TempDialCloseButton" tags="" position="350,100" size="100,100">&lt;&lt;button `&quot;&amp;nbsp;&quot; + _args[0] + &quot;&amp;nbsp;&quot;`&gt;&gt;
+})();</script><tw-passagedata pid="1" name="AjaxAnim1" tags="noAutoWrapDiv" position="100,100" size="100,100">&lt;div class=&quot;ajax-anim-1 tac fwb&quot;&gt;&lt;span&gt;Č&lt;/span&gt;&lt;br&gt;&lt;span&gt;T&lt;/span&gt;&lt;br&gt;&lt;span&gt;U&lt;/span&gt;&lt;br&gt;&lt;span&gt;*&lt;/span&gt;&lt;br&gt;&lt;span&gt;*&lt;/span&gt;&lt;br&gt;&lt;span&gt;*&lt;/span&gt;&lt;br&gt;&lt;span&gt;*&lt;/span&gt;&lt;br&gt;&lt;span&gt;*&lt;/span&gt;&lt;br&gt;&lt;span&gt;*&lt;/span&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="AjaxAnim1noBr" tags="noAutoWrapDiv" position="225,100" size="100,100">&lt;div class=&quot;ajax-anim-1 fwb&quot;&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="TempDialCloseButton" tags="" position="350,100" size="100,100">&lt;&lt;button `&quot;&amp;nbsp;&quot; + _args[0] + &quot;&amp;nbsp;&quot;`&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
 &lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="CardsBoard" tags="" position="475,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="5" name="BeNiceInfo" tags="" position="600,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
@@ -857,11 +861,17 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;textbox &quot;$test2&quot; &quot;Druhá testovací hodnota&quot;&gt;&gt;
 &lt;/p&gt;
 
-&lt;ul id=&quot;received-data&quot;&gt;&lt;/ul&gt;
+&lt;ul id=&quot;received-data&quot; style=&quot;overflow-y: hidden;&quot;&gt;&lt;/ul&gt;
 
 &lt;&lt;button &quot;Odešli dotaz&quot;&gt;&gt;
+  &lt;&lt;set _ajaxAnim = new setup.AjaxAnimation();&gt;&gt;
+  &lt;&lt;run _ajaxAnim.setOn()&gt;&gt;
   &lt;&lt;script&gt;&gt;
     $(document).ready(function(){
+      let dataReceiver = $(&#39;#received-data&#39;);
+      dataReceiver
+        .height(dataReceiver.height())
+        .css({overflowY: &#39;hidden&#39;});
       $.post(
         &#39;https://www.vypravim.cz/ajax/volnosneni/&#39;,
         {
@@ -872,21 +882,37 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
           let content = &#39;&#39;;
           $.each(data, function(name,prop){
             content = $(&#39;&lt;li&gt;&lt;/li&gt;&#39;).html(`&lt;em&gt;${name}&lt;/em&gt;: &lt;strong&gt;${prop}&lt;/strong&gt;`);
-            $(&#39;#received-data&#39;).append(content);
+            dataReceiver.append(content);
           });
-          $(&#39;#received-data&#39;).append(&#39;&lt;hr&gt;&#39;);
+          dataReceiver.append(&#39;&lt;hr&gt;&#39;);
         },
         &#39;json&#39;
       ).done(function(){
         console.log(&#39;second success&#39;);
       }).fail(function(){
-        console.log(&#39;error&#39;);
+        UI.alert(`
+Nepodařilo se &lt;strong&gt;spojit se serverem&lt;/strong&gt;,&lt;br&gt;
+prosím &lt;strong&gt;zkontrolujte své internetové připojení&lt;/strong&gt;...&lt;br&gt;
+a zkuste akci opakovat.&lt;br&gt;&lt;br&gt;
+
+&lt;em&gt;(Pokud si myslíte, že problém přetrvává na naší straně,&lt;br&gt;
+dejte mi prosím vědět na email uvedený v nápovědě.)&lt;/em&gt;
+        `);
       }).always(function(){
-        console.log(&#39;finished&#39;);
+        State.temporary.ajaxAnim.setOff();
+        let newHeight = dataReceiver.prop(&#39;scrollHeight&#39;);
+        dataReceiver.animate(
+          {height: newHeight},
+          900,
+          undefined,
+          function() {
+            dataReceiver.height(&#39;auto&#39;);
+          }
+        );
       });
     });
   &lt;&lt;/script&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="MM_start" tags="alignCenter" position="850,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
+&lt;&lt;/button&gt;&gt;&amp;nbsp;&lt;&lt;include &quot;AjaxAnim1noBr&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="MM_start" tags="alignCenter" position="850,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;
 &#39;&#39;&lt;&lt;button &quot;NOVÁ HRA&quot;&gt;&gt;
