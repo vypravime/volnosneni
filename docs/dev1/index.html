@@ -307,7 +307,7 @@ setup.page.onReady = {
 	
 		$(document).one(
 			':enginerestart',
-			function (ev) {
+			function(ev) {
 				setup.page.onLeave.disablePreventation();
 			}
 		);
@@ -315,18 +315,41 @@ setup.page.onReady = {
 };
 
 setup.app = {
-	init: function(appDataObjPath) {
-		this._dataRef = State.variables[appDataObjPath];
-		this._dataRef.navigation = {
-			_basic: "Úvodní ''MENU''"
-		};
+	_subGameClass: '',
+	_subGameClassDefaultVal: 'MM',
+	_subGameBreadCrumbs: {
+		MM: 'Úvodní menu',
+		VS: 'VolnoSnění',
+		TT: 'TěloTaj',
+		EX: 'Experimenty'
 	},
-	setBasicNavigation: function(string) {
-		this._dataRef.navigation._basic = string;
+	init: function() {},
+	setSubGameFrom: function(passageTitle) {
+		let subGameClass = passageTitle[0] + passageTitle[1];
+		this._setSubGameClass(subGameClass);
 	},
-	getBasicNavigation: function() {
-		return this._dataRef.navigation._basic;
-	}
+	getSubGameBreadCrumb: function() {
+		return this._subGameBreadCrumbs[
+			this.getSubGameClass()
+			];
+	},
+	getSubGameClass: function() {
+		if (!this._subGameClass) {
+			console.log(`
+WARNING in the passage "${State.passage}":
+You cannot get subGameClass (or appropriate subGameBreadCrumb)
+before calling setup.app.setSubGameFrom(passageTitle);
+setup.app._subGameClassDefaultVal returned
+(instead of correct value)! 
+			`);
+			return this._subGameClassDefaultVal;
+		} else {
+			return this._subGameClass;
+		}
+	},
+	_setSubGameClass: function(subGameClass) {
+		this._subGameClass = subGameClass;
+	},
 }
 
 
@@ -591,10 +614,10 @@ zabývat něčím, k čemu se ostaní nepřipojí, nechtějí-li.&#39;&#39;
 &lt;p class=&quot;tar&quot;&gt;
 //Naopak, pokud Tě kartička Tvého spoluhráče&lt;br&gt;
 zaujme nebo nadchne - klidně ten nápad&lt;br&gt;
-během svého tahu rozviň svou vlastní kartičkou...&lt;br&gt;
+během svého kola rozviň svou vlastní kartičkou...&lt;br&gt;
 Mluv na své kartičce ale opět pouze za sebe,&lt;br&gt;
-ať už se původní autor nápadu ke Tvému rozvinutí&lt;br&gt;
-později dobrovolně přidruží či ne.//
+ať už se ke Tvému novému rozvinutí později&lt;br&gt;
+původní autor nápadu dobrovolně přidruží či ne.//
 &lt;/p&gt;
 
 &lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="BeforeStartFPInfo" tags="" position="600,100" size="100,100">&lt;p&gt;
@@ -685,7 +708,7 @@ Nebo sebe zmiň svým &#39;&#39;jménem&#39;&#39; jako &#39;&#39;on/ona&#39;&#39
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;p class=&quot;tar&quot;&gt;
-(Doporučujeme, aby ses v tomto svém tahu&lt;br&gt;
+(Doporučujeme, aby ses v tomto svém kole&lt;br&gt;
 držel jedné události či tématu&lt;br&gt;
 - třeba //&quot;začátek dovolené v itálii&quot;//...&lt;br&gt;
 je ale výhodné, když svůj děj&lt;br&gt;
@@ -697,8 +720,9 @@ je ale výhodné, když svůj děj&lt;br&gt;
 Až se příště dostaneš na řadu,&lt;br&gt;
 můžeš opět tuto svou událost&lt;br&gt;
 nějak rozvíjet, posunout, prohlubovat, ...&lt;br&gt;
-a nebo změníš zase téma na něco docela jiného,&lt;br&gt;
-ať už plynulým líčením přechodu nebo skokem.
+a nebo změníš zase téma na něco docela jiného.&lt;br&gt;
+//(Přechod k jiným událostem smíš plynule vylíčit,&lt;br&gt;
+anebo smíš jednoduše k dalšímu ději skočit.)//
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;p class=&quot;tac&quot;&gt;
@@ -729,7 +753,7 @@ vepiš vlastní slova...
 //(zeptej se, navrhni zlepšení, postěžuj si, poděkuj, ...)//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="WhichNewGame" tags="alignCenter" position="1225,100" size="100,100">&lt;h2&gt;
+&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="WhichNewGame" tags="" position="1225,100" size="100,100">&lt;h2&gt;
 Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;/h2&gt;
 &lt;p&gt;
@@ -775,13 +799,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;/p&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="PassageHeader" tags="" position="225,225" size="100,100">&lt;&lt;set _baseNav = setup.app.getBasicNavigation()&gt;&gt;
+&lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="PassageHeader" tags="" position="225,225" size="100,100">&lt;&lt;run setup.app.setSubGameFrom(passage())&gt;&gt;
+&lt;&lt;set _baseNav = setup.app.getSubGameBreadCrumb()&gt;&gt;
 
 &lt;div class=&quot;tal&quot;&gt;
 
-  //&lt;&lt;= _baseNav&gt;&gt;... //
-
-  &lt;&lt;if _baseNav === &quot;VolnoSnění&quot;&gt;&gt;
+  &lt;&lt;if setup.app.getSubGameClass() === &quot;VS&quot;&gt;&gt;
 
     &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
       &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
@@ -792,9 +815,14 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
       
       &lt;&lt;/button&gt;&gt;&amp;nbsp;
     &lt;&lt;/if&gt;&gt;
+
+  &lt;&lt;/if&gt;&gt;
+
+  Krok&amp;nbsp;&lt;&lt;= turns()&gt;&gt;: //&#39;&#39;&lt;&lt;= _baseNav&gt;&gt;&#39;&#39;... //
+
+  &lt;&lt;if setup.app.getSubGameClass() === &quot;VS&quot;&gt;&gt;
   
-    &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;tah:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
-    //(&lt;&lt;= turns()&gt;&gt;.&amp;nbsp;krok)//
+    &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;kolo:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
 
   &lt;&lt;/if&gt;&gt;
 
@@ -805,10 +833,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;set $gameCards = {}&gt;&gt;
 &lt;&lt;set $gameCards.current = []&gt;&gt;
 &lt;&lt;set $gameCards.waiting = []&gt;&gt;
-&lt;&lt;set $gameCards.givenUp = []&gt;&gt;
-
-&lt;&lt;set $appData = {}&gt;&gt;
-&lt;&lt;run setup.app.init(&quot;appData&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="StorySubtitle" tags="" position="475,225" size="100,100">//verze// &#39;&#39;0.2.0a&#39;&#39;
+&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="StorySubtitle" tags="" position="475,225" size="100,100">//verze// &#39;&#39;0.2.0a&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://www.vypravime.cz/]]
