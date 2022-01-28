@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  <<button "Pokračovat v dřívější hře...">>
+  <<button "Načíst dřívější hru...">>
     <<run UI.saves()>>
   <</button>>
 </p>

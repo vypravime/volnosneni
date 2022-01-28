@@ -64,6 +64,10 @@ button:hover {
     background-color: #250;
     border-color: #461;
 }
+#story-caption button, #story-caption button:hover,
+#menu li a:hover {
+    background-color: transparent;
+}
 a {
     color: #ef4;
     text-decoration: underline;

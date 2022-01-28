@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5// --><tw-storydata name="Vyprávíme" startnode="18" creator="Tweego" creator-version="2.1.1" ifid="10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">html {
+	<!-- UUID://10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5// --><tw-storydata name="Vyprávíme" startnode="19" creator="Tweego" creator-version="2.1.1" ifid="10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">html {
     font: 16px/1 sans-serif;
 }
 h3 {
@@ -163,6 +163,10 @@ button {
 button:hover {
     background-color: #250;
     border-color: #461;
+}
+#story-caption button, #story-caption button:hover,
+#menu li a:hover {
+    background-color: transparent;
 }
 a {
     color: #ef4;
@@ -820,19 +824,31 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
   &lt;&lt;/if&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="StoryInit" tags="" position="600,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="StoryCaption" tags="" position="600,225" size="100,100">&lt;&lt;button &quot;&amp;laquo;&quot;&gt;&gt;
+  &lt;&lt;run Engine.backward()&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;&lt;button &quot;&amp;raquo;&quot;&gt;&gt;
+  &lt;&lt;run Engine.forward()&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;div class=&quot;mt6&quot;&gt;
+  &lt;&lt;button &quot;fullscreen zap/vyp&quot;&gt;&gt;
+    &lt;&lt;run Fullscreen.toggle()&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="StoryInit" tags="" position="725,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
 &lt;&lt;set $pOrder = [0,1,2]&gt;&gt;
 &lt;&lt;set $pOrderShuffled = false&gt;&gt;
 &lt;&lt;set $roundCounter = 0&gt;&gt;
 &lt;&lt;set $gameCards = {}&gt;&gt;
 &lt;&lt;set $gameCards.current = []&gt;&gt;
 &lt;&lt;set $gameCards.waiting = []&gt;&gt;
-&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="StorySubtitle" tags="" position="725,225" size="100,100">//verze// &#39;&#39;0.2.0b&#39;&#39;/*change also in DownloadPresenter-&gt;actionDefault() */
+&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="StorySubtitle" tags="" position="850,225" size="100,100">//verze// &#39;&#39;0.2.0b&#39;&#39;/*change also in DownloadPresenter-&gt;actionDefault() */
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/]]
 &lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="17" name="EX_ajaxTest" tags="" position="850,225" size="100,100">&lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="18" name="EX_ajaxTest" tags="" position="975,225" size="100,100">&lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
 
 &lt;p&gt;
 &lt;&lt;textbox &quot;$test1&quot; &quot;První testovací hodnota&quot;&gt;&gt;
@@ -892,7 +908,7 @@ dejte mi prosím vědět na email uvedený v nápovědě.)&lt;/em&gt;
       });
     });
   &lt;&lt;/script&gt;&gt;
-&lt;&lt;/button&gt;&gt;&amp;nbsp;&lt;&lt;include &quot;AjaxAnim1stars&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="MM_start" tags="alignCenter" position="975,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
+&lt;&lt;/button&gt;&gt;&amp;nbsp;&lt;&lt;include &quot;AjaxAnim1stars&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="MM_start" tags="alignCenter" position="1100,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;
 &#39;&#39;&lt;&lt;button &quot;NOVÁ HRA&quot;&gt;&gt;
@@ -901,14 +917,14 @@ dejte mi prosím vědět na email uvedený v nápovědě.)&lt;/em&gt;
 &lt;/p&gt;
 
 &lt;p&gt;
-  &lt;&lt;button &quot;Pokračovat v dřívější hře...&quot;&gt;&gt;
+  &lt;&lt;button &quot;Načíst dřívější hru...&quot;&gt;&gt;
     &lt;&lt;run UI.saves()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="19" name="TT_go" tags="" position="1100,225" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="TT_go" tags="" position="1225,225" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
 &lt;p&gt;
 //(toto je třeba dodělat)//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="VS_checkDisallowedThemes" tags="" position="1225,225" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="21" name="VS_fantasyEnter" tags="" position="100,350" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="21" name="VS_checkDisallowedThemes" tags="" position="100,350" size="100,100">ToDo:
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="22" name="VS_fantasyEnter" tags="" position="225,350" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set _default = $gameCards.current[0].text.trim() ?
@@ -957,8 +973,8 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="VS_goForDice" tags="" position="225,350" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="23" name="VS_whoIsOnTurn" tags="alignCenter" position="350,350" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="VS_goForDice" tags="" position="350,350" size="100,100">ToDo:
+--Go For Dice--</tw-passagedata><tw-passagedata pid="24" name="VS_whoIsOnTurn" tags="alignCenter" position="475,350" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;
@@ -967,7 +983,7 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="24" name="VS_beforeStartControl" tags="" position="475,350" size="100,100">&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="25" name="VS_beforeStartControl" tags="" position="600,350" size="100,100">&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
 &lt;p class=&quot;tac&quot;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
 Každý hráč do začátku dostane: 
@@ -1005,7 +1021,7 @@ pořadí:
 &#39;&#39;&lt;&lt;button [[SOUHLASÍ - ODSTARTOVAT|VS_whoIsOnTurn]]&gt;&gt;
     &lt;&lt;set $roundCounter = 1&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="25" name="VS_setNamesOfPlayers" tags="alignCenter" position="600,350" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="VS_setNamesOfPlayers" tags="alignCenter" position="725,350" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
 
 &lt;&lt;if $pOrder.length &gt; 1&gt;&gt;
 &lt;h2&gt;Zadej jména hráčů:&lt;/h2&gt;
@@ -1044,7 +1060,7 @@ pořadí:
 &lt;&lt;else&gt;&gt;
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="VS_setNumbOfPlayers" tags="alignCenter" position="725,350" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="27" name="VS_setNumbOfPlayers" tags="alignCenter" position="850,350" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
 
 &lt;h2&gt;Pro svou novou hru&lt;br&gt;
   //VolnoSnění//&lt;br&gt;
@@ -1092,9 +1108,9 @@ pořadí:
     &lt;&lt;passageDialog &quot;Nastavení hry VolnoSnění&quot; &quot;DVS_settings&quot;&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="27" name="CompLink" tags="widget" position="850,350" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="28" name="CompLink" tags="widget" position="975,350" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="DialogCloseButton" tags="widget" position="975,350" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="DialogCloseButton" tags="widget" position="1100,350" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
 /*_args[0] is the TEXT on THE BUTTON*/
 /*_args[1] (optional) if TRUE, outer &lt;p&gt; is omitted, default FALSE*/
     &lt;&lt;if !_args[1]&gt;&gt;
@@ -1104,7 +1120,7 @@ pořadí:
 	&lt;&lt;else&gt;&gt;
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="PassageDialog" tags="widget" position="1100,350" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="PassageDialog" tags="widget" position="1225,350" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
 /*_args[0] is the HEADING of NEW DIALOG WINDOW*/
 /*_args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW*/
 

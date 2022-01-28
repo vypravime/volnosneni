@@ -1,0 +1,15 @@
+:: StoryCaption
+
+<<button "&laquo;">>
+  <<run Engine.backward()>>
+<</button>>
+
+<<button "&raquo;">>
+  <<run Engine.forward()>>
+<</button>>
+
+<div class="mt6">
+  <<button "fullscreen zap/vyp">>
+    <<run Fullscreen.toggle()>>
+  <</button>>
+</div>
