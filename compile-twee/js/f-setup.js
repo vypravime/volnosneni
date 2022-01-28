@@ -1,6 +1,6 @@
 "use strict";
 
-// setup.experimental = true;
+setup.experimental = true; //to show experimental parts of app
 
 setup.page = {};
 setup.page.onLeave = {
