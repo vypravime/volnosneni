@@ -258,10 +258,19 @@ body {
 
 Config.debug = false;
 
-Config.saves.autosave = function() {return turns() === 1 ? false : false};
-Config.saves.autoload = "prompt";
+Config.saves.autosave = function() {return turns() < 3 ? false : true};
+Config.saves.autoload = function(){
+    if (State.metadata.get('skipAutoSave')) {
+        State.metadata.delete('skipAutoSave');
+        return false;
+    } else {
+        return "prompt";
+    }
+}();
 Config.saves.id = "volnosneni";
 Config.saves.version = 1;
+
+Config.history.controls = false;
 
 Config.passages.nobr = true;
 /*Wrap every processed pasage text into additional div
@@ -287,7 +296,7 @@ Config.passages.onProcess = function (p) {
 /* twine-user-script #2: "f-setup.js" */
 "use strict";
 
-setup.experimental = true; //to show experimental parts of app
+//setup.experimental = true; //to show experimental parts of app
 
 setup.page = {};
 setup.page.onLeave = {
@@ -318,6 +327,7 @@ setup.page.onReady = {
 			':enginerestart',
 			function(ev) {
 				setup.page.onLeave.disablePreventation();
+				State.metadata.set('skipAutoSave', 'true');
 			}
 		);
 	}
@@ -468,7 +478,6 @@ setup.AjaxAnimation = class {
 
 /*
 TO DO:
-# povolit autosave: CONFIG.SAVES.AUTOSAVE = ... {return ... false : TRUE}
 # možnost přidávat nové hráče během hry (viz BeforeStartControlInfo1)
 # v nápovědě dát tlačítko pro uložení hry do souboru (a výzvu to přiložit k emailu)
 # při načítání SAVEu (ze souboru) zkontrolovat, jestli to není budoucí verze
@@ -578,9 +587,9 @@ $(document).ready(function() {
 
 	/* Autoload. */
 	l10nStrings.autoloadTitle  = 'Nahrát předchozí hru?';
-	l10nStrings.autoloadCancel = 'Začít odznova!';
+	l10nStrings.autoloadCancel = 'Spustit úvodní menu!';
 	l10nStrings.autoloadOk     = 'Pokračovat v dřívější hře\u2026';
-	l10nStrings.autoloadPrompt = 'Máme tu automaticky uložený stav hry. Co teď?';
+	l10nStrings.autoloadPrompt = 'Máme tu automaticky uložený stav poslední hry. Co teď?';
 
 	/* Macros. */
 	l10nStrings.macroBackText   = 'Zrušit poslední krok!';

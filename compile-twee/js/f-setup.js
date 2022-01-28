@@ -1,6 +1,6 @@
 "use strict";
 
-setup.experimental = true; //to show experimental parts of app
+//setup.experimental = true; //to show experimental parts of app
 
 setup.page = {};
 setup.page.onLeave = {
@@ -31,6 +31,7 @@ setup.page.onReady = {
 			':enginerestart',
 			function(ev) {
 				setup.page.onLeave.disablePreventation();
+				State.metadata.set('skipAutoSave', 'true');
 			}
 		);
 	}

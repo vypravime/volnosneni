@@ -2,10 +2,19 @@
 
 Config.debug = false;
 
-Config.saves.autosave = function() {return turns() === 1 ? false : false};
-Config.saves.autoload = "prompt";
+Config.saves.autosave = function() {return turns() < 3 ? false : true};
+Config.saves.autoload = function(){
+    if (State.metadata.get('skipAutoSave')) {
+        State.metadata.delete('skipAutoSave');
+        return false;
+    } else {
+        return "prompt";
+    }
+}();
 Config.saves.id = "volnosneni";
 Config.saves.version = 1;
+
+Config.history.controls = false;
 
 Config.passages.nobr = true;
 /*Wrap every processed pasage text into additional div

@@ -81,9 +81,9 @@
 
 	/* Autoload. */
 	l10nStrings.autoloadTitle  = 'Nahrát předchozí hru?';
-	l10nStrings.autoloadCancel = 'Začít odznova!';
+	l10nStrings.autoloadCancel = 'Spustit úvodní menu!';
 	l10nStrings.autoloadOk     = 'Pokračovat v dřívější hře\u2026';
-	l10nStrings.autoloadPrompt = 'Máme tu automaticky uložený stav hry. Co teď?';
+	l10nStrings.autoloadPrompt = 'Máme tu automaticky uložený stav poslední hry. Co teď?';
 
 	/* Macros. */
 	l10nStrings.macroBackText   = 'Zrušit poslední krok!';
