@@ -1,15 +1,15 @@
 :: StoryCaption
 
-<<button "&laquo;">>
-  <<run Engine.backward()>>
-<</button>>
-
-<<button "&raquo;">>
-  <<run Engine.forward()>>
-<</button>>
+<<if State.length !== 1 >>
+  <span class="btnpad">&nbsp;</span><<button "&laquo;&nbsp;&nbsp;zpět">>
+    <<run Engine.backward()>>
+<</button>><</if>><span class="btnpad">&nbsp;</span><<if State.length !== State.size>><<button "vpřed&nbsp;&raquo;">>
+    <<run Engine.forward()>>
+  <</button>><span class="btnpad">&nbsp;</span>
+<</if>>
 
 <div class="mt6">
-  <<button "fullscreen zap/vyp">>
+  <<button "Fullscreen zap/vyp">>
     <<run Fullscreen.toggle()>>
   <</button>>
 </div>

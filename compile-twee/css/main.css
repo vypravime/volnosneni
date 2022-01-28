@@ -23,21 +23,30 @@ hr {
     margin-top: 0.9rem;
 	margin-bottom: 0.9rem;
 }
-.mt6 {
+.mt6, #ui-bar-body p.mt6 {
     margin-top: 0.6rem;
 }
-.mb6 {
+.mb6, #ui-bar-body p.mb6 {
     margin-bottom: 0.6rem
 }
-.mt0 {
+.mt0,
+#ui-bar-body > :not(:first-child),
+#ui-bar-body p,
+#story-author {
     margin-top: 0rem;
 }
-.mb0 {
+.mb0,
+#ui-bar-body p,
+#story-author {
     margin-bottom: 0rem
 }
 
 .pa5 {
     padding: 0.5rem;
+}
+.btnpad {
+    display: inline-block;
+    padding: .4rem;
 }
 
 .fs12 {
