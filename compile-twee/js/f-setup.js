@@ -79,26 +79,17 @@ setup.app._subGameClassDefaultVal returned
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
 setup.fPStartADefault = 3;
-setup.fPStartAGetDesc = function(){
-	if(settings.fPStartAmount === 1) {
+setup.fPStartAGetDesc = function(amount){
+	if(amount === 1) {
 		return 'osudový kámen';
-	} else if((settings.fPStartAmount > 1) && (settings.fPStartAmount < 5)) {
+	} else if((amount > 1) && (amount < 5)) {
 		return 'osudové kameny';
 	} else {
 		return 'osudových kamenů';
 	}
 };
-setup.fPStartAOnChange = function(){
-	if (State.variables.roundCounter === 0){
-		State.variables.players.forEach(function(item) {
-			item.fp = settings.fPStartAmount;
-		});
-		$('.fp-start-a-refresh-numb').text(settings.fPStartAmount);
-		$('.fp-start-a-refresh-desc').text(setup.fPStartAGetDesc());
-	}
-};
 setup.addPlayer = function(arg) {
-	return {name: arg, fp: settings.fPStartAmount};
+	return {name: arg, fp: setup.fPStartADefault};
 };
 setup.addGameCard = function() {
 	return {

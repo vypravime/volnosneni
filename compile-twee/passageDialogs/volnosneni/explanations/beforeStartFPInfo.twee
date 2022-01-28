@@ -29,14 +29,13 @@ a když se chceš naopak komplikacím vyhnout - získané kameny spotřebuješ.)
 ''@@font-size:1.2rem;<<=setup.fPStartADefault>>@@''
 </p>
 <p>//Právě teď máš nastaveno:<br>
-''<<=settings.fPStartAmount>>''//
+''<<=setup.fPStartADefault>>''//
 </p>
 <p class="tar">//Pokud to chceš jinak,<br>
 otevři si ještě před startem<br>
 - takže třeba teď:<br>
 <<link "pokročilá nastavení...">>
-<<run Dialog.close()>>
-<<run UI.settings()>>
+<<passageDialog "Nastavení hry VolnoSnění" "DVS_settings">>
 <</link>>//
 </p>
 <div class="pa5"></div>

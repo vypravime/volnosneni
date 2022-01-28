@@ -1,13 +1,12 @@
 :: VS_beforeStartControl
 
 <h2>Předstartovní kontrola</h2>
-<<run setup.fPStartAOnChange()>>/*protože uživatel by na této stránce mohl vlézt do nastavení a změnit hodnotu počátečních FP... nová hodnota by se měla sice vepsat jak do objektů hráčů (vlastnost .fp), tak do objektu settings, neboť při změně v nastaveních Settings je funkce výše volána SugarCubem automaticky. Jenže pak by se mohl uživatel vrátit v historii tlačítkem zpět, takže by se vlastnosti FP v objektech hráčů změnily na minulou hodnotu, jenže hodnota objektu settings zvolená v nastaveních by zůstala nová (settings narozdíl od $players nereaguje na skoky v historii). A pak, když by se uživatel proklikl opět do této místnosti - by nesouhlasil render následujících odstavců (nová hodnota vlastnosti v objektu settings podle akt. nastavení) s vlastností .fp uvnitř objektů hráčů (hodnota z historie). Volání funkce výše však nesoulad srovná tím, že upraví objekty hráčů opět podle nové aktuální hodnoty z nastavení, která jde zároveň do renderu v následujících odstavcích.*/
 <p class="tac">
-<<set _fPAm = settings.fPStartAmount>>
+<<set _fPAm = setup.fPStartADefault>>
 Každý hráč do začátku dostane: 
 <<compLink "<<passageDialog 'Osudové kameny...' 'BeforeStartFPInfo'>>">>
 @@font-size:1.2rem;''<span class="fp-start-a-refresh-numb">_fPAm</span>
-<span class="fp-start-a-refresh-desc"><<=setup.fPStartAGetDesc()>></span>''@@
+<span class="fp-start-a-refresh-desc"><<=setup.fPStartAGetDesc(_fPAm)>></span>''@@
 <</compLink>>
 </p>
 <p>Hry se účastní hráči v tomto

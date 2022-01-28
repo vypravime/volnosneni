@@ -49,16 +49,16 @@
 	l10nStrings.jumptoUnavailable = 'Nyní nelze přeskočit do žádného místa hry\u2026';
 
 	/* Saves. */
-	l10nStrings.savesTitle       = 'Uložit / Nahrát';
+	l10nStrings.savesTitle       = 'Ulož, načti';
 	l10nStrings.savesDisallowed  = 'V tomto místě hry ji není možné uložit.';
 	l10nStrings.savesIncapable   = '{_warningIntroLacking} funkce nutné pro ukládání her, takže ukládání během tohoto herního sezení bude nemožné.';
 	l10nStrings.savesLabelAuto   = 'automaticky uloženou pozici';
-	l10nStrings.savesLabelDelete = 'Smazat';
-	l10nStrings.savesLabelExport = 'Uložit na disk\u2026';
-	l10nStrings.savesLabelImport = 'Nahrát z disku\u2026';
-	l10nStrings.savesLabelLoad   = 'Nahrát';
-	l10nStrings.savesLabelClear  = 'Všechny vymazat';
-	l10nStrings.savesLabelSave   = 'Uložit';
+	l10nStrings.savesLabelDelete = 'Vymaž';
+	l10nStrings.savesLabelExport = 'Ulož na disk\u2026';
+	l10nStrings.savesLabelImport = 'Načti z disku\u2026';
+	l10nStrings.savesLabelLoad   = 'Načti';
+	l10nStrings.savesLabelClear  = 'Vymaž vše';
+	l10nStrings.savesLabelSave   = 'Ulož';
 	l10nStrings.savesLabelSlot   = '- pouzdro';
 	l10nStrings.savesUnavailable = 'Nenalezena žádná pouzdra pro ukládání her\u2026';
 	l10nStrings.savesUnknownDate = 'neznámý čas';
@@ -70,8 +70,8 @@
 	l10nStrings.settingsReset = 'Obnovit výchozí hodnoty';
 
 	/* Restart. */
-	l10nStrings.restartTitle  = 'Zpět do menu';
-	l10nStrings.restartPrompt = 'Opravdu chceš <strong>zobrazit úvodní rozcestník?</strong><br><br><em>(neuložený postup hrou může být ztracen)</em>';
+	l10nStrings.restartTitle  = 'Úvodní menu';
+	l10nStrings.restartPrompt = 'Opravdu chceš <strong>zpátky na počáteční rozcestník?</strong><br><br><em>(neuložený postup hrou může být ztracen)</em>';
 
 	/* Share. */
 	l10nStrings.shareTitle = 'Sdílet';

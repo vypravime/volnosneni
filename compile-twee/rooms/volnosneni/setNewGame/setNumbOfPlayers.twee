@@ -45,7 +45,7 @@
 <p>
 
   <<link "Pokročilá nastavení...">>
-    <<run UI.settings()>>
+    <<passageDialog "Nastavení hry VolnoSnění" "DVS_settings">>
   <</link>>
 
 </p>
