@@ -1,6 +1,6 @@
 :: StorySubtitle
 
-//verze// ''0.2.0b''
+//verze// ''0.2.0b''/*change also in DownloadPresenter->actionDefault() */
 <p class="mt6 mb6">
 //stáhni novější://
 [[www.vypravime.cz|https://www.vypravime.cz/]]
