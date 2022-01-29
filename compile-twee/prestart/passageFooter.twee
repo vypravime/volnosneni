@@ -16,19 +16,16 @@
 
 </div>
 
-<<if setup.experimental>>
+<<if setup.app.getSubGameClass() === "EX">>
   <p class="tar mt6 mb0">
   
-    <<button [[Test AJAX|EX_ajaxTest]]>>
-    <</button>>&nbsp;
-  
-    <<set $ajaxAnimation = new setup.AjaxAnimation();>>
+    <<set _ajaxAnimation = new setup.c10s.AjaxAnimation();>>
     <<button "AJAX ON">>
-      <<run $ajaxAnimation.setOn()>>
+      <<run _ajaxAnimation.setOn()>>
     <</button>>&nbsp;
     
     <<button "AJAX OFF">>
-      <<run $ajaxAnimation.setOff()>>
+      <<run _ajaxAnimation.setOff()>>
     <</button>>
   
   </p>

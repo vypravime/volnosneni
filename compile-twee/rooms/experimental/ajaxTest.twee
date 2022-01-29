@@ -1,5 +1,7 @@
 :: EX_ajaxTest
 
+<<set _ajaxAnim = new setup.c10s.AjaxAnimation()>>
+
 <h2>Hello!<br>Let's play with AJAX</h2>
 
 <p>
@@ -12,7 +14,6 @@
 <ul id="received-data" style="overflow-y: hidden;"></ul>
 
 <<button "Odešli dotaz">>
-  <<set _ajaxAnim = new setup.AjaxAnimation();>>
   <<run _ajaxAnim.setOn()>>
   <<script>>
     $(document).ready(function(){

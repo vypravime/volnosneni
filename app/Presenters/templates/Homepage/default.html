@@ -266,7 +266,11 @@ body {
 }
 .ajax-anim-1 span.active {
     color: #eb4;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "c-config.js" */
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "initCode.js" */
+"use strict";
+
+setup.c10s = {};
+/* twine-user-script #2: "c-config.js" */
 "use strict";
 
 Config.debug = false;
@@ -306,7 +310,71 @@ Config.passages.onProcess = function (p) {
     	return p.text = `<div${attrsStr}>${p.text}</div>`;
     }
 };
-/* twine-user-script #2: "f-setup.js" */
+/* twine-user-script #3: "AjaxAnimation.js" */
+"use strict";
+
+(function() {
+
+
+    setup.c10s.AjaxAnimation = function(
+        _elementClass = 'ajax-anim-1',
+        _basicTiming = 100
+    ) {
+        this._elementClass = _elementClass;
+        this._basicTiming = _basicTiming;
+        this._active = false;
+    };
+
+    let thatProto = setup.c10s.AjaxAnimation.prototype;
+
+    thatProto.isOn = function() {
+        if (this._active === true) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    thatProto.setOff = function() {
+        this._active = false;
+    };
+
+    thatProto.setOn = function() {
+        this._active = true;
+        let that = this;
+        let innerAnimManager = elements => {
+            let cyklusOffset = that._basicTiming * elements.length;  
+            elements.each(function(i) {
+                let jQthat = $(this);
+                let addClassOffset = (i+1)*that._basicTiming;
+                let removeClassOffset = cyklusOffset + addClassOffset;
+                    setTimeout(function(){
+                        if(that.isOn()) {
+                            jQthat.addClass('active');
+                        } else {
+                            jQthat.removeClass('active');
+                        }
+                    },addClassOffset);
+                    setTimeout(function(){
+                        jQthat.removeClass('active');
+                    },removeClassOffset);
+            });
+            setTimeout(function(){
+                    if(that.isOn()) {
+                        innerAnimManager(elements);
+                    }
+            },cyklusOffset * 2);
+        };
+        let animations = $(`.${this._elementClass}`);
+        animations.each(function(i) {
+            let lettersOfOneAnimation = $(this).children('span');
+            innerAnimManager(lettersOfOneAnimation);
+        });
+    }
+
+
+})();
+/* twine-user-script #4: "f-setup.js" */
 "use strict";
 
 //setup.experimental = true; //to show experimental parts of app
@@ -427,62 +495,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #3: "o-AjaxAnimation.js" */
-"use strict";
-
-setup.AjaxAnimation = class {
-    _elementClass = "ajax-anim-1";
-    _basicTiming = 100;
-    _active = false;
-    constructor(basicTiming,elementClass) {
-        this._elementClass = elementClass || this._elementClass;
-        this._basicTiming = basicTiming || this._basicTiming;
-    }
-    isSetOn() {
-        if (this._active === true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    setOff() {
-        this._active = false;
-    }
-    setOn() {
-        this._active = true;
-        let that = this;
-        let innerAnimManager = elements => {
-            let cyklusOffset = that._basicTiming * elements.length;  
-            elements.each(function(i) {
-                let jQthat = $(this);
-                let addClassOffset = (i+1)*that._basicTiming;
-                let removeClassOffset = cyklusOffset + addClassOffset;
-                    setTimeout(function(){
-                        if(that.isSetOn()) {
-                            jQthat.addClass('active');
-                        } else {
-                            jQthat.removeClass('active')
-                        }
-                    },addClassOffset);
-                    setTimeout(function(){
-                        jQthat.removeClass('active');
-                    },removeClassOffset);
-            });
-            setTimeout(function(){
-                    if(that.isSetOn()) {
-                        innerAnimManager(elements);
-                    }
-            },cyklusOffset * 2);
-        }
-        let animations = $(`.${this._elementClass}`);
-        animations.each(function(i) {
-            let lettersOfOneAnimation = $(this).children('span');
-            innerAnimManager(lettersOfOneAnimation);
-        });
-    }
-
-}
-/* twine-user-script #4: "q-main.js" */
+/* twine-user-script #5: "q-main.js" */
 "use strict";
 
 /*
@@ -495,7 +508,7 @@ TO DO:
 $(document).ready(function() {
   setup.page.onReady.execute();
 });
-/* twine-user-script #5: "z-l10nStrings.js" */
+/* twine-user-script #6: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/
@@ -805,19 +818,16 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
 &lt;/div&gt;
 
-&lt;&lt;if setup.experimental&gt;&gt;
+&lt;&lt;if setup.app.getSubGameClass() === &quot;EX&quot;&gt;&gt;
   &lt;p class=&quot;tar mt6 mb0&quot;&gt;
   
-    &lt;&lt;button [[Test AJAX|EX_ajaxTest]]&gt;&gt;
-    &lt;&lt;/button&gt;&gt;&amp;nbsp;
-  
-    &lt;&lt;set $ajaxAnimation = new setup.AjaxAnimation();&gt;&gt;
+    &lt;&lt;set _ajaxAnimation = new setup.c10s.AjaxAnimation();&gt;&gt;
     &lt;&lt;button &quot;AJAX ON&quot;&gt;&gt;
-      &lt;&lt;run $ajaxAnimation.setOn()&gt;&gt;
+      &lt;&lt;run _ajaxAnimation.setOn()&gt;&gt;
     &lt;&lt;/button&gt;&gt;&amp;nbsp;
     
     &lt;&lt;button &quot;AJAX OFF&quot;&gt;&gt;
-      &lt;&lt;run $ajaxAnimation.setOff()&gt;&gt;
+      &lt;&lt;run _ajaxAnimation.setOff()&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   
   &lt;/p&gt;
@@ -876,7 +886,9 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 //stáhni novější://
 [[www.vypravime.cz|https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/]]
 &lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="19" name="EX_ajaxTest" tags="" position="1100,225" size="100,100">&lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="19" name="EX_ajaxTest" tags="" position="1100,225" size="100,100">&lt;&lt;set _ajaxAnim = new setup.c10s.AjaxAnimation()&gt;&gt;
+
+&lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
 
 &lt;p&gt;
 &lt;&lt;textbox &quot;$test1&quot; &quot;První testovací hodnota&quot;&gt;&gt;
@@ -888,7 +900,6 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;ul id=&quot;received-data&quot; style=&quot;overflow-y: hidden;&quot;&gt;&lt;/ul&gt;
 
 &lt;&lt;button &quot;Odešli dotaz&quot;&gt;&gt;
-  &lt;&lt;set _ajaxAnim = new setup.AjaxAnimation();&gt;&gt;
   &lt;&lt;run _ajaxAnim.setOn()&gt;&gt;
   &lt;&lt;script&gt;&gt;
     $(document).ready(function(){

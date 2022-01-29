@@ -1,24 +1,32 @@
 "use strict";
 
-setup.AjaxAnimation = class {
-    _elementClass = "ajax-anim-1";
-    _basicTiming = 100;
-    _active = false;
-    constructor(basicTiming,elementClass) {
-        this._elementClass = elementClass || this._elementClass;
-        this._basicTiming = basicTiming || this._basicTiming;
-    }
-    isSetOn() {
+(function() {
+
+
+    setup.c10s.AjaxAnimation = function(
+        _elementClass = 'ajax-anim-1',
+        _basicTiming = 100
+    ) {
+        this._elementClass = _elementClass;
+        this._basicTiming = _basicTiming;
+        this._active = false;
+    };
+
+    let thatProto = setup.c10s.AjaxAnimation.prototype;
+
+    thatProto.isOn = function() {
         if (this._active === true) {
             return true;
         } else {
             return false;
         }
-    }
-    setOff() {
+    };
+
+    thatProto.setOff = function() {
         this._active = false;
-    }
-    setOn() {
+    };
+
+    thatProto.setOn = function() {
         this._active = true;
         let that = this;
         let innerAnimManager = elements => {
@@ -28,10 +36,10 @@ setup.AjaxAnimation = class {
                 let addClassOffset = (i+1)*that._basicTiming;
                 let removeClassOffset = cyklusOffset + addClassOffset;
                     setTimeout(function(){
-                        if(that.isSetOn()) {
+                        if(that.isOn()) {
                             jQthat.addClass('active');
                         } else {
-                            jQthat.removeClass('active')
+                            jQthat.removeClass('active');
                         }
                     },addClassOffset);
                     setTimeout(function(){
@@ -39,11 +47,11 @@ setup.AjaxAnimation = class {
                     },removeClassOffset);
             });
             setTimeout(function(){
-                    if(that.isSetOn()) {
+                    if(that.isOn()) {
                         innerAnimManager(elements);
                     }
             },cyklusOffset * 2);
-        }
+        };
         let animations = $(`.${this._elementClass}`);
         animations.each(function(i) {
             let lettersOfOneAnimation = $(this).children('span');
@@ -51,4 +59,5 @@ setup.AjaxAnimation = class {
         });
     }
 
-}
+
+})();
