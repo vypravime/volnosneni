@@ -1,0 +1,20 @@
+:: SeeSaw [widget]
+
+<<widget "seeSaw" container>>
+    <<set _identClass = _args.shift()>>
+    <<set _beginOrEnd = _args.shift()>>
+
+
+    <<if _beginOrEnd === true>>_contents<</if>>
+
+    <div @class="'see-saw ' + _identClass">
+        <<for _label,_function range _args[0]>>
+        <<capture _function>>
+            <<button _label>><<run _function()>><</button>>
+        <</capture>>
+        <</for>>
+    </div>
+
+    <<if _beginOrEnd === false>>_contents<</if>>
+
+<</widget>>

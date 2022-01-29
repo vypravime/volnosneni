@@ -89,3 +89,12 @@ $(document).ready(function() {
   State.getVar('_app').triggerDevModeChange();
 });
 <</script>>
+
+<p>
+  <<seeSaw "dev-mode-toggle-btns" true
+    `{
+      "''ZAP''": () => {_app.setDevModeOn();},
+      "''VYP''": () => {_app.setDevModeOff();}
+    }`
+  >>//Vývojářský režim//<</seeSaw>>
+</p>

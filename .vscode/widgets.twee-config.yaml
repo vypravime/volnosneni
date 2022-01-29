@@ -26,7 +26,7 @@ sugarcube-2:
         *(If the second argument /default is FALSE/ is set to TRUE,
           then the enclosing paragraph around the button is ommited.)*
     passageDialog:
-      name: ctpHead
+      name: passageDialog
       description: |-
         **Opens given Passage in Dialog window.**
         
@@ -38,3 +38,8 @@ sugarcube-2:
           it will close it at first
           before opening the new passage dialog window.
           It seems prettier)*
+    seeSaw:
+      name: seeSaw
+      container: true
+      description: |-
+        **To be done...**
