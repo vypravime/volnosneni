@@ -3,10 +3,12 @@
 
 setup.c10s.App = function(
     _stateInstance,
-    _subGameBreadCrumbs
+    _subGameBreadCrumbs,
+    _eventNames
 ) {
     this._state = _stateInstance;
     this._subGameBreadCrumbs = _subGameBreadCrumbs;
+    this._eventNames = _eventNames;
     this._devMode = false;
 }
 
@@ -45,6 +47,13 @@ thatProto.isGivenSubGame = function(subclass) {
     }
 };
 
+thatProto.onDevModeChange = function(eventHandler) {
+    $(document).on(
+        this._eventNames['devModeChange'],
+        (ev) => {eventHandler(ev);}
+    );
+};
+
 thatProto.setDevModeOff = function() {
     this._devMode = false;
     this.triggerDevModeChange();
@@ -56,7 +65,7 @@ thatProto.setDevModeOn = function() {
 };
 
 thatProto.triggerDevModeChange = function() {
-    $(document).trigger('app:devModeChange');
+    $(document).trigger(this._eventNames['devModeChange']);
 };
 
 

@@ -78,10 +78,10 @@
   </div> //Vývojářský režim//
 </p>
 <<script>>
-$(document).on('app:devModeChange', function(ev) {
+State.getVar('_app').onDevModeChange((ev) => {
   let onBtns = $('.dev-mode-on-btn').find('button');
   let offBtns = $('.dev-mode-off-btn').find('button');
-  let isDevMode = setup.DI_CONT.getService('app').isDevMode();
+  let isDevMode = State.getVar('_app').isDevMode();
   onBtns.ariaDisabled(isDevMode);
   offBtns.ariaDisabled(!isDevMode);
 });

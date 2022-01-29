@@ -10,7 +10,10 @@ let setParameters = () => ({
 		VS: 'VolnoSnění',
 		TT: 'TěloTaj',
 		EX: 'Experimenty'
-	}
+	},
+    eventNames: {
+        devModeChange: 'app:devModeChange'
+    }
 });
 
 let configurateIt = () => ({
@@ -34,7 +37,8 @@ setup.DI_CONT = {
         ),
         app: () => new setup.c10s.App(
             State,
-            setup.DI_CONT.params.subGames
+            setup.DI_CONT.params.subGames,
+            setup.DI_CONT.params.eventNames
         )
     }
 };
