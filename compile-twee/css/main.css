@@ -146,6 +146,10 @@ textarea:not(:disabled):hover {
 .story-card-1 p.complic.solved {
     border-color: #350;
 }
+button:disabled:hover {
+    background-color: #555;
+    border-color: #666;
+}
 body {
     background-color: #000;
 }

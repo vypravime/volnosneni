@@ -246,6 +246,10 @@ textarea:not(:disabled):hover {
 .story-card-1 p.complic.solved {
     border-color: #350;
 }
+button:disabled:hover {
+    background-color: #555;
+    border-color: #666;
+}
 body {
     background-color: #000;
 }
@@ -387,6 +391,7 @@ setup.c10s.App = function(
 ) {
     this._state = _stateInstance;
     this._subGameBreadCrumbs = _subGameBreadCrumbs;
+    this._devMode = false;
 }
 
 let thatProto = setup.c10s.App.prototype;
@@ -408,12 +413,28 @@ thatProto._getSubGameClassFrom = function(passageTitle) {
     return passageTitle[0] + passageTitle[1]
 };
 
-thatProto.isSubGame = function(subclass) {
+thatProto.isDevMode = function() {
+    if (this._devMode === true) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+thatProto.isGivenSubGame = function(subclass) {
     if (subclass === this.getSubGameClass()) {
         return true;
     } else {
         return false;
     }
+};
+
+thatProto.setDevModeOff = function() {
+    this._devMode = false;
+};
+
+thatProto.setDevModeOn = function() {
+    this._devMode = true;
 };
 
 
@@ -854,8 +875,14 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &#39;&#39;&lt;&lt;button [[TěloTaj|TT_go]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;&#39;&#39;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;
+&lt;&lt;button [[Vývojářeské experimenty|EX_ajaxTest]]&gt;&gt;
+    &lt;&lt;run Dialog.close()&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
-&lt;&lt;if _app.isSubGame(&#39;EX&#39;)&gt;&gt;
+&lt;&lt;if _app.isDevMode()&gt;&gt;
   &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -875,7 +902,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
 &lt;/div&gt;
 
-&lt;&lt;if _app.isSubGame(&#39;EX&#39;)&gt;&gt;
+&lt;&lt;if _app.isDevMode()&gt;&gt;
   &lt;p class=&quot;tar mt6 mb0&quot;&gt;
   
     &lt;&lt;button &quot;AJAX ON&quot;&gt;&gt;
@@ -896,7 +923,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
 &lt;div class=&quot;tal&quot;&gt;
 
-  &lt;&lt;if _app.isSubGame(&#39;VS&#39;)&gt;&gt;
+  &lt;&lt;if _app.isGivenSubGame(&#39;VS&#39;)&gt;&gt;
 
     &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
       &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
@@ -912,7 +939,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
   Krok&amp;nbsp;&lt;&lt;= turns()&gt;&gt;: //&#39;&#39;&lt;&lt;= __baseNav&gt;&gt;&#39;&#39;... //
 
-  &lt;&lt;if _app.isSubGame(&#39;VS&#39;)&gt;&gt;
+  &lt;&lt;if _app.isGivenSubGame(&#39;VS&#39;)&gt;&gt;
   
     &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;kolo:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
 
@@ -942,7 +969,10 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 //stáhni novější://
 [[www.vypravime.cz|https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/]]
 &lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="19" name="EX_ajaxTest" tags="" position="1100,225" size="100,100">&lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="19" name="EX_ajaxTest" tags="" position="1100,225" size="100,100">/*DEPENDENCIES: */
+&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+&lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
+/*\DEPENDENCIES */
 
 &lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
 
@@ -999,7 +1029,33 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
       });
     });
   &lt;&lt;/script&gt;&gt;
-&lt;&lt;/button&gt;&gt;&amp;nbsp;&lt;&lt;include &quot;AjaxAnim1stars&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
+&lt;&lt;/button&gt;&gt;&amp;nbsp;&lt;&lt;include &quot;AjaxAnim1stars&quot;&gt;&gt;
+&lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;
+  &lt;span id=&quot;dev-mode-on-btn&quot;&gt;
+    &lt;&lt;button &quot;//DevMode// &#39;&#39;ON&#39;&#39;&quot;&gt;&gt;
+      &lt;&lt;run _app.setDevModeOn()&gt;&gt;
+      &lt;&lt;script&gt;&gt;
+        $(&#39;#dev-mode-on-btn&#39;).find(&#39;button&#39;)
+          .ariaDisabled(true);
+        $(&#39;#dev-mode-off-btn&#39;).find(&#39;button&#39;)
+          .ariaDisabled(false);
+      &lt;&lt;/script&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  &lt;/span&gt;
+  &lt;span id=&quot;dev-mode-off-btn&quot;&gt;
+    &lt;&lt;button &quot;//DevMode// &#39;&#39;OFF&#39;&#39;&quot;&gt;&gt;
+      &lt;&lt;run _app.setDevModeOff()&gt;&gt;
+      &lt;&lt;script&gt;&gt;
+        $(&#39;#dev-mode-off-btn&#39;).find(&#39;button&#39;)
+          .ariaDisabled(true);
+        $(&#39;#dev-mode-on-btn&#39;).find(&#39;button&#39;)
+          .ariaDisabled(false);
+      &lt;&lt;/script&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  &lt;/span&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;
 &#39;&#39;&lt;&lt;button &quot;NOVÁ HRA&quot;&gt;&gt;

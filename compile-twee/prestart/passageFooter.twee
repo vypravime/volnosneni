@@ -1,7 +1,7 @@
 :: PassageFooter
 
 <<set _app = setup.DI_CONT.getService('app')>>
-<<if _app.isSubGame('EX')>>
+<<if _app.isDevMode()>>
   <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
 <</if>>
 
@@ -21,7 +21,7 @@
 
 </div>
 
-<<if _app.isSubGame('EX')>>
+<<if _app.isDevMode()>>
   <p class="tar mt6 mb0">
   
     <<button "AJAX ON">>

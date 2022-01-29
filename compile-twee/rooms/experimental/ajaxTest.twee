@@ -1,6 +1,9 @@
 :: EX_ajaxTest
 
+/*DEPENDENCIES: */
+<<set _app = setup.DI_CONT.getService('app')>>
 <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
+/*\DEPENDENCIES */
 
 <h2>Hello!<br>Let's play with AJAX</h2>
 
@@ -58,3 +61,29 @@
     });
   <</script>>
 <</button>>&nbsp;<<include "AjaxAnim1stars">>
+<div class="pa5"></div>
+<hr>
+<p>
+  <span id="dev-mode-on-btn">
+    <<button "//DevMode// ''ON''">>
+      <<run _app.setDevModeOn()>>
+      <<script>>
+        $('#dev-mode-on-btn').find('button')
+          .ariaDisabled(true);
+        $('#dev-mode-off-btn').find('button')
+          .ariaDisabled(false);
+      <</script>>
+    <</button>>
+  </span>
+  <span id="dev-mode-off-btn">
+    <<button "//DevMode// ''OFF''">>
+      <<run _app.setDevModeOff()>>
+      <<script>>
+        $('#dev-mode-off-btn').find('button')
+          .ariaDisabled(true);
+        $('#dev-mode-on-btn').find('button')
+          .ariaDisabled(false);
+      <</script>>
+    <</button>>
+  </span>
+</p>

@@ -7,6 +7,7 @@ setup.c10s.App = function(
 ) {
     this._state = _stateInstance;
     this._subGameBreadCrumbs = _subGameBreadCrumbs;
+    this._devMode = false;
 }
 
 let thatProto = setup.c10s.App.prototype;
@@ -28,12 +29,28 @@ thatProto._getSubGameClassFrom = function(passageTitle) {
     return passageTitle[0] + passageTitle[1]
 };
 
-thatProto.isSubGame = function(subclass) {
+thatProto.isDevMode = function() {
+    if (this._devMode === true) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+thatProto.isGivenSubGame = function(subclass) {
     if (subclass === this.getSubGameClass()) {
         return true;
     } else {
         return false;
     }
+};
+
+thatProto.setDevModeOff = function() {
+    this._devMode = false;
+};
+
+thatProto.setDevModeOn = function() {
+    this._devMode = true;
 };
 
 

@@ -5,7 +5,7 @@
 
 <div class="tal">
 
-  <<if _app.isSubGame('VS')>>
+  <<if _app.isGivenSubGame('VS')>>
 
     <<if $roundCounter > 0>>
       <<button "DĚJ">>
@@ -21,7 +21,7 @@
 
   Krok&nbsp;<<= turns()>>: //''<<= __baseNav>>''... //
 
-  <<if _app.isSubGame('VS')>>
+  <<if _app.isGivenSubGame('VS')>>
   
     ''$roundCounter.''&nbsp;kolo:&nbsp;<<if $roundCounter > 0>><<= setup.whoseTurn("//zatím&nbsp;''nikdo''&nbsp;ne//táhne", "''//", "//''")>><<else>>//zatím&nbsp;''nikdo''&nbsp;ne//táhne<</if>>
 
