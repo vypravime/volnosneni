@@ -1,4 +1,4 @@
-:: BeforeStartFPInfo
+:: VSD_beforeStartFPInfo
 
 <p>
 @@font-size:1.2rem;
@@ -35,7 +35,7 @@ a když se chceš naopak komplikacím vyhnout - získané kameny spotřebuješ.)
 otevři si ještě před startem<br>
 - takže třeba teď:<br>
 <<link "pokročilá nastavení...">>
-<<passageDialog "Nastavení hry VolnoSnění" "DVS_settings">>
+<<passageDialog "Nastavení hry VolnoSnění" "VSD_settings">>
 <</link>>//
 </p>
 <div class="pa5"></div>

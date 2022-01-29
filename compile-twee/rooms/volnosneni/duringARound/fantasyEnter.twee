@@ -15,11 +15,11 @@
 <p>
 
 //(<<link "číst&nbsp;příklad">>
-	    <<passageDialog "Ukázka:" "ExampleBasic1">>
+	    <<passageDialog "Ukázka:" "VSD_exampleBasic1">>
    <</link>>)&nbsp;&nbsp;&nbsp;(<<link "BÝT&nbsp;VSTŘÍCNÝ">>
-	    <<passageDialog "Zásady společné zábavy:" "BeNiceInfo">>
+	    <<passageDialog "Zásady společné zábavy:" "VSD_beNiceInfo">>
    <</link>>)&nbsp;&nbsp;&nbsp;(<<link "předešlý&nbsp;děj">>
-      <<passageDialog "Nástěnka příběhu" "CardsBoard">>
+      <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
    <</link>>)//<br>
 
   <<textarea "$gameCards.current[0].text" _default>>

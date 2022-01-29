@@ -45,7 +45,7 @@
 <p>
 
   <<link "Pokročilá nastavení...">>
-    <<passageDialog "Nastavení hry VolnoSnění" "DVS_settings">>
+    <<passageDialog "Nastavení hry VolnoSnění" "VSD_settings">>
   <</link>>
 
 </p>

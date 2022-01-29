@@ -4,7 +4,7 @@
 <p class="tac">
 <<set _fPAm = setup.fPStartADefault>>
 Každý hráč do začátku dostane: 
-<<compLink "<<passageDialog 'Osudové kameny...' 'BeforeStartFPInfo'>>">>
+<<compLink "<<passageDialog 'Osudové kameny...' 'VSD_beforeStartFPInfo'>>">>
 @@font-size:1.2rem;''<span class="fp-start-a-refresh-numb">_fPAm</span>
 <span class="fp-start-a-refresh-desc"><<=setup.fPStartAGetDesc(_fPAm)>></span>''@@
 <</compLink>>
@@ -20,7 +20,7 @@ pořadí:
 </ol>
 <p class="tar">
 //<<link "Doplňkové info...">>
-<<passageDialog "Doplňkové info:" "BeforeStartRoundsInfo">>
+<<passageDialog "Doplňkové info:" "VSD_beforeStartRoundsInfo">>
 <</link>>//
 </p>
 <p class="tac">

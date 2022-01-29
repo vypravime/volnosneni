@@ -619,7 +619,7 @@ vepiš vlastní slova...
 //(zeptej se, navrhni zlepšení, postěžuj si, poděkuj, ...)//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="VSD_CardsBoard" tags="" position="850,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="8" name="VSD_BeNiceInfo" tags="" position="975,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="VSD_cardsBoard" tags="" position="850,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="8" name="VSD_beNiceInfo" tags="" position="975,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
 nepoužívej prosím své vyprávění&lt;br&gt;
 k provokaci či šikaně svých spoluhráčů.
@@ -662,7 +662,7 @@ ať už se ke Tvému novému rozvinutí později&lt;br&gt;
 původní autor nápadu dobrovolně přidruží či ne.//
 &lt;/p&gt;
 
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="VSD_BeforeStartFPInfo" tags="" position="1100,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="VSD_beforeStartFPInfo" tags="" position="1100,100" size="100,100">&lt;p&gt;
 @@font-size:1.2rem;
 Pokud nevíš, co jsou to &#39;&#39;osudové kameny&#39;&#39;,&lt;br&gt;
 &#39;&#39;NELAM SI S TÍM HLAVU...&#39;&#39;&lt;br&gt;
@@ -701,7 +701,7 @@ otevři si ještě před startem&lt;br&gt;
 &lt;&lt;/link&gt;&gt;//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="VSD_BeforeStartRoundsInfo" tags="" position="1225,100" size="100,100">&lt;p class=&quot;tac&quot;&gt;&#39;&#39;Hra se hraje stále dokola,&lt;br&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="VSD_beforeStartRoundsInfo" tags="" position="1225,100" size="100,100">&lt;p class=&quot;tac&quot;&gt;&#39;&#39;Hra se hraje stále dokola,&lt;br&gt;
 dokud to zúčastněné baví...&#39;&#39;
 &lt;/p&gt;
 &lt;p&gt;
@@ -719,7 +719,7 @@ apod.)//
 buď když už jsou &#39;&#39;všichni spokojeni&#39;&#39; a stačí jim,&lt;br&gt;
 nebo když z jakéhokoliv důvodu &#39;&#39;odejde poslední&#39;&#39; přítomný hráč.
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="VSD_ExampleBasic1" tags="" position="100,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="VSD_exampleBasic1" tags="" position="100,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
 &lt;div class=&quot;story-card-1&quot;&gt;
 &lt;p&gt;
 &#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;:
@@ -834,7 +834,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
     &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
       &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
-        &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_CardsBoard&quot;&gt;&gt;
+        &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_cardsBoard&quot;&gt;&gt;
       &lt;&lt;/button&gt;&gt;&amp;nbsp;
   
       &lt;&lt;button &quot;Hráči&quot;&gt;&gt;
@@ -963,11 +963,11 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;p&gt;
 
 //(&lt;&lt;link &quot;číst&amp;nbsp;příklad&quot;&gt;&gt;
-	    &lt;&lt;passageDialog &quot;Ukázka:&quot; &quot;VSD_ExampleBasic1&quot;&gt;&gt;
+	    &lt;&lt;passageDialog &quot;Ukázka:&quot; &quot;VSD_exampleBasic1&quot;&gt;&gt;
    &lt;&lt;/link&gt;&gt;)&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;&lt;link &quot;BÝT&amp;nbsp;VSTŘÍCNÝ&quot;&gt;&gt;
-	    &lt;&lt;passageDialog &quot;Zásady společné zábavy:&quot; &quot;VSD_BeNiceInfo&quot;&gt;&gt;
+	    &lt;&lt;passageDialog &quot;Zásady společné zábavy:&quot; &quot;VSD_beNiceInfo&quot;&gt;&gt;
    &lt;&lt;/link&gt;&gt;)&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;&lt;link &quot;předešlý&amp;nbsp;děj&quot;&gt;&gt;
-      &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_CardsBoard&quot;&gt;&gt;
+      &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_cardsBoard&quot;&gt;&gt;
    &lt;&lt;/link&gt;&gt;)//&lt;br&gt;
 
   &lt;&lt;textarea &quot;$gameCards.current[0].text&quot; _default&gt;&gt;
@@ -1011,7 +1011,7 @@ právě teď tah!
 &lt;p class=&quot;tac&quot;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
 Každý hráč do začátku dostane: 
-&lt;&lt;compLink &quot;&lt;&lt;passageDialog &#39;Osudové kameny...&#39; &#39;VSD_BeforeStartFPInfo&#39;&gt;&gt;&quot;&gt;&gt;
+&lt;&lt;compLink &quot;&lt;&lt;passageDialog &#39;Osudové kameny...&#39; &#39;VSD_beforeStartFPInfo&#39;&gt;&gt;&quot;&gt;&gt;
 @@font-size:1.2rem;&#39;&#39;&lt;span class=&quot;fp-start-a-refresh-numb&quot;&gt;_fPAm&lt;/span&gt;
 &lt;span class=&quot;fp-start-a-refresh-desc&quot;&gt;&lt;&lt;=setup.fPStartAGetDesc(_fPAm)&gt;&gt;&lt;/span&gt;&#39;&#39;@@
 &lt;&lt;/compLink&gt;&gt;
@@ -1027,7 +1027,7 @@ pořadí:
 &lt;/ol&gt;
 &lt;p class=&quot;tar&quot;&gt;
 //&lt;&lt;link &quot;Doplňkové info...&quot;&gt;&gt;
-&lt;&lt;passageDialog &quot;Doplňkové info:&quot; &quot;VSD_BeforeStartRoundsInfo&quot;&gt;&gt;
+&lt;&lt;passageDialog &quot;Doplňkové info:&quot; &quot;VSD_beforeStartRoundsInfo&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;//
 &lt;/p&gt;
 &lt;p class=&quot;tac&quot;&gt;

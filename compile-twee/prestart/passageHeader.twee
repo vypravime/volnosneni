@@ -9,7 +9,7 @@
 
     <<if $roundCounter > 0>>
       <<button "DĚJ">>
-        <<passageDialog "Nástěnka příběhu" "CardsBoard">>
+        <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
       <</button>>&nbsp;
   
       <<button "Hráči">>
