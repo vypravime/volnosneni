@@ -2,13 +2,18 @@
 
 (function() {
 
-let configurateIt = function() {
-    return {
-        
-    };
-};
+
+
+let setParameters = () => ({
+
+});
+
+let configurateIt = () => ({
+
+});
 
 setup.DI_CONT = {
+    params: setParameters(),
     configs: configurateIt(),
     services: [],
     getService: function(service){
