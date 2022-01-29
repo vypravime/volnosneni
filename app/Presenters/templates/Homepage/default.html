@@ -316,30 +316,32 @@ Config.passages.onProcess = function (p) {
 (function() {
 
 
-    setup.c10s.AjaxAnimation = function(
-        _elementClass = 'ajax-anim-1',
-        _basicTiming = 100
-    ) {
-        this._elementClass = _elementClass;
-        this._basicTiming = _basicTiming;
-        this._active = false;
-    };
+setup.c10s.AjaxAnimation = function(
+    _elementClass = 'ajax-anim-1',
+    _basicTiming = 100
+) {
+    this._elementClass = _elementClass;
+    this._basicTiming = _basicTiming;
+    this._active = false;
+};
 
-    let thatProto = setup.c10s.AjaxAnimation.prototype;
+let thatProto = setup.c10s.AjaxAnimation.prototype;
 
-    thatProto.isOn = function() {
-        if (this._active === true) {
-            return true;
-        } else {
-            return false;
-        }
-    };
 
-    thatProto.setOff = function() {
-        this._active = false;
-    };
+thatProto.isOn = function() {
+    if (this._active === true) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
-    thatProto.setOn = function() {
+thatProto.setOff = function() {
+    this._active = false;
+};
+
+thatProto.setOn = function() {
+    if (!this.isOn()) {
         this._active = true;
         let that = this;
         let innerAnimManager = elements => {
@@ -371,10 +373,42 @@ Config.passages.onProcess = function (p) {
             innerAnimManager(lettersOfOneAnimation);
         });
     }
+}
 
 
 })();
-/* twine-user-script #4: "f-setup.js" */
+/* twine-user-script #4: "DI_CONT.js" */
+"use strict";
+
+(function() {
+
+let configurateIt = function() {
+    return {
+        
+    };
+};
+
+setup.DI_CONT = {
+    configs: configurateIt(),
+    services: [],
+    getService: function(service){
+        if(!this.services[service]) {
+            console.log(`DI_CONT... Create service: ${service}`);
+            this.services[service] = this.createF7s[service]();
+        }
+        return this.services[service];
+    },
+    createF7s: {
+        ajaxAnimation: () => new setup.c10s.AjaxAnimation(
+            
+        )
+    }
+};
+
+
+
+})()
+/* twine-user-script #5: "f-setup.js" */
 "use strict";
 
 //setup.experimental = true; //to show experimental parts of app
@@ -495,7 +529,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #5: "q-main.js" */
+/* twine-user-script #6: "q-main.js" */
 "use strict";
 
 /*
@@ -508,7 +542,7 @@ TO DO:
 $(document).ready(function() {
   setup.page.onReady.execute();
 });
-/* twine-user-script #6: "z-l10nStrings.js" */
+/* twine-user-script #7: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/
@@ -821,7 +855,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;if setup.app.getSubGameClass() === &quot;EX&quot;&gt;&gt;
   &lt;p class=&quot;tar mt6 mb0&quot;&gt;
   
-    &lt;&lt;set _ajaxAnimation = new setup.c10s.AjaxAnimation();&gt;&gt;
+    &lt;&lt;set _ajaxAnimation = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;);&gt;&gt;
     &lt;&lt;button &quot;AJAX ON&quot;&gt;&gt;
       &lt;&lt;run _ajaxAnimation.setOn()&gt;&gt;
     &lt;&lt;/button&gt;&gt;&amp;nbsp;
@@ -886,7 +920,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 //stáhni novější://
 [[www.vypravime.cz|https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/]]
 &lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="19" name="EX_ajaxTest" tags="" position="1100,225" size="100,100">&lt;&lt;set _ajaxAnim = new setup.c10s.AjaxAnimation()&gt;&gt;
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="19" name="EX_ajaxTest" tags="" position="1100,225" size="100,100">&lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 
 &lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
 

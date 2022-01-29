@@ -3,30 +3,32 @@
 (function() {
 
 
-    setup.c10s.AjaxAnimation = function(
-        _elementClass = 'ajax-anim-1',
-        _basicTiming = 100
-    ) {
-        this._elementClass = _elementClass;
-        this._basicTiming = _basicTiming;
-        this._active = false;
-    };
+setup.c10s.AjaxAnimation = function(
+    _elementClass = 'ajax-anim-1',
+    _basicTiming = 100
+) {
+    this._elementClass = _elementClass;
+    this._basicTiming = _basicTiming;
+    this._active = false;
+};
 
-    let thatProto = setup.c10s.AjaxAnimation.prototype;
+let thatProto = setup.c10s.AjaxAnimation.prototype;
 
-    thatProto.isOn = function() {
-        if (this._active === true) {
-            return true;
-        } else {
-            return false;
-        }
-    };
 
-    thatProto.setOff = function() {
-        this._active = false;
-    };
+thatProto.isOn = function() {
+    if (this._active === true) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
-    thatProto.setOn = function() {
+thatProto.setOff = function() {
+    this._active = false;
+};
+
+thatProto.setOn = function() {
+    if (!this.isOn()) {
         this._active = true;
         let that = this;
         let innerAnimManager = elements => {
@@ -58,6 +60,7 @@
             innerAnimManager(lettersOfOneAnimation);
         });
     }
+}
 
 
 })();

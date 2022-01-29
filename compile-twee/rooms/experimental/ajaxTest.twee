@@ -1,6 +1,6 @@
 :: EX_ajaxTest
 
-<<set _ajaxAnim = new setup.c10s.AjaxAnimation()>>
+<<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
 
 <h2>Hello!<br>Let's play with AJAX</h2>
 

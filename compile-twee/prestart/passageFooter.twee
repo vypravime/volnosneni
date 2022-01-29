@@ -19,7 +19,7 @@
 <<if setup.app.getSubGameClass() === "EX">>
   <p class="tar mt6 mb0">
   
-    <<set _ajaxAnimation = new setup.c10s.AjaxAnimation();>>
+    <<set _ajaxAnimation = setup.DI_CONT.getService('ajaxAnimation');>>
     <<button "AJAX ON">>
       <<run _ajaxAnimation.setOn()>>
     <</button>>&nbsp;
