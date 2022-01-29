@@ -1,5 +1,10 @@
 :: PassageFooter
 
+<<set _app = setup.DI_CONT.getService('app')>>
+<<if _app.isSubGame('EX')>>
+  <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
+<</if>>
+
 <div class="tar">
 
   <<button "Nápověda">>
@@ -16,16 +21,15 @@
 
 </div>
 
-<<if setup.app.getSubGameClass() === "EX">>
+<<if _app.isSubGame('EX')>>
   <p class="tar mt6 mb0">
   
-    <<set _ajaxAnimation = setup.DI_CONT.getService('ajaxAnimation');>>
     <<button "AJAX ON">>
-      <<run _ajaxAnimation.setOn()>>
+      <<run _ajaxAnim.setOn()>>
     <</button>>&nbsp;
     
     <<button "AJAX OFF">>
-      <<run _ajaxAnimation.setOff()>>
+      <<run _ajaxAnim.setOff()>>
     <</button>>
   
   </p>

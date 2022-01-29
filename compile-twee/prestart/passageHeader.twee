@@ -1,11 +1,11 @@
 :: PassageHeader
 
-<<run setup.app.setSubGameFrom(passage())>>
-<<set _baseNav = setup.app.getSubGameBreadCrumb()>>
+<<set _app = setup.DI_CONT.getService('app')>>
+<<set __baseNav = _app.getSubGameBreadCrumb()>>
 
 <div class="tal">
 
-  <<if setup.app.getSubGameClass() === "VS">>
+  <<if _app.isSubGame('VS')>>
 
     <<if $roundCounter > 0>>
       <<button "DĚJ">>
@@ -19,9 +19,9 @@
 
   <</if>>
 
-  Krok&nbsp;<<= turns()>>: //''<<= _baseNav>>''... //
+  Krok&nbsp;<<= turns()>>: //''<<= __baseNav>>''... //
 
-  <<if setup.app.getSubGameClass() === "VS">>
+  <<if _app.isSubGame('VS')>>
   
     ''$roundCounter.''&nbsp;kolo:&nbsp;<<if $roundCounter > 0>><<= setup.whoseTurn("//zatím&nbsp;''nikdo''&nbsp;ne//táhne", "''//", "//''")>><<else>>//zatím&nbsp;''nikdo''&nbsp;ne//táhne<</if>>
 

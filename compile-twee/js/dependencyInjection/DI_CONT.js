@@ -5,7 +5,12 @@
 
 
 let setParameters = () => ({
-
+    subGames: {
+		MM: 'Úvodní menu',
+		VS: 'VolnoSnění',
+		TT: 'TěloTaj',
+		EX: 'Experimenty'
+	}
 });
 
 let configurateIt = () => ({
@@ -25,7 +30,11 @@ setup.DI_CONT = {
     },
     createF7s: {
         ajaxAnimation: () => new setup.c10s.AjaxAnimation(
-            
+
+        ),
+        app: () => new setup.c10s.App(
+            State,
+            setup.DI_CONT.params.subGames
         )
     }
 };

@@ -42,44 +42,6 @@ setup.page.openPassageDialog = function(dHeader, dPassage) {
 	Dialog.wiki(Story.get(dPassage).processText()).open();
 };
 
-setup.app = {
-	_subGameClass: '',
-	_subGameClassDefaultVal: 'MM',
-	_subGameBreadCrumbs: {
-		MM: 'Úvodní menu',
-		VS: 'VolnoSnění',
-		TT: 'TěloTaj',
-		EX: 'Experimenty'
-	},
-	init: function() {},
-	setSubGameFrom: function(passageTitle) {
-		let subGameClass = passageTitle[0] + passageTitle[1];
-		this._setSubGameClass(subGameClass);
-	},
-	getSubGameBreadCrumb: function() {
-		return this._subGameBreadCrumbs[
-			this.getSubGameClass()
-			];
-	},
-	getSubGameClass: function() {
-		if (!this._subGameClass) {
-			console.log(`
-WARNING in the passage "${State.passage}":
-You cannot get subGameClass (or appropriate subGameBreadCrumb)
-before calling setup.app.setSubGameFrom(passageTitle);
-setup.app._subGameClassDefaultVal returned
-(instead of correct value)! 
-			`);
-			return this._subGameClassDefaultVal;
-		} else {
-			return this._subGameClass;
-		}
-	},
-	_setSubGameClass: function(subGameClass) {
-		this._subGameClass = subGameClass;
-	},
-}
-
 
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];

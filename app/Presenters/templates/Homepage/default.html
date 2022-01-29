@@ -377,7 +377,49 @@ thatProto.setOn = function() {
 
 
 })();
-/* twine-user-script #4: "DI_CONT.js" */
+/* twine-user-script #4: "App.js" */
+(function(){
+
+
+setup.c10s.App = function(
+    _stateInstance,
+    _subGameBreadCrumbs
+) {
+    this._state = _stateInstance;
+    this._subGameBreadCrumbs = _subGameBreadCrumbs;
+}
+
+let thatProto = setup.c10s.App.prototype;
+
+
+thatProto.getSubGameBreadCrumb = function() {
+	return this._subGameBreadCrumbs[
+		this.getSubGameClass()
+		];
+};
+
+thatProto.getSubGameClass = function() {
+    return this._getSubGameClassFrom(
+        this._state.passage
+    );
+};
+
+thatProto._getSubGameClassFrom = function(passageTitle) {
+    return passageTitle[0] + passageTitle[1]
+};
+
+thatProto.isSubGame = function(subclass) {
+    if (subclass === this.getSubGameClass()) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+
+
+})()
+/* twine-user-script #5: "DI_CONT.js" */
 "use strict";
 
 (function() {
@@ -385,7 +427,12 @@ thatProto.setOn = function() {
 
 
 let setParameters = () => ({
-
+    subGames: {
+		MM: 'Úvodní menu',
+		VS: 'VolnoSnění',
+		TT: 'TěloTaj',
+		EX: 'Experimenty'
+	}
 });
 
 let configurateIt = () => ({
@@ -405,7 +452,11 @@ setup.DI_CONT = {
     },
     createF7s: {
         ajaxAnimation: () => new setup.c10s.AjaxAnimation(
-            
+
+        ),
+        app: () => new setup.c10s.App(
+            State,
+            setup.DI_CONT.params.subGames
         )
     }
 };
@@ -413,7 +464,7 @@ setup.DI_CONT = {
 
 
 })()
-/* twine-user-script #5: "f-setup.js" */
+/* twine-user-script #6: "f-setup.js" */
 "use strict";
 
 //setup.experimental = true; //to show experimental parts of app
@@ -458,44 +509,6 @@ setup.page.openPassageDialog = function(dHeader, dPassage) {
 	Dialog.wiki(Story.get(dPassage).processText()).open();
 };
 
-setup.app = {
-	_subGameClass: '',
-	_subGameClassDefaultVal: 'MM',
-	_subGameBreadCrumbs: {
-		MM: 'Úvodní menu',
-		VS: 'VolnoSnění',
-		TT: 'TěloTaj',
-		EX: 'Experimenty'
-	},
-	init: function() {},
-	setSubGameFrom: function(passageTitle) {
-		let subGameClass = passageTitle[0] + passageTitle[1];
-		this._setSubGameClass(subGameClass);
-	},
-	getSubGameBreadCrumb: function() {
-		return this._subGameBreadCrumbs[
-			this.getSubGameClass()
-			];
-	},
-	getSubGameClass: function() {
-		if (!this._subGameClass) {
-			console.log(`
-WARNING in the passage "${State.passage}":
-You cannot get subGameClass (or appropriate subGameBreadCrumb)
-before calling setup.app.setSubGameFrom(passageTitle);
-setup.app._subGameClassDefaultVal returned
-(instead of correct value)! 
-			`);
-			return this._subGameClassDefaultVal;
-		} else {
-			return this._subGameClass;
-		}
-	},
-	_setSubGameClass: function(subGameClass) {
-		this._subGameClass = subGameClass;
-	},
-}
-
 
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
@@ -534,7 +547,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #6: "q-main.js" */
+/* twine-user-script #7: "q-main.js" */
 "use strict";
 
 /*
@@ -547,7 +560,7 @@ TO DO:
 $(document).ready(function() {
   setup.page.onReady.execute();
 });
-/* twine-user-script #7: "z-l10nStrings.js" */
+/* twine-user-script #8: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/
@@ -841,7 +854,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &#39;&#39;&lt;&lt;button [[TěloTaj|TT_go]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">&lt;div class=&quot;tar&quot;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+&lt;&lt;if _app.isSubGame(&#39;EX&#39;)&gt;&gt;
+  &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;div class=&quot;tar&quot;&gt;
 
   &lt;&lt;button &quot;Nápověda&quot;&gt;&gt;
     &lt;&lt;passageDialog &quot;Nápověda&quot; &quot;Help&quot;&gt;&gt;
@@ -857,16 +875,15 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
 &lt;/div&gt;
 
-&lt;&lt;if setup.app.getSubGameClass() === &quot;EX&quot;&gt;&gt;
+&lt;&lt;if _app.isSubGame(&#39;EX&#39;)&gt;&gt;
   &lt;p class=&quot;tar mt6 mb0&quot;&gt;
   
-    &lt;&lt;set _ajaxAnimation = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;);&gt;&gt;
     &lt;&lt;button &quot;AJAX ON&quot;&gt;&gt;
-      &lt;&lt;run _ajaxAnimation.setOn()&gt;&gt;
+      &lt;&lt;run _ajaxAnim.setOn()&gt;&gt;
     &lt;&lt;/button&gt;&gt;&amp;nbsp;
     
     &lt;&lt;button &quot;AJAX OFF&quot;&gt;&gt;
-      &lt;&lt;run _ajaxAnimation.setOff()&gt;&gt;
+      &lt;&lt;run _ajaxAnim.setOff()&gt;&gt;
     &lt;&lt;/button&gt;&gt;
   
   &lt;/p&gt;
@@ -874,12 +891,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
 &lt;div id=&quot;ajax-anim-right&quot;&gt;
   &lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="PassageHeader" tags="" position="600,225" size="100,100">&lt;&lt;run setup.app.setSubGameFrom(passage())&gt;&gt;
-&lt;&lt;set _baseNav = setup.app.getSubGameBreadCrumb()&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="PassageHeader" tags="" position="600,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+&lt;&lt;set __baseNav = _app.getSubGameBreadCrumb()&gt;&gt;
 
 &lt;div class=&quot;tal&quot;&gt;
 
-  &lt;&lt;if setup.app.getSubGameClass() === &quot;VS&quot;&gt;&gt;
+  &lt;&lt;if _app.isSubGame(&#39;VS&#39;)&gt;&gt;
 
     &lt;&lt;if $roundCounter &gt; 0&gt;&gt;
       &lt;&lt;button &quot;DĚJ&quot;&gt;&gt;
@@ -893,9 +910,9 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
   &lt;&lt;/if&gt;&gt;
 
-  Krok&amp;nbsp;&lt;&lt;= turns()&gt;&gt;: //&#39;&#39;&lt;&lt;= _baseNav&gt;&gt;&#39;&#39;... //
+  Krok&amp;nbsp;&lt;&lt;= turns()&gt;&gt;: //&#39;&#39;&lt;&lt;= __baseNav&gt;&gt;&#39;&#39;... //
 
-  &lt;&lt;if setup.app.getSubGameClass() === &quot;VS&quot;&gt;&gt;
+  &lt;&lt;if _app.isSubGame(&#39;VS&#39;)&gt;&gt;
   
     &#39;&#39;$roundCounter.&#39;&#39;&amp;nbsp;kolo:&amp;nbsp;&lt;&lt;if $roundCounter &gt; 0&gt;&gt;&lt;&lt;= setup.whoseTurn(&quot;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&quot;, &quot;&#39;&#39;//&quot;, &quot;//&#39;&#39;&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;//zatím&amp;nbsp;&#39;&#39;nikdo&#39;&#39;&amp;nbsp;ne//táhne&lt;&lt;/if&gt;&gt;
 
