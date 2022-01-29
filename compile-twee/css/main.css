@@ -64,12 +64,12 @@ input[type="text"] {
     min-width: 10rem;
 }
 
-button {
+button, .see-saw button:disabled {
     background-color: #240;
     border: 1px solid #350;
     transition: 0.6s;
 }
-button:hover {
+button:hover, .see-saw button:disabled:hover {
     background-color: #250;
     border-color: #461;
 }
@@ -146,9 +146,16 @@ textarea:not(:disabled):hover {
 .story-card-1 p.complic.solved {
     border-color: #350;
 }
-button:disabled:hover {
+button:disabled:hover, .see-saw button:hover {
     background-color: #555;
+    border-color: #777;
+}
+.see-saw button {
+    background-color: #444;
     border-color: #666;
+}
+.see-saw {
+    display: inline-block;
 }
 body {
     background-color: #000;

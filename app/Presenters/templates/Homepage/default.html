@@ -164,12 +164,12 @@ input[type="text"] {
     min-width: 10rem;
 }
 
-button {
+button, .see-saw button:disabled {
     background-color: #240;
     border: 1px solid #350;
     transition: 0.6s;
 }
-button:hover {
+button:hover, .see-saw button:disabled:hover {
     background-color: #250;
     border-color: #461;
 }
@@ -246,9 +246,16 @@ textarea:not(:disabled):hover {
 .story-card-1 p.complic.solved {
     border-color: #350;
 }
-button:disabled:hover {
+button:disabled:hover, .see-saw button:hover {
     background-color: #555;
+    border-color: #777;
+}
+.see-saw button {
+    background-color: #444;
     border-color: #666;
+}
+.see-saw {
+    display: inline-block;
 }
 body {
     background-color: #000;
@@ -431,10 +438,16 @@ thatProto.isGivenSubGame = function(subclass) {
 
 thatProto.setDevModeOff = function() {
     this._devMode = false;
+    this.triggerDevModeChange();
 };
 
 thatProto.setDevModeOn = function() {
     this._devMode = true;
+    this.triggerDevModeChange();
+};
+
+thatProto.triggerDevModeChange = function() {
+    $(document).trigger('app:devModeChange');
 };
 
 
@@ -1033,29 +1046,31 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;
-  &lt;span id=&quot;dev-mode-on-btn&quot;&gt;
-    &lt;&lt;button &quot;//DevMode// &#39;&#39;ON&#39;&#39;&quot;&gt;&gt;
-      &lt;&lt;run _app.setDevModeOn()&gt;&gt;
-      &lt;&lt;script&gt;&gt;
-        $(&#39;#dev-mode-on-btn&#39;).find(&#39;button&#39;)
-          .ariaDisabled(true);
-        $(&#39;#dev-mode-off-btn&#39;).find(&#39;button&#39;)
-          .ariaDisabled(false);
-      &lt;&lt;/script&gt;&gt;
-    &lt;&lt;/button&gt;&gt;
-  &lt;/span&gt;
-  &lt;span id=&quot;dev-mode-off-btn&quot;&gt;
-    &lt;&lt;button &quot;//DevMode// &#39;&#39;OFF&#39;&#39;&quot;&gt;&gt;
-      &lt;&lt;run _app.setDevModeOff()&gt;&gt;
-      &lt;&lt;script&gt;&gt;
-        $(&#39;#dev-mode-off-btn&#39;).find(&#39;button&#39;)
-          .ariaDisabled(true);
-        $(&#39;#dev-mode-on-btn&#39;).find(&#39;button&#39;)
-          .ariaDisabled(false);
-      &lt;&lt;/script&gt;&gt;
-    &lt;&lt;/button&gt;&gt;
-  &lt;/span&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
+  &lt;div class=&quot;see-saw&quot;&gt;
+    &lt;span class=&quot;dev-mode-on-btn&quot;&gt;
+      &lt;&lt;button &quot;&#39;&#39;ZAP&#39;&#39;&quot;&gt;&gt;
+        &lt;&lt;run _app.setDevModeOn()&gt;&gt;
+      &lt;&lt;/button&gt;&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;dev-mode-off-btn&quot;&gt;
+      &lt;&lt;button &quot;&#39;&#39;VYP&#39;&#39;&quot;&gt;&gt;
+        &lt;&lt;run _app.setDevModeOff()&gt;&gt;
+      &lt;&lt;/button&gt;&gt;
+    &lt;/span&gt;
+  &lt;/div&gt; //Vývojářský režim//
+&lt;/p&gt;
+&lt;&lt;script&gt;&gt;
+$(document).on(&#39;app:devModeChange&#39;, function(ev) {
+  let onBtns = $(&#39;.dev-mode-on-btn&#39;).find(&#39;button&#39;);
+  let offBtns = $(&#39;.dev-mode-off-btn&#39;).find(&#39;button&#39;);
+  let isDevMode = setup.DI_CONT.getService(&#39;app&#39;).isDevMode();
+  onBtns.ariaDisabled(isDevMode);
+  offBtns.ariaDisabled(!isDevMode);
+});
+$(document).ready(function() {
+  State.getVar(&#39;_app&#39;).triggerDevModeChange();
+});
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;
 &#39;&#39;&lt;&lt;button &quot;NOVÁ HRA&quot;&gt;&gt;

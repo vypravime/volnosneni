@@ -64,26 +64,28 @@
 <div class="pa5"></div>
 <hr>
 <p>
-  <span id="dev-mode-on-btn">
-    <<button "//DevMode// ''ON''">>
-      <<run _app.setDevModeOn()>>
-      <<script>>
-        $('#dev-mode-on-btn').find('button')
-          .ariaDisabled(true);
-        $('#dev-mode-off-btn').find('button')
-          .ariaDisabled(false);
-      <</script>>
-    <</button>>
-  </span>
-  <span id="dev-mode-off-btn">
-    <<button "//DevMode// ''OFF''">>
-      <<run _app.setDevModeOff()>>
-      <<script>>
-        $('#dev-mode-off-btn').find('button')
-          .ariaDisabled(true);
-        $('#dev-mode-on-btn').find('button')
-          .ariaDisabled(false);
-      <</script>>
-    <</button>>
-  </span>
+  <div class="see-saw">
+    <span class="dev-mode-on-btn">
+      <<button "''ZAP''">>
+        <<run _app.setDevModeOn()>>
+      <</button>>
+    </span>
+    <span class="dev-mode-off-btn">
+      <<button "''VYP''">>
+        <<run _app.setDevModeOff()>>
+      <</button>>
+    </span>
+  </div> //Vývojářský režim//
 </p>
+<<script>>
+$(document).on('app:devModeChange', function(ev) {
+  let onBtns = $('.dev-mode-on-btn').find('button');
+  let offBtns = $('.dev-mode-off-btn').find('button');
+  let isDevMode = setup.DI_CONT.getService('app').isDevMode();
+  onBtns.ariaDisabled(isDevMode);
+  offBtns.ariaDisabled(!isDevMode);
+});
+$(document).ready(function() {
+  State.getVar('_app').triggerDevModeChange();
+});
+<</script>>

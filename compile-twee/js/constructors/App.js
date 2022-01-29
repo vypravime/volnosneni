@@ -47,10 +47,16 @@ thatProto.isGivenSubGame = function(subclass) {
 
 thatProto.setDevModeOff = function() {
     this._devMode = false;
+    this.triggerDevModeChange();
 };
 
 thatProto.setDevModeOn = function() {
     this._devMode = true;
+    this.triggerDevModeChange();
+};
+
+thatProto.triggerDevModeChange = function() {
+    $(document).trigger('app:devModeChange');
 };
 
 
