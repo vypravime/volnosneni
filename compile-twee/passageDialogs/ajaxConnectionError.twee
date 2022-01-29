@@ -1,0 +1,17 @@
+:: AjaxConnectionError
+
+<p>
+  Nepodařilo se spojit se serverem...
+</p>
+<p>
+  Zkontrolujte prosím své ''internetové připojení...''<br>
+  a zkuste akci opakovat.
+</p>
+
+<p>
+//(Pokud si myslíte, že problém přetrvává na naší straně,<br>
+dejte mi prosím vědět na email uvedený
+v&nbsp;<<link "nápovědě">>
+        <<passageDialog "Nápověda" "Help">>
+      <</link>>.)//
+</p>

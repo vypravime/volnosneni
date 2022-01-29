@@ -38,14 +38,10 @@
       ).done(function(){
         console.log('second success');
       }).fail(function(){
-        UI.alert(`
-Nepodařilo se <strong>spojit se serverem</strong>,<br>
-prosím <strong>zkontrolujte své internetové připojení</strong>...<br>
-a zkuste akci opakovat.<br><br>
-
-<em>(Pokud si myslíte, že problém přetrvává na naší straně,<br>
-dejte mi prosím vědět na email uvedený v nápovědě.)</em>
-        `);
+        setup.page.openPassageDialog(
+          'Chyba spojení',
+          'AjaxConnectionError'
+        );
       }).always(function(){
         State.temporary.ajaxAnim.setOff();
         let newHeight = dataReceiver.prop('scrollHeight');
