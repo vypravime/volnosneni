@@ -1059,26 +1059,23 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;
-  &lt;div class=&quot;see-saw&quot;&gt;
-    &lt;span class=&quot;dev-mode-on-btn&quot;&gt;
+  &lt;div class=&quot;see-saw dev-mode-test-btns&quot;&gt;
       &lt;&lt;button &quot;&#39;&#39;ZAP&#39;&#39;&quot;&gt;&gt;
         &lt;&lt;run _app.setDevModeOn()&gt;&gt;
       &lt;&lt;/button&gt;&gt;
-    &lt;/span&gt;
-    &lt;span class=&quot;dev-mode-off-btn&quot;&gt;
       &lt;&lt;button &quot;&#39;&#39;VYP&#39;&#39;&quot;&gt;&gt;
         &lt;&lt;run _app.setDevModeOff()&gt;&gt;
       &lt;&lt;/button&gt;&gt;
-    &lt;/span&gt;
   &lt;/div&gt; //Vývojářský režim//
 &lt;/p&gt;
 &lt;&lt;script&gt;&gt;
 State.getVar(&#39;_app&#39;).onDevModeChange((ev) =&gt; {
-  let onBtns = $(&#39;.dev-mode-on-btn&#39;).find(&#39;button&#39;);
-  let offBtns = $(&#39;.dev-mode-off-btn&#39;).find(&#39;button&#39;);
+  let btns = $(&#39;.dev-mode-test-btns&#39;).find(&#39;button&#39;);
   let isDevMode = State.getVar(&#39;_app&#39;).isDevMode();
-  onBtns.ariaDisabled(isDevMode);
-  offBtns.ariaDisabled(!isDevMode);
+  let disableMap = [isDevMode, !isDevMode];
+  btns.each(function(i){
+    $(this).ariaDisabled(disableMap[i]);
+  })
 });
 $(document).ready(function() {
   State.getVar(&#39;_app&#39;).triggerDevModeChange();
@@ -1086,11 +1083,15 @@ $(document).ready(function() {
 &lt;&lt;/script&gt;&gt;
 
 &lt;p&gt;
-  &lt;&lt;seeSaw &quot;dev-mode-toggle-btns&quot; true
+  &lt;&lt;seeSaw false &quot;dev-mode-toggle-btns&quot;
     `{
       &quot;&#39;&#39;ZAP&#39;&#39;&quot;: () =&gt; {_app.setDevModeOn();},
       &quot;&#39;&#39;VYP&#39;&#39;&quot;: () =&gt; {_app.setDevModeOff();}
     }`
+    `[
+      () =&gt; _app.isDevMode(),
+      () =&gt; !_app.isDevMode()
+    ]`
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
@@ -1311,8 +1312,8 @@ pořadí:
     &lt;&lt;run setup.page.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="SeeSaw" tags="widget" position="225,475" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
-    &lt;&lt;set _identClass = _args.shift()&gt;&gt;
     &lt;&lt;set _beginOrEnd = _args.shift()&gt;&gt;
+    &lt;&lt;set _identClass = _args.shift()&gt;&gt;
 
 
     &lt;&lt;if _beginOrEnd === true&gt;&gt;_contents&lt;&lt;/if&gt;&gt;

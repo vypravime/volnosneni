@@ -64,26 +64,23 @@
 <div class="pa5"></div>
 <hr>
 <p>
-  <div class="see-saw">
-    <span class="dev-mode-on-btn">
+  <div class="see-saw dev-mode-test-btns">
       <<button "''ZAP''">>
         <<run _app.setDevModeOn()>>
       <</button>>
-    </span>
-    <span class="dev-mode-off-btn">
       <<button "''VYP''">>
         <<run _app.setDevModeOff()>>
       <</button>>
-    </span>
   </div> //Vývojářský režim//
 </p>
 <<script>>
 State.getVar('_app').onDevModeChange((ev) => {
-  let onBtns = $('.dev-mode-on-btn').find('button');
-  let offBtns = $('.dev-mode-off-btn').find('button');
+  let btns = $('.dev-mode-test-btns').find('button');
   let isDevMode = State.getVar('_app').isDevMode();
-  onBtns.ariaDisabled(isDevMode);
-  offBtns.ariaDisabled(!isDevMode);
+  let disableMap = [isDevMode, !isDevMode];
+  btns.each(function(i){
+    $(this).ariaDisabled(disableMap[i]);
+  })
 });
 $(document).ready(function() {
   State.getVar('_app').triggerDevModeChange();
@@ -91,10 +88,14 @@ $(document).ready(function() {
 <</script>>
 
 <p>
-  <<seeSaw "dev-mode-toggle-btns" true
+  <<seeSaw false "dev-mode-toggle-btns"
     `{
       "''ZAP''": () => {_app.setDevModeOn();},
       "''VYP''": () => {_app.setDevModeOff();}
     }`
+    `[
+      () => _app.isDevMode(),
+      () => !_app.isDevMode()
+    ]`
   >>//Vývojářský režim//<</seeSaw>>
 </p>

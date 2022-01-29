@@ -1,8 +1,8 @@
 :: SeeSaw [widget]
 
 <<widget "seeSaw" container>>
-    <<set _identClass = _args.shift()>>
     <<set _beginOrEnd = _args.shift()>>
+    <<set _identClass = _args.shift()>>
 
 
     <<if _beginOrEnd === true>>_contents<</if>>
