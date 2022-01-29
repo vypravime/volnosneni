@@ -594,6 +594,18 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
+
+setup.crazyFunction = function(onFunc, disableMap, identClass) {
+	onFunc.call(setup.DI_CONT.getService('app'),
+		function(ev) {
+			let btns = $(`.${identClass}`)
+				.find('button');
+			console.log(btns);
+			btns.each(function(i){
+				$(this).ariaDisabled(disableMap[i]());
+			});
+	});
+};
 /* twine-user-script #7: "q-main.js" */
 "use strict";
 
@@ -1092,6 +1104,7 @@ $(document).ready(function() {
       () =&gt; _app.isDevMode(),
       () =&gt; !_app.isDevMode()
     ]`
+    `_app.onDevModeChange`
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
@@ -1327,6 +1340,12 @@ pořadí:
     &lt;/div&gt;
 
     &lt;&lt;if _beginOrEnd === false&gt;&gt;_contents&lt;&lt;/if&gt;&gt;
+
+    &lt;&lt;run console.log(_identClass)&gt;&gt;
+    &lt;&lt;run console.log(_args[2])&gt;&gt;
+    &lt;&lt;run console.log(_args[1][0]())&gt;&gt;
+
+    &lt;&lt;run setup.crazyFunction(_args[2], _args[1], _identClass)&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

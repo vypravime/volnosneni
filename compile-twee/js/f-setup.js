@@ -80,3 +80,15 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
+
+setup.crazyFunction = function(onFunc, disableMap, identClass) {
+	onFunc.call(setup.DI_CONT.getService('app'),
+		function(ev) {
+			let btns = $(`.${identClass}`)
+				.find('button');
+			console.log(btns);
+			btns.each(function(i){
+				$(this).ariaDisabled(disableMap[i]());
+			});
+	});
+};

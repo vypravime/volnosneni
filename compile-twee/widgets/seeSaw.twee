@@ -17,4 +17,10 @@
 
     <<if _beginOrEnd === false>>_contents<</if>>
 
+    <<run console.log(_identClass)>>
+    <<run console.log(_args[2])>>
+    <<run console.log(_args[1][0]())>>
+
+    <<run setup.crazyFunction(_args[2], _args[1], _identClass)>>
+
 <</widget>>
