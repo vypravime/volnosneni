@@ -108,7 +108,10 @@ h3 {
 .tal {
     text-align: left;
 }
-.tac, .passage.aligncenter, .passage h1, .passage h2 {
+.tac,
+.passage.aligncenter,
+.passage h1,
+.passage h2 {
     text-align: center;
 }
 .tar {
@@ -123,10 +126,12 @@ hr {
     margin-top: 0.9rem;
 	margin-bottom: 0.9rem;
 }
-.mt6, #ui-bar-body p.mt6 {
+.mt6,
+#ui-bar-body p.mt6 {
     margin-top: 0.6rem;
 }
-.mb6, #ui-bar-body p.mb6 {
+.mb6,
+#ui-bar-body p.mb6 {
     margin-bottom: 0.6rem
 }
 .mt0,
@@ -164,16 +169,32 @@ input[type="text"] {
     min-width: 10rem;
 }
 
-button, .see-saw button:disabled {
+button,
+.see-saw button:disabled {
     background-color: #240;
     border: 1px solid #350;
     transition: 0.6s;
 }
-button:hover, .see-saw button:disabled:hover {
+button:hover,
+.see-saw button:disabled:hover {
     background-color: #250;
     border-color: #461;
 }
-#story-caption button, #story-caption button:hover,
+button:disabled:hover,
+.see-saw button:hover {
+    background-color: #555;
+    border-color: #777;
+}
+button:disabled,
+.see-saw button {
+    background-color: #444;
+    border-color: #666;
+}
+.see-saw {
+    display: inline-block;
+}
+#story-caption button,
+#story-caption button:hover,
 #menu li a:hover {
     background-color: transparent;
 }
@@ -185,36 +206,48 @@ a:hover {
     color: #fc5;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
     border-radius: 0.2rem;
 }
-#my-header, #my-footer, .passage > .my-passage {
+#my-header,
+#my-footer,
+.passage > .my-passage {
     padding: 0.5rem;
     border-left: 1px solid #444;
     border-right: 1px solid #444;
     background-color: #111;
     overflow-x: auto;
 }
-#my-header, #my-footer, #ui-dialog-titlebar {
+#my-header,
+#my-footer,
+#ui-dialog-titlebar {
     background-color: #420;
     border: 1px solid #530;
 }
-#ui-dialog-titlebar, #my-header {
+#ui-dialog-titlebar,
+#my-header {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     border-bottom: none;
 }
-#ui-dialog-body, #my-footer {
+#ui-dialog-body,
+#my-footer {
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     border-top: none;
     overflow-x: auto;
 }
-.story-card-1, textarea, input[type="text"] {
+.story-card-1,
+textarea,
+input[type="text"] {
     background-color: #efc;
     color: #204;
 }
-textarea, input[type="text"]{
+textarea,
+input[type="text"]{
     border-color: #461;
     border-width: 5px;
     transition: 0.6s;
@@ -246,17 +279,7 @@ textarea:not(:disabled):hover {
 .story-card-1 p.complic.solved {
     border-color: #350;
 }
-button:disabled:hover, .see-saw button:hover {
-    background-color: #555;
-    border-color: #777;
-}
-.see-saw button {
-    background-color: #444;
-    border-color: #666;
-}
-.see-saw {
-    display: inline-block;
-}
+
 body {
     background-color: #000;
 }
