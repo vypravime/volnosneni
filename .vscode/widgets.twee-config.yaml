@@ -42,4 +42,45 @@ sugarcube-2:
       name: seeSaw
       container: true
       description: |-
-        **To be done...**
+        **Renders group of cennected state togglable buttons.**
+
+        [Usage:]
+        ```
+        <<seeSaw true/false "buttons-recognize-css-class"
+
+        `{
+          "button1text": ()=> {obj.fireAfterClick(); ...;},
+          "button2text": ()=> {obj.fireAfterClick(); ...;},
+          "button3text": ()=> {obj.fireAfterClick(); ...;},
+          ...
+        }`
+        `[
+          ()=> obj.was1stBtnChosen():boolean,
+          ()=> obj.was2ndBtnChosen():boolean,
+          ()=> obj.was3rdBtnChosen():boolean
+          ]`
+        `[obj, 'itsMethodToSetCustomEventHandler']`
+        `[obj, 'itsMethodToTriggerCustomEvent']`
+
+        >>general description of buttons<</seeSaw>>
+        ```
+        [/usage]
+
+        *(if the widget's 1st true/false parameter
+          is strictly `TRUE`, then the description
+          is rendered before all buttons...
+          if the widget's 1st true/false parameter
+          is strictly `FALSE`, then the description
+          is rendered after all buttons...
+          by not strictly boolean value of 1st parameter
+          the description is omitted.)*
+        
+        *(you can use markup in the buttons' texts
+          inside the widget's 2nd parameter property names)*
+        
+        *(inside the widget's 2nd parameter,
+          if the given `obj.fireAfterClick()` does not
+          trigger customEvent inside its default body,
+          you can write it as last step of the wrapping
+          anonymous function
+          `()=>{step1();step2();...;triggerEvent()}`)*

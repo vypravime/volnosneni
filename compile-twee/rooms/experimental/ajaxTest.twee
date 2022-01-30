@@ -69,12 +69,12 @@
   <<seeSaw false "dev-mode-toggle-btns"
 
     `{
-      "''ZAP''": () => {_app.setDevModeOn();},
-      "''VYP''": () => {_app.setDevModeOff();}
+      "''ZAP''": ()=> {_app.setDevModeOn();},
+      "''VYP''": ()=> {_app.setDevModeOff();}
     }`
     `[
-      () => _app.isDevMode(),
-      () => !_app.isDevMode()
+      ()=> _app.isDevMode(),
+      ()=> !_app.isDevMode()
     ]`
     `[_app, 'onDevModeChange']`
     `[_app, 'triggerDevModeChange']`
