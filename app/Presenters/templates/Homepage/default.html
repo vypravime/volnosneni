@@ -612,7 +612,9 @@ thatProto.onLeave = {
 thatProto.onUIBarToggling = function(eventHandler) {
     $(document).on(
         this._eventNames['UIBarToggling'],
-        (ev) => {eventHandler(ev);}
+        (ev, isBarForMoveWaiting) => {
+            eventHandler(ev, isBarForMoveWaiting);
+        }
     );
 };
 
@@ -652,18 +654,32 @@ thatProto.registerGlobalEventHandlers = function() {
 };
 
 thatProto.registerUIBarTogglingHandlers = function() {
-    this.onUIBarToggling((ev)=> {
-        let wasStowed = this._uibar.isStowed();
-        if (wasStowed) {
-            this._uibar.unstow();
-        } else {
-            this._uibar.stow();
-        }
-        let isStowed = !wasStowed;
-
-        this.textUIBarToggleBtn(isStowed);
-
+    this.onUIBarToggling((ev, isBarForMoveWaiting)=> {
         
+        if(isBarForMoveWaiting) {
+            let wasStowed = this._uibar.isStowed();
+            if (wasStowed) {
+                this._uibar.unstow();
+            } else {
+                this._uibar.stow();
+            }
+            let isStowed = !wasStowed;
+            this.textUIBarToggleBtn(isStowed);
+        } else {
+            setTimeout(()=>{
+                let isStowed = this._uibar.isStowed();
+                this.textUIBarToggleBtn(isStowed);
+            },100);
+        }
+        
+    
+    });
+
+    /* so that the system default ui button also triggers my custom event */
+    $(document).ready(()=>{
+        $('#ui-bar-toggle').ariaClick(()=>{
+            this.triggerUIBarToggling(false); //fase argument, because the UIBAR is now moving by default system a doesn't need to be moved twice
+        });
     });
 };
 
@@ -679,8 +695,13 @@ thatProto.textUIBarToggleBtn = function(isBarStowed) {
 thatProto.triggerDevModeChange = function() {
     $(document).trigger(this._eventNames['devModeChange']);
 };
-thatProto.triggerUIBarToggling = function() {
-    $(document).trigger(this._eventNames['UIBarToggling']);
+thatProto.triggerUIBarToggling = function(
+    isBarForMoveWaiting = true
+) {
+    $(document).trigger(
+        this._eventNames['UIBarToggling'],
+        [isBarForMoveWaiting]
+    );
 };
 
 
