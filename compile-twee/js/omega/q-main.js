@@ -16,5 +16,4 @@ setup.sugarcubeConfigurator = setup.DI_CONT.getService(
 setup.myPage = setup.DI_CONT.getService(
   'myPage'
 );
-setup.myPage.registerGlobalEventHandlers();
-setup.myPage.registerUIBarTogglingHandlers();
+setup.myPage.registerAllCustomEventsHandlers();

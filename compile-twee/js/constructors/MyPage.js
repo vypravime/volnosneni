@@ -8,16 +8,24 @@ setup.c10s.MyPage = function(
     _metaDater,
     _dialogInstance,
     _storyInstance,
-    _uibarInstance
+    _uibarInstance,
+    _htmlClasses
 ) {
     this._metaDater = _metaDater;
     this._dialog = _dialogInstance;
     this._story = _storyInstance;
     this._uibar = _uibarInstance;
+    this._htmlClasses = _htmlClasses;
 
     this._eventNames = {
         devModeChange: 'app:devModeChange',
         UIBarToggling: 'UIBar:toggling'
+    };
+    this._labels = {
+        UIBarToggleBtn: {
+            toUnstow: 'Panel ukaž',
+            toStow: 'Panel skryj'
+        }
     };
 };
 
@@ -67,6 +75,11 @@ thatProto.openPassageDialog = function(
     ).open();
 };
 
+thatProto.registerAllCustomEventsHandlers = function() {
+    this.registerGlobalEventHandlers();
+    this.registerUIBarTogglingHandlers();
+};
+
 thatProto.registerGlobalEventHandlers = function() {
     window.addEventListener(
         'beforeunload',
@@ -93,14 +106,22 @@ thatProto.registerUIBarTogglingHandlers = function() {
         }
         let isStowed = !wasStowed;
 
+        this.textUIBarToggleBtn(isStowed);
+
         
     });
 };
 
 thatProto.textUIBarToggleBtn = function(isBarStowed) {
-    $(document).ready((isStowed)=> {
-        let ToggleBtnText = isStowed ? 'Ukaž&nbsp;&nbsp;Panel': 'Skryj&nbsp;Panel';
-        /* to be done */
+    $(document).ready(()=> {
+        let BtnText = ''
+        if (isBarStowed) {
+            BtnText = this._labels.UIBarToggleBtn.toUnstow;
+        } else {
+            BtnText = this._labels.UIBarToggleBtn.toStow;
+        }
+        $(`.${this._htmlClasses.components.UIBarToggleButton.defaultClass}`)
+        .find('button').html(BtnText);
     });
 }
 

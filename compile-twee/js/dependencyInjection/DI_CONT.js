@@ -48,6 +48,9 @@ let setParameters = () => ({
                         eventNameKey: 'devModeChange'
                     }
                 }
+            },
+            UIBarToggleButton: {
+                defaultClass: 'uibar-toggle-btn'
             }
         }
     }
@@ -100,7 +103,8 @@ setup.DI_CONT = {
                 this.getService('metaDater'),
                 Dialog,
                 Story,
-                UIBar
+                UIBar,
+                this.params.htmlClasses
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
