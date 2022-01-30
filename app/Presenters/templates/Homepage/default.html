@@ -595,15 +595,19 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	return  _string;
 };
 
-setup.crazyFunction = function(onFunc, disableMap, identClass) {
-	onFunc.call(setup.DI_CONT.getService('app'),
+setup.crazyFunction = function(onFunc, disableMap, identClass, triggrer) {
+	(onFunc[0][onFunc[1]])(
 		function(ev) {
 			let btns = $(`.${identClass}`)
 				.find('button');
-			console.log(btns);
 			btns.each(function(i){
 				$(this).ariaDisabled(disableMap[i]());
 			});
+	});
+	
+	/*aby se tlačítka zabarvila už před prvním kliknutím*/
+	$(document).ready(function(){
+		(triggrer[0][triggrer[1]])();
 	});
 };
 /* twine-user-script #7: "q-main.js" */
@@ -1104,7 +1108,8 @@ $(document).ready(function() {
       () =&gt; _app.isDevMode(),
       () =&gt; !_app.isDevMode()
     ]`
-    `_app.onDevModeChange`
+    `[_app, &#39;onDevModeChange&#39;]`
+    `[_app, &#39;triggerDevModeChange&#39;]`
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
@@ -1325,27 +1330,32 @@ pořadí:
     &lt;&lt;run setup.page.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="SeeSaw" tags="widget" position="225,475" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
-    &lt;&lt;set _beginOrEnd = _args.shift()&gt;&gt;
-    &lt;&lt;set _identClass = _args.shift()&gt;&gt;
+    &lt;&lt;set _wBeginWithContent = _args.shift()&gt;&gt;
+    &lt;&lt;set _wIdentClass = _args.shift()&gt;&gt;
+    &lt;&lt;set _wButtons = _args.shift()&gt;&gt;
+    &lt;&lt;set _wDisableMap = _args.shift()&gt;&gt;
+    &lt;&lt;set _wOnEventRegistrer = _args.shift()&gt;&gt;
+    &lt;&lt;set _wEventtriggrer = _args.shift()&gt;&gt;
 
 
-    &lt;&lt;if _beginOrEnd === true&gt;&gt;_contents&lt;&lt;/if&gt;&gt;
+    &lt;&lt;if _wBeginWithContent === true&gt;&gt;_contents&lt;&lt;/if&gt;&gt;
 
-    &lt;div @class=&quot;&#39;see-saw &#39; + _identClass&quot;&gt;
-        &lt;&lt;for _label,_function range _args[0]&gt;&gt;
+    &lt;div @class=&quot;&#39;see-saw &#39; + _wIdentClass&quot;&gt;
+        &lt;&lt;for _label,_function range _wButtons&gt;&gt;
         &lt;&lt;capture _function&gt;&gt;
             &lt;&lt;button _label&gt;&gt;&lt;&lt;run _function()&gt;&gt;&lt;&lt;/button&gt;&gt;
         &lt;&lt;/capture&gt;&gt;
         &lt;&lt;/for&gt;&gt;
     &lt;/div&gt;
 
-    &lt;&lt;if _beginOrEnd === false&gt;&gt;_contents&lt;&lt;/if&gt;&gt;
+    &lt;&lt;if _wBeginWithContent === false&gt;&gt;_contents&lt;&lt;/if&gt;&gt;
 
-    &lt;&lt;run console.log(_identClass)&gt;&gt;
-    &lt;&lt;run console.log(_args[2])&gt;&gt;
-    &lt;&lt;run console.log(_args[1][0]())&gt;&gt;
-
-    &lt;&lt;run setup.crazyFunction(_args[2], _args[1], _identClass)&gt;&gt;
+    &lt;&lt;run setup.crazyFunction(
+        _wOnEventRegistrer,
+        _wDisableMap,
+        _wIdentClass,
+        _wEventtriggrer
+        )&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

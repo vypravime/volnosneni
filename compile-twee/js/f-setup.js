@@ -81,14 +81,18 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	return  _string;
 };
 
-setup.crazyFunction = function(onFunc, disableMap, identClass) {
-	onFunc.call(setup.DI_CONT.getService('app'),
+setup.crazyFunction = function(onFunc, disableMap, identClass, triggrer) {
+	(onFunc[0][onFunc[1]])(
 		function(ev) {
 			let btns = $(`.${identClass}`)
 				.find('button');
-			console.log(btns);
 			btns.each(function(i){
 				$(this).ariaDisabled(disableMap[i]());
 			});
+	});
+	
+	/*aby se tlačítka zabarvila už před prvním kliknutím*/
+	$(document).ready(function(){
+		(triggrer[0][triggrer[1]])();
 	});
 };

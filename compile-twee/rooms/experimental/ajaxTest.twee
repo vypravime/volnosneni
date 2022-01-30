@@ -97,6 +97,7 @@ $(document).ready(function() {
       () => _app.isDevMode(),
       () => !_app.isDevMode()
     ]`
-    `_app.onDevModeChange`
+    `[_app, 'onDevModeChange']`
+    `[_app, 'triggerDevModeChange']`
   >>//Vývojářský režim//<</seeSaw>>
 </p>

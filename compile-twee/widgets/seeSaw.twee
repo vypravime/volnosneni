@@ -1,26 +1,31 @@
 :: SeeSaw [widget]
 
 <<widget "seeSaw" container>>
-    <<set _beginOrEnd = _args.shift()>>
-    <<set _identClass = _args.shift()>>
+    <<set _wBeginWithContent = _args.shift()>>
+    <<set _wIdentClass = _args.shift()>>
+    <<set _wButtons = _args.shift()>>
+    <<set _wDisableMap = _args.shift()>>
+    <<set _wOnEventRegistrer = _args.shift()>>
+    <<set _wEventtriggrer = _args.shift()>>
 
 
-    <<if _beginOrEnd === true>>_contents<</if>>
+    <<if _wBeginWithContent === true>>_contents<</if>>
 
-    <div @class="'see-saw ' + _identClass">
-        <<for _label,_function range _args[0]>>
+    <div @class="'see-saw ' + _wIdentClass">
+        <<for _label,_function range _wButtons>>
         <<capture _function>>
             <<button _label>><<run _function()>><</button>>
         <</capture>>
         <</for>>
     </div>
 
-    <<if _beginOrEnd === false>>_contents<</if>>
+    <<if _wBeginWithContent === false>>_contents<</if>>
 
-    <<run console.log(_identClass)>>
-    <<run console.log(_args[2])>>
-    <<run console.log(_args[1][0]())>>
-
-    <<run setup.crazyFunction(_args[2], _args[1], _identClass)>>
+    <<run setup.crazyFunction(
+        _wOnEventRegistrer,
+        _wDisableMap,
+        _wIdentClass,
+        _wEventtriggrer
+        )>>
 
 <</widget>>
