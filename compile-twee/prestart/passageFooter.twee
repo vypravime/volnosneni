@@ -14,8 +14,8 @@
     <<passageDialog "Nápověda" "Help">>
   <</button>>&nbsp;
   
-  <span class="uibar-toggle-btn">
-    <<button "Přepni lištu">>
+  <span @class="_myPage.getUIBarToggleBtnClass()">
+    <<button `_myPage.getUIBarToggleBtnLabel()`>>
       <<run _myPage.triggerUIBarToggling()>>
     <</button>>
   </span>

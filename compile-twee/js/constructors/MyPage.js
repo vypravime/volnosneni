@@ -32,6 +32,23 @@ setup.c10s.MyPage = function(
 let thatProto = setup.c10s.MyPage.prototype;
 
 
+thatProto.getUIBarToggleBtnClass = function() {
+    return this._htmlClasses.components.UIBarToggleButton.defaultClass;
+};
+
+thatProto.getUIBarToggleBtnLabel = function(isBarStowed) {
+    if (typeof isBarStowed === 'undefined') {
+        isBarStowed = this._uibar.isStowed();
+    }
+    let BtnText = ''
+    if (isBarStowed) {
+        BtnText = this._labels.UIBarToggleBtn.toUnstow;
+    } else {
+        BtnText = this._labels.UIBarToggleBtn.toStow;
+    }
+    return BtnText;
+}
+
 thatProto.onDevModeChange = function(eventHandler) {
     $(document).on(
         this._eventNames['devModeChange'],
@@ -114,13 +131,9 @@ thatProto.registerUIBarTogglingHandlers = function() {
 
 thatProto.textUIBarToggleBtn = function(isBarStowed) {
     $(document).ready(()=> {
-        let BtnText = ''
-        if (isBarStowed) {
-            BtnText = this._labels.UIBarToggleBtn.toUnstow;
-        } else {
-            BtnText = this._labels.UIBarToggleBtn.toStow;
-        }
-        $(`.${this._htmlClasses.components.UIBarToggleButton.defaultClass}`)
+        let BtnText = this.getUIBarToggleBtnLabel(isBarStowed);
+        let BtnClass = this.getUIBarToggleBtnClass();
+        $(`.${BtnClass}`)
         .find('button').html(BtnText);
     });
 }
