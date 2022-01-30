@@ -14,11 +14,45 @@ let setParameters = () => ({
     eventNames: {
         devModeChange: 'app:devModeChange'
     },
-    cssIds: {
-
+    htmlIds: {
+        'my-header': {
+            origin: 'the passage PassageHeader is automatically wrapped into div#my-header by my SugarcubeConfigurator via Config.passages.onProcess'
+        },
+        'my-footer': {
+            origin: 'the passage PassageFooter is automatically wrapped into div#my-footer by my SugarcubeConfigurator via Config.passages.onProcess'
+        },
+        'ajax-anim-right': {
+            origin: 'manually added in the PassageFooter template',
+            purpose: 'the ajax-loader inside makes very right position fixed narrow column being always on display - to always indicate, whether ajax loading is ongoing'
+        }
     },
-    cssClasses: {
-
+    htmlClasses: {
+        passageTags: {
+            alignCenter: {
+                class:'aligncenter',
+                purpose: 'for css text-align: center styling'
+            },
+            noAutoWrapDiv: {
+                class: '',
+                purpose: 'This passage is not wrapped into div.my-passage by my SugarcubeConfigurator via Config.passages.onProcess'
+            }
+        },
+        animations: {
+            ajaxLoader: {
+                defaultClass: 'ajax-anim-1'
+            }
+        },
+        components: {
+            togglableButtonsGroup: {
+                defaultClass: 'see-saw',
+                withDefaultUsages: {
+                    devModeToggles: {
+                        class: 'dev-mode-toggle-btns',
+                        eventNameKey: 'devModeChange'
+                    }
+                }
+            }
+        }
     }
 });
 
