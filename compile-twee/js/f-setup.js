@@ -47,15 +47,6 @@ setup.page.openPassageDialog = function(dHeader, dPassage) {
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
 setup.fPStartADefault = 3;
-setup.fPStartAGetDesc = function(amount){
-	if(amount === 1) {
-		return 'osudový kámen';
-	} else if((amount > 1) && (amount < 5)) {
-		return 'osudové kameny';
-	} else {
-		return 'osudových kamenů';
-	}
-};
 setup.addPlayer = function(arg) {
 	return {name: arg, fp: setup.fPStartADefault};
 };

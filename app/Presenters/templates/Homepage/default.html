@@ -445,7 +445,56 @@ thatProto.triggerDevModeChange = function() {
 
 
 })()
-/* twine-user-script #4: "MetaDater.js" */
+/* twine-user-script #4: "CzechLang.js" */
+"use strict";
+
+(function(){
+
+
+
+setup.c10s.CzechLang = function(
+
+) {
+
+};
+
+let thatProto = setup.c10s.CzechLang.prototype;
+
+/**EXAMPLE:
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 7): returns '7 kamenů'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 1): returns '1 kámen'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 4): returns '4 kameny'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 0): returns '0 kamenů'
+ * 
+ EXAMPLE OF OMITTING INTEGER IN RETURN VALUE:
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 7, false): returns 'kamenů'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 1, false): returns 'kámen'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 4, false): returns 'kameny'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 0, false): returns 'kamenů'
+ */
+thatProto.numberOf = function(
+    oneTwoFiveOfItArray,
+    amount,
+    returnWithInteger = true
+    ) {
+    let [oneOfIt, twoOfIt, fiveOfIt] = oneTwoFiveOfItArray;
+    let prepender = '';
+    if(returnWithInteger) {
+        prepender = `${amount} `;
+    }
+        if(amount === 1) {
+            return `${prepender}${oneOfIt}`;
+        } else if((amount > 1) && (amount < 5)) {
+            return `${prepender}${twoOfIt}`;
+        } else {  // this is also, if the amount equals to zero
+            return `${prepender}${fiveOfIt}`;
+        }
+    };
+
+
+
+})();
+/* twine-user-script #5: "MetaDater.js" */
 "use strict";
 
 (function(){
@@ -496,7 +545,7 @@ thatProto.setOneTimeAutoloadSkip = function() {
 
 
 })();
-/* twine-user-script #5: "SugarcubeConfigurator.js" */
+/* twine-user-script #6: "SugarcubeConfigurator.js" */
 "use strict";
 
 (function(){
@@ -565,7 +614,7 @@ setup.c10s.SugarcubeConfigurator = function(
 
     
 })();
-/* twine-user-script #6: "DI_CONT.js" */
+/* twine-user-script #7: "DI_CONT.js" */
 "use strict";
 
 (function() {
@@ -668,6 +717,10 @@ setup.DI_CONT = {
         metaDater: function() {
             return new setup.c10s.MetaDater(
                 State
+            );},
+        czechLang: function() {
+            return new setup.c10s.CzechLang(
+
             );}
     }
 };
@@ -675,7 +728,7 @@ setup.DI_CONT = {
 
 
 })()
-/* twine-user-script #7: "f-setup.js" */
+/* twine-user-script #8: "f-setup.js" */
 "use strict";
 
 //setup.experimental = true; //to show experimental parts of app
@@ -725,15 +778,6 @@ setup.page.openPassageDialog = function(dHeader, dPassage) {
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
 setup.fPStartADefault = 3;
-setup.fPStartAGetDesc = function(amount){
-	if(amount === 1) {
-		return 'osudový kámen';
-	} else if((amount > 1) && (amount < 5)) {
-		return 'osudové kameny';
-	} else {
-		return 'osudových kamenů';
-	}
-};
 setup.addPlayer = function(arg) {
 	return {name: arg, fp: setup.fPStartADefault};
 };
@@ -759,7 +803,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #8: "q-main.js" */
+/* twine-user-script #9: "q-main.js" */
 "use strict";
 
 /*
@@ -776,7 +820,7 @@ $(document).ready(function() {
 setup.sugarcubeConfigurator = setup.DI_CONT.getService(
   'sugarcubeConfigurator'
 );
-/* twine-user-script #9: "z-l10nStrings.js" */
+/* twine-user-script #10: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/

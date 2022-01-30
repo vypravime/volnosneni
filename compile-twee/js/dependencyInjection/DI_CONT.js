@@ -100,6 +100,10 @@ setup.DI_CONT = {
         metaDater: function() {
             return new setup.c10s.MetaDater(
                 State
+            );},
+        czechLang: function() {
+            return new setup.c10s.CzechLang(
+
             );}
     }
 };
