@@ -545,14 +545,17 @@ thatProto.setOneTimeAutoloadSkip = function() {
 setup.c10s.MyPage = function(
     _metaDater,
     _dialogInstance,
-    _story
+    _storyInstance,
+    _uibarInstance
 ) {
     this._metaDater = _metaDater;
     this._dialog = _dialogInstance;
-    this._story = _story;
+    this._story = _storyInstance;
+    this._uibar = _uibarInstance;
 
     this._eventNames = {
-        devModeChange: 'app:devModeChange'
+        devModeChange: 'app:devModeChange',
+        UIBarToggling: 'UIBar:toggling'
     };
 };
 
@@ -579,6 +582,13 @@ thatProto.onLeave = {
 	disablePreventation: function() {
 		this._preventing = false;
 	}
+};
+
+thatProto.onUIBarToggling = function(eventHandler) {
+    $(document).on(
+        this._eventNames['UIBarToggling'],
+        (ev) => {eventHandler(ev);}
+    );
 };
 
 thatProto.openPassageDialog = function(
@@ -608,12 +618,36 @@ thatProto.registerGlobalEventHandlers = function() {
             this._metaDater.setOneTimeAutoloadSkip();
         }
     );
+
 };
+
+thatProto.registerUIBarTogglingHandlers = function() {
+    this.onUIBarToggling((ev)=> {
+        let wasStowed = this._uibar.isStowed();
+        if (wasStowed) {
+            this._uibar.unstow();
+        } else {
+            this._uibar.stow();
+        }
+        let isStowed = !wasStowed;
+
+        
+    });
+};
+
+thatProto.textUIBarToggleBtn = function(isBarStowed) {
+    $(document).ready((isStowed)=> {
+        let ToggleBtnText = isStowed ? 'Ukaž&nbsp;&nbsp;Panel': 'Skryj&nbsp;Panel';
+        /* to be done */
+    });
+}
 
 thatProto.triggerDevModeChange = function() {
     $(document).trigger(this._eventNames['devModeChange']);
 };
-
+thatProto.triggerUIBarToggling = function() {
+    $(document).trigger(this._eventNames['UIBarToggling']);
+};
 
 
 
@@ -789,7 +823,8 @@ setup.DI_CONT = {
             return new setup.c10s.MyPage(
                 this.getService('metaDater'),
                 Dialog,
-                Story
+                Story,
+                UIBar
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
@@ -857,6 +892,7 @@ setup.myPage = setup.DI_CONT.getService(
   'myPage'
 );
 setup.myPage.registerGlobalEventHandlers();
+setup.myPage.registerUIBarTogglingHandlers();
 /* twine-user-script #11: "z-l10nStrings.js" */
 "use strict";
 
@@ -1158,10 +1194,13 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &#39;&#39;&lt;&lt;button [[TěloTaj|TT_go]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">/*DEPENDENCIES: */
+&lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
+&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;if _app.isDevMode()&gt;&gt;
   &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+/*\DEPENDENCIES */
 
 &lt;div class=&quot;tar&quot;&gt;
 
@@ -1169,13 +1208,11 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     &lt;&lt;passageDialog &quot;Nápověda&quot; &quot;Help&quot;&gt;&gt;
   &lt;&lt;/button&gt;&gt;&amp;nbsp;
   
-  &lt;&lt;button &quot;Přepni lištu&quot;&gt;&gt;
-    &lt;&lt;if UIBar.isStowed()&gt;&gt;
-      &lt;&lt;run UIBar.unstow()&gt;&gt;
-    &lt;&lt;else&gt;&gt;
-      &lt;&lt;run UIBar.stow()&gt;&gt;
-    &lt;&lt;/if&gt;&gt;
-  &lt;&lt;/button&gt;&gt;
+  &lt;span class=&quot;uibar-toggle-btn&quot;&gt;
+    &lt;&lt;button &quot;Přepni lištu&quot;&gt;&gt;
+      &lt;&lt;run _myPage.triggerUIBarToggling()&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  &lt;/span&gt;
 
 &lt;/div&gt;
 

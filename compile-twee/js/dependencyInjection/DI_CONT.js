@@ -99,7 +99,8 @@ setup.DI_CONT = {
             return new setup.c10s.MyPage(
                 this.getService('metaDater'),
                 Dialog,
-                Story
+                Story,
+                UIBar
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(

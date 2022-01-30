@@ -1,9 +1,12 @@
 :: PassageFooter
 
+/*DEPENDENCIES: */
+<<set _myPage = setup.DI_CONT.getService('myPage')>>
 <<set _app = setup.DI_CONT.getService('app')>>
 <<if _app.isDevMode()>>
   <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
 <</if>>
+/*\DEPENDENCIES */
 
 <div class="tar">
 
@@ -11,13 +14,11 @@
     <<passageDialog "Nápověda" "Help">>
   <</button>>&nbsp;
   
-  <<button "Přepni lištu">>
-    <<if UIBar.isStowed()>>
-      <<run UIBar.unstow()>>
-    <<else>>
-      <<run UIBar.stow()>>
-    <</if>>
-  <</button>>
+  <span class="uibar-toggle-btn">
+    <<button "Přepni lištu">>
+      <<run _myPage.triggerUIBarToggling()>>
+    <</button>>
+  </span>
 
 </div>
 

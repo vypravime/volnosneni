@@ -17,3 +17,4 @@ setup.myPage = setup.DI_CONT.getService(
   'myPage'
 );
 setup.myPage.registerGlobalEventHandlers();
+setup.myPage.registerUIBarTogglingHandlers();

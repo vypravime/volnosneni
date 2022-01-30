@@ -7,14 +7,17 @@
 setup.c10s.MyPage = function(
     _metaDater,
     _dialogInstance,
-    _story
+    _storyInstance,
+    _uibarInstance
 ) {
     this._metaDater = _metaDater;
     this._dialog = _dialogInstance;
-    this._story = _story;
+    this._story = _storyInstance;
+    this._uibar = _uibarInstance;
 
     this._eventNames = {
-        devModeChange: 'app:devModeChange'
+        devModeChange: 'app:devModeChange',
+        UIBarToggling: 'UIBar:toggling'
     };
 };
 
@@ -41,6 +44,13 @@ thatProto.onLeave = {
 	disablePreventation: function() {
 		this._preventing = false;
 	}
+};
+
+thatProto.onUIBarToggling = function(eventHandler) {
+    $(document).on(
+        this._eventNames['UIBarToggling'],
+        (ev) => {eventHandler(ev);}
+    );
 };
 
 thatProto.openPassageDialog = function(
@@ -70,12 +80,36 @@ thatProto.registerGlobalEventHandlers = function() {
             this._metaDater.setOneTimeAutoloadSkip();
         }
     );
+
 };
+
+thatProto.registerUIBarTogglingHandlers = function() {
+    this.onUIBarToggling((ev)=> {
+        let wasStowed = this._uibar.isStowed();
+        if (wasStowed) {
+            this._uibar.unstow();
+        } else {
+            this._uibar.stow();
+        }
+        let isStowed = !wasStowed;
+
+        
+    });
+};
+
+thatProto.textUIBarToggleBtn = function(isBarStowed) {
+    $(document).ready((isStowed)=> {
+        let ToggleBtnText = isStowed ? 'Ukaž&nbsp;&nbsp;Panel': 'Skryj&nbsp;Panel';
+        /* to be done */
+    });
+}
 
 thatProto.triggerDevModeChange = function() {
     $(document).trigger(this._eventNames['devModeChange']);
 };
-
+thatProto.triggerUIBarToggling = function() {
+    $(document).trigger(this._eventNames['UIBarToggling']);
+};
 
 
 
