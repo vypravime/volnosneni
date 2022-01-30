@@ -378,11 +378,12 @@ thatProto.setOn = function() {
 setup.c10s.App = function(
     _stateInstance,
     _subGameBreadCrumbs,
-    _eventNames
+    _myPage
 ) {
     this._state = _stateInstance;
     this._subGameBreadCrumbs = _subGameBreadCrumbs;
-    this._eventNames = _eventNames;
+    this._myPage = _myPage;
+
     this._devMode = false;
 }
 
@@ -421,25 +422,14 @@ thatProto.isGivenSubGame = function(subclass) {
     }
 };
 
-thatProto.onDevModeChange = function(eventHandler) {
-    $(document).on(
-        this._eventNames['devModeChange'],
-        (ev) => {eventHandler(ev);}
-    );
-};
-
 thatProto.setDevModeOff = function() {
     this._devMode = false;
-    this.triggerDevModeChange();
+    this._myPage.triggerDevModeChange();
 };
 
 thatProto.setDevModeOn = function() {
     this._devMode = true;
-    this.triggerDevModeChange();
-};
-
-thatProto.triggerDevModeChange = function() {
-    $(document).trigger(this._eventNames['devModeChange']);
+    this._myPage.triggerDevModeChange();
 };
 
 
@@ -545,7 +535,40 @@ thatProto.setOneTimeAutoloadSkip = function() {
 
 
 })();
-/* twine-user-script #6: "SugarcubeConfigurator.js" */
+/* twine-user-script #6: "MyPage.js" */
+"use strict";
+
+(function(){
+
+
+
+setup.c10s.MyPage = function(
+    _eventNames,
+    _metaDater
+) {
+    this._eventNames = _eventNames;
+    this._metaDater = _metaDater;
+};
+
+let thatProto = setup.c10s.MyPage.prototype;
+
+
+thatProto.onDevModeChange = function(eventHandler) {
+    $(document).on(
+        this._eventNames['devModeChange'],
+        (ev) => {eventHandler(ev);}
+    );
+};
+
+thatProto.triggerDevModeChange = function() {
+    $(document).trigger(this._eventNames['devModeChange']);
+};
+
+
+
+
+})();
+/* twine-user-script #7: "SugarcubeConfigurator.js" */
 "use strict";
 
 (function(){
@@ -614,7 +637,7 @@ setup.c10s.SugarcubeConfigurator = function(
 
     
 })();
-/* twine-user-script #7: "DI_CONT.js" */
+/* twine-user-script #8: "DI_CONT.js" */
 "use strict";
 
 (function() {
@@ -705,7 +728,20 @@ setup.DI_CONT = {
             return new setup.c10s.App(
                 State,
                 this.params.subGames,
-                this.params.eventNames
+                this.getService('myPage')
+            );},
+        czechLang: function() {
+            return new setup.c10s.CzechLang(
+
+            );},
+        metaDater: function() {
+            return new setup.c10s.MetaDater(
+                State
+            );},
+        myPage: function() {
+            return new setup.c10s.MyPage(
+                this.params.eventNames,
+                this.getService('metaDater')
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
@@ -714,21 +750,13 @@ setup.DI_CONT = {
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
             );},
-        metaDater: function() {
-            return new setup.c10s.MetaDater(
-                State
-            );},
-        czechLang: function() {
-            return new setup.c10s.CzechLang(
-
-            );}
     }
 };
 
 
 
 })()
-/* twine-user-script #8: "f-setup.js" */
+/* twine-user-script #9: "f-setup.js" */
 "use strict";
 
 //setup.experimental = true; //to show experimental parts of app
@@ -803,7 +831,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #9: "q-main.js" */
+/* twine-user-script #10: "q-main.js" */
 "use strict";
 
 /*
@@ -820,7 +848,7 @@ $(document).ready(function() {
 setup.sugarcubeConfigurator = setup.DI_CONT.getService(
   'sugarcubeConfigurator'
 );
-/* twine-user-script #10: "z-l10nStrings.js" */
+/* twine-user-script #11: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/
@@ -1212,6 +1240,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;hr&gt;</tw-passagedata><tw-passagedata pid="19" name="EX_ajaxTest" tags="" position="1100,225" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
+&lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
 /*\DEPENDENCIES */
 
 &lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
@@ -1285,8 +1314,8 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
       ()=&gt; _app.isDevMode(),
       ()=&gt; !_app.isDevMode()
     ]`
-    `[_app, &#39;onDevModeChange&#39;]`
-    `[_app, &#39;triggerDevModeChange&#39;]`
+    `[_myPage, &#39;onDevModeChange&#39;]`
+    `[_myPage, &#39;triggerDevModeChange&#39;]`
 
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;

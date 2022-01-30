@@ -3,6 +3,7 @@
 /*DEPENDENCIES: */
 <<set _app = setup.DI_CONT.getService('app')>>
 <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
+<<set _myPage = setup.DI_CONT.getService('myPage')>>
 /*\DEPENDENCIES */
 
 <h2>Hello!<br>Let's play with AJAX</h2>
@@ -76,8 +77,8 @@
       ()=> _app.isDevMode(),
       ()=> !_app.isDevMode()
     ]`
-    `[_app, 'onDevModeChange']`
-    `[_app, 'triggerDevModeChange']`
+    `[_myPage, 'onDevModeChange']`
+    `[_myPage, 'triggerDevModeChange']`
 
   >>//Vývojářský režim//<</seeSaw>>
 </p>

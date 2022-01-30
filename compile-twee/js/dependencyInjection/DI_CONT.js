@@ -88,7 +88,20 @@ setup.DI_CONT = {
             return new setup.c10s.App(
                 State,
                 this.params.subGames,
-                this.params.eventNames
+                this.getService('myPage')
+            );},
+        czechLang: function() {
+            return new setup.c10s.CzechLang(
+
+            );},
+        metaDater: function() {
+            return new setup.c10s.MetaDater(
+                State
+            );},
+        myPage: function() {
+            return new setup.c10s.MyPage(
+                this.params.eventNames,
+                this.getService('metaDater')
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
@@ -97,14 +110,6 @@ setup.DI_CONT = {
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
             );},
-        metaDater: function() {
-            return new setup.c10s.MetaDater(
-                State
-            );},
-        czechLang: function() {
-            return new setup.c10s.CzechLang(
-
-            );}
     }
 };
 
