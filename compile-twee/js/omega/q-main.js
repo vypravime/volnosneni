@@ -10,3 +10,7 @@ TO DO:
 $(document).ready(function() {
   setup.page.onReady.execute();
 });
+
+setup.sugarcubeConfigurator = setup.DI_CONT.getService(
+  'sugarcubeConfigurator'
+);
