@@ -1,42 +1,5 @@
 "use strict";
 
-//setup.experimental = true; //to show experimental parts of app
-
-setup.page = {};
-setup.page.onLeave = {
-	_preventing: true,
-	tryPrevent: function (ev) {
-		if (this._preventing) {
-			// Cancel the event
-			ev.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-			// Chrome requires returnValue to be set
-			ev.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
-		}
-	},
-	disablePreventation: function() {
-		this._preventing = false;
-	}
-};
-
-setup.page.onReady = {
-	execute: function(){
-		window.addEventListener(
-			'beforeunload',
-			function(ev) {
-				setup.page.onLeave.tryPrevent(ev);
-			}
-		);
-	
-		$(document).one(
-			':enginerestart',
-			function(ev) {
-				setup.page.onLeave.disablePreventation();
-				setup.DI_CONT.getService('metaDater')
-					.setOneTimeAutoloadSkip();
-			}
-		);
-	}
-};
 
 
 

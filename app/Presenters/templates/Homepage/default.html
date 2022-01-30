@@ -566,6 +566,21 @@ thatProto.onDevModeChange = function(eventHandler) {
     );
 };
 
+thatProto.onLeave = {
+	_preventing: true,
+	tryPrevent: function (ev) {
+		if (this._preventing) {
+			// Cancel the event
+			ev.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+			// Chrome requires returnValue to be set
+			ev.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
+		}
+	},
+	disablePreventation: function() {
+		this._preventing = false;
+	}
+};
+
 thatProto.openPassageDialog = function(
     dialogHeader,
     dialogPassageTitle
@@ -578,6 +593,21 @@ thatProto.openPassageDialog = function(
         this._story.get(dialogPassageTitle)
         .processText()
     ).open();
+};
+
+thatProto.registerGlobalEventHandlers = function() {
+    window.addEventListener(
+        'beforeunload',
+        (ev)=> {this.onLeave.tryPrevent(ev);}
+    );
+
+    $(document).one(
+        ':enginerestart',
+        (ev) => {
+            this.onLeave.disablePreventation();
+            this._metaDater.setOneTimeAutoloadSkip();
+        }
+    );
 };
 
 thatProto.triggerDevModeChange = function() {
@@ -777,43 +807,6 @@ setup.DI_CONT = {
 /* twine-user-script #9: "f-setup.js" */
 "use strict";
 
-//setup.experimental = true; //to show experimental parts of app
-
-setup.page = {};
-setup.page.onLeave = {
-	_preventing: true,
-	tryPrevent: function (ev) {
-		if (this._preventing) {
-			// Cancel the event
-			ev.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-			// Chrome requires returnValue to be set
-			ev.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
-		}
-	},
-	disablePreventation: function() {
-		this._preventing = false;
-	}
-};
-
-setup.page.onReady = {
-	execute: function(){
-		window.addEventListener(
-			'beforeunload',
-			function(ev) {
-				setup.page.onLeave.tryPrevent(ev);
-			}
-		);
-	
-		$(document).one(
-			':enginerestart',
-			function(ev) {
-				setup.page.onLeave.disablePreventation();
-				setup.DI_CONT.getService('metaDater')
-					.setOneTimeAutoloadSkip();
-			}
-		);
-	}
-};
 
 
 
@@ -854,13 +847,16 @@ TO DO:
 # při načítání SAVEu (ze souboru) zkontrolovat, jestli to není budoucí verze
 */
 
-$(document).ready(function() {
-  setup.page.onReady.execute();
-});
+
 
 setup.sugarcubeConfigurator = setup.DI_CONT.getService(
   'sugarcubeConfigurator'
 );
+
+setup.myPage = setup.DI_CONT.getService(
+  'myPage'
+);
+setup.myPage.registerGlobalEventHandlers();
 /* twine-user-script #11: "z-l10nStrings.js" */
 "use strict";
 

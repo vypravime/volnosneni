@@ -28,6 +28,21 @@ thatProto.onDevModeChange = function(eventHandler) {
     );
 };
 
+thatProto.onLeave = {
+	_preventing: true,
+	tryPrevent: function (ev) {
+		if (this._preventing) {
+			// Cancel the event
+			ev.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+			// Chrome requires returnValue to be set
+			ev.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
+		}
+	},
+	disablePreventation: function() {
+		this._preventing = false;
+	}
+};
+
 thatProto.openPassageDialog = function(
     dialogHeader,
     dialogPassageTitle
@@ -40,6 +55,21 @@ thatProto.openPassageDialog = function(
         this._story.get(dialogPassageTitle)
         .processText()
     ).open();
+};
+
+thatProto.registerGlobalEventHandlers = function() {
+    window.addEventListener(
+        'beforeunload',
+        (ev)=> {this.onLeave.tryPrevent(ev);}
+    );
+
+    $(document).one(
+        ':enginerestart',
+        (ev) => {
+            this.onLeave.disablePreventation();
+            this._metaDater.setOneTimeAutoloadSkip();
+        }
+    );
 };
 
 thatProto.triggerDevModeChange = function() {

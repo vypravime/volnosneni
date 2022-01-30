@@ -7,10 +7,13 @@ TO DO:
 # při načítání SAVEu (ze souboru) zkontrolovat, jestli to není budoucí verze
 */
 
-$(document).ready(function() {
-  setup.page.onReady.execute();
-});
+
 
 setup.sugarcubeConfigurator = setup.DI_CONT.getService(
   'sugarcubeConfigurator'
 );
+
+setup.myPage = setup.DI_CONT.getService(
+  'myPage'
+);
+setup.myPage.registerGlobalEventHandlers();
