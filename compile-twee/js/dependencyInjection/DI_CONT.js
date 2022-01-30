@@ -49,19 +49,24 @@ setup.DI_CONT = {
         ajaxAnimation: function() {
             return new setup.c10s.AjaxAnimation(
 
-            )},
+            );},
         app: function() {
             return new setup.c10s.App(
                 State,
                 this.params.subGames,
                 this.params.eventNames
-            )},
+            );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
                 State,
+                this.getService('metaDater'),
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
-            )}
+            );},
+        metaDater: function() {
+            return new setup.c10s.MetaDater(
+                State
+            );}
     }
 };
 

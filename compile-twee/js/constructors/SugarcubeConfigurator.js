@@ -6,10 +6,12 @@
 
 setup.c10s.SugarcubeConfigurator = function(
     _stateInstance,
+    _metaDater,
     autosaveBeginTurn = 3,
     savesVersion
 ) {
     this._state = _stateInstance;
+    this._metaDater = _metaDater;
 
 
     Config.passages.nobr = true;
@@ -18,23 +20,20 @@ setup.c10s.SugarcubeConfigurator = function(
     Config.saves.id = "VypravimeApp";
     Config.saves.version = savesVersion;
     Config.saves.autosave = ()=> {
-        console.log(this._state.turns);
         if (autosaveBeginTurn && (
                 this._state.turns >= autosaveBeginTurn)) {
             return true;
         } else {
             return false;
         }
-    };
-/*todo: IMPROVE DEPENDENCY INJECTION: */    
-    Config.saves.autoload = function(){
-        if (State.metadata.get('skipAutoSave')) {
-            State.metadata.delete('skipAutoSave');
+    }; 
+    Config.saves.autoload = (()=>{
+        if (this._metaDater.oneTimeCHECKAutoloadSkip()) {
             return false;
         } else {
             return "prompt";
         }
-    }();
+    })();
 
 /*todo: IMPROVE DEPENDENCY INJECTION: */     
     /*Wrap every processed pasage text into additional div

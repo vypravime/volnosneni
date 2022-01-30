@@ -422,7 +422,58 @@ thatProto.triggerDevModeChange = function() {
 
 
 })()
-/* twine-user-script #4: "SugarcubeConfigurator.js" */
+/* twine-user-script #4: "MetaDater.js" */
+"use strict";
+
+(function(){
+
+
+
+setup.c10s.MetaDater = function(
+    _stateInstance
+) {
+    this._state = _stateInstance;
+    
+    this._metaVarsNames = {
+        /**boolean
+         * (true results to not autoloading for this time) */
+        oneTimeAutoloadSkip: 'oneTimeAutoloadSkip'
+    }
+}
+
+let thatProto = setup.c10s.MetaDater.prototype;
+
+
+thatProto.oneTimeCHECKAutoloadSkip = function() {
+    if (this._state.metadata.has(
+            this._metaVarsNames.oneTimeAutoloadSkip
+            )
+    ) {
+
+        let metaValue = this._state.metadata.get(
+            this._metaVarsNames.oneTimeAutoloadSkip
+        );
+        this._state.metadata.delete(
+            this._metaVarsNames.oneTimeAutoloadSkip
+        );
+        if (metaValue === true) {
+            return true;
+        }
+    }
+    return false;
+}
+
+thatProto.setOneTimeAutoloadSkip = function() {
+    this._state.metadata.set(
+        this._metaVarsNames.oneTimeAutoloadSkip,
+        true
+    );
+}
+
+
+
+})();
+/* twine-user-script #5: "SugarcubeConfigurator.js" */
 "use strict";
 
 (function(){
@@ -431,10 +482,12 @@ thatProto.triggerDevModeChange = function() {
 
 setup.c10s.SugarcubeConfigurator = function(
     _stateInstance,
+    _metaDater,
     autosaveBeginTurn = 3,
     savesVersion
 ) {
     this._state = _stateInstance;
+    this._metaDater = _metaDater;
 
 
     Config.passages.nobr = true;
@@ -443,23 +496,20 @@ setup.c10s.SugarcubeConfigurator = function(
     Config.saves.id = "VypravimeApp";
     Config.saves.version = savesVersion;
     Config.saves.autosave = ()=> {
-        console.log(this._state.turns);
         if (autosaveBeginTurn && (
                 this._state.turns >= autosaveBeginTurn)) {
             return true;
         } else {
             return false;
         }
-    };
-/*todo: IMPROVE DEPENDENCY INJECTION: */    
-    Config.saves.autoload = function(){
-        if (State.metadata.get('skipAutoSave')) {
-            State.metadata.delete('skipAutoSave');
+    }; 
+    Config.saves.autoload = (()=>{
+        if (this._metaDater.oneTimeCHECKAutoloadSkip()) {
             return false;
         } else {
             return "prompt";
         }
-    }();
+    })();
 
 /*todo: IMPROVE DEPENDENCY INJECTION: */     
     /*Wrap every processed pasage text into additional div
@@ -492,7 +542,7 @@ setup.c10s.SugarcubeConfigurator = function(
 
     
 })();
-/* twine-user-script #5: "DI_CONT.js" */
+/* twine-user-script #6: "DI_CONT.js" */
 "use strict";
 
 (function() {
@@ -544,26 +594,31 @@ setup.DI_CONT = {
         ajaxAnimation: function() {
             return new setup.c10s.AjaxAnimation(
 
-            )},
+            );},
         app: function() {
             return new setup.c10s.App(
                 State,
                 this.params.subGames,
                 this.params.eventNames
-            )},
+            );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
                 State,
+                this.getService('metaDater'),
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
-            )}
+            );},
+        metaDater: function() {
+            return new setup.c10s.MetaDater(
+                State
+            );}
     }
 };
 
 
 
 })()
-/* twine-user-script #6: "f-setup.js" */
+/* twine-user-script #7: "f-setup.js" */
 "use strict";
 
 //setup.experimental = true; //to show experimental parts of app
@@ -597,7 +652,8 @@ setup.page.onReady = {
 			':enginerestart',
 			function(ev) {
 				setup.page.onLeave.disablePreventation();
-				State.metadata.set('skipAutoSave', 'true');
+				setup.DI_CONT.getService('metaDater')
+					.setOneTimeAutoloadSkip();
 			}
 		);
 	}
@@ -646,7 +702,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #7: "q-main.js" */
+/* twine-user-script #8: "q-main.js" */
 "use strict";
 
 /*
@@ -663,7 +719,7 @@ $(document).ready(function() {
 setup.sugarcubeConfigurator = setup.DI_CONT.getService(
   'sugarcubeConfigurator'
 );
-/* twine-user-script #8: "z-l10nStrings.js" */
+/* twine-user-script #9: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/

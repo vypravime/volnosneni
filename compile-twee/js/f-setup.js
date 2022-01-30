@@ -31,7 +31,8 @@ setup.page.onReady = {
 			':enginerestart',
 			function(ev) {
 				setup.page.onLeave.disablePreventation();
-				State.metadata.set('skipAutoSave', 'true');
+				setup.DI_CONT.getService('metaDater')
+					.setOneTimeAutoloadSkip();
 			}
 		);
 	}
