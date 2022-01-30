@@ -37,11 +37,6 @@ setup.page.onReady = {
 		);
 	}
 };
-setup.page.openPassageDialog = function(dHeader, dPassage) {
-	if (Dialog.isOpen()) {Dialog.close();}
-	Dialog.setup(dHeader);
-	Dialog.wiki(Story.get(dPassage).processText()).open();
-};
 
 
 

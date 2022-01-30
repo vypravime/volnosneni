@@ -543,11 +543,17 @@ thatProto.setOneTimeAutoloadSkip = function() {
 
 
 setup.c10s.MyPage = function(
-    _eventNames,
-    _metaDater
+    _metaDater,
+    _dialogInstance,
+    _story
 ) {
-    this._eventNames = _eventNames;
     this._metaDater = _metaDater;
+    this._dialog = _dialogInstance;
+    this._story = _story;
+
+    this._eventNames = {
+        devModeChange: 'app:devModeChange'
+    };
 };
 
 let thatProto = setup.c10s.MyPage.prototype;
@@ -558,6 +564,20 @@ thatProto.onDevModeChange = function(eventHandler) {
         this._eventNames['devModeChange'],
         (ev) => {eventHandler(ev);}
     );
+};
+
+thatProto.openPassageDialog = function(
+    dialogHeader,
+    dialogPassageTitle
+) {
+	if (this._dialog.isOpen()) {
+        this._dialog.close();
+    }
+	this._dialog.setup(dialogHeader);
+	this._dialog.wiki(
+        this._story.get(dialogPassageTitle)
+        .processText()
+    ).open();
 };
 
 thatProto.triggerDevModeChange = function() {
@@ -651,9 +671,6 @@ let setParameters = () => ({
 		TT: 'TěloTaj',
 		EX: 'Experimenty'
 	},
-    eventNames: {
-        devModeChange: 'app:devModeChange'
-    },
     htmlIds: {
         'my-header': {
             origin: 'the passage PassageHeader is automatically wrapped into div#my-header by my SugarcubeConfigurator via Config.passages.onProcess'
@@ -740,8 +757,9 @@ setup.DI_CONT = {
             );},
         myPage: function() {
             return new setup.c10s.MyPage(
-                this.params.eventNames,
-                this.getService('metaDater')
+                this.getService('metaDater'),
+                Dialog,
+                Story
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
@@ -795,11 +813,6 @@ setup.page.onReady = {
 			}
 		);
 	}
-};
-setup.page.openPassageDialog = function(dHeader, dPassage) {
-	if (Dialog.isOpen()) {Dialog.close();}
-	Dialog.setup(dHeader);
-	Dialog.wiki(Story.get(dPassage).processText()).open();
 };
 
 
@@ -1280,7 +1293,8 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
       ).done(function(){
         console.log(&#39;second success&#39;);
       }).fail(function(){
-        setup.page.openPassageDialog(
+        setup.DI_CONT.getService(&#39;myPage&#39;)
+        .openPassageDialog(
           &#39;Chyba spojení&#39;,
           &#39;AjaxConnectionError&#39;
         );
@@ -1398,13 +1412,20 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="VS_beforeStartControl" tags="" position="725,350" size="100,100">&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
-&lt;p class=&quot;tac&quot;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="VS_beforeStartControl" tags="" position="725,350" size="100,100">/*DEPENDENCIES: */
+&lt;&lt;set _czech = setup.DI_CONT.getService(&#39;czechLang&#39;)&gt;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
+/*\DEPENDENCIES */
+
+&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
+&lt;p class=&quot;tac&quot;&gt;
 Každý hráč do začátku dostane: 
 &lt;&lt;compLink &quot;&lt;&lt;passageDialog &#39;Osudové kameny...&#39; &#39;VSD_beforeStartFPInfo&#39;&gt;&gt;&quot;&gt;&gt;
-@@font-size:1.2rem;&#39;&#39;&lt;span class=&quot;fp-start-a-refresh-numb&quot;&gt;_fPAm&lt;/span&gt;
-&lt;span class=&quot;fp-start-a-refresh-desc&quot;&gt;&lt;&lt;=setup.fPStartAGetDesc(_fPAm)&gt;&gt;&lt;/span&gt;&#39;&#39;@@
+@@font-size:1.2rem;&#39;&#39;&lt;&lt;=
+    _czech.numberOf(
+        [&#39;osudový kámen&#39;, &#39;osudové kameny&#39;, &#39; osudových kamenů&#39;],
+        _fPAm
+    )&gt;&gt;&#39;&#39;@@
 &lt;&lt;/compLink&gt;&gt;
 &lt;/p&gt;
 &lt;p&gt;Hry se účastní hráči v tomto
@@ -1536,10 +1557,14 @@ pořadí:
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="PassageDialog" tags="widget" position="100,475" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
-/*_args[0] is the HEADING of NEW DIALOG WINDOW*/
-/*_args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW*/
+/**_args[0] is the HEADING of NEW DIALOG WINDOW
+ * _args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW
+ * */
+/*DEPENDENCIES: */
+&lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
+/*\DEPENDENCIES */
 
-    &lt;&lt;run setup.page.openPassageDialog(_args[0], _args[1])&gt;&gt;
+    &lt;&lt;run _myPage.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="SeeSaw" tags="widget" position="225,475" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
 
@@ -1611,7 +1636,7 @@ pořadí:
 			        });
 	        });
 	
-	        /*aby se tlačítka zabarvila už před prvním kliknutím*/
+	        /*so that the buttons get right state even before 1st click*/
 	        $(document).ready(function(){
 		        (triggrer[0][triggrer[1]])();
 	        });

@@ -43,7 +43,8 @@
       ).done(function(){
         console.log('second success');
       }).fail(function(){
-        setup.page.openPassageDialog(
+        setup.DI_CONT.getService('myPage')
+        .openPassageDialog(
           'Chyba spojení',
           'AjaxConnectionError'
         );

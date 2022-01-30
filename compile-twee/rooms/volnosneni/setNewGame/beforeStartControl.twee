@@ -1,12 +1,19 @@
 :: VS_beforeStartControl
 
+/*DEPENDENCIES: */
+<<set _czech = setup.DI_CONT.getService('czechLang')>>
+<<set _fPAm = setup.fPStartADefault>>
+/*\DEPENDENCIES */
+
 <h2>Předstartovní kontrola</h2>
 <p class="tac">
-<<set _fPAm = setup.fPStartADefault>>
 Každý hráč do začátku dostane: 
 <<compLink "<<passageDialog 'Osudové kameny...' 'VSD_beforeStartFPInfo'>>">>
-@@font-size:1.2rem;''<span class="fp-start-a-refresh-numb">_fPAm</span>
-<span class="fp-start-a-refresh-desc"><<=setup.fPStartAGetDesc(_fPAm)>></span>''@@
+@@font-size:1.2rem;''<<=
+    _czech.numberOf(
+        ['osudový kámen', 'osudové kameny', ' osudových kamenů'],
+        _fPAm
+    )>>''@@
 <</compLink>>
 </p>
 <p>Hry se účastní hráči v tomto

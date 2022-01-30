@@ -70,7 +70,7 @@
 			        });
 	        });
 	
-	        /*aby se tlačítka zabarvila už před prvním kliknutím*/
+	        /*so that the buttons get right state even before 1st click*/
 	        $(document).ready(function(){
 		        (triggrer[0][triggrer[1]])();
 	        });

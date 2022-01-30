@@ -11,9 +11,6 @@ let setParameters = () => ({
 		TT: 'TěloTaj',
 		EX: 'Experimenty'
 	},
-    eventNames: {
-        devModeChange: 'app:devModeChange'
-    },
     htmlIds: {
         'my-header': {
             origin: 'the passage PassageHeader is automatically wrapped into div#my-header by my SugarcubeConfigurator via Config.passages.onProcess'
@@ -100,8 +97,9 @@ setup.DI_CONT = {
             );},
         myPage: function() {
             return new setup.c10s.MyPage(
-                this.params.eventNames,
-                this.getService('metaDater')
+                this.getService('metaDater'),
+                Dialog,
+                Story
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
