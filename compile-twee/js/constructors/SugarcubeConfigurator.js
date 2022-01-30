@@ -17,7 +17,7 @@ setup.c10s.SugarcubeConfigurator = function(
     Config.passages.nobr = true;
     Config.history.controls = false;
 
-    Config.saves.id = "VypravimeApp";
+    Config.saves.id = "VypravimeApp"; //you MUSTN'T CHANGE THIS or the app refuses to load every older save
     Config.saves.version = savesVersion;
     Config.saves.autosave = ()=> {
         if (autosaveBeginTurn && (
