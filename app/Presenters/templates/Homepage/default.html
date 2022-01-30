@@ -900,7 +900,14 @@ vepiš vlastní slova...
 //(zeptej se, navrhni zlepšení, postěžuj si, poděkuj, ...)//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="VSD_cardsBoard" tags="" position="850,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="8" name="VSD_beNiceInfo" tags="" position="975,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt;
+&lt;&lt;button [[Vývojářeské experimenty|EX_ajaxTest]]&gt;&gt;
+    &lt;&lt;run Dialog.close()&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="7" name="VSD_cardsBoard" tags="" position="850,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="8" name="VSD_beNiceInfo" tags="" position="975,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
 nepoužívej prosím své vyprávění&lt;br&gt;
 k provokaci či šikaně svých spoluhráčů.
@@ -1070,12 +1077,6 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &#39;&#39;&lt;&lt;button [[TěloTaj|TT_go]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;
-&lt;&lt;button [[Vývojářeské experimenty|EX_ajaxTest]]&gt;&gt;
-    &lt;&lt;run Dialog.close()&gt;&gt;
-  &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;if _app.isDevMode()&gt;&gt;
   &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
@@ -1244,6 +1245,11 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     `[_app, &#39;triggerDevModeChange&#39;]`
 
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p class=&quot;tac&quot;&gt;
+  &lt;&lt;button [[Přijmout a vrátit se|previous()]]&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;

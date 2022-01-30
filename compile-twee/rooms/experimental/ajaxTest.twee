@@ -81,3 +81,8 @@
 
   >>//Vývojářský režim//<</seeSaw>>
 </p>
+<hr>
+<hr>
+<p class="tac">
+  <<button [[Přijmout a vrátit se|previous()]]>><</button>>
+</p>
