@@ -378,11 +378,12 @@ thatProto.setOn = function() {
 setup.c10s.App = function(
     _stateInstance,
     _subGameBreadCrumbs,
-    _eventNames
+    _myPage
 ) {
     this._state = _stateInstance;
     this._subGameBreadCrumbs = _subGameBreadCrumbs;
-    this._eventNames = _eventNames;
+    this._myPage = _myPage;
+
     this._devMode = false;
 }
 
@@ -421,31 +422,69 @@ thatProto.isGivenSubGame = function(subclass) {
     }
 };
 
-thatProto.onDevModeChange = function(eventHandler) {
-    $(document).on(
-        this._eventNames['devModeChange'],
-        (ev) => {eventHandler(ev);}
-    );
-};
-
 thatProto.setDevModeOff = function() {
     this._devMode = false;
-    this.triggerDevModeChange();
+    this._myPage.triggerDevModeChange();
 };
 
 thatProto.setDevModeOn = function() {
     this._devMode = true;
-    this.triggerDevModeChange();
-};
-
-thatProto.triggerDevModeChange = function() {
-    $(document).trigger(this._eventNames['devModeChange']);
+    this._myPage.triggerDevModeChange();
 };
 
 
 
 })()
-/* twine-user-script #4: "MetaDater.js" */
+/* twine-user-script #4: "CzechLang.js" */
+"use strict";
+
+(function(){
+
+
+
+setup.c10s.CzechLang = function(
+
+) {
+
+};
+
+let thatProto = setup.c10s.CzechLang.prototype;
+
+/**EXAMPLE:
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 7): returns '7 kamenů'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 1): returns '1 kámen'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 4): returns '4 kameny'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 0): returns '0 kamenů'
+ * 
+ EXAMPLE OF OMITTING INTEGER IN RETURN VALUE:
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 7, false): returns 'kamenů'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 1, false): returns 'kámen'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 4, false): returns 'kameny'
+ * czechLang.numberOf(['kámen','kameny','kamenů'], 0, false): returns 'kamenů'
+ */
+thatProto.numberOf = function(
+    oneTwoFiveOfItArray,
+    amount,
+    returnWithInteger = true
+    ) {
+    let [oneOfIt, twoOfIt, fiveOfIt] = oneTwoFiveOfItArray;
+    let prepender = '';
+    if(returnWithInteger) {
+        prepender = `${amount} `;
+    }
+        if(amount === 1) {
+            return `${prepender}${oneOfIt}`;
+        } else if((amount > 1) && (amount < 5)) {
+            return `${prepender}${twoOfIt}`;
+        } else {  // this is also, if the amount equals to zero
+            return `${prepender}${fiveOfIt}`;
+        }
+    };
+
+
+
+})();
+/* twine-user-script #5: "MetaDater.js" */
 "use strict";
 
 (function(){
@@ -496,7 +535,158 @@ thatProto.setOneTimeAutoloadSkip = function() {
 
 
 })();
-/* twine-user-script #5: "SugarcubeConfigurator.js" */
+/* twine-user-script #6: "MyPage.js" */
+"use strict";
+
+(function(){
+
+
+
+setup.c10s.MyPage = function(
+    _metaDater,
+    _dialogInstance,
+    _storyInstance,
+    _uibarInstance,
+    _htmlClasses
+) {
+    this._metaDater = _metaDater;
+    this._dialog = _dialogInstance;
+    this._story = _storyInstance;
+    this._uibar = _uibarInstance;
+    this._htmlClasses = _htmlClasses;
+
+    this._eventNames = {
+        devModeChange: 'app:devModeChange',
+        UIBarToggling: 'UIBar:toggling'
+    };
+    this._labels = {
+        UIBarToggleBtn: {
+            toUnstow: 'Panel ukaž',
+            toStow: 'Panel skryj'
+        }
+    };
+};
+
+let thatProto = setup.c10s.MyPage.prototype;
+
+
+thatProto.getUIBarToggleBtnClass = function() {
+    return this._htmlClasses.components.UIBarToggleButton.defaultClass;
+};
+
+thatProto.getUIBarToggleBtnLabel = function(isBarStowed) {
+    if (typeof isBarStowed === 'undefined') {
+        isBarStowed = this._uibar.isStowed();
+    }
+    let BtnText = ''
+    if (isBarStowed) {
+        BtnText = this._labels.UIBarToggleBtn.toUnstow;
+    } else {
+        BtnText = this._labels.UIBarToggleBtn.toStow;
+    }
+    return BtnText;
+}
+
+thatProto.onDevModeChange = function(eventHandler) {
+    $(document).on(
+        this._eventNames['devModeChange'],
+        (ev) => {eventHandler(ev);}
+    );
+};
+
+thatProto.onLeave = {
+	_preventing: true,
+	tryPrevent: function (ev) {
+		if (this._preventing) {
+			// Cancel the event
+			ev.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+			// Chrome requires returnValue to be set
+			ev.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
+		}
+	},
+	disablePreventation: function() {
+		this._preventing = false;
+	}
+};
+
+thatProto.onUIBarToggling = function(eventHandler) {
+    $(document).on(
+        this._eventNames['UIBarToggling'],
+        (ev) => {eventHandler(ev);}
+    );
+};
+
+thatProto.openPassageDialog = function(
+    dialogHeader,
+    dialogPassageTitle
+) {
+	if (this._dialog.isOpen()) {
+        this._dialog.close();
+    }
+	this._dialog.setup(dialogHeader);
+	this._dialog.wiki(
+        this._story.get(dialogPassageTitle)
+        .processText()
+    ).open();
+};
+
+thatProto.registerAllCustomEventsHandlers = function() {
+    this.registerGlobalEventHandlers();
+    this.registerUIBarTogglingHandlers();
+};
+
+thatProto.registerGlobalEventHandlers = function() {
+    window.addEventListener(
+        'beforeunload',
+        (ev)=> {this.onLeave.tryPrevent(ev);}
+    );
+
+    $(document).one(
+        ':enginerestart',
+        (ev) => {
+            this.onLeave.disablePreventation();
+            this._metaDater.setOneTimeAutoloadSkip();
+        }
+    );
+
+};
+
+thatProto.registerUIBarTogglingHandlers = function() {
+    this.onUIBarToggling((ev)=> {
+        let wasStowed = this._uibar.isStowed();
+        if (wasStowed) {
+            this._uibar.unstow();
+        } else {
+            this._uibar.stow();
+        }
+        let isStowed = !wasStowed;
+
+        this.textUIBarToggleBtn(isStowed);
+
+        
+    });
+};
+
+thatProto.textUIBarToggleBtn = function(isBarStowed) {
+    $(document).ready(()=> {
+        let BtnText = this.getUIBarToggleBtnLabel(isBarStowed);
+        let BtnClass = this.getUIBarToggleBtnClass();
+        $(`.${BtnClass}`)
+        .find('button').html(BtnText);
+    });
+}
+
+thatProto.triggerDevModeChange = function() {
+    $(document).trigger(this._eventNames['devModeChange']);
+};
+thatProto.triggerUIBarToggling = function() {
+    $(document).trigger(this._eventNames['UIBarToggling']);
+};
+
+
+
+})();
+/* twine-user-script #7: "SugarcubeConfigurator.js" */
 "use strict";
 
 (function(){
@@ -516,7 +706,7 @@ setup.c10s.SugarcubeConfigurator = function(
     Config.passages.nobr = true;
     Config.history.controls = false;
 
-    Config.saves.id = "VypravimeApp";
+    Config.saves.id = "VypravimeApp"; //you MUSTN'T CHANGE THIS or the app refuses to load every older save
     Config.saves.version = savesVersion;
     Config.saves.autosave = ()=> {
         if (autosaveBeginTurn && (
@@ -565,7 +755,7 @@ setup.c10s.SugarcubeConfigurator = function(
 
     
 })();
-/* twine-user-script #6: "DI_CONT.js" */
+/* twine-user-script #8: "DI_CONT.js" */
 "use strict";
 
 (function() {
@@ -579,9 +769,6 @@ let setParameters = () => ({
 		TT: 'TěloTaj',
 		EX: 'Experimenty'
 	},
-    eventNames: {
-        devModeChange: 'app:devModeChange'
-    },
     htmlIds: {
         'my-header': {
             origin: 'the passage PassageHeader is automatically wrapped into div#my-header by my SugarcubeConfigurator via Config.passages.onProcess'
@@ -619,6 +806,9 @@ let setParameters = () => ({
                         eventNameKey: 'devModeChange'
                     }
                 }
+            },
+            UIBarToggleButton: {
+                defaultClass: 'uibar-toggle-btn'
             }
         }
     }
@@ -656,7 +846,23 @@ setup.DI_CONT = {
             return new setup.c10s.App(
                 State,
                 this.params.subGames,
-                this.params.eventNames
+                this.getService('myPage')
+            );},
+        czechLang: function() {
+            return new setup.c10s.CzechLang(
+
+            );},
+        metaDater: function() {
+            return new setup.c10s.MetaDater(
+                State
+            );},
+        myPage: function() {
+            return new setup.c10s.MyPage(
+                this.getService('metaDater'),
+                Dialog,
+                Story,
+                UIBar,
+                this.params.htmlClasses
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
@@ -665,75 +871,20 @@ setup.DI_CONT = {
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
             );},
-        metaDater: function() {
-            return new setup.c10s.MetaDater(
-                State
-            );}
     }
 };
 
 
 
 })()
-/* twine-user-script #7: "f-setup.js" */
+/* twine-user-script #9: "f-setup.js" */
 "use strict";
 
-//setup.experimental = true; //to show experimental parts of app
-
-setup.page = {};
-setup.page.onLeave = {
-	_preventing: true,
-	tryPrevent: function (ev) {
-		if (this._preventing) {
-			// Cancel the event
-			ev.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-			// Chrome requires returnValue to be set
-			ev.returnValue = 'Aplikace Vyprávíme vás žádá o potvrzení, že ji opravdu chcete KOMPLETNĚ opustit. Údaje, které jste vložili, nemusí být uloženy.';
-		}
-	},
-	disablePreventation: function() {
-		this._preventing = false;
-	}
-};
-
-setup.page.onReady = {
-	execute: function(){
-		window.addEventListener(
-			'beforeunload',
-			function(ev) {
-				setup.page.onLeave.tryPrevent(ev);
-			}
-		);
-	
-		$(document).one(
-			':enginerestart',
-			function(ev) {
-				setup.page.onLeave.disablePreventation();
-				setup.DI_CONT.getService('metaDater')
-					.setOneTimeAutoloadSkip();
-			}
-		);
-	}
-};
-setup.page.openPassageDialog = function(dHeader, dPassage) {
-	if (Dialog.isOpen()) {Dialog.close();}
-	Dialog.setup(dHeader);
-	Dialog.wiki(Story.get(dPassage).processText()).open();
-};
 
 
 
 setup.diceTypes = ['Starosvětsky', 'Virtuálně'];
 setup.fPStartADefault = 3;
-setup.fPStartAGetDesc = function(amount){
-	if(amount === 1) {
-		return 'osudový kámen';
-	} else if((amount > 1) && (amount < 5)) {
-		return 'osudové kameny';
-	} else {
-		return 'osudových kamenů';
-	}
-};
 setup.addPlayer = function(arg) {
 	return {name: arg, fp: setup.fPStartADefault};
 };
@@ -759,7 +910,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #8: "q-main.js" */
+/* twine-user-script #10: "q-main.js" */
 "use strict";
 
 /*
@@ -769,14 +920,17 @@ TO DO:
 # při načítání SAVEu (ze souboru) zkontrolovat, jestli to není budoucí verze
 */
 
-$(document).ready(function() {
-  setup.page.onReady.execute();
-});
+
 
 setup.sugarcubeConfigurator = setup.DI_CONT.getService(
   'sugarcubeConfigurator'
 );
-/* twine-user-script #9: "z-l10nStrings.js" */
+
+setup.myPage = setup.DI_CONT.getService(
+  'myPage'
+);
+setup.myPage.registerAllCustomEventsHandlers();
+/* twine-user-script #11: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/
@@ -1055,9 +1209,9 @@ anebo smíš jednoduše k dalšímu ději skočit.)//
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;p class=&quot;tac&quot;&gt;
-ABY SIS HRU VOLNOSNĚNÍ SILNĚJI VYCHUTNAL,&lt;br&gt;
-PIŠ O TOM, PO ČEM UPŘÍMNĚ PRAHNEŠ&lt;br&gt;
-A K ČEMU MÁŠ CITOVÝ VZTAH!&lt;br&gt;
+Hru VolnoSnění si vychutnáš, vyprávíš-li,&lt;br&gt;
+PO ČEM &#39;&#39;UPŘÍMNĚ&#39;&#39; PRAHNEŠ&lt;br&gt;
+a k čemu cítíš vztah!&lt;br&gt;
 &lt;/p&gt;
 
 &lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;
@@ -1077,10 +1231,13 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &#39;&#39;&lt;&lt;button [[TěloTaj|TT_go]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">/*DEPENDENCIES: */
+&lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
+&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;if _app.isDevMode()&gt;&gt;
   &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+/*\DEPENDENCIES */
 
 &lt;div class=&quot;tar&quot;&gt;
 
@@ -1088,13 +1245,11 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     &lt;&lt;passageDialog &quot;Nápověda&quot; &quot;Help&quot;&gt;&gt;
   &lt;&lt;/button&gt;&gt;&amp;nbsp;
   
-  &lt;&lt;button &quot;Přepni lištu&quot;&gt;&gt;
-    &lt;&lt;if UIBar.isStowed()&gt;&gt;
-      &lt;&lt;run UIBar.unstow()&gt;&gt;
-    &lt;&lt;else&gt;&gt;
-      &lt;&lt;run UIBar.stow()&gt;&gt;
-    &lt;&lt;/if&gt;&gt;
-  &lt;&lt;/button&gt;&gt;
+  &lt;span @class=&quot;_myPage.getUIBarToggleBtnClass()&quot;&gt;
+    &lt;&lt;button `_myPage.getUIBarToggleBtnLabel()`&gt;&gt;
+      &lt;&lt;run _myPage.triggerUIBarToggling()&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+  &lt;/span&gt;
 
 &lt;/div&gt;
 
@@ -1168,6 +1323,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;hr&gt;</tw-passagedata><tw-passagedata pid="19" name="EX_ajaxTest" tags="" position="1100,225" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
+&lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
 /*\DEPENDENCIES */
 
 &lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
@@ -1207,7 +1363,8 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
       ).done(function(){
         console.log(&#39;second success&#39;);
       }).fail(function(){
-        setup.page.openPassageDialog(
+        setup.DI_CONT.getService(&#39;myPage&#39;)
+        .openPassageDialog(
           &#39;Chyba spojení&#39;,
           &#39;AjaxConnectionError&#39;
         );
@@ -1241,8 +1398,8 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
       ()=&gt; _app.isDevMode(),
       ()=&gt; !_app.isDevMode()
     ]`
-    `[_app, &#39;onDevModeChange&#39;]`
-    `[_app, &#39;triggerDevModeChange&#39;]`
+    `[_myPage, &#39;onDevModeChange&#39;]`
+    `[_myPage, &#39;triggerDevModeChange&#39;]`
 
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;
@@ -1325,13 +1482,20 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="VS_beforeStartControl" tags="" position="725,350" size="100,100">&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
-&lt;p class=&quot;tac&quot;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="VS_beforeStartControl" tags="" position="725,350" size="100,100">/*DEPENDENCIES: */
+&lt;&lt;set _czech = setup.DI_CONT.getService(&#39;czechLang&#39;)&gt;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
+/*\DEPENDENCIES */
+
+&lt;h2&gt;Předstartovní kontrola&lt;/h2&gt;
+&lt;p class=&quot;tac&quot;&gt;
 Každý hráč do začátku dostane: 
 &lt;&lt;compLink &quot;&lt;&lt;passageDialog &#39;Osudové kameny...&#39; &#39;VSD_beforeStartFPInfo&#39;&gt;&gt;&quot;&gt;&gt;
-@@font-size:1.2rem;&#39;&#39;&lt;span class=&quot;fp-start-a-refresh-numb&quot;&gt;_fPAm&lt;/span&gt;
-&lt;span class=&quot;fp-start-a-refresh-desc&quot;&gt;&lt;&lt;=setup.fPStartAGetDesc(_fPAm)&gt;&gt;&lt;/span&gt;&#39;&#39;@@
+@@font-size:1.2rem;&#39;&#39;&lt;&lt;=
+    _czech.numberOf(
+        [&#39;osudový kámen&#39;, &#39;osudové kameny&#39;, &#39; osudových kamenů&#39;],
+        _fPAm
+    )&gt;&gt;&#39;&#39;@@
 &lt;&lt;/compLink&gt;&gt;
 &lt;/p&gt;
 &lt;p&gt;Hry se účastní hráči v tomto
@@ -1463,10 +1627,14 @@ pořadí:
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="PassageDialog" tags="widget" position="100,475" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
-/*_args[0] is the HEADING of NEW DIALOG WINDOW*/
-/*_args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW*/
+/**_args[0] is the HEADING of NEW DIALOG WINDOW
+ * _args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW
+ * */
+/*DEPENDENCIES: */
+&lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
+/*\DEPENDENCIES */
 
-    &lt;&lt;run setup.page.openPassageDialog(_args[0], _args[1])&gt;&gt;
+    &lt;&lt;run _myPage.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="SeeSaw" tags="widget" position="225,475" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
 
@@ -1538,7 +1706,7 @@ pořadí:
 			        });
 	        });
 	
-	        /*aby se tlačítka zabarvila už před prvním kliknutím*/
+	        /*so that the buttons get right state even before 1st click*/
 	        $(document).ready(function(){
 		        (triggrer[0][triggrer[1]])();
 	        });
