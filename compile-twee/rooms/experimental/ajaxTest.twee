@@ -62,33 +62,12 @@
   <</script>>
 <</button>>&nbsp;<<include "AjaxAnim1stars">>
 <div class="pa5"></div>
+
 <hr>
-<p>
-  <div class="see-saw dev-mode-test-btns">
-      <<button "''ZAP''">>
-        <<run _app.setDevModeOn()>>
-      <</button>>
-      <<button "''VYP''">>
-        <<run _app.setDevModeOff()>>
-      <</button>>
-  </div> //Vývojářský režim//
-</p>
-<<script>>
-State.getVar('_app').onDevModeChange((ev) => {
-  let btns = $('.dev-mode-test-btns').find('button');
-  let isDevMode = State.getVar('_app').isDevMode();
-  let disableMap = [isDevMode, !isDevMode];
-  btns.each(function(i){
-    $(this).ariaDisabled(disableMap[i]);
-  })
-});
-$(document).ready(function() {
-  State.getVar('_app').triggerDevModeChange();
-});
-<</script>>
 
 <p>
   <<seeSaw false "dev-mode-toggle-btns"
+
     `{
       "''ZAP''": () => {_app.setDevModeOn();},
       "''VYP''": () => {_app.setDevModeOff();}
@@ -99,5 +78,6 @@ $(document).ready(function() {
     ]`
     `[_app, 'onDevModeChange']`
     `[_app, 'triggerDevModeChange']`
+
   >>//Vývojářský režim//<</seeSaw>>
 </p>

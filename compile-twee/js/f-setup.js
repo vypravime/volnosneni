@@ -80,19 +80,3 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-
-setup.crazyFunction = function(onFunc, disableMap, identClass, triggrer) {
-	(onFunc[0][onFunc[1]])(
-		function(ev) {
-			let btns = $(`.${identClass}`)
-				.find('button');
-			btns.each(function(i){
-				$(this).ariaDisabled(disableMap[i]());
-			});
-	});
-	
-	/*aby se tlačítka zabarvila už před prvním kliknutím*/
-	$(document).ready(function(){
-		(triggrer[0][triggrer[1]])();
-	});
-};

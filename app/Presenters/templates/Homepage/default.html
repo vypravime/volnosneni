@@ -594,22 +594,6 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-
-setup.crazyFunction = function(onFunc, disableMap, identClass, triggrer) {
-	(onFunc[0][onFunc[1]])(
-		function(ev) {
-			let btns = $(`.${identClass}`)
-				.find('button');
-			btns.each(function(i){
-				$(this).ariaDisabled(disableMap[i]());
-			});
-	});
-	
-	/*aby se tlačítka zabarvila už před prvním kliknutím*/
-	$(document).ready(function(){
-		(triggrer[0][triggrer[1]])();
-	});
-};
 /* twine-user-script #7: "q-main.js" */
 "use strict";
 
@@ -1073,33 +1057,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;/script&gt;&gt;
 &lt;&lt;/button&gt;&gt;&amp;nbsp;&lt;&lt;include &quot;AjaxAnim1stars&quot;&gt;&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+
 &lt;hr&gt;
-&lt;p&gt;
-  &lt;div class=&quot;see-saw dev-mode-test-btns&quot;&gt;
-      &lt;&lt;button &quot;&#39;&#39;ZAP&#39;&#39;&quot;&gt;&gt;
-        &lt;&lt;run _app.setDevModeOn()&gt;&gt;
-      &lt;&lt;/button&gt;&gt;
-      &lt;&lt;button &quot;&#39;&#39;VYP&#39;&#39;&quot;&gt;&gt;
-        &lt;&lt;run _app.setDevModeOff()&gt;&gt;
-      &lt;&lt;/button&gt;&gt;
-  &lt;/div&gt; //Vývojářský režim//
-&lt;/p&gt;
-&lt;&lt;script&gt;&gt;
-State.getVar(&#39;_app&#39;).onDevModeChange((ev) =&gt; {
-  let btns = $(&#39;.dev-mode-test-btns&#39;).find(&#39;button&#39;);
-  let isDevMode = State.getVar(&#39;_app&#39;).isDevMode();
-  let disableMap = [isDevMode, !isDevMode];
-  btns.each(function(i){
-    $(this).ariaDisabled(disableMap[i]);
-  })
-});
-$(document).ready(function() {
-  State.getVar(&#39;_app&#39;).triggerDevModeChange();
-});
-&lt;&lt;/script&gt;&gt;
 
 &lt;p&gt;
   &lt;&lt;seeSaw false &quot;dev-mode-toggle-btns&quot;
+
     `{
       &quot;&#39;&#39;ZAP&#39;&#39;&quot;: () =&gt; {_app.setDevModeOn();},
       &quot;&#39;&#39;VYP&#39;&#39;&quot;: () =&gt; {_app.setDevModeOff();}
@@ -1110,6 +1073,7 @@ $(document).ready(function() {
     ]`
     `[_app, &#39;onDevModeChange&#39;]`
     `[_app, &#39;triggerDevModeChange&#39;]`
+
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="MM_start" tags="alignCenter" position="1225,225" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
@@ -1330,12 +1294,83 @@ pořadí:
     &lt;&lt;run setup.page.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="SeeSaw" tags="widget" position="225,475" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
+
+    /*strictly boolean
+        (if true:
+            container general description before the buttons) 
+        (if false:
+            container general description after the buttons) */
     &lt;&lt;set _wBeginWithContent = _args.shift()&gt;&gt;
+
+    /*string 
+        &quot;some-class-example&quot; */
     &lt;&lt;set _wIdentClass = _args.shift()&gt;&gt;
+
+    /*primitive object
+        {button1text: function to execute on click,
+         button2text: function to execute on click,
+         button3text: function to execute on click,
+         ...}
+
+            (the called function should trigger
+             customThisSettingsChangeEvent on ducument,
+             it can be written manually in the body
+             of function to execute as its last step)*/
     &lt;&lt;set _wButtons = _args.shift()&gt;&gt;
+
+    /*array of functions
+        [function returning true, when 1st button is chosen,
+         function returning true, when 2nd button is chosen,
+         function returning true, when 3rd button is chosen,
+         ...] */
     &lt;&lt;set _wDisableMap = _args.shift()&gt;&gt;
+
+    /*array of object and its method to call
+        [object, &quot;itsMethodToCall&quot;] 
+            (this method must accept one parameter,
+             which is function to be registered as
+             handler on customThisSettingsChangeEvent),
+             the handler is coded automatically by the widget,
+             the function of the handler
+             is to manage states of all buttons */
     &lt;&lt;set _wOnEventRegistrer = _args.shift()&gt;&gt;
-    &lt;&lt;set _wEventtriggrer = _args.shift()&gt;&gt;
+
+    /*array of object and its method to call
+        [object, &quot;itsMethodToCall&quot;] 
+            (this method should trigger
+             the customThisSettingsChangeEvent
+             on the document,
+             the widget calls automatically
+             this method on $(document).ready(),
+             so that the buttons states are set right
+             before any clicking*/
+    &lt;&lt;set _wEventTriggrer = _args.shift()&gt;&gt;
+
+
+    /* ---------------------------------------- */
+
+    /*the default coded function to pass the onCustomEvent handler
+      and also to trigger the customEvent on $(document).ready() */
+    &lt;&lt;set _wLivingFunction = function(
+        onFuncRegistrer, disableMap, identClass, triggrer) {
+	        (onFuncRegistrer[0][onFuncRegistrer[1]])(
+		        function(ev) {
+			        let btns = $(`.${identClass}`)
+				        .find(&#39;button&#39;);
+                    
+			        btns.each(function(i){
+				    $(this).ariaDisabled(disableMap[i]());
+			        });
+	        });
+	
+	        /*aby se tlačítka zabarvila už před prvním kliknutím*/
+	        $(document).ready(function(){
+		        (triggrer[0][triggrer[1]])();
+	        });
+        };&gt;&gt;
+
+    /* ---------------------------------------- */
+    /* TEMPLATE: */
 
 
     &lt;&lt;if _wBeginWithContent === true&gt;&gt;_contents&lt;&lt;/if&gt;&gt;
@@ -1350,11 +1385,11 @@ pořadí:
 
     &lt;&lt;if _wBeginWithContent === false&gt;&gt;_contents&lt;&lt;/if&gt;&gt;
 
-    &lt;&lt;run setup.crazyFunction(
+    &lt;&lt;run _wLivingFunction(
         _wOnEventRegistrer,
         _wDisableMap,
         _wIdentClass,
-        _wEventtriggrer
+        _wEventTriggrer
         )&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>

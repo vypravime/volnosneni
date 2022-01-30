@@ -1,12 +1,83 @@
 :: SeeSaw [widget]
 
 <<widget "seeSaw" container>>
+
+    /*strictly boolean
+        (if true:
+            container general description before the buttons) 
+        (if false:
+            container general description after the buttons) */
     <<set _wBeginWithContent = _args.shift()>>
+
+    /*string 
+        "some-class-example" */
     <<set _wIdentClass = _args.shift()>>
+
+    /*primitive object
+        {button1text: function to execute on click,
+         button2text: function to execute on click,
+         button3text: function to execute on click,
+         ...}
+
+            (the called function should trigger
+             customThisSettingsChangeEvent on ducument,
+             it can be written manually in the body
+             of function to execute as its last step)*/
     <<set _wButtons = _args.shift()>>
+
+    /*array of functions
+        [function returning true, when 1st button is chosen,
+         function returning true, when 2nd button is chosen,
+         function returning true, when 3rd button is chosen,
+         ...] */
     <<set _wDisableMap = _args.shift()>>
+
+    /*array of object and its method to call
+        [object, "itsMethodToCall"] 
+            (this method must accept one parameter,
+             which is function to be registered as
+             handler on customThisSettingsChangeEvent),
+             the handler is coded automatically by the widget,
+             the function of the handler
+             is to manage states of all buttons */
     <<set _wOnEventRegistrer = _args.shift()>>
-    <<set _wEventtriggrer = _args.shift()>>
+
+    /*array of object and its method to call
+        [object, "itsMethodToCall"] 
+            (this method should trigger
+             the customThisSettingsChangeEvent
+             on the document,
+             the widget calls automatically
+             this method on $(document).ready(),
+             so that the buttons states are set right
+             before any clicking*/
+    <<set _wEventTriggrer = _args.shift()>>
+
+
+    /* ---------------------------------------- */
+
+    /*the default coded function to pass the onCustomEvent handler
+      and also to trigger the customEvent on $(document).ready() */
+    <<set _wLivingFunction = function(
+        onFuncRegistrer, disableMap, identClass, triggrer) {
+	        (onFuncRegistrer[0][onFuncRegistrer[1]])(
+		        function(ev) {
+			        let btns = $(`.${identClass}`)
+				        .find('button');
+                    
+			        btns.each(function(i){
+				    $(this).ariaDisabled(disableMap[i]());
+			        });
+	        });
+	
+	        /*aby se tlačítka zabarvila už před prvním kliknutím*/
+	        $(document).ready(function(){
+		        (triggrer[0][triggrer[1]])();
+	        });
+        };>>
+
+    /* ---------------------------------------- */
+    /* TEMPLATE: */
 
 
     <<if _wBeginWithContent === true>>_contents<</if>>
@@ -21,11 +92,11 @@
 
     <<if _wBeginWithContent === false>>_contents<</if>>
 
-    <<run setup.crazyFunction(
+    <<run _wLivingFunction(
         _wOnEventRegistrer,
         _wDisableMap,
         _wIdentClass,
-        _wEventtriggrer
+        _wEventTriggrer
         )>>
 
 <</widget>>
