@@ -11,18 +11,25 @@ let setParameters = () => ({
 		TT: 'TěloTaj',
 		EX: 'Experimenty'
 	},
+
     htmlIds: {
-        'my-header': {
-            origin: 'the passage PassageHeader is automatically wrapped into div#my-header by my SugarcubeConfigurator via Config.passages.onProcess'
+        myHeader: {
+            givenPassageTitle: 'PassageHeader',
+            id: 'my-header',
+            origin: 'the passage PassageHeader is automatically wrapped into div#my-header by my SugarcubeConfigurator via Config.passages.onProcess',
         },
-        'my-footer': {
-            origin: 'the passage PassageFooter is automatically wrapped into div#my-footer by my SugarcubeConfigurator via Config.passages.onProcess'
+        myFooter: {
+            givenPassageTitle: 'PassageFooter',
+            id: 'my-footer',
+            origin: 'the passage PassageFooter is automatically wrapped into div#my-footer by my SugarcubeConfigurator via Config.passages.onProcess',
         },
-        'ajax-anim-right': {
+        ajaxLoadSuperAnimation: {
+            id: 'ajax-anim-right',
             origin: 'manually added in the PassageFooter template',
-            purpose: 'the ajax-loader inside makes very right position fixed narrow column being always on display - to always indicate, whether ajax loading is ongoing'
+            purpose: 'the ajax-loader inside makes very right narrow column being position fixed and thus always on display - to always indicate, whether ajax loading is ongoing'
         }
     },
+
     htmlClasses: {
         passageTags: {
             alignCenter: {
@@ -32,6 +39,11 @@ let setParameters = () => ({
             noAutoWrapDiv: {
                 class: '',
                 purpose: 'This passage is not wrapped into div.my-passage by my SugarcubeConfigurator via Config.passages.onProcess'
+            }
+        },
+        autoWrapping: {
+            passageContent: {
+                defaultClass: 'my-passage'
             }
         },
         animations: {
@@ -79,6 +91,10 @@ setup.DI_CONT = {
         }
         return this.services[service];
     },
+    /**
+     * all createF7s all called automatically via DI_CONT.getService() method,
+     * the THIS variable during auto call is not pointed to createF7s, but is pointed to DI_CONT itself
+     */
     createF7s: {
         ajaxAnimation: function() {
             return new setup.c10s.AjaxAnimation(
@@ -98,6 +114,7 @@ setup.DI_CONT = {
             );},
         htmler: function() {
             return new setup.c10s.Htmler(
+                this.params.htmlIds,
                 this.params.htmlClasses,
                 UIBar
             );},
@@ -117,6 +134,7 @@ setup.DI_CONT = {
             return new setup.c10s.SugarcubeConfigurator(
                 State,
                 this.getService('metaDater'),
+                this.getService('htmler'),
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
             );},
