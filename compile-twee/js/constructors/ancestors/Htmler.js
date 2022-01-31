@@ -22,8 +22,8 @@ setup.c10s.Htmler = function(
 
     this._legends = {
         UIBarToggleBtn: {
-            toUnstow: 'Panel &gt;',
-            toStow: 'Panel &lt;'
+            toUnstow: '&gt;',
+            toStow: '&lt;'
         }
     };
 }

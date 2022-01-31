@@ -541,8 +541,8 @@ setup.c10s.Htmler = function(
 
     this._legends = {
         UIBarToggleBtn: {
-            toUnstow: 'Panel &gt;',
-            toStow: 'Panel &lt;'
+            toUnstow: '&gt;',
+            toStow: '&lt;'
         }
     };
 }
@@ -1221,12 +1221,23 @@ vepiš vlastní slova...
   `[setup, &#39;voidFunction&#39;]`
 
   &gt;&gt;&#39;&#39;režim na celou obrazovku&#39;&#39;&lt;br&gt;
-    //(Doporučuji zapnout po každém startu aplikace, osbně
-       mám potom hlubší prožitek.)//
+    //(zapínám vždy po spuštění,
+       mívám tak hlubší prožitek)//
   &lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;
-&lt;p&gt;//(Lze přepínat i pomocí &quot;Fullscreen zap/vyp&quot; tlačítka na levém bočním panelu.)//&lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="8" name="Help" tags="" position="975,100" size="100,100">/*DEPENDENCIES: */
+&lt;p&gt;//(lze přepnout i &quot;Fullscreen zap/vyp&quot;
+       tlačítkem na levém panelu)//&lt;/p&gt;
+&lt;hr&gt;
+&lt;&lt;if _app.isNOTProductionRelease()&gt;&gt;
+&lt;hr&gt;
+&lt;p class=&quot;tac&quot;&gt;
+&lt;&lt;button [[Vstoupit do experimentální části|EX_ajaxTest]]&gt;&gt;
+    &lt;&lt;run Dialog.close()&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;&lt;/if&gt;&gt;
+&#39;&#39;&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;&#39;&#39;</tw-passagedata><tw-passagedata pid="8" name="Help" tags="" position="975,100" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 /*\DEPENDENCIES */
 
@@ -1242,16 +1253,7 @@ vepiš vlastní slova...
 //(zeptej se, navrhni zlepšení, postěžuj si, poděkuj, ...)//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;
-&lt;&lt;if _app.isNOTProductionRelease()&gt;&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p&gt;
-&lt;&lt;button [[Vývojářeské experimenty|EX_ajaxTest]]&gt;&gt;
-    &lt;&lt;run Dialog.close()&gt;&gt;
-  &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="VSD_cardsBoard" tags="" position="1100,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="10" name="VSD_beNiceInfo" tags="" position="1225,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="VSD_cardsBoard" tags="" position="1100,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="10" name="VSD_beNiceInfo" tags="" position="1225,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
 nepoužívej prosím své vyprávění&lt;br&gt;
 k provokaci či šikaně svých spoluhráčů.
@@ -1597,16 +1599,16 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;
+&lt;hr&gt;
+&lt;p class=&quot;tac&quot;&gt;
+  &#39;&#39;&lt;&lt;button [[Přijmout a vrátit se|previous()]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;p class=&quot;tac&quot;&gt;
   &lt;&lt;button &quot;Restartovat a jednorázově spustit SugarCubeDebugger&quot;&gt;&gt;
     &lt;&lt;run _metaDater.setOneTimeSugarcubeDebugging()&gt;&gt;
     &lt;&lt;run UI.restart()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;
-&lt;hr&gt;
-&lt;hr&gt;
-&lt;p class=&quot;tac&quot;&gt;
-  &lt;&lt;button [[Přijmout a vrátit se|previous()]]&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="22" name="MM_start" tags="alignCenter" position="225,350" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;

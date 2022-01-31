@@ -87,14 +87,14 @@
   <</seeSaw>>
 </p>
 <hr>
-<p>
+<hr>
+<p class="tac">
+  ''<<button [[Přijmout a vrátit se|previous()]]>><</button>>''
+</p>
+<hr>
+<p class="tac">
   <<button "Restartovat a jednorázově spustit SugarCubeDebugger">>
     <<run _metaDater.setOneTimeSugarcubeDebugging()>>
     <<run UI.restart()>>
   <</button>>
-</p>
-<hr>
-<hr>
-<p class="tac">
-  <<button [[Přijmout a vrátit se|previous()]]>><</button>>
 </p>

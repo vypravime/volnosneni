@@ -16,9 +16,20 @@
   `[setup, 'voidFunction']`
 
   >>''režim na celou obrazovku''<br>
-    //(Doporučuji zapnout po každém startu aplikace, osbně
-       mám potom hlubší prožitek.)//
+    //(zapínám vždy po spuštění,
+       mívám tak hlubší prožitek)//
   <</seeSaw>>
 </p>
-<p>//(Lze přepínat i pomocí "Fullscreen zap/vyp" tlačítka na levém bočním panelu.)//</p>
+<p>//(lze přepnout i "Fullscreen zap/vyp"
+       tlačítkem na levém panelu)//</p>
 <hr>
+<<if _app.isNOTProductionRelease()>>
+<hr>
+<p class="tac">
+<<button [[Vstoupit do experimentální části|EX_ajaxTest]]>>
+    <<run Dialog.close()>>
+  <</button>>
+</p>
+<hr>
+<</if>>
+''<<dialogCloseButton "Vrátit se do hry">>''
