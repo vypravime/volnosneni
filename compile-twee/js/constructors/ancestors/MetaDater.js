@@ -12,35 +12,49 @@ setup.c10s.MetaDater = function(
     this._metaVarsNames = {
         /**boolean
          * (true results to not autoloading for this time) */
-        oneTimeAutoloadSkip: 'oneTimeAutoloadSkip'
+        oneTimeAutoloadSkip: 'oneTimeAutoloadSkip',
+        oneTimeStartDebugging: 'oneTimeStartDebugging'
     }
 }
 
 let thatProto = setup.c10s.MetaDater.prototype;
 
 
-thatProto.oneTimeCHECKAutoloadSkip = function() {
-    if (this._state.metadata.has(
-            this._metaVarsNames.oneTimeAutoloadSkip
-            )
-    ) {
 
-        let metaValue = this._state.metadata.get(
-            this._metaVarsNames.oneTimeAutoloadSkip
-        );
-        this._state.metadata.delete(
-            this._metaVarsNames.oneTimeAutoloadSkip
-        );
+thatProto.oneTimeCHECKAutoloadSkip = function() {
+    return this._oneTimeGeneralChecker(
+        this._metaVarsNames.oneTimeAutoloadSkip
+    );
+};
+
+thatProto.oneTimeCHECKSugarcubeDebugging = function() {
+    return this._oneTimeGeneralChecker(
+        this._metaVarsNames.oneTimeStartDebugging
+    );
+};
+
+thatProto._oneTimeGeneralChecker = function(metaVarName) {
+    if (this._state.metadata.has(metaVarName)) {
+
+        let metaValue = this._state.metadata.get(metaVarName);
+        this._state.metadata.delete(metaVarName);
         if (metaValue === true) {
             return true;
         }
     }
     return false;
-}
+};
 
 thatProto.setOneTimeAutoloadSkip = function() {
     this._state.metadata.set(
         this._metaVarsNames.oneTimeAutoloadSkip,
+        true
+    );
+};
+
+thatProto.setOneTimeSugarcubeDebugging = function() {
+    this._state.metadata.set(
+        this._metaVarsNames.oneTimeStartDebugging,
         true
     );
 }

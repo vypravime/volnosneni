@@ -30,7 +30,7 @@ setup.c10s.SugarcubeConfigurator = function(
             return false;
         }
     }; 
-    Config.saves.autoload = (()=>{
+    Config.saves.autoload = (()=> {
         if (this._metaDater.oneTimeCHECKAutoloadSkip()) {
             return false;
         } else {
@@ -44,8 +44,14 @@ setup.c10s.SugarcubeConfigurator = function(
     };
     
 
-/**todo: ADD AUTOMATIC FROM APP HANDLING */
-    Config.debug = false;
+
+    Config.debug = (()=> {
+        if (this._metaDater.oneTimeCHECKSugarcubeDebugging()) {
+            return true;
+        } else {
+            return false;
+        }
+    })();
 
     
 }

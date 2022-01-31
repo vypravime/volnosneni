@@ -4,6 +4,7 @@
 <<set _app = setup.DI_CONT.getService('app')>>
 <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
 <<set _myPage = setup.DI_CONT.getService('myPage')>>
+<<set _metaDater = setup.DI_CONT.getService('metaDater')>>
 /*\DEPENDENCIES */
 
 <h2>Hello!<br>Let's play with AJAX</h2>
@@ -82,6 +83,12 @@
     `[_myPage, 'triggerDevModeChange']`
 
   >>//Vývojářský režim//<</seeSaw>>
+</p>
+<p>
+  <<button "Restartovat a jednorázově spustit SugarCubeDebugger">>
+    <<run _metaDater.setOneTimeSugarcubeDebugging()>>
+    <<run UI.restart()>>
+  <</button>>
 </p>
 <hr>
 <hr>

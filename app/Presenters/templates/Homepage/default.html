@@ -612,35 +612,49 @@ setup.c10s.MetaDater = function(
     this._metaVarsNames = {
         /**boolean
          * (true results to not autoloading for this time) */
-        oneTimeAutoloadSkip: 'oneTimeAutoloadSkip'
+        oneTimeAutoloadSkip: 'oneTimeAutoloadSkip',
+        oneTimeStartDebugging: 'oneTimeStartDebugging'
     }
 }
 
 let thatProto = setup.c10s.MetaDater.prototype;
 
 
-thatProto.oneTimeCHECKAutoloadSkip = function() {
-    if (this._state.metadata.has(
-            this._metaVarsNames.oneTimeAutoloadSkip
-            )
-    ) {
 
-        let metaValue = this._state.metadata.get(
-            this._metaVarsNames.oneTimeAutoloadSkip
-        );
-        this._state.metadata.delete(
-            this._metaVarsNames.oneTimeAutoloadSkip
-        );
+thatProto.oneTimeCHECKAutoloadSkip = function() {
+    return this._oneTimeGeneralChecker(
+        this._metaVarsNames.oneTimeAutoloadSkip
+    );
+};
+
+thatProto.oneTimeCHECKSugarcubeDebugging = function() {
+    return this._oneTimeGeneralChecker(
+        this._metaVarsNames.oneTimeStartDebugging
+    );
+};
+
+thatProto._oneTimeGeneralChecker = function(metaVarName) {
+    if (this._state.metadata.has(metaVarName)) {
+
+        let metaValue = this._state.metadata.get(metaVarName);
+        this._state.metadata.delete(metaVarName);
         if (metaValue === true) {
             return true;
         }
     }
     return false;
-}
+};
 
 thatProto.setOneTimeAutoloadSkip = function() {
     this._state.metadata.set(
         this._metaVarsNames.oneTimeAutoloadSkip,
+        true
+    );
+};
+
+thatProto.setOneTimeSugarcubeDebugging = function() {
+    this._state.metadata.set(
+        this._metaVarsNames.oneTimeStartDebugging,
         true
     );
 }
@@ -831,7 +845,7 @@ setup.c10s.SugarcubeConfigurator = function(
             return false;
         }
     }; 
-    Config.saves.autoload = (()=>{
+    Config.saves.autoload = (()=> {
         if (this._metaDater.oneTimeCHECKAutoloadSkip()) {
             return false;
         } else {
@@ -845,8 +859,14 @@ setup.c10s.SugarcubeConfigurator = function(
     };
     
 
-/**todo: ADD AUTOMATIC FROM APP HANDLING */
-    Config.debug = false;
+
+    Config.debug = (()=> {
+        if (this._metaDater.oneTimeCHECKSugarcubeDebugging()) {
+            return true;
+        } else {
+            return false;
+        }
+    })();
 
     
 }
@@ -1460,6 +1480,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
+&lt;&lt;set _metaDater = setup.DI_CONT.getService(&#39;metaDater&#39;)&gt;&gt;
 /*\DEPENDENCIES */
 
 &lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
@@ -1538,6 +1559,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     `[_myPage, &#39;triggerDevModeChange&#39;]`
 
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;&lt;button &quot;Restartovat a jednorázově spustit SugarCubeDebugger&quot;&gt;&gt;
+    &lt;&lt;run _metaDater.setOneTimeSugarcubeDebugging()&gt;&gt;
+    &lt;&lt;run UI.restart()&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
