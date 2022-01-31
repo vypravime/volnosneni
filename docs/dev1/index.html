@@ -519,6 +519,7 @@ thatProto.numberOf = function(
 
 
 setup.c10s.Htmler = function(
+    _htmlIds,
     _htmlClasses,
     _uibarInstance
 ) {
@@ -529,6 +530,7 @@ setup.c10s.Htmler = function(
         value: 'html'
     });
 
+    this._htmlIds = _htmlIds;
     this._htmlClasses = _htmlClasses;
     this._uibar = _uibarInstance;
 
@@ -543,10 +545,33 @@ setup.c10s.Htmler = function(
 let thatProto = setup.c10s.Htmler.prototype;
 
 
+/*Wrap processed pasage text into additional div
+(the div gets either class 'my-passage',
+or id 'PassageHeader'/'PassageFooter').
+If the passage has the tag 'noAutoWrapDiv', no wrapping is done.
+*/
+thatProto.autoWrapPassageContent = function (passage) {
+    if (passage.tags.includes('noAutoWrapDiv')) {
+        return passage.text;
+    } else {
+        let attrsStr = '';
+        if (passage.title === this._htmlIds.myHeader.givenPassageTitle) {
+            attrsStr = ` id="${this._htmlIds.myHeader.id}"`;
+        } else if (passage.title === this._htmlIds.myFooter.givenPassageTitle) {
+            attrsStr = ` id="${this._htmlIds.myFooter.id}"`;
+        } else {
+            attrsStr = ` class="${this._htmlClasses.autoWrapping.passageContent.defaultClass}"`
+        }
+        return `<div${attrsStr}>${passage.text}</div>`;
+    }
+};
+
+
 thatProto.getUIBarToggleBtnClass = function() {
     return this._htmlClasses.components.UIBarToggleButton.defaultClass;
 };
 
+/** the parameter isBarStowed can be omitted */
 thatProto.READYfillUIBarToggleBtn = function(isBarStowed) {
     $(document).ready(()=> {
         let BtnText = this.sayUIBarToggleBtn(isBarStowed);
@@ -556,6 +581,7 @@ thatProto.READYfillUIBarToggleBtn = function(isBarStowed) {
     });
 }
 
+/** the parameter isBarStowed can be omitted */
 thatProto.sayUIBarToggleBtn = function(isBarStowed) {
     if (typeof isBarStowed === 'undefined') {
         isBarStowed = this._uibar.isStowed();
@@ -586,35 +612,49 @@ setup.c10s.MetaDater = function(
     this._metaVarsNames = {
         /**boolean
          * (true results to not autoloading for this time) */
-        oneTimeAutoloadSkip: 'oneTimeAutoloadSkip'
+        oneTimeAutoloadSkip: 'oneTimeAutoloadSkip',
+        oneTimeStartDebugging: 'oneTimeStartDebugging'
     }
 }
 
 let thatProto = setup.c10s.MetaDater.prototype;
 
 
-thatProto.oneTimeCHECKAutoloadSkip = function() {
-    if (this._state.metadata.has(
-            this._metaVarsNames.oneTimeAutoloadSkip
-            )
-    ) {
 
-        let metaValue = this._state.metadata.get(
-            this._metaVarsNames.oneTimeAutoloadSkip
-        );
-        this._state.metadata.delete(
-            this._metaVarsNames.oneTimeAutoloadSkip
-        );
+thatProto.oneTimeCHECKAutoloadSkip = function() {
+    return this._oneTimeGeneralChecker(
+        this._metaVarsNames.oneTimeAutoloadSkip
+    );
+};
+
+thatProto.oneTimeCHECKSugarcubeDebugging = function() {
+    return this._oneTimeGeneralChecker(
+        this._metaVarsNames.oneTimeStartDebugging
+    );
+};
+
+thatProto._oneTimeGeneralChecker = function(metaVarName) {
+    if (this._state.metadata.has(metaVarName)) {
+
+        let metaValue = this._state.metadata.get(metaVarName);
+        this._state.metadata.delete(metaVarName);
         if (metaValue === true) {
             return true;
         }
     }
     return false;
-}
+};
 
 thatProto.setOneTimeAutoloadSkip = function() {
     this._state.metadata.set(
         this._metaVarsNames.oneTimeAutoloadSkip,
+        true
+    );
+};
+
+thatProto.setOneTimeSugarcubeDebugging = function() {
+    this._state.metadata.set(
+        this._metaVarsNames.oneTimeStartDebugging,
         true
     );
 }
@@ -782,17 +822,20 @@ thatProto.triggerUIBarToggling = function(
 setup.c10s.SugarcubeConfigurator = function(
     _stateInstance,
     _metaDater,
+    _htmler,
     autosaveBeginTurn = 3,
     savesVersion
 ) {
     this._state = _stateInstance;
     this._metaDater = _metaDater;
+    this._htmler = _htmler;
 
 
     Config.passages.nobr = true;
     Config.history.controls = false;
 
-    Config.saves.id = "VypravimeApp"; //you MUSTN'T CHANGE THIS or the app refuses to load every older save
+    
+    Config.saves.id = 'VypravimeApp' //you MUSTN'T EVER CHANGE THIS, SugarCube refuses to load every save made prior the change of this value
     Config.saves.version = savesVersion;
     Config.saves.autosave = ()=> {
         if (autosaveBeginTurn && (
@@ -802,38 +845,28 @@ setup.c10s.SugarcubeConfigurator = function(
             return false;
         }
     }; 
-    Config.saves.autoload = (()=>{
+    Config.saves.autoload = (()=> {
         if (this._metaDater.oneTimeCHECKAutoloadSkip()) {
             return false;
         } else {
             return "prompt";
         }
     })();
-
-/*todo: IMPROVE DEPENDENCY INJECTION: */     
-    /*Wrap every processed pasage text into additional div
-    (the div gets either class 'my-passage',
-    or id 'PassageHeader'/'PassageFooter').
-    If the passage has the tag 'noAutoWrapDiv', no wrapping is done.
-    */
-    Config.passages.onProcess = function (p) {
-        if (p.tags.includes('noAutoWrapDiv')) {
-            return p.text;
-        } else {
-            let attrsStr = '';
-            if (p.title === 'PassageHeader') {
-                attrsStr = ' id="my-header"';
-            } else if (p.title === 'PassageFooter') {
-                attrsStr = ' id="my-footer"';
-            } else {
-                attrsStr = ' class="my-passage"'
-            }
-            return p.text = `<div${attrsStr}>${p.text}</div>`;
-        }
+    
+    
+    Config.passages.onProcess = (passage)=> {
+        return this._htmler.autoWrapPassageContent(passage);
     };
+    
 
-/**todo: ADD AUTOMATIC FROM APP HANDLING */
-    Config.debug = false;
+
+    Config.debug = (()=> {
+        if (this._metaDater.oneTimeCHECKSugarcubeDebugging()) {
+            return true;
+        } else {
+            return false;
+        }
+    })();
 
     
 }
@@ -855,18 +888,25 @@ let setParameters = () => ({
 		TT: 'TěloTaj',
 		EX: 'Experimenty'
 	},
+
     htmlIds: {
-        'my-header': {
-            origin: 'the passage PassageHeader is automatically wrapped into div#my-header by my SugarcubeConfigurator via Config.passages.onProcess'
+        myHeader: {
+            givenPassageTitle: 'PassageHeader',
+            id: 'my-header',
+            origin: 'the passage PassageHeader is automatically wrapped into div#my-header by my SugarcubeConfigurator via Config.passages.onProcess',
         },
-        'my-footer': {
-            origin: 'the passage PassageFooter is automatically wrapped into div#my-footer by my SugarcubeConfigurator via Config.passages.onProcess'
+        myFooter: {
+            givenPassageTitle: 'PassageFooter',
+            id: 'my-footer',
+            origin: 'the passage PassageFooter is automatically wrapped into div#my-footer by my SugarcubeConfigurator via Config.passages.onProcess',
         },
-        'ajax-anim-right': {
+        ajaxLoadSuperAnimation: {
+            id: 'ajax-anim-right',
             origin: 'manually added in the PassageFooter template',
-            purpose: 'the ajax-loader inside makes very right position fixed narrow column being always on display - to always indicate, whether ajax loading is ongoing'
+            purpose: 'the ajax-loader inside makes very right narrow column being position fixed and thus always on display - to always indicate, whether ajax loading is ongoing'
         }
     },
+
     htmlClasses: {
         passageTags: {
             alignCenter: {
@@ -876,6 +916,11 @@ let setParameters = () => ({
             noAutoWrapDiv: {
                 class: '',
                 purpose: 'This passage is not wrapped into div.my-passage by my SugarcubeConfigurator via Config.passages.onProcess'
+            }
+        },
+        autoWrapping: {
+            passageContent: {
+                defaultClass: 'my-passage'
             }
         },
         animations: {
@@ -923,6 +968,10 @@ setup.DI_CONT = {
         }
         return this.services[service];
     },
+    /**
+     * all createF7s all called automatically via DI_CONT.getService() method,
+     * the THIS variable during auto call is not pointed to createF7s, but is pointed to DI_CONT itself
+     */
     createF7s: {
         ajaxAnimation: function() {
             return new setup.c10s.AjaxAnimation(
@@ -942,6 +991,7 @@ setup.DI_CONT = {
             );},
         htmler: function() {
             return new setup.c10s.Htmler(
+                this.params.htmlIds,
                 this.params.htmlClasses,
                 UIBar
             );},
@@ -961,6 +1011,7 @@ setup.DI_CONT = {
             return new setup.c10s.SugarcubeConfigurator(
                 State,
                 this.getService('metaDater'),
+                this.getService('htmler'),
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
             );},
@@ -1429,6 +1480,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
+&lt;&lt;set _metaDater = setup.DI_CONT.getService(&#39;metaDater&#39;)&gt;&gt;
 /*\DEPENDENCIES */
 
 &lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
@@ -1507,6 +1559,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     `[_myPage, &#39;triggerDevModeChange&#39;]`
 
   &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;&lt;button &quot;Restartovat a jednorázově spustit SugarCubeDebugger&quot;&gt;&gt;
+    &lt;&lt;run _metaDater.setOneTimeSugarcubeDebugging()&gt;&gt;
+    &lt;&lt;run UI.restart()&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;hr&gt;
