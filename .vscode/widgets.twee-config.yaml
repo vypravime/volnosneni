@@ -59,8 +59,8 @@ sugarcube-2:
           ()=> obj.was2ndBtnChosen():boolean,
           ()=> obj.was3rdBtnChosen():boolean
           ]`
-        `[obj, 'itsMethodToSetCustomEventHandler']`
-        `[obj, 'itsMethodToTriggerCustomEvent']`
+        `[obj, 'itsMethodToRegisterThisEventHandler']`
+        `[obj, 'itsMethodToTriggerThisEvent']`
 
         >>general description of buttons<</seeSaw>>
         ```
@@ -76,11 +76,20 @@ sugarcube-2:
           the description is omitted.)*
         
         *(you can use markup in the buttons' texts
-          inside the widget's 2nd parameter property names)*
+          inside the widget's 3rd parameter property names)*
         
-        *(inside the widget's 2nd parameter,
+        *(inside the widget's 3rd parameter,
           if the given `obj.fireAfterClick()` does not
           trigger customEvent inside its default body,
           you can write it as last step of the wrapping
           anonymous function
           `()=>{step1();step2();...;triggerEvent()}`)*
+
+        *(the widget calls 4th parameter method to register
+          its own event handler to get all buttons
+          changing their state -color,disabled,etc.-,
+          whenewer one of the buttons is clicked)*
+
+        *(the widget calls last -5th- parameter method on
+          $(document).ready() to get the right states
+          of buttons before any of them is clicked)*

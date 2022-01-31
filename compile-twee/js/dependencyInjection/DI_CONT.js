@@ -25,7 +25,7 @@ let setParameters = () => ({
         },
         ajaxLoadSuperAnimation: {
             id: 'ajax-anim-right',
-            origin: 'manually added in the PassageFooter template',
+            origin: 'via htmler.getAjaxLoadSuperAnimationId() returned to the PassageFooter template',
             purpose: 'the ajax-loader inside makes very right narrow column being position fixed and thus always on display - to always indicate, whether ajax loading is ongoing'
         }
     },

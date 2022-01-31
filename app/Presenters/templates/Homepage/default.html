@@ -536,8 +536,8 @@ setup.c10s.Htmler = function(
 
     this._legends = {
         UIBarToggleBtn: {
-            toUnstow: 'Panel ukaž',
-            toStow: 'Panel skryj'
+            toUnstow: 'Panel &gt;',
+            toStow: 'Panel &lt;'
         }
     };
 }
@@ -567,6 +567,9 @@ thatProto.autoWrapPassageContent = function (passage) {
 };
 
 
+thatProto.getAjaxLoadSuperAnimationId = function() {
+    return this._htmlIds.ajaxLoadSuperAnimation.id;
+};
 thatProto.getUIBarToggleBtnClass = function() {
     return this._htmlClasses.components.UIBarToggleButton.defaultClass;
 };
@@ -902,7 +905,7 @@ let setParameters = () => ({
         },
         ajaxLoadSuperAnimation: {
             id: 'ajax-anim-right',
-            origin: 'manually added in the PassageFooter template',
+            origin: 'via htmler.getAjaxLoadSuperAnimationId() returned to the PassageFooter template',
             purpose: 'the ajax-loader inside makes very right narrow column being position fixed and thus always on display - to always indicate, whether ajax loading is ongoing'
         }
     },
@@ -1394,6 +1397,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="15" name="PassageFooter" tags="" position="600,225" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+&lt;&lt;set _htmler = setup.DI_CONT.getService(&#39;htmler&#39;)&gt;&gt;
 &lt;&lt;if _app.isDevMode()&gt;&gt;
   &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -1423,7 +1427,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;/p&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;div id=&quot;ajax-anim-right&quot;&gt;
+&lt;div @id=&quot;_htmler.getAjaxLoadSuperAnimationId()&quot;&gt;
   &lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="PassageHeader" tags="" position="725,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set __baseNav = _app.getSubGameBreadCrumb()&gt;&gt;
@@ -1548,18 +1552,21 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;seeSaw false &quot;dev-mode-toggle-btns&quot;
 
     `{
-      &quot;&#39;&#39;ZAP&#39;&#39;&quot;: ()=&gt; {_app.setDevModeOn();},
-      &quot;&#39;&#39;VYP&#39;&#39;&quot;: ()=&gt; {_app.setDevModeOff();}
+      &quot;&#39;&#39;VYP&#39;&#39;&quot;: ()=&gt; {_app.setDevModeOff();},
+      &quot;&#39;&#39;ZAP&#39;&#39;&quot;: ()=&gt; {_app.setDevModeOn();}
     }`
     `[
-      ()=&gt; _app.isDevMode(),
-      ()=&gt; !_app.isDevMode()
+      ()=&gt; !_app.isDevMode(),
+      ()=&gt; _app.isDevMode()
     ]`
     `[_myPage, &#39;onDevModeChange&#39;]`
     `[_myPage, &#39;triggerDevModeChange&#39;]`
 
-  &gt;&gt;//Vývojářský režim//&lt;&lt;/seeSaw&gt;&gt;
+  &gt;&gt;&#39;&#39;experimentální režim&#39;&#39;&lt;br&gt;
+    //(spustí se po změně místnosti - bez restartu)//
+  &lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;
   &lt;&lt;button &quot;Restartovat a jednorázově spustit SugarCubeDebugger&quot;&gt;&gt;
     &lt;&lt;run _metaDater.setOneTimeSugarcubeDebugging()&gt;&gt;

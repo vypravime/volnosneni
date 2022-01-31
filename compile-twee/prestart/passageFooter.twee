@@ -2,6 +2,7 @@
 
 /*DEPENDENCIES: */
 <<set _app = setup.DI_CONT.getService('app')>>
+<<set _htmler = setup.DI_CONT.getService('htmler')>>
 <<if _app.isDevMode()>>
   <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
 <</if>>
@@ -31,6 +32,6 @@
   </p>
 <</if>>
 
-<div id="ajax-anim-right">
+<div @id="_htmler.getAjaxLoadSuperAnimationId()">
   <<include "AjaxAnim1">>
 </div>

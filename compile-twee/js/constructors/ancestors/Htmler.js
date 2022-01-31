@@ -22,8 +22,8 @@ setup.c10s.Htmler = function(
 
     this._legends = {
         UIBarToggleBtn: {
-            toUnstow: 'Panel ukaž',
-            toStow: 'Panel skryj'
+            toUnstow: 'Panel &gt;',
+            toStow: 'Panel &lt;'
         }
     };
 }
@@ -53,6 +53,9 @@ thatProto.autoWrapPassageContent = function (passage) {
 };
 
 
+thatProto.getAjaxLoadSuperAnimationId = function() {
+    return this._htmlIds.ajaxLoadSuperAnimation.id;
+};
 thatProto.getUIBarToggleBtnClass = function() {
     return this._htmlClasses.components.UIBarToggleButton.defaultClass;
 };

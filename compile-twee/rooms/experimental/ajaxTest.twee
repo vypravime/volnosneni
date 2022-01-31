@@ -72,18 +72,21 @@
   <<seeSaw false "dev-mode-toggle-btns"
 
     `{
-      "''ZAP''": ()=> {_app.setDevModeOn();},
-      "''VYP''": ()=> {_app.setDevModeOff();}
+      "''VYP''": ()=> {_app.setDevModeOff();},
+      "''ZAP''": ()=> {_app.setDevModeOn();}
     }`
     `[
-      ()=> _app.isDevMode(),
-      ()=> !_app.isDevMode()
+      ()=> !_app.isDevMode(),
+      ()=> _app.isDevMode()
     ]`
     `[_myPage, 'onDevModeChange']`
     `[_myPage, 'triggerDevModeChange']`
 
-  >>//Vývojářský režim//<</seeSaw>>
+  >>''experimentální režim''<br>
+    //(spustí se po změně místnosti - bez restartu)//
+  <</seeSaw>>
 </p>
+<hr>
 <p>
   <<button "Restartovat a jednorázově spustit SugarCubeDebugger">>
     <<run _metaDater.setOneTimeSugarcubeDebugging()>>
