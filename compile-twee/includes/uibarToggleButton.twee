@@ -1,0 +1,12 @@
+:: UIBarToggleButton [noAutoWrapDiv]
+
+/*DEPENDENCIES: */
+<<set _myPage = setup.DI_CONT.getService('myPage')>>
+<<set _htmler = setup.DI_CONT.getService('htmler')>>
+/*\DEPENDENCIES */
+
+<span @class="_htmler.getUIBarToggleBtnClass()">
+    <<button "Panel ...">> /* right button legend is filled via MyPage.registerUIBarTogglingHandlers() after :storyready event is triggered*/
+      <<run _myPage.triggerUIBarToggling()>>
+    <</button>>
+</span>

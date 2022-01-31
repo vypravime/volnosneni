@@ -117,8 +117,18 @@ thatProto.registerUIBarTogglingHandlers = function() {
     /* so that the system default ui button also triggers my custom event */
     $(document).ready(()=>{
         $('#ui-bar-toggle').ariaClick(()=>{
-            this.triggerUIBarToggling(false); //fase argument, because the UIBAR is now moving by default system a doesn't need to be moved twice
+            this.triggerUIBarToggling(false); //false argument, because the UIBAR is now moving by default system a doesn't need to be moved twice
         });
+    });
+
+    /*to make the UIBARToggle custom button's legend after navigation persistent*/
+    $(document).on(':passagerender',()=> {
+        this._htmler.READYfillUIBarToggleBtn();
+    });
+
+    /* so that the custom UIBarToggle button has right legend after startup */
+    $(document).on(':storyready',()=> {
+        this._htmler.READYfillUIBarToggleBtn();
     });
 };
 
