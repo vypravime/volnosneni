@@ -1,6 +1,6 @@
 :: StorySubtitle
 
-//verze// ''0.2.0b''/*change also in DownloadPresenter->actionDefault() */
+//verze// ''<<= setup.DI_CONT.getService('app').getAppVersion()>>''
 <p class="mt6 mb6">
 //stáhni novější://
 [[www.vypravime.cz|https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/]]

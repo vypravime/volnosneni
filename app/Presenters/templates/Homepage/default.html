@@ -376,10 +376,25 @@ thatProto.setOn = function() {
 
 
 setup.c10s.App = function(
+    __productionRelease,
+    __appVersion,
     _stateInstance,
     _subGameBreadCrumbs,
     _myPage
 ) {
+    Object.defineProperty(this, '__productionRelease', {
+        enumerable: false,
+        configurable: false,
+        writable: false,
+        value: __productionRelease
+    });
+    Object.defineProperty(this, '__appVersion', {
+        enumerable: false,
+        configurable: false,
+        writable: false,
+        value: __appVersion
+    });
+
     this._state = _stateInstance;
     this._subGameBreadCrumbs = _subGameBreadCrumbs;
     this._myPage = _myPage;
@@ -389,6 +404,10 @@ setup.c10s.App = function(
 
 let thatProto = setup.c10s.App.prototype;
 
+
+thatProto.getAppVersion = function() {
+    return this.__appVersion;
+};
 
 thatProto.getSubGameBreadCrumb = function() {
 	return this._subGameBreadCrumbs[
@@ -421,6 +440,14 @@ thatProto.isGivenSubGame = function(subclass) {
         return false;
     }
 };
+
+thatProto.isNOTProductionRelease = function() {
+    if (this.__productionRelease === false) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 thatProto.setDevModeOff = function() {
     this._devMode = false;
@@ -876,8 +903,8 @@ let setParameters = () => ({
 let configurateIt = () => ({
     /** boolean */
     productionRelease: false,
-    /** string */
-    appVersion: '0.2.0b',
+    /** string MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault() IN THE NAME FOR DOWNLOAD FORCED FILE */
+    appVersion: '0.2.0b', //MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault()
     /** integer */
     savesVersion: 1,
     /** intiger greater than 0 of turn where autosaves begin,
@@ -903,6 +930,8 @@ setup.DI_CONT = {
             );},
         app: function() {
             return new setup.c10s.App(
+                this.configs.productionRelease,
+                this.configs.appVersion,
                 State,
                 this.params.subGames,
                 this.getService('myPage')
@@ -977,11 +1006,13 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 /* twine-user-script #11: "q-main.js" */
 "use strict";
 
-/*
-TO DO:
-# možnost přidávat nové hráče během hry (viz BeforeStartControlInfo1)
-# v nápovědě dát tlačítko pro uložení hry do souboru (a výzvu to přiložit k emailu)
-# při načítání SAVEu (ze souboru) zkontrolovat, jestli to není budoucí verze
+/**TO DO:
+## IMPORTANT: SET productionRelease IN DI_CONT CONFIGS TO TRUE!
+*
+*
+* možnost přidávat nové hráče během hry (viz BeforeStartControlInfo1)
+* v nápovědě dát tlačítko pro uložení hry do souboru (a výzvu to přiložit k emailu)
+* při načítání SAVEu (ze souboru) zkontrolovat, jestli to není budoucí verze
 */
 
 
@@ -1115,7 +1146,11 @@ Nejprve prosím&lt;br&gt;
 do textového políčka&lt;br&gt;
 vepiš vlastní slova...
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Help" tags="" position="850,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Help" tags="" position="850,100" size="100,100">/*DEPENDENCIES: */
+&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+/*\DEPENDENCIES */
+
+&lt;p&gt;
 //Nefunguje-li něco...&lt;br&gt;
 či není-li Ti něco jasné,&lt;br&gt;//
 &lt;/p&gt;
@@ -1128,13 +1163,15 @@ vepiš vlastní slova...
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
 &lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;
+&lt;&lt;if _app.isNOTProductionRelease()&gt;&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt;
 &lt;&lt;button [[Vývojářeské experimenty|EX_ajaxTest]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="8" name="VSD_cardsBoard" tags="" position="975,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="9" name="VSD_beNiceInfo" tags="" position="1100,100" size="100,100">&lt;p&gt;
+&lt;/p&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="VSD_cardsBoard" tags="" position="975,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="9" name="VSD_beNiceInfo" tags="" position="1100,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
 nepoužívej prosím své vyprávění&lt;br&gt;
 k provokaci či šikaně svých spoluhráčů.
@@ -1383,7 +1420,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;set $gameCards = {}&gt;&gt;
 &lt;&lt;set $gameCards.current = []&gt;&gt;
 &lt;&lt;set $gameCards.waiting = []&gt;&gt;
-&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="StorySubtitle" tags="" position="1100,225" size="100,100">//verze// &#39;&#39;0.2.0b&#39;&#39;/*change also in DownloadPresenter-&gt;actionDefault() */
+&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="StorySubtitle" tags="" position="1100,225" size="100,100">//verze// &#39;&#39;&lt;&lt;= setup.DI_CONT.getService(&#39;app&#39;).getAppVersion()&gt;&gt;&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/]]

@@ -1,5 +1,9 @@
 :: Help
 
+/*DEPENDENCIES: */
+<<set _app = setup.DI_CONT.getService('app')>>
+/*\DEPENDENCIES */
+
 <p>
 //Nefunguje-li něco...<br>
 či není-li Ti něco jasné,<br>//
@@ -13,6 +17,7 @@
 </p>
 <div class="pa5"></div>
 <<dialogCloseButton "Vrátit se do hry">>
+<<if _app.isNOTProductionRelease()>>
 <hr>
 <hr>
 <p>
@@ -20,3 +25,4 @@
     <<run Dialog.close()>>
   <</button>>
 </p>
+<</if>>

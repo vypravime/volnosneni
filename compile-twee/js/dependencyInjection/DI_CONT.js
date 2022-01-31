@@ -59,8 +59,8 @@ let setParameters = () => ({
 let configurateIt = () => ({
     /** boolean */
     productionRelease: false,
-    /** string */
-    appVersion: '0.2.0b',
+    /** string MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault() IN THE NAME FOR DOWNLOAD FORCED FILE */
+    appVersion: '0.2.0b', //MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault()
     /** integer */
     savesVersion: 1,
     /** intiger greater than 0 of turn where autosaves begin,
@@ -86,6 +86,8 @@ setup.DI_CONT = {
             );},
         app: function() {
             return new setup.c10s.App(
+                this.configs.productionRelease,
+                this.configs.appVersion,
                 State,
                 this.params.subGames,
                 this.getService('myPage')

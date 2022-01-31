@@ -2,10 +2,25 @@
 
 
 setup.c10s.App = function(
+    __productionRelease,
+    __appVersion,
     _stateInstance,
     _subGameBreadCrumbs,
     _myPage
 ) {
+    Object.defineProperty(this, '__productionRelease', {
+        enumerable: false,
+        configurable: false,
+        writable: false,
+        value: __productionRelease
+    });
+    Object.defineProperty(this, '__appVersion', {
+        enumerable: false,
+        configurable: false,
+        writable: false,
+        value: __appVersion
+    });
+
     this._state = _stateInstance;
     this._subGameBreadCrumbs = _subGameBreadCrumbs;
     this._myPage = _myPage;
@@ -15,6 +30,10 @@ setup.c10s.App = function(
 
 let thatProto = setup.c10s.App.prototype;
 
+
+thatProto.getAppVersion = function() {
+    return this.__appVersion;
+};
 
 thatProto.getSubGameBreadCrumb = function() {
 	return this._subGameBreadCrumbs[
@@ -47,6 +66,14 @@ thatProto.isGivenSubGame = function(subclass) {
         return false;
     }
 };
+
+thatProto.isNOTProductionRelease = function() {
+    if (this.__productionRelease === false) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 thatProto.setDevModeOff = function() {
     this._devMode = false;
