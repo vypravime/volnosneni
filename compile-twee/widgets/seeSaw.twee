@@ -42,39 +42,49 @@
              is to manage states of all buttons */
     <<set _wOnEventRegistrer = _args.shift()>>
 
-    /*array of object and its method to call
-        [object, "itsMethodToCall"] 
-            (this method should trigger
-             the customThisSettingsChangeEvent
-             on the document,
-             the widget calls automatically
-             this method on $(document).ready(),
-             so that the buttons states are set right
-             before any clicking*/
-    <<set _wEventTriggrer = _args.shift()>>
-
 
     /* ---------------------------------------- */
+    
+    /*for the later use in the wLivingFunction */
+    <<set _stateChangeHandlerGenerator = function(
+            disableMap, identClass
+        ){
+            return function(ev) {
+                $(document).ready(function(){
+	    		    let btns = $(`.${identClass}`).find('button');
 
-    /*the default coded function to pass the onCustomEvent handler
-      and also to trigger the customEvent on $(document).ready() */
+	    	        btns.each(function(i){
+	    		    	    $(this).ariaDisabled(disableMap[i]());
+	    		    });
+                });
+	        };
+        }>>
+    /*the default coded function to pass the onCustomEvent ButtonsStateHandler
+      to the custom event and also this evetns:
+      ':dialogopened', ':dialogclosed', ':storyready' and ':passagerender' */
     <<set _wLivingFunction = function(
-        onFuncRegistrer, disableMap, identClass, triggrer) {
-	        (onFuncRegistrer[0][onFuncRegistrer[1]])(
-		        function(ev) {
-			        let btns = $(`.${identClass}`)
-				        .find('button');
-                    
-			        btns.each(function(i){
-				    $(this).ariaDisabled(disableMap[i]());
-			        });
-	        });
+        onFuncRegistrer, disableMap, identClass
+    ){
+        (onFuncRegistrer[0][onFuncRegistrer[1]])(
+		    _stateChangeHandlerGenerator(disableMap, identClass)
+	    );
 	
-	        /*so that the buttons get right state even before 1st click*/
-	        $(document).ready(function(){
-		        (triggrer[0][triggrer[1]])();
-	        });
-        };>>
+	    /*so that the buttons get right state even before 1st click*/
+        $(document).on(':dialogopened',
+            _stateChangeHandlerGenerator(disableMap, identClass)
+        );
+        $(document).on(':dialogclosed',
+            _stateChangeHandlerGenerator(disableMap, identClass)
+        );
+        $(document).on(':storyready',
+            _stateChangeHandlerGenerator(disableMap, identClass)
+        );
+        $(document).on(':passagerender',
+            _stateChangeHandlerGenerator(disableMap, identClass)
+        );
+
+	        
+    };>>
 
     /* ---------------------------------------- */
     /* TEMPLATE: */

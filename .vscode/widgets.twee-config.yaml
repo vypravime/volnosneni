@@ -60,7 +60,6 @@ sugarcube-2:
           ()=> obj.was3rdBtnChosen():boolean
           ]`
         `[obj, 'itsMethodToRegisterThisEventHandler']`
-        `[obj, 'itsMethodToTriggerThisEvent']`
 
         >>general description of buttons<</seeSaw>>
         ```
@@ -88,8 +87,9 @@ sugarcube-2:
         *(the widget calls 4th parameter method to register
           its own event handler to get all buttons
           changing their state -color,disabled,etc.-,
-          whenewer one of the buttons is clicked)*
-
-        *(the widget calls last -5th- parameter method on
-          $(document).ready() to get the right states
-          of buttons before any of them is clicked)*
+          whenewer one of the buttons is clicked... 
+          ...aside this the widget automatically registers
+          its own buttons state change handler to
+          some page render system events, so that the buttons
+          get right state on passage load or dialog open
+          even before 1st clicking)*

@@ -80,7 +80,6 @@
       ()=> _app.isDevMode()
     ]`
     `[_myPage, 'onDevModeChange']`
-    `[_myPage, 'triggerDevModeChange']`
 
   >>''experimentální režim''<br>
     //(spustí se po změně místnosti - bez restartu)//

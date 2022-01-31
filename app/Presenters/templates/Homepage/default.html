@@ -1218,15 +1218,14 @@ vepiš vlastní slova...
     ()=&gt; Fullscreen.isFullscreen()
   ]`
   `[Fullscreen, &#39;onChange&#39;]`
-  `[setup, &#39;voidFunction&#39;]`
 
   &gt;&gt;&#39;&#39;režim na celou obrazovku&#39;&#39;&lt;br&gt;
     //(zapínám vždy po spuštění,
        mívám tak hlubší prožitek)//
   &lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;
-&lt;p&gt;//(lze přepnout i &quot;Fullscreen zap/vyp&quot;
-       tlačítkem na levém panelu)//&lt;/p&gt;
+&lt;p&gt;//(lze použít i &quot;Fullscreen zap/vyp&quot;
+       tlačítko na levém panelu)//&lt;/p&gt;
 &lt;hr&gt;
 &lt;&lt;if _app.isNOTProductionRelease()&gt;&gt;
 &lt;hr&gt;
@@ -1592,7 +1591,6 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
       ()=&gt; _app.isDevMode()
     ]`
     `[_myPage, &#39;onDevModeChange&#39;]`
-    `[_myPage, &#39;triggerDevModeChange&#39;]`
 
   &gt;&gt;&#39;&#39;experimentální režim&#39;&#39;&lt;br&gt;
     //(spustí se po změně místnosti - bez restartu)//
@@ -1880,39 +1878,49 @@ pořadí:
              is to manage states of all buttons */
     &lt;&lt;set _wOnEventRegistrer = _args.shift()&gt;&gt;
 
-    /*array of object and its method to call
-        [object, &quot;itsMethodToCall&quot;] 
-            (this method should trigger
-             the customThisSettingsChangeEvent
-             on the document,
-             the widget calls automatically
-             this method on $(document).ready(),
-             so that the buttons states are set right
-             before any clicking*/
-    &lt;&lt;set _wEventTriggrer = _args.shift()&gt;&gt;
-
 
     /* ---------------------------------------- */
+    
+    /*for the later use in the wLivingFunction */
+    &lt;&lt;set _stateChangeHandlerGenerator = function(
+            disableMap, identClass
+        ){
+            return function(ev) {
+                $(document).ready(function(){
+	    		    let btns = $(`.${identClass}`).find(&#39;button&#39;);
 
-    /*the default coded function to pass the onCustomEvent handler
-      and also to trigger the customEvent on $(document).ready() */
+	    	        btns.each(function(i){
+	    		    	    $(this).ariaDisabled(disableMap[i]());
+	    		    });
+                });
+	        };
+        }&gt;&gt;
+    /*the default coded function to pass the onCustomEvent ButtonsStateHandler
+      to the custom event and also this evetns:
+      &#39;:dialogopened&#39;, &#39;:dialogclosed&#39;, &#39;:storyready&#39; and &#39;:passagerender&#39; */
     &lt;&lt;set _wLivingFunction = function(
-        onFuncRegistrer, disableMap, identClass, triggrer) {
-	        (onFuncRegistrer[0][onFuncRegistrer[1]])(
-		        function(ev) {
-			        let btns = $(`.${identClass}`)
-				        .find(&#39;button&#39;);
-                    
-			        btns.each(function(i){
-				    $(this).ariaDisabled(disableMap[i]());
-			        });
-	        });
+        onFuncRegistrer, disableMap, identClass
+    ){
+        (onFuncRegistrer[0][onFuncRegistrer[1]])(
+		    _stateChangeHandlerGenerator(disableMap, identClass)
+	    );
 	
-	        /*so that the buttons get right state even before 1st click*/
-	        $(document).ready(function(){
-		        (triggrer[0][triggrer[1]])();
-	        });
-        };&gt;&gt;
+	    /*so that the buttons get right state even before 1st click*/
+        $(document).on(&#39;:dialogopened&#39;,
+            _stateChangeHandlerGenerator(disableMap, identClass)
+        );
+        $(document).on(&#39;:dialogclosed&#39;,
+            _stateChangeHandlerGenerator(disableMap, identClass)
+        );
+        $(document).on(&#39;:storyready&#39;,
+            _stateChangeHandlerGenerator(disableMap, identClass)
+        );
+        $(document).on(&#39;:passagerender&#39;,
+            _stateChangeHandlerGenerator(disableMap, identClass)
+        );
+
+	        
+    };&gt;&gt;
 
     /* ---------------------------------------- */
     /* TEMPLATE: */
