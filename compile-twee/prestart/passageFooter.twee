@@ -10,8 +10,12 @@
 
 <div class="tar">
 
-  <<button "Nápověda">>
+  <<button "Pomoc">>
     <<passageDialog "Nápověda" "Help">>
+  <</button>>&nbsp;
+
+  <<button "Volby">>
+    <<passageDialog "Základní volby" "GeneralSettings">>
   <</button>>&nbsp;
   
   <<include "UIBarToggleButton">>

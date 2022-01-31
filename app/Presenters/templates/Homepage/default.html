@@ -98,8 +98,11 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5// --><tw-storydata name="Vyprávíme" startnode="21" creator="Tweego" creator-version="2.1.1" ifid="10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">html {
+	<!-- UUID://10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5// --><tw-storydata name="Vyprávíme" startnode="22" creator="Tweego" creator-version="2.1.1" ifid="10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">html {
     font: 16px/1 sans-serif;
+}
+#ui-dialog-body {
+    line-height: 1.75;
 }
 h3 {
     font-style: italic;
@@ -304,6 +307,8 @@ body {
 "use strict";
 
 setup.c10s = {};
+
+setup.voidFunction = function(){};
 /* twine-user-script #2: "AjaxAnimation.js" */
 "use strict";
 
@@ -1200,7 +1205,28 @@ Nejprve prosím&lt;br&gt;
 do textového políčka&lt;br&gt;
 vepiš vlastní slova...
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Help" tags="" position="850,100" size="100,100">/*DEPENDENCIES: */
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="GeneralSettings" tags="" position="850,100" size="100,100">&lt;hr&gt;
+&lt;p&gt;
+  &lt;&lt;seeSaw false &quot;change-fullscreen-see-saw&quot;
+
+  `{
+    &quot;&#39;&#39;VYP&#39;&#39;&quot;: ()=&gt; {Fullscreen.exit();},
+    &quot;&#39;&#39;ZAP&#39;&#39;&quot;: ()=&gt; {Fullscreen.request();}
+  }`
+  `[
+    ()=&gt; !Fullscreen.isFullscreen(),
+    ()=&gt; Fullscreen.isFullscreen()
+  ]`
+  `[Fullscreen, &#39;onChange&#39;]`
+  `[setup, &#39;voidFunction&#39;]`
+
+  &gt;&gt;&#39;&#39;režim na celou obrazovku&#39;&#39;&lt;br&gt;
+    //(Doporučuji zapnout po každém startu aplikace, osbně
+       mám potom hlubší prožitek.)//
+  &lt;&lt;/seeSaw&gt;&gt;
+&lt;/p&gt;
+&lt;p&gt;//(Lze přepínat i pomocí &quot;Fullscreen zap/vyp&quot; tlačítka na levém bočním panelu.)//&lt;/p&gt;
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="8" name="Help" tags="" position="975,100" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 /*\DEPENDENCIES */
 
@@ -1225,7 +1251,7 @@ vepiš vlastní slova...
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="VSD_cardsBoard" tags="" position="975,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="9" name="VSD_beNiceInfo" tags="" position="1100,100" size="100,100">&lt;p&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="VSD_cardsBoard" tags="" position="1100,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="10" name="VSD_beNiceInfo" tags="" position="1225,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
 nepoužívej prosím své vyprávění&lt;br&gt;
 k provokaci či šikaně svých spoluhráčů.
@@ -1268,7 +1294,7 @@ ať už se ke Tvému novému rozvinutí později&lt;br&gt;
 původní autor nápadu dobrovolně přidruží či ne.//
 &lt;/p&gt;
 
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="VSD_beforeStartFPInfo" tags="" position="1225,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="VSD_beforeStartFPInfo" tags="" position="100,225" size="100,100">&lt;p&gt;
 @@font-size:1.2rem;
 Pokud nevíš, co jsou to &#39;&#39;osudové kameny&#39;&#39;,&lt;br&gt;
 &#39;&#39;NELAM SI S TÍM HLAVU...&#39;&#39;&lt;br&gt;
@@ -1307,7 +1333,7 @@ otevři si ještě před startem&lt;br&gt;
 &lt;&lt;/link&gt;&gt;//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="VSD_beforeStartRoundsInfo" tags="" position="100,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;&#39;&#39;Hra se hraje stále dokola,&lt;br&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="VSD_beforeStartRoundsInfo" tags="" position="225,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;&#39;&#39;Hra se hraje stále dokola,&lt;br&gt;
 dokud to zúčastněné baví...&#39;&#39;
 &lt;/p&gt;
 &lt;p&gt;
@@ -1325,7 +1351,7 @@ apod.)//
 buď když už jsou &#39;&#39;všichni spokojeni&#39;&#39; a stačí jim,&lt;br&gt;
 nebo když z jakéhokoliv důvodu &#39;&#39;odejde poslední&#39;&#39; přítomný hráč.
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="VSD_exampleBasic1" tags="" position="225,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="VSD_exampleBasic1" tags="" position="350,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
 &lt;div class=&quot;story-card-1&quot;&gt;
 &lt;p&gt;
 &#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;:
@@ -1383,7 +1409,7 @@ a k čemu cítíš vztah!&lt;br&gt;
 &lt;&lt;run $(&#39;.complic&#39;).ariaClick(function() {
     $(this).toggleClass(&#39;solved&#39;);
 });&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="VSD_settings" tags="" position="350,225" size="100,100">//Nutno dodělat :-)//</tw-passagedata><tw-passagedata pid="14" name="WhichNewGame" tags="" position="475,225" size="100,100">&lt;h2&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="VSD_settings" tags="" position="475,225" size="100,100">//Nutno dodělat :-)//</tw-passagedata><tw-passagedata pid="15" name="WhichNewGame" tags="" position="600,225" size="100,100">&lt;h2&gt;
 Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;/h2&gt;
 &lt;p&gt;
@@ -1395,7 +1421,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &#39;&#39;&lt;&lt;button [[TěloTaj|TT_go]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="15" name="PassageFooter" tags="" position="600,225" size="100,100">/*DEPENDENCIES: */
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="16" name="PassageFooter" tags="" position="725,225" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set _htmler = setup.DI_CONT.getService(&#39;htmler&#39;)&gt;&gt;
 &lt;&lt;if _app.isDevMode()&gt;&gt;
@@ -1405,8 +1431,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
 &lt;div class=&quot;tar&quot;&gt;
 
-  &lt;&lt;button &quot;Nápověda&quot;&gt;&gt;
+  &lt;&lt;button &quot;Pomoc&quot;&gt;&gt;
     &lt;&lt;passageDialog &quot;Nápověda&quot; &quot;Help&quot;&gt;&gt;
+  &lt;&lt;/button&gt;&gt;&amp;nbsp;
+
+  &lt;&lt;button &quot;Volby&quot;&gt;&gt;
+    &lt;&lt;passageDialog &quot;Základní volby&quot; &quot;GeneralSettings&quot;&gt;&gt;
   &lt;&lt;/button&gt;&gt;&amp;nbsp;
   
   &lt;&lt;include &quot;UIBarToggleButton&quot;&gt;&gt;
@@ -1429,7 +1459,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
 &lt;div @id=&quot;_htmler.getAjaxLoadSuperAnimationId()&quot;&gt;
   &lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="PassageHeader" tags="" position="725,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="PassageHeader" tags="" position="850,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set __baseNav = _app.getSubGameBreadCrumb()&gt;&gt;
 
 &lt;div class=&quot;tal&quot;&gt;
@@ -1456,7 +1486,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
   &lt;&lt;/if&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="StoryCaption" tags="" position="850,225" size="100,100">&lt;&lt;if State.length !== 1 &gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="StoryCaption" tags="" position="975,225" size="100,100">&lt;&lt;if State.length !== 1 &gt;&gt;
   &lt;span class=&quot;btnpad&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;&lt;button &quot;&amp;laquo;&amp;nbsp;&amp;nbsp;zpět&quot;&gt;&gt;
     &lt;&lt;run Engine.backward()&gt;&gt;
 &lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;span class=&quot;btnpad&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;&lt;if State.length !== State.size&gt;&gt;&lt;&lt;button &quot;vpřed&amp;nbsp;&amp;raquo;&quot;&gt;&gt;
@@ -1468,19 +1498,19 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;button &quot;Fullscreen zap/vyp&quot;&gt;&gt;
     &lt;&lt;run Fullscreen.toggle()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="StoryInit" tags="" position="975,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="19" name="StoryInit" tags="" position="1100,225" size="100,100">&lt;&lt;set $players = []&gt;&gt;
 &lt;&lt;set $pOrder = [0,1,2]&gt;&gt;
 &lt;&lt;set $pOrderShuffled = false&gt;&gt;
 &lt;&lt;set $roundCounter = 0&gt;&gt;
 &lt;&lt;set $gameCards = {}&gt;&gt;
 &lt;&lt;set $gameCards.current = []&gt;&gt;
 &lt;&lt;set $gameCards.waiting = []&gt;&gt;
-&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="StorySubtitle" tags="" position="1100,225" size="100,100">//verze// &#39;&#39;&lt;&lt;= setup.DI_CONT.getService(&#39;app&#39;).getAppVersion()&gt;&gt;&#39;&#39;
+&lt;&lt;set $gameCards.givenUp = []&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="StorySubtitle" tags="" position="1225,225" size="100,100">//verze// &#39;&#39;&lt;&lt;= setup.DI_CONT.getService(&#39;app&#39;).getAppVersion()&gt;&gt;&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/]]
 &lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="20" name="EX_ajaxTest" tags="" position="1225,225" size="100,100">/*DEPENDENCIES: */
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="21" name="EX_ajaxTest" tags="" position="100,350" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
@@ -1577,7 +1607,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;hr&gt;
 &lt;p class=&quot;tac&quot;&gt;
   &lt;&lt;button [[Přijmout a vrátit se|previous()]]&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="21" name="MM_start" tags="alignCenter" position="100,350" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="22" name="MM_start" tags="alignCenter" position="225,350" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;
 &#39;&#39;&lt;&lt;button &quot;NOVÁ HRA&quot;&gt;&gt;
@@ -1589,11 +1619,11 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;button &quot;Načíst dřívější hru...&quot;&gt;&gt;
     &lt;&lt;run UI.saves()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="22" name="TT_go" tags="" position="225,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="23" name="TT_go" tags="" position="350,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
 &lt;p&gt;
 //(toto je třeba dodělat)//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="23" name="VS_checkDisallowedThemes" tags="" position="350,350" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="24" name="VS_fantasyEnter" tags="" position="475,350" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="24" name="VS_checkDisallowedThemes" tags="" position="475,350" size="100,100">ToDo:
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="25" name="VS_fantasyEnter" tags="" position="600,350" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set _default = $gameCards.current[0].text.trim() ?
@@ -1642,8 +1672,8 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="VS_goForDice" tags="" position="600,350" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="26" name="VS_whoIsOnTurn" tags="alignCenter" position="725,350" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="VS_goForDice" tags="" position="725,350" size="100,100">ToDo:
+--Go For Dice--</tw-passagedata><tw-passagedata pid="27" name="VS_whoIsOnTurn" tags="alignCenter" position="850,350" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;
@@ -1652,7 +1682,7 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="27" name="VS_beforeStartControl" tags="" position="850,350" size="100,100">/*DEPENDENCIES: */
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="28" name="VS_beforeStartControl" tags="" position="975,350" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _czech = setup.DI_CONT.getService(&#39;czechLang&#39;)&gt;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
 /*\DEPENDENCIES */
@@ -1697,7 +1727,7 @@ pořadí:
 &#39;&#39;&lt;&lt;button [[SOUHLASÍ - ODSTARTOVAT|VS_whoIsOnTurn]]&gt;&gt;
     &lt;&lt;set $roundCounter = 1&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="28" name="VS_setNamesOfPlayers" tags="alignCenter" position="975,350" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="29" name="VS_setNamesOfPlayers" tags="alignCenter" position="1100,350" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
 
 &lt;&lt;if $pOrder.length &gt; 1&gt;&gt;
 &lt;h2&gt;Zadej jména hráčů:&lt;/h2&gt;
@@ -1736,7 +1766,7 @@ pořadí:
 &lt;&lt;else&gt;&gt;
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="29" name="VS_setNumbOfPlayers" tags="alignCenter" position="1100,350" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="30" name="VS_setNumbOfPlayers" tags="alignCenter" position="1225,350" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
 
 &lt;h2&gt;Pro svou novou hru&lt;br&gt;
   //VolnoSnění//&lt;br&gt;
@@ -1784,9 +1814,9 @@ pořadí:
     &lt;&lt;passageDialog &quot;Nastavení hry VolnoSnění&quot; &quot;VSD_settings&quot;&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="30" name="CompLink" tags="widget" position="1225,350" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="31" name="CompLink" tags="widget" position="100,475" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="DialogCloseButton" tags="widget" position="100,475" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="DialogCloseButton" tags="widget" position="225,475" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
 /*_args[0] is the TEXT on THE BUTTON*/
 /*_args[1] (optional) if TRUE, outer &lt;p&gt; is omitted, default FALSE*/
     &lt;&lt;if !_args[1]&gt;&gt;
@@ -1796,7 +1826,7 @@ pořadí:
 	&lt;&lt;else&gt;&gt;
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="PassageDialog" tags="widget" position="225,475" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="PassageDialog" tags="widget" position="350,475" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
 /**_args[0] is the HEADING of NEW DIALOG WINDOW
  * _args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW
  * */
@@ -1806,7 +1836,7 @@ pořadí:
 
     &lt;&lt;run _myPage.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="SeeSaw" tags="widget" position="350,475" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="SeeSaw" tags="widget" position="475,475" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
 
     /*strictly boolean
         (if true:

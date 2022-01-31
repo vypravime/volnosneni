@@ -1,6 +1,9 @@
 html {
     font: 16px/1 sans-serif;
 }
+#ui-dialog-body {
+    line-height: 1.75;
+}
 h3 {
     font-style: italic;
 }

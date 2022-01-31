@@ -1,0 +1,24 @@
+:: GeneralSettings
+
+<hr>
+<p>
+  <<seeSaw false "change-fullscreen-see-saw"
+
+  `{
+    "''VYP''": ()=> {Fullscreen.exit();},
+    "''ZAP''": ()=> {Fullscreen.request();}
+  }`
+  `[
+    ()=> !Fullscreen.isFullscreen(),
+    ()=> Fullscreen.isFullscreen()
+  ]`
+  `[Fullscreen, 'onChange']`
+  `[setup, 'voidFunction']`
+
+  >>''režim na celou obrazovku''<br>
+    //(Doporučuji zapnout po každém startu aplikace, osbně
+       mám potom hlubší prožitek.)//
+  <</seeSaw>>
+</p>
+<p>//(Lze přepínat i pomocí "Fullscreen zap/vyp" tlačítka na levém bočním panelu.)//</p>
+<hr>
