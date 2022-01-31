@@ -94,6 +94,11 @@ setup.DI_CONT = {
             return new setup.c10s.CzechLang(
 
             );},
+        htmler: function() {
+            return new setup.c10s.Htmler(
+                this.params.htmlClasses,
+                UIBar
+            );},
         metaDater: function() {
             return new setup.c10s.MetaDater(
                 State
@@ -104,7 +109,7 @@ setup.DI_CONT = {
                 Dialog,
                 Story,
                 UIBar,
-                this.params.htmlClasses
+                this.getService('htmler')
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(

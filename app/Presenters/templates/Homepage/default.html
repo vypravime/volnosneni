@@ -484,7 +484,67 @@ thatProto.numberOf = function(
 
 
 })();
-/* twine-user-script #5: "MetaDater.js" */
+/* twine-user-script #5: "Htmler.js" */
+"use-strict";
+
+(function(){
+
+
+
+setup.c10s.Htmler = function(
+    _htmlClasses,
+    _uibarInstance
+) {
+    Object.defineProperty(this, '__METHOD', {
+        enumerable: false,
+        configurable: false,
+        writable: false,
+        value: 'html'
+    });
+
+    this._htmlClasses = _htmlClasses;
+    this._uibar = _uibarInstance;
+
+    this._legends = {
+        UIBarToggleBtn: {
+            toUnstow: 'Panel ukaž',
+            toStow: 'Panel skryj'
+        }
+    };
+}
+
+let thatProto = setup.c10s.Htmler.prototype;
+
+
+thatProto.getUIBarToggleBtnClass = function() {
+    return this._htmlClasses.components.UIBarToggleButton.defaultClass;
+};
+
+thatProto.READYfillUIBarToggleBtn = function(isBarStowed) {
+    $(document).ready(()=> {
+        let BtnText = this.sayUIBarToggleBtn(isBarStowed);
+        let BtnClass = this.getUIBarToggleBtnClass();
+        $(`.${BtnClass}`)
+        .find('button')[this.__METHOD](BtnText);
+    });
+}
+
+thatProto.sayUIBarToggleBtn = function(isBarStowed) {
+    if (typeof isBarStowed === 'undefined') {
+        isBarStowed = this._uibar.isStowed();
+    }
+    let BtnText = ''
+    if (isBarStowed) {
+        BtnText = this._legends.UIBarToggleBtn.toUnstow;
+    } else {
+        BtnText = this._legends.UIBarToggleBtn.toStow;
+    }
+    return BtnText;
+}
+
+
+})();
+/* twine-user-script #6: "MetaDater.js" */
 "use strict";
 
 (function(){
@@ -535,7 +595,7 @@ thatProto.setOneTimeAutoloadSkip = function() {
 
 
 })();
-/* twine-user-script #6: "MyPage.js" */
+/* twine-user-script #7: "MyPage.js" */
 "use strict";
 
 (function(){
@@ -547,45 +607,22 @@ setup.c10s.MyPage = function(
     _dialogInstance,
     _storyInstance,
     _uibarInstance,
-    _htmlClasses
+    _htmler
 ) {
     this._metaDater = _metaDater;
     this._dialog = _dialogInstance;
     this._story = _storyInstance;
     this._uibar = _uibarInstance;
-    this._htmlClasses = _htmlClasses;
+    this._htmler = _htmler;
 
     this._eventNames = {
         devModeChange: 'app:devModeChange',
         UIBarToggling: 'UIBar:toggling'
     };
-    this._labels = {
-        UIBarToggleBtn: {
-            toUnstow: 'Panel ukaž',
-            toStow: 'Panel skryj'
-        }
-    };
 };
 
 let thatProto = setup.c10s.MyPage.prototype;
 
-
-thatProto.getUIBarToggleBtnClass = function() {
-    return this._htmlClasses.components.UIBarToggleButton.defaultClass;
-};
-
-thatProto.getUIBarToggleBtnLabel = function(isBarStowed) {
-    if (typeof isBarStowed === 'undefined') {
-        isBarStowed = this._uibar.isStowed();
-    }
-    let BtnText = ''
-    if (isBarStowed) {
-        BtnText = this._labels.UIBarToggleBtn.toUnstow;
-    } else {
-        BtnText = this._labels.UIBarToggleBtn.toStow;
-    }
-    return BtnText;
-}
 
 thatProto.onDevModeChange = function(eventHandler) {
     $(document).on(
@@ -664,11 +701,11 @@ thatProto.registerUIBarTogglingHandlers = function() {
                 this._uibar.stow();
             }
             let isStowed = !wasStowed;
-            this.textUIBarToggleBtn(isStowed);
+            this._htmler.READYfillUIBarToggleBtn(isStowed);
         } else {
             setTimeout(()=>{
                 let isStowed = this._uibar.isStowed();
-                this.textUIBarToggleBtn(isStowed);
+                this._htmler.READYfillUIBarToggleBtn(isStowed);
             },100);
         }
         
@@ -682,15 +719,6 @@ thatProto.registerUIBarTogglingHandlers = function() {
         });
     });
 };
-
-thatProto.textUIBarToggleBtn = function(isBarStowed) {
-    $(document).ready(()=> {
-        let BtnText = this.getUIBarToggleBtnLabel(isBarStowed);
-        let BtnClass = this.getUIBarToggleBtnClass();
-        $(`.${BtnClass}`)
-        .find('button').html(BtnText);
-    });
-}
 
 thatProto.triggerDevModeChange = function() {
     $(document).trigger(this._eventNames['devModeChange']);
@@ -707,7 +735,7 @@ thatProto.triggerUIBarToggling = function(
 
 
 })();
-/* twine-user-script #7: "SugarcubeConfigurator.js" */
+/* twine-user-script #8: "SugarcubeConfigurator.js" */
 "use strict";
 
 (function(){
@@ -776,7 +804,7 @@ setup.c10s.SugarcubeConfigurator = function(
 
     
 })();
-/* twine-user-script #8: "DI_CONT.js" */
+/* twine-user-script #9: "DI_CONT.js" */
 "use strict";
 
 (function() {
@@ -873,6 +901,11 @@ setup.DI_CONT = {
             return new setup.c10s.CzechLang(
 
             );},
+        htmler: function() {
+            return new setup.c10s.Htmler(
+                this.params.htmlClasses,
+                UIBar
+            );},
         metaDater: function() {
             return new setup.c10s.MetaDater(
                 State
@@ -883,7 +916,7 @@ setup.DI_CONT = {
                 Dialog,
                 Story,
                 UIBar,
-                this.params.htmlClasses
+                this.getService('htmler')
             );},
         sugarcubeConfigurator: function() {
             return new setup.c10s.SugarcubeConfigurator(
@@ -898,7 +931,7 @@ setup.DI_CONT = {
 
 
 })()
-/* twine-user-script #9: "f-setup.js" */
+/* twine-user-script #10: "f-setup.js" */
 "use strict";
 
 
@@ -931,7 +964,7 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-/* twine-user-script #10: "q-main.js" */
+/* twine-user-script #11: "q-main.js" */
 "use strict";
 
 /*
@@ -951,7 +984,7 @@ setup.myPage = setup.DI_CONT.getService(
   'myPage'
 );
 setup.myPage.registerAllCustomEventsHandlers();
-/* twine-user-script #11: "z-l10nStrings.js" */
+/* twine-user-script #12: "z-l10nStrings.js" */
 "use strict";
 
 /*CZECH localization of UI*/
@@ -1254,6 +1287,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="14" name="PassageFooter" tags="" position="475,225" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
+&lt;&lt;set _htmler = setup.DI_CONT.getService(&#39;htmler&#39;)&gt;&gt;
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;if _app.isDevMode()&gt;&gt;
   &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
@@ -1266,10 +1300,11 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     &lt;&lt;passageDialog &quot;Nápověda&quot; &quot;Help&quot;&gt;&gt;
   &lt;&lt;/button&gt;&gt;&amp;nbsp;
   
-  &lt;span @class=&quot;_myPage.getUIBarToggleBtnClass()&quot;&gt;
-    &lt;&lt;button `_myPage.getUIBarToggleBtnLabel()`&gt;&gt;
+  &lt;span @class=&quot;_htmler.getUIBarToggleBtnClass()&quot;&gt;
+    &lt;&lt;button &quot;Panel ...&quot;&gt;&gt;
       &lt;&lt;run _myPage.triggerUIBarToggling()&gt;&gt;
     &lt;&lt;/button&gt;&gt;
+  &lt;&lt;run _htmler.READYfillUIBarToggleBtn() /*to sync on small screens, where bar is on start stowed*/&gt;&gt;
   &lt;/span&gt;
 
 &lt;/div&gt;

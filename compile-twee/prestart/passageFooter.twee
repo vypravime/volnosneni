@@ -2,6 +2,7 @@
 
 /*DEPENDENCIES: */
 <<set _myPage = setup.DI_CONT.getService('myPage')>>
+<<set _htmler = setup.DI_CONT.getService('htmler')>>
 <<set _app = setup.DI_CONT.getService('app')>>
 <<if _app.isDevMode()>>
   <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
@@ -14,10 +15,11 @@
     <<passageDialog "Nápověda" "Help">>
   <</button>>&nbsp;
   
-  <span @class="_myPage.getUIBarToggleBtnClass()">
-    <<button `_myPage.getUIBarToggleBtnLabel()`>>
+  <span @class="_htmler.getUIBarToggleBtnClass()">
+    <<button "Panel ...">>
       <<run _myPage.triggerUIBarToggling()>>
     <</button>>
+  <<run _htmler.READYfillUIBarToggleBtn() /*to sync on small screens, where bar is on start stowed*/>>
   </span>
 
 </div>

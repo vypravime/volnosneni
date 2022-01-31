@@ -9,45 +9,22 @@ setup.c10s.MyPage = function(
     _dialogInstance,
     _storyInstance,
     _uibarInstance,
-    _htmlClasses
+    _htmler
 ) {
     this._metaDater = _metaDater;
     this._dialog = _dialogInstance;
     this._story = _storyInstance;
     this._uibar = _uibarInstance;
-    this._htmlClasses = _htmlClasses;
+    this._htmler = _htmler;
 
     this._eventNames = {
         devModeChange: 'app:devModeChange',
         UIBarToggling: 'UIBar:toggling'
     };
-    this._labels = {
-        UIBarToggleBtn: {
-            toUnstow: 'Panel ukaž',
-            toStow: 'Panel skryj'
-        }
-    };
 };
 
 let thatProto = setup.c10s.MyPage.prototype;
 
-
-thatProto.getUIBarToggleBtnClass = function() {
-    return this._htmlClasses.components.UIBarToggleButton.defaultClass;
-};
-
-thatProto.getUIBarToggleBtnLabel = function(isBarStowed) {
-    if (typeof isBarStowed === 'undefined') {
-        isBarStowed = this._uibar.isStowed();
-    }
-    let BtnText = ''
-    if (isBarStowed) {
-        BtnText = this._labels.UIBarToggleBtn.toUnstow;
-    } else {
-        BtnText = this._labels.UIBarToggleBtn.toStow;
-    }
-    return BtnText;
-}
 
 thatProto.onDevModeChange = function(eventHandler) {
     $(document).on(
@@ -126,11 +103,11 @@ thatProto.registerUIBarTogglingHandlers = function() {
                 this._uibar.stow();
             }
             let isStowed = !wasStowed;
-            this.textUIBarToggleBtn(isStowed);
+            this._htmler.READYfillUIBarToggleBtn(isStowed);
         } else {
             setTimeout(()=>{
                 let isStowed = this._uibar.isStowed();
-                this.textUIBarToggleBtn(isStowed);
+                this._htmler.READYfillUIBarToggleBtn(isStowed);
             },100);
         }
         
@@ -144,15 +121,6 @@ thatProto.registerUIBarTogglingHandlers = function() {
         });
     });
 };
-
-thatProto.textUIBarToggleBtn = function(isBarStowed) {
-    $(document).ready(()=> {
-        let BtnText = this.getUIBarToggleBtnLabel(isBarStowed);
-        let BtnClass = this.getUIBarToggleBtnClass();
-        $(`.${BtnClass}`)
-        .find('button').html(BtnText);
-    });
-}
 
 thatProto.triggerDevModeChange = function() {
     $(document).trigger(this._eventNames['devModeChange']);
