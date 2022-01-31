@@ -60,7 +60,7 @@ let configurateIt = () => ({
     /** boolean */
     productionRelease: false,
     /** string MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault() IN THE NAME FOR DOWNLOAD FORCED FILE */
-    appVersion: '0.2.0b', //MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault()
+    appVersion: '0.2.0c', //MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault()
     /** integer */
     savesVersion: 1,
     /** intiger greater than 0 of turn where autosaves begin,
