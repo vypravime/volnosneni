@@ -95,14 +95,14 @@
     ]`
     `[_myPage, 'onDevModeChange']`
 
-  >>''experimentální režim''<br>
+  >>''EXPERIMENTÁLNÍ REŽIM''<br>
     //(spustí se po změně místnosti - bez restartu)//
   <</seeSaw>>
-<p> //(- stačí stisknout tlačítko "zap",<br>
-a pak tlačítko "přijmout a vrátit se")//</p>
+<p>//(stiskni nejprve tlačítko "ZAP",<br>
+ potom tlačítko "Přijmout a vrátit se" níže,<br>
+ čímž se úplně dole v zápatí vpravo objeví<br>
+ testovací spínač ajaxové animace)//</p>
 </p>
-<p>//(v zápatí vpravo se pak objeví tlačítka
-      pro zobrazení & skrytí loading animace)//</p>
 <hr>
 <div class="pa5"></div>
 <p class="tac">

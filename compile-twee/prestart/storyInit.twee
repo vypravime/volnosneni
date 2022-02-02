@@ -8,3 +8,4 @@
 <<set $gameCards.current = []>>
 <<set $gameCards.waiting = []>>
 <<set $gameCards.givenUp = []>>
+<<set $exampleComplic = true>>

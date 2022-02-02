@@ -30,5 +30,3 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
-setup.toBeDone = {};
-setup.toBeDone.exampleComplic = true;

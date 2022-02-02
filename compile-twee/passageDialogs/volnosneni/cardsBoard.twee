@@ -7,12 +7,12 @@ ToDo: Příběhová nástěnka
 <<=setup.whoseTurn()>>:
 </p>
 <p>
-"''<<=setup.whoseTurn()>>'' přemýšlí o tom,<br>
+''<<=setup.whoseTurn()>>'' přemýšlí o tom,<br>
 že vyrazí někam do zahraničí,<br>
 chodí po obchodech<br>
 a pokukuje po hezkých plavkách<br>
 a na internetu si prohlíží<br>
-fotky lákavých destinací."
+fotky lákavých destinací.
 </p>
 </div>
 
@@ -21,25 +21,39 @@ fotky lákavých destinací."
 <<=setup.whoseTurn()>>:
 </p>
 <p>
-"Nakonec jede ''<<=setup.whoseTurn()>>''<br>
+Nakonec jede ''<<=setup.whoseTurn()>>''<br>
 na dovolenou do Itálie...<br>
 vezme si s sebou nové tyrkysové plavky,<br>
 cestou si koupí perfektní pizzu<br>
 a ubytuje se v soukromém apartmá<br>
-s výhledem na malebný mořský záliv."
+s výhledem na malebný mořský záliv.
 </p>
 <p class="complic">
-"Ale když přijede a ubytuje se, zjistí,<br>
+Ale když přijede a ubytuje se, zjistí,<br>
 že ani v peněžence, ani na účtu<br>
-nemá vůbec žádné peníze..."
+nemá vůbec žádné peníze...
+</p>
+</div>
+<div class="story-card-1">
+<p class="who">
+<<=setup.whoseTurn()>>:
+</p>
+<p>
+Naštěstí se v blízkém italském městečku<br>
+rozkřikne, že ''<<=setup.whoseTurn()>>'' umí ladit piana.<br>
+Přičemž je o to takový zájem,<br>
+že ''<<=setup.whoseTurn()>>'' má teď peněz na rozdávání...<br>
+Také si při ladění pian<br>
+získá nové přátele<br>
+a procvičí italštinu.
 </p>
 </div>
 <<done>>
-<<if setup.toBeDone.exampleComplic === false>>
+<<if $exampleComplic === false>>
     <<run $('.complic').addClass('solved')>>
 <</if>>
 <<run $('.complic').ariaClick(function() {
     $(this).toggleClass('solved');
-    setup.toBeDone.exampleComplic = !setup.toBeDone.exampleComplic;
+    State.variables.exampleComplic = !State.variables.exampleComplic;
 });>>
 <</done>>
