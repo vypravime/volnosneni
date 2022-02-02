@@ -10,8 +10,8 @@
        ajaxového spojení s online serverem.)//
 </p>
 <p class="tac">
-    <<button [[Zkusit testovací místnost|EX_ajaxTest]]>>
+    ''<<button [[Zkusit testovací místnost|EX_ajaxTest]]>>
         <<run Dialog.close()>>
-    <</button>>
+    <</button>>''
 </p>
 <<dialogCloseButton "Raději se vrátit zpět">>

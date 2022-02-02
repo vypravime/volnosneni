@@ -169,6 +169,8 @@ textarea:not(:disabled):hover {
     border-radius: 0.3rem;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 0.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 .story-card-1 p {
     padding: 0.5rem;
@@ -181,6 +183,15 @@ textarea:not(:disabled):hover {
 }
 .story-card-1 p.complic.solved {
     border-color: #350;
+}
+.story-card-1 hr {
+    margin: 0;
+}
+.story-card-1 p.who {
+    font-variant: small-caps;
+    font-style: normal;
+    text-align: center;
+    color: #420;
 }
 
 body {

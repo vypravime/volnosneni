@@ -269,6 +269,8 @@ textarea:not(:disabled):hover {
     border-radius: 0.3rem;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 0.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 .story-card-1 p {
     padding: 0.5rem;
@@ -281,6 +283,15 @@ textarea:not(:disabled):hover {
 }
 .story-card-1 p.complic.solved {
     border-color: #350;
+}
+.story-card-1 hr {
+    margin: 0;
+}
+.story-card-1 p.who {
+    font-variant: small-caps;
+    font-style: normal;
+    text-align: center;
+    color: #420;
 }
 
 body {
@@ -1062,6 +1073,8 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
+setup.toBeDone = {};
+setup.toBeDone.exampleComplic = true;
 /* twine-user-script #11: "q-main.js" */
 "use strict";
 
@@ -1210,6 +1223,7 @@ setup.myPage.registerAllCustomEventsHandlers();
        tlačítko na levém panelu)//&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+&#39;&#39;&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;&#39;&#39;
 &lt;&lt;if _app.isNOTProductionRelease() 
       &amp;&amp; (passage() !== &quot;EX_ajaxTest&quot;)&gt;&gt;
 &lt;p class=&quot;tac&quot;&gt;
@@ -1217,8 +1231,7 @@ setup.myPage.registerAllCustomEventsHandlers();
   &lt;&lt;passageDialog &quot;Dočasně povoleno&quot; &quot;YouAreToEnterExperimentalPassages&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&#39;&#39;&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;&#39;&#39;</tw-passagedata><tw-passagedata pid="6" name="Help" tags="" position="725,100" size="100,100">/*DEPENDENCIES: */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Help" tags="" position="725,100" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 /*\DEPENDENCIES */
 
@@ -1234,7 +1247,49 @@ setup.myPage.registerAllCustomEventsHandlers();
 //(zeptej se, navrhni zlepšení, postěžuj si, poděkuj, ...)//
 &lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
-&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="VSD_cardsBoard" tags="" position="850,100" size="100,100">ToDo: Příběhová nástěnka</tw-passagedata><tw-passagedata pid="8" name="VSD_beNiceInfo" tags="" position="975,100" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="VSD_cardsBoard" tags="" position="850,100" size="100,100">ToDo: Příběhová nástěnka
+
+&lt;div class=&quot;story-card-1&quot;&gt;
+&lt;p class=&quot;who&quot;&gt;
+&lt;&lt;=setup.whoseTurn()&gt;&gt;:
+&lt;/p&gt;
+&lt;p&gt;
+&quot;&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39; přemýšlí o tom,&lt;br&gt;
+že vyrazí někam do zahraničí,&lt;br&gt;
+chodí po obchodech&lt;br&gt;
+a pokukuje po hezkých plavkách&lt;br&gt;
+a na internetu si prohlíží&lt;br&gt;
+fotky lákavých destinací.&quot;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;story-card-1&quot;&gt;
+&lt;p class=&quot;who&quot;&gt;
+&lt;&lt;=setup.whoseTurn()&gt;&gt;:
+&lt;/p&gt;
+&lt;p&gt;
+&quot;Nakonec jede &#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;&lt;br&gt;
+na dovolenou do Itálie...&lt;br&gt;
+vezme si s sebou nové tyrkysové plavky,&lt;br&gt;
+cestou si koupí perfektní pizzu&lt;br&gt;
+a ubytuje se v soukromém apartmá&lt;br&gt;
+s výhledem na malebný mořský záliv.&quot;
+&lt;/p&gt;
+&lt;p class=&quot;complic&quot;&gt;
+&quot;Ale když přijede a ubytuje se, zjistí,&lt;br&gt;
+že ani v peněžence, ani na účtu&lt;br&gt;
+nemá vůbec žádné peníze...&quot;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;&lt;done&gt;&gt;
+&lt;&lt;if setup.toBeDone.exampleComplic === false&gt;&gt;
+    &lt;&lt;run $(&#39;.complic&#39;).addClass(&#39;solved&#39;)&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;run $(&#39;.complic&#39;).ariaClick(function() {
+    $(this).toggleClass(&#39;solved&#39;);
+    setup.toBeDone.exampleComplic = !setup.toBeDone.exampleComplic;
+});&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="VSD_beNiceInfo" tags="" position="975,100" size="100,100">&lt;p&gt;
 I když je ve světě fantazie možné cokoliv,&lt;br&gt;
 nepoužívej prosím své vyprávění&lt;br&gt;
 k provokaci či šikaně svých spoluhráčů.
@@ -1337,20 +1392,11 @@ nebo když z jakéhokoliv důvodu &#39;&#39;odejde poslední&#39;&#39; přítomn
 &lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="VSD_exampleBasic1" tags="" position="100,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
 &lt;div class=&quot;story-card-1&quot;&gt;
 &lt;p&gt;
-&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;:
-&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;
 &quot;&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39; jede na dovolenou do Itálie,&lt;br&gt;
 vezme si s sebou nové tyrkysové plavky,&lt;br&gt;
 cestou si koupí perfektní pizzu&lt;br&gt;
 a ubytuje se v soukromém apartmá&lt;br&gt;
 s výhledem na malebný mořský záliv.&quot;
-&lt;/p&gt;
-&lt;p class=&quot;complic&quot;&gt;
-&quot;Ale když přijede a ubytuje se, zjistí,&lt;br&gt;
-že ani v peněžence, ani na účtu&lt;br&gt;
-nemá vůbec žádné peníze...&quot;
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
@@ -1382,15 +1428,19 @@ anebo smíš jednoduše k dalšímu ději skočit.)//
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;p class=&quot;tac&quot;&gt;
-Hru VolnoSnění si vychutnáš, vyprávíš-li,&lt;br&gt;
-PO ČEM &#39;&#39;UPŘÍMNĚ&#39;&#39; PRAHNEŠ&lt;br&gt;
-a k čemu cítíš vztah!&lt;br&gt;
+Vyprávěj o tom, k čemu cítíš vztah,&lt;br&gt;
+po čem &#39;&#39;UPŘÍMNĚ&#39;&#39; PRAHNEŠ,&lt;br&gt;
+ať si hru vychutnáš.
 &lt;/p&gt;
 
 &lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;
 &lt;&lt;done&gt;&gt;
+&lt;&lt;if setup.toBeDone.exampleComplic === false&gt;&gt;
+    &lt;&lt;run $(&#39;.complic&#39;).addClass(&#39;solved&#39;)&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 &lt;&lt;run $(&#39;.complic&#39;).ariaClick(function() {
     $(this).toggleClass(&#39;solved&#39;);
+    setup.toBeDone.exampleComplic = !setup.toBeDone.exampleComplic;
 });&gt;&gt;
 &lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="VSD_settings" tags="" position="225,225" size="100,100">//Nutno dodělat :-)//</tw-passagedata><tw-passagedata pid="13" name="AjaxConnectionError" tags="" position="350,225" size="100,100">&lt;p&gt;
   Nepodařilo se spojit se serverem...
@@ -1434,9 +1484,9 @@ Až ho pak budeš chtít opustit,&lt;br&gt;
        ajaxového spojení s online serverem.)//
 &lt;/p&gt;
 &lt;p class=&quot;tac&quot;&gt;
-    &lt;&lt;button [[Zkusit testovací místnost|EX_ajaxTest]]&gt;&gt;
+    &#39;&#39;&lt;&lt;button [[Zkusit testovací místnost|EX_ajaxTest]]&gt;&gt;
         &lt;&lt;run Dialog.close()&gt;&gt;
-    &lt;&lt;/button&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;/p&gt;
 &lt;&lt;dialogCloseButton &quot;Raději se vrátit zpět&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="WhichNewGame" tags="" position="850,225" size="100,100">&lt;h2&gt;
 Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?

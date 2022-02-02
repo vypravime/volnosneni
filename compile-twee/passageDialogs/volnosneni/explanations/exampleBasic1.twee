@@ -3,20 +3,11 @@
 <h3>Příběhová kartička</h3>
 <div class="story-card-1">
 <p>
-''<<=setup.whoseTurn()>>'':
-</p>
-<hr>
-<p>
 "''<<=setup.whoseTurn()>>'' jede na dovolenou do Itálie,<br>
 vezme si s sebou nové tyrkysové plavky,<br>
 cestou si koupí perfektní pizzu<br>
 a ubytuje se v soukromém apartmá<br>
 s výhledem na malebný mořský záliv."
-</p>
-<p class="complic">
-"Ale když přijede a ubytuje se, zjistí,<br>
-že ani v peněžence, ani na účtu<br>
-nemá vůbec žádné peníze..."
 </p>
 </div>
 <hr>
@@ -48,14 +39,18 @@ anebo smíš jednoduše k dalšímu ději skočit.)//
 </p>
 <hr>
 <p class="tac">
-Hru VolnoSnění si vychutnáš, vyprávíš-li,<br>
-PO ČEM ''UPŘÍMNĚ'' PRAHNEŠ<br>
-a k čemu cítíš vztah!<br>
+Vyprávěj o tom, k čemu cítíš vztah,<br>
+po čem ''UPŘÍMNĚ'' PRAHNEŠ,<br>
+ať si hru vychutnáš.
 </p>
 
 <<dialogCloseButton "OK">>
 <<done>>
+<<if setup.toBeDone.exampleComplic === false>>
+    <<run $('.complic').addClass('solved')>>
+<</if>>
 <<run $('.complic').ariaClick(function() {
     $(this).toggleClass('solved');
+    setup.toBeDone.exampleComplic = !setup.toBeDone.exampleComplic;
 });>>
 <</done>>

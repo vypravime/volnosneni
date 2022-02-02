@@ -24,6 +24,7 @@
        tlačítko na levém panelu)//</p>
 <hr>
 <div class="pa5"></div>
+''<<dialogCloseButton "Vrátit se do hry">>''
 <<if _app.isNOTProductionRelease() 
       && (passage() !== "EX_ajaxTest")>>
 <p class="tac">
@@ -32,4 +33,3 @@
 <</button>>
 </p>
 <</if>>
-''<<dialogCloseButton "Vrátit se do hry">>''
