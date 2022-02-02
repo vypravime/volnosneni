@@ -1,0 +1,16 @@
+:: YouAreToEnterDebugging
+
+<p class="tac">
+Opravdu chceš spustit ladící mód?<br>
+Na první pohled je dost nepřehledný.<br>
+Až ho pak budeš chtít opustit,<br>
+''vypni ho znovunačtením celé stránky v prohlížeči''<br>
+//(na počítači například stiskem klávesy F5)//.
+</p>
+<p class = "tac">
+<<button "OK, spustit debugging">>
+    <<run _metaDater.setOneTimeSugarcubeDebugging()>>
+    <<run Engine.restart()>>
+<</button>>&nbsp;
+&nbsp;<<dialogCloseButton "Storno" true>>
+</p>

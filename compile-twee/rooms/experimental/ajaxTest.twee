@@ -96,10 +96,13 @@
     `[_myPage, 'onDevModeChange']`
 
   >>''experimentální režim''<br>
-    //(spustí se po změně místnosti - bez restartu
-       - stačí stisknout tlačítko "přijmout a vrátit se" níže)//
+    //(spustí se po změně místnosti - bez restartu)//
   <</seeSaw>>
+<p> //(- stačí stisknout tlačítko "zap",<br>
+a pak tlačítko "přijmout a vrátit se")//</p>
 </p>
+<p>//(v zápatí vpravo se pak objeví tlačítka
+      pro zobrazení & skrytí loading animace)//</p>
 <hr>
 <div class="pa5"></div>
 <p class="tac">
@@ -107,7 +110,7 @@
 </p>
 <p class="tac">
   <<button "Restartovat a jednorázově spustit SugarCubeDebugger">>
-    <<run _metaDater.setOneTimeSugarcubeDebugging()>>
-    <<run UI.restart()>>
+    <<passageDialog "Restartovat a spustit DEBUGGING?"
+                              "YouAreToEnterDebugging">>
   <</button>>
 </p>

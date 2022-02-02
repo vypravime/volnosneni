@@ -27,7 +27,7 @@
 <<if _app.isNOTProductionRelease() 
       && (passage() !== "EX_ajaxTest")>>
 <p class="tac">
-<<button "Vstoupit do experimentální části">>
+<<button "Vstoupit do testovací místnosti">>
   <<passageDialog "Dočasně povoleno" "YouAreToEnterExperimentalPassages">>
 <</button>>
 </p>
