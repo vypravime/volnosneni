@@ -1,5 +1,6 @@
 :: GeneralSettings
 
+<h3>Nastavení:</h3>
 <hr>
 <p>
   <<seeSaw false "change-fullscreen-see-saw"
@@ -22,13 +23,13 @@
 <p>//(lze použít i "Fullscreen zap/vyp"
        tlačítko na levém panelu)//</p>
 <hr>
-<<if _app.isNOTProductionRelease()>>
-<hr>
+<div class="pa5"></div>
+<<if _app.isNOTProductionRelease() 
+      && (passage() !== "EX_ajaxTest")>>
 <p class="tac">
 <<button "Vstoupit do experimentální části">>
   <<passageDialog "Dočasně povoleno" "YouAreToEnterExperimentalPassages">>
 <</button>>
 </p>
-<hr>
 <</if>>
 ''<<dialogCloseButton "Vrátit se do hry">>''

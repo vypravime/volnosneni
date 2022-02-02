@@ -5,20 +5,25 @@
 <<set _ajaxAnim = setup.DI_CONT.getService('ajaxAnimation')>>
 <<set _myPage = setup.DI_CONT.getService('myPage')>>
 <<set _metaDater = setup.DI_CONT.getService('metaDater')>>
+<<set $test1 = $test1 || '1. vzkaz - uloží se na server'>>
+<<set $test2 = $test2 || '2. vzkaz - uloží se na server'>>
 /*\DEPENDENCIES */
 
-<h2>Hello!<br>Let's play with AJAX</h2>
+<h2>Otestovat spojení se serverem</h2>
 
+<div class="ajax-testing-message-boxes">
 <p>
-<<textbox "$test1" "První testovací hodnota">>
+<<textbox "$test1" $test1>>
 </p>
 <p>
-<<textbox "$test2" "Druhá testovací hodnota">>
+<<textbox "$test2" $test2>>
 </p>
+</div>
 
-<ul id="received-data" style="overflow-y: hidden;"></ul>
+<p>
+<div id="received-data" style="overflow-y: hidden;"></div>
 
-<<button "Odešli dotaz">>
+<<button "Odeslat vzkazy<br>& získat odpověď">>
   <<run _ajaxAnim.setOn()>>
   <<script>>
     $(document).ready(function(){
@@ -33,16 +38,22 @@
           test2: State.variables.test2
         },
         function(data){
+          let innerData = $('<ul></ul>');
           let content = '';
           $.each(data, function(name,prop){
             content = $('<li></li>').html(`<em>${name}</em>: <strong>${prop}</strong>`);
-            dataReceiver.append(content);
+            innerData.append(content);
           });
+          dataReceiver.append('Vzkazy byly úspěšně uloženy na server...<br>toto je testovací serverem odeslaná odpověď:');
+          dataReceiver.append(innerData);
           dataReceiver.append('<hr>');
         },
         'json'
       ).done(function(){
-        console.log('second success');
+        $('.ajax-testing-message-boxes')
+        .find('input').val('');
+        State.setVar('$test1', undefined);
+        State.setVar('$test2', undefined);
       }).fail(function(){
         setup.DI_CONT.getService('myPage')
         .openPassageDialog(
@@ -64,10 +75,13 @@
     });
   <</script>>
 <</button>>&nbsp;<<include "AjaxAnim1stars">>
+</p>
 <div class="pa5"></div>
 
 <hr>
-
+<hr>
+<h3>Nastavení:</h3>
+<hr>
 <p>
   <<seeSaw false "dev-mode-toggle-btns"
 
@@ -82,15 +96,15 @@
     `[_myPage, 'onDevModeChange']`
 
   >>''experimentální režim''<br>
-    //(spustí se po změně místnosti - bez restartu)//
+    //(spustí se po změně místnosti - bez restartu
+       - stačí stisknout tlačítko "přijmout a vrátit se" níže)//
   <</seeSaw>>
 </p>
 <hr>
-<hr>
+<div class="pa5"></div>
 <p class="tac">
   ''<<button [[Přijmout a vrátit se|previous()]]>><</button>>''
 </p>
-<hr>
 <p class="tac">
   <<button "Restartovat a jednorázově spustit SugarCubeDebugger">>
     <<run _metaDater.setOneTimeSugarcubeDebugging()>>

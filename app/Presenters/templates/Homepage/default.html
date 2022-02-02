@@ -1186,7 +1186,8 @@ setup.myPage.registerAllCustomEventsHandlers();
     &lt;&lt;button &quot;Panel ...&quot;&gt;&gt; /* right button legend is filled via MyPage.registerUIBarTogglingHandlers() after :storyready event is triggered*/
       &lt;&lt;run _myPage.triggerUIBarToggling()&gt;&gt;
     &lt;&lt;/button&gt;&gt;
-&lt;/span&gt;</tw-passagedata><tw-passagedata pid="5" name="GeneralSettings" tags="" position="600,100" size="100,100">&lt;hr&gt;
+&lt;/span&gt;</tw-passagedata><tw-passagedata pid="5" name="GeneralSettings" tags="" position="600,100" size="100,100">&lt;h3&gt;Nastavení:&lt;/h3&gt;
+&lt;hr&gt;
 &lt;p&gt;
   &lt;&lt;seeSaw false &quot;change-fullscreen-see-saw&quot;
 
@@ -1208,14 +1209,14 @@ setup.myPage.registerAllCustomEventsHandlers();
 &lt;p&gt;//(lze použít i &quot;Fullscreen zap/vyp&quot;
        tlačítko na levém panelu)//&lt;/p&gt;
 &lt;hr&gt;
-&lt;&lt;if _app.isNOTProductionRelease()&gt;&gt;
-&lt;hr&gt;
+&lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+&lt;&lt;if _app.isNOTProductionRelease() 
+      &amp;&amp; (passage() !== &quot;EX_ajaxTest&quot;)&gt;&gt;
 &lt;p class=&quot;tac&quot;&gt;
 &lt;&lt;button &quot;Vstoupit do experimentální části&quot;&gt;&gt;
   &lt;&lt;passageDialog &quot;Dočasně povoleno&quot; &quot;YouAreToEnterExperimentalPassages&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;
-&lt;hr&gt;
 &lt;&lt;/if&gt;&gt;
 &#39;&#39;&lt;&lt;dialogCloseButton &quot;Vrátit se do hry&quot;&gt;&gt;&#39;&#39;</tw-passagedata><tw-passagedata pid="6" name="Help" tags="" position="725,100" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
@@ -1530,20 +1531,25 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
 &lt;&lt;set _metaDater = setup.DI_CONT.getService(&#39;metaDater&#39;)&gt;&gt;
+&lt;&lt;set $test1 = $test1 || &#39;1. vzkaz - uloží se na server&#39;&gt;&gt;
+&lt;&lt;set $test2 = $test2 || &#39;2. vzkaz - uloží se na server&#39;&gt;&gt;
 /*\DEPENDENCIES */
 
-&lt;h2&gt;Hello!&lt;br&gt;Let&#39;s play with AJAX&lt;/h2&gt;
+&lt;h2&gt;Otestovat spojení se serverem&lt;/h2&gt;
 
+&lt;div class=&quot;ajax-testing-message-boxes&quot;&gt;
 &lt;p&gt;
-&lt;&lt;textbox &quot;$test1&quot; &quot;První testovací hodnota&quot;&gt;&gt;
+&lt;&lt;textbox &quot;$test1&quot; $test1&gt;&gt;
 &lt;/p&gt;
 &lt;p&gt;
-&lt;&lt;textbox &quot;$test2&quot; &quot;Druhá testovací hodnota&quot;&gt;&gt;
+&lt;&lt;textbox &quot;$test2&quot; $test2&gt;&gt;
 &lt;/p&gt;
+&lt;/div&gt;
 
-&lt;ul id=&quot;received-data&quot; style=&quot;overflow-y: hidden;&quot;&gt;&lt;/ul&gt;
+&lt;p&gt;
+&lt;div id=&quot;received-data&quot; style=&quot;overflow-y: hidden;&quot;&gt;&lt;/div&gt;
 
-&lt;&lt;button &quot;Odešli dotaz&quot;&gt;&gt;
+&lt;&lt;button &quot;Odeslat vzkazy&lt;br&gt;&amp; získat odpověď&quot;&gt;&gt;
   &lt;&lt;run _ajaxAnim.setOn()&gt;&gt;
   &lt;&lt;script&gt;&gt;
     $(document).ready(function(){
@@ -1558,16 +1564,22 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
           test2: State.variables.test2
         },
         function(data){
+          let innerData = $(&#39;&lt;ul&gt;&lt;/ul&gt;&#39;);
           let content = &#39;&#39;;
           $.each(data, function(name,prop){
             content = $(&#39;&lt;li&gt;&lt;/li&gt;&#39;).html(`&lt;em&gt;${name}&lt;/em&gt;: &lt;strong&gt;${prop}&lt;/strong&gt;`);
-            dataReceiver.append(content);
+            innerData.append(content);
           });
+          dataReceiver.append(&#39;Vzkazy byly úspěšně uloženy na server...&lt;br&gt;toto je testovací serverem odeslaná odpověď:&#39;);
+          dataReceiver.append(innerData);
           dataReceiver.append(&#39;&lt;hr&gt;&#39;);
         },
         &#39;json&#39;
       ).done(function(){
-        console.log(&#39;second success&#39;);
+        $(&#39;.ajax-testing-message-boxes&#39;)
+        .find(&#39;input&#39;).val(&#39;&#39;);
+        State.setVar(&#39;$test1&#39;, undefined);
+        State.setVar(&#39;$test2&#39;, undefined);
       }).fail(function(){
         setup.DI_CONT.getService(&#39;myPage&#39;)
         .openPassageDialog(
@@ -1589,10 +1601,13 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     });
   &lt;&lt;/script&gt;&gt;
 &lt;&lt;/button&gt;&gt;&amp;nbsp;&lt;&lt;include &quot;AjaxAnim1stars&quot;&gt;&gt;
+&lt;/p&gt;
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
 
 &lt;hr&gt;
-
+&lt;hr&gt;
+&lt;h3&gt;Nastavení:&lt;/h3&gt;
+&lt;hr&gt;
 &lt;p&gt;
   &lt;&lt;seeSaw false &quot;dev-mode-toggle-btns&quot;
 
@@ -1607,15 +1622,15 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     `[_myPage, &#39;onDevModeChange&#39;]`
 
   &gt;&gt;&#39;&#39;experimentální režim&#39;&#39;&lt;br&gt;
-    //(spustí se po změně místnosti - bez restartu)//
+    //(spustí se po změně místnosti - bez restartu
+       - stačí stisknout tlačítko &quot;přijmout a vrátit se&quot; níže)//
   &lt;&lt;/seeSaw&gt;&gt;
 &lt;/p&gt;
 &lt;hr&gt;
-&lt;hr&gt;
+&lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
 &lt;p class=&quot;tac&quot;&gt;
   &#39;&#39;&lt;&lt;button [[Přijmout a vrátit se|previous()]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;/p&gt;
-&lt;hr&gt;
 &lt;p class=&quot;tac&quot;&gt;
   &lt;&lt;button &quot;Restartovat a jednorázově spustit SugarCubeDebugger&quot;&gt;&gt;
     &lt;&lt;run _metaDater.setOneTimeSugarcubeDebugging()&gt;&gt;
