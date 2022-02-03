@@ -124,7 +124,7 @@
 
     <<button "''Vím přesně, co nebo kdo mi vadí''<br>- a snažím se to vyřešit."
         >><</button>>
-<br><<button "Nevím, v čem je zakopaný pes<br>- ''ale snažím se na to přijít''...<br>a vyrovnaně se necítím."
+<br><<button "''Snažím se přijít na to, v čem je zakopaný pes''<br>- vyrovnaně se necítím, ale nevyznám se v tom."
         >><</button>>
 <br><<button "Tak trochu jsem to vzdal<br>- ''čekám, jestli se to nezlepší samo''."
         >><</button>>
