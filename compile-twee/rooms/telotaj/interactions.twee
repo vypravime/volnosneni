@@ -128,13 +128,13 @@
     <h3>Co se teď v Tobě odehrává?</h3>
 
     <div class="answers">
-        <<button "''Vím přesně, co nebo kdo mi vadí''<br>- a snažím se to vyřešit."
-            "TTI_IknowWhatIsAnnoyingMe">><</button>>
+        <<button "Dnes mě trápí či rozrušuje<br>''zcela konkrétní věc či člověk''..."
+            "TTI_fillInYourProblem">><</button>>
         <br>
-        <<button "''Snažím se přijít na to, v čem je zakopaný pes''<br>- vyrovnaně se necítím, ale nevyznám se v tom."
+        <<button "Vyrovnaně se necítím, ale nevyznám se v tom<br>- ''snažím se tomu přijít na kloub''.<br>"
             "TTI_whatAboutNotKnowingWhatTheProblemWas">><</button>>
         <br>
-        <<button "Tak trochu jsem to vzdal<br>- ''čekám, jestli se to nezlepší samo''."
+        <<button "Trochu jsem to vzdal<br>- ''nevím co se děje, ale čekám'',<br>jestli se to nezlepší samo."
             >><</button>>
     </div>
 </div>
@@ -266,5 +266,26 @@
     <div class="answers">
         <<button "''Tak nějak''"
             "TTI_IknowWhatIsAnnoyingMe">><</button>>
+    </div>
+</div>
+
+:: TTI_fillInYourProblem
+
+<<set _myProblem = $TT.myProblem || 'mé trápení, však vím co'>>
+<div>
+    <h3>
+        Zapiš si tedy prosím teď stručně,<br>
+        co je Tvé trápení:
+    </h3>
+
+    <p class="tac">
+        <<textbox "$TT.myProblem" _myProblem `passage()` autofocus>>
+    </p>
+
+    <div class="answers">
+        <<button "Dobře... ''Mám to zapsáno''."
+            "TTI_IknowWhatIsAnnoyingMe">>
+                <<set $TT.myProblem = $TT.myProblem.trim()>>
+            <</button>>
     </div>
 </div>
