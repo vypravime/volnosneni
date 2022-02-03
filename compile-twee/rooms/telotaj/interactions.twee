@@ -218,7 +218,20 @@
         než jsi původně očekával<br>
         tak nějak sama od sebe.//
     </p>
-    <p class="tac">
 
-    </p>
+    <h3>
+        Co když teď tedy změníš přístup<br>
+        a zkusíš společně se mnou projít proměnou?<br>
+        - aby Ti ta Tvá záležitost přestala vadit...<br>
+        a Ty sis mohl jen tak žít....<br>
+        zatímco se ta záležitost vyřeší tak nějak sama?
+    </h3>
+
+    <div class="answers">
+        <<button "''Souhlasím''<br>- pojďme to zkusit."
+            >><</button>>
+        <br>
+        <<button "''Tak to teda ne!''<br>Já ten svůj problém musím obstarat stůj, co stůj!"
+            "TTI_annoyingEnd">><</button>>
+    </div>
 </div>
