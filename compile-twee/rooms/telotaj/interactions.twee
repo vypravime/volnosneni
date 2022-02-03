@@ -250,6 +250,21 @@
             >><</button>>
         <br>
         <<button "''To teda ne''<br> - já potřebuju nejdřív zjistit,<br>proč mi není dobře."
-            >><</button>>    
+            "TTI_itAnnoysMeNotKnowingWhatAnnoysMe">><</button>>    
     <div>
+</div>
+
+:: TTI_itAnnoysMeNotKnowingWhatAnnoysMe
+
+<div>
+    <h3>
+        To ale znamená...<br>
+        že Ti na Tobě překáží - že se v sobě nevyznáš?<br>
+        Nebo že Ti na životě překáží - že Ti nedává smysl?
+    </h3>
+
+    <div class="answers">
+        <<button "''Tak nějak''"
+            "TTI_IknowWhatIsAnnoyingMe">><</button>>
+    </div>
 </div>
