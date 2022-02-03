@@ -135,7 +135,7 @@
             "TTI_whatAboutNotKnowingWhatTheProblemWas">><</button>>
         <br>
         <<button "Trochu jsem to vzdal<br>- ''netuším'' co se děje, ale ''čekám'',<br>zda se to nezlepší samo."
-            >><</button>>
+            "TTI_waitingWhetherItGetsBetter">><</button>>
     </div>
 </div>
 
@@ -317,5 +317,27 @@
       //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
                 <<passageDialog "Otázka bezpečí" "TTD_whoWillSeeInputs">>
             <</button>>//
+    </div>
+</div>
+
+:: TTI_waitingWhetherItGetsBetter
+
+<div>
+    <p class="tac">
+        Takže vyčkáváš,<br>jestli se okolnosti vyjasní samy od sebe...
+    </p>
+
+    <h3>
+        A co kdybys se mnou prozkoumal<br>
+        jeden maličký krok - díky němuž<br>
+        se situace sama od sebe zlepší?
+    </h3>
+
+    <div class="answers">
+        <<button "''Dobře'' - zkusit to můžeme."
+            >><</button>>
+        <br>
+        <<button "Raději ''ne'' - budu dál vyčkávat."
+            "TTI_bitterEnd">><</button>>
     </div>
 </div>
