@@ -10,7 +10,7 @@
 <div class="answers">
 
     <<button "''Ano'' - nyní jsem hluboce šťastný."
-        >><</button>>
+        "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
 <br><<button "''Ne'', snažím se sice - ale nějak to teď drhne."
         >><</button>>
 <br><<button "Na krásy života jsem už rezignoval - ''je mi to jedno''"
@@ -43,7 +43,7 @@
     <<button "Je to tak - ''zahořkl jsem''."
         "TTI_theLifeIsBitter">><</button>>
 <br><<button "Přestal jsem usilovat - ''jsem osvícený''."
-        >><</button>>
+        "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
 
 </div>
 
@@ -59,6 +59,8 @@
         "TTI_bitterEnd">><</button>>
 <br><<button "''Ne'' - bylo by fajn, kdyby přišlo něco jiného."
         >><</button>>
+
+</div>
 
 :: TTI_bitterEnd
 
@@ -84,4 +86,27 @@
     <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
         <<run UI.restart()>>
     <</button>>
+</div>
+
+:: TTI_wouldYourBodyAgreeClaimedHarmony
+
+<p class="tac">
+    Dobře tedy...<br>
+    - jsi v rovnováze.
+</p>
+
+<h3>
+    Ale musíš pro svou rovnováhu ignorovat Tvé tělo?<br>
+    Nebo je Tvé tělo součástí Tvé harmonie?
+</h3>
+
+<div class="answers">
+
+    <<button "''Jasně, že ignoruji tělo''<br>- tělo je plné nízkých pudů."
+        "TTI_bitterEnd">><</button>>
+<br><<button "''Určitě jsem v souladu i s tělem''<br>- ať už to znamená cokoliv."
+        "TTI_bitterEnd">><</button>>
+<br><<button "Co kdybychom se ''společně těla zeptali''..."
+        >><</button>>
+
 </div>
