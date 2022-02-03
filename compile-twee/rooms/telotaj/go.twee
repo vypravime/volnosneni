@@ -15,5 +15,5 @@ I tak - jak věřím - může být klikání větveným dialogem<br>
 pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
 </p>
 <p class="tac">
-''<<button[[Vstoupit do dialogu|TT_dialogStart]]>><</button>>''
+''<<button[[Vstoupit do dialogu|TTI_start]]>><</button>>''
 </p>

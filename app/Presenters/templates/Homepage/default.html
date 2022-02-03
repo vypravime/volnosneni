@@ -117,7 +117,8 @@ h3 {
 .passage h2 {
     text-align: center;
 }
-.tar {
+.tar,
+.answers {
     text-align: right;
 }
 
@@ -128,6 +129,10 @@ p {
 hr {
     margin-top: 0.9rem;
 	margin-bottom: 0.9rem;
+}
+.answers button {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 .mt6,
 #ui-bar-body p.mt6 {
@@ -1736,15 +1741,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;button &quot;Načíst dřívější hru...&quot;&gt;&gt;
     &lt;&lt;run UI.saves()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="25" name="TT_dialogStart" tags="" position="600,350" size="100,100">&lt;h3&gt;Cítíš se právě teď naplněně?&lt;br&gt;
-Je Tvůj život krásný?&lt;br&gt;
-Dává Ti smysl?&lt;/h3&gt;
-
-&lt;div class=&quot;tar&quot;&gt;
-&lt;p&gt;&lt;&lt;button &quot;&#39;&#39;Ano&#39;&#39; - nyní jsem šťastný.&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;&lt;button &quot;&#39;&#39;Ne&#39;&#39;, snažím se sice - ale nějak to teď drhne.&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;&lt;button &quot;Na štěstí jsem už rezignoval - &#39;&#39;je mi to jedno&#39;&#39;&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="26" name="TT_go" tags="" position="725,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="25" name="TT_go" tags="" position="600,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
 &lt;p&gt;
 Ve hře tělotaj si klikáním&lt;br&gt;
 na připravené možnosti rozvětveného dialogu&lt;br&gt;
@@ -1759,8 +1756,24 @@ I tak - jak věřím - může být klikání větveným dialogem&lt;br&gt;
 pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
 &lt;/p&gt;
 &lt;p class=&quot;tac&quot;&gt;
-&#39;&#39;&lt;&lt;button[[Vstoupit do dialogu|TT_dialogStart]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="27" name="VS_checkDisallowedThemes" tags="" position="850,350" size="100,100">ToDo:
+&#39;&#39;&lt;&lt;button[[Vstoupit do dialogu|TTI_start]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="TTI_start" tags="" position="725,350" size="100,100">&lt;h3&gt;
+    Cítíš se právě teď naplněně?&lt;br&gt;
+    Je Tvůj život krásný?&lt;br&gt;
+    Dává Ti smysl?
+&lt;/h3&gt;
+
+
+&lt;div class=&quot;answers&quot;&gt;
+
+    &lt;&lt;button &quot;&#39;&#39;Ano&#39;&#39; - nyní jsem hluboce šťastný.&quot;
+        &gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;br&gt;&lt;&lt;button &quot;&#39;&#39;Ne&#39;&#39;, snažím se sice - ale nějak to teď drhne.&quot;
+        &gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;br&gt;&lt;&lt;button &quot;Na krásy života jsem už rezignoval - &#39;&#39;je mi to jedno&#39;&#39;&quot;
+        &gt;&gt;&lt;&lt;/button&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="27" name="VS_checkDisallowedThemes" tags="" position="850,350" size="100,100">ToDo:
 --Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="28" name="VS_fantasyEnter" tags="" position="975,350" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;

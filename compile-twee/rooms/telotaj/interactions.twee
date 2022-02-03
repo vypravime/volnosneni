@@ -1,0 +1,19 @@
+:: TTI_start
+
+<h3>
+    Cítíš se právě teď naplněně?<br>
+    Je Tvůj život krásný?<br>
+    Dává Ti smysl?
+</h3>
+
+
+<div class="answers">
+
+    <<button "''Ano'' - nyní jsem hluboce šťastný."
+        >><</button>>
+<br><<button "''Ne'', snažím se sice - ale nějak to teď drhne."
+        >><</button>>
+<br><<button "Na krásy života jsem už rezignoval - ''je mi to jedno''"
+        >><</button>>
+
+</div>

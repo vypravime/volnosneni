@@ -17,7 +17,8 @@ h3 {
 .passage h2 {
     text-align: center;
 }
-.tar {
+.tar,
+.answers {
     text-align: right;
 }
 
@@ -28,6 +29,10 @@ p {
 hr {
     margin-top: 0.9rem;
 	margin-bottom: 0.9rem;
+}
+.answers button {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 .mt6,
 #ui-bar-body p.mt6 {
