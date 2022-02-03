@@ -52,3 +52,36 @@
 <h3>
     Vyhovuje Ti Tvůj cynický postoj?
 </h3>
+
+<div class="answers">
+
+    <<button "''Ano'' - nepotřebuji nic měnit."
+        "TTI_bitterEnd">><</button>>
+<br><<button "''Ne'' - bylo by fajn, kdyby přišlo něco jiného."
+        >><</button>>
+
+:: TTI_bitterEnd
+
+<p class="tac">
+  //Pokud už od života nic moc nečekáš<br>
+    ale zároveň si v tom sám se sebou celkem spokojený...<br>
+    pak už Ti asi nemám co nabídnout.//
+</p>
+<p class="tac">
+    ''Hra TěloTaj pro Tebe nyní končí''...<br>
+    můžeš si zkusit možná někdy přečíst můj text<br>
+    [["Veškeré duchovno světa v šesti minutách"|https://vypravime.webnode.cz/strucna-rada-ktera-muze-zmenit-cely-zivot/]]<br>
+    - ale to čtení se Ti spíš nebude líbit.
+</p>
+
+<h3>
+    Naši aplikaci nyní zavři,<br>
+    nebo se vrať do úvodního menu...<br>
+    a vyber si tam jinou hru...
+</h3>
+
+<div class="answers">
+    <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
+        <<run UI.restart()>>
+    <</button>>
+</div>
