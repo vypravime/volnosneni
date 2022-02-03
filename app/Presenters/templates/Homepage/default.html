@@ -578,7 +578,23 @@ thatProto.autoWrapPassageContent = function (passage) {
         } else {
             attrsStr = ` class="${this._htmlClasses.autoWrapping.passageContent.defaultClass}"`
         }
-        return `<div${attrsStr}>${passage.text}</div>`;
+        let addedEnding = ''
+        if (((passage.title[0] + passage.title[1]) === 'TT')
+                && (passage.title !== 'TT_go')) {
+            addedEnding =   `
+<div class="pa5"></div>
+<hr>
+<p class="tar">
+//(Chybí-li Ti tu nějaká volba,<br>
+   napiš mi prosím na e-mail,<br>
+   který uvádím
+   v&nbsp;<<link "nápovědě">>
+                <<passageDialog "Nápověda" "Help">>
+          <</link>>.)//
+</p>
+                            `
+        }
+        return `<div${attrsStr}>${passage.text}${addedEnding}</div>`;
     }
 };
 
@@ -1720,7 +1736,15 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;button &quot;Načíst dřívější hru...&quot;&gt;&gt;
     &lt;&lt;run UI.saves()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="25" name="TT_dialogStart" tags="" position="600,350" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="TT_go" tags="" position="725,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="25" name="TT_dialogStart" tags="" position="600,350" size="100,100">&lt;h3&gt;Cítíš se právě teď naplněně?&lt;br&gt;
+Je Tvůj život krásný?&lt;br&gt;
+Dává Ti smysl?&lt;/h3&gt;
+
+&lt;div class=&quot;tar&quot;&gt;
+&lt;p&gt;&lt;&lt;button &quot;&#39;&#39;Ano&#39;&#39; - nyní jsem šťastný.&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;&lt;button &quot;&#39;&#39;Ne&#39;&#39;, snažím se sice - ale nějak to teď drhne.&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;&lt;button &quot;Na štěstí jsem už rezignoval - &#39;&#39;je mi to jedno&#39;&#39;&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="26" name="TT_go" tags="" position="725,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
 &lt;p&gt;
 Ve hře tělotaj si klikáním&lt;br&gt;
 na připravené možnosti rozvětveného dialogu&lt;br&gt;

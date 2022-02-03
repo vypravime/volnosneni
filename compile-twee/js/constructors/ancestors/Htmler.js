@@ -48,7 +48,23 @@ thatProto.autoWrapPassageContent = function (passage) {
         } else {
             attrsStr = ` class="${this._htmlClasses.autoWrapping.passageContent.defaultClass}"`
         }
-        return `<div${attrsStr}>${passage.text}</div>`;
+        let addedEnding = ''
+        if (((passage.title[0] + passage.title[1]) === 'TT')
+                && (passage.title !== 'TT_go')) {
+            addedEnding =   `
+<div class="pa5"></div>
+<hr>
+<p class="tar">
+//(Chybí-li Ti tu nějaká volba,<br>
+   napiš mi prosím na e-mail,<br>
+   který uvádím
+   v&nbsp;<<link "nápovědě">>
+                <<passageDialog "Nápověda" "Help">>
+          <</link>>.)//
+</p>
+                            `
+        }
+        return `<div${attrsStr}>${passage.text}${addedEnding}</div>`;
     }
 };
 
