@@ -1,130 +1,142 @@
 :: TTI_start
 
-<h3>
-    Cítíš se právě teď naplněně?<br>
-    Je Tvůj život krásný?<br>
-    Dává Ti smysl?
-</h3>
+<div>
+    <h3>
+        Cítíš se právě teď naplněně?<br>
+        Je Tvůj život krásný?<br>
+        Dává Ti smysl?
+    </h3>
 
-
-<div class="answers">
-
-    <<button "''Ano'' - nyní jsem hluboce šťastný."
-        "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
-<br><<button "''Ne'', snažím se sice - ale nějak to teď drhne."
-        "TTI_howAreYouTryingToGetHappy">><</button>>
-<br><<button "Na krásy života jsem už rezignoval - ''je mi to jedno''"
-        "TTI_rezignatedOrZenHoly">><</button>>
-
+    <div class="answers">
+        <<button "''Ano'' - nyní jsem hluboce šťastný."
+            "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
+        <br>
+        <<button "''Ne'', snažím se sice - ale nějak to teď drhne."
+            "TTI_howAreYouTryingToGetHappy">><</button>>
+        <br>
+        <<button "Na krásy života jsem už rezignoval - ''je mi to jedno''"
+            "TTI_rezignatedOrZenHoly">><</button>>
+    </div>
 </div>
 
 
 :: TTI_rezignatedOrZenHoly
 
-<p class="tac">
-  //Pokud ses dostal do stavu<br>
-    kdy Ti nezáleží na tom,<br>
-    jestli Ti je nebo není dobře...<br>
-    - pak jsi buď nějak budhisticky osvícený,<br>
-    což mi ale přijde nepravděpodobné...<br>
-    protože i osvícení vnáší hluboké dojetí...<br>
-    - nebo Tě spíš minulá traumata dohnala<br>
-    k cynismu, pesimismu a apatii.//
-</p>
+<div>
+    <p class="tac">
+      //Pokud ses dostal do stavu<br>
+        kdy Ti nezáleží na tom,<br>
+        jestli Ti je nebo není dobře...<br>
+        - pak jsi buď nějak budhisticky osvícený,<br>
+        což mi ale přijde nepravděpodobné...<br>
+        protože i osvícení vnáší hluboké dojetí...<br>
+        - nebo Tě spíš minulá traumata dohnala<br>
+        k cynismu, pesimismu a apatii.//
+    </p>
 
-<h3>
-    Je Ti tedy jedno zda jsi či nejsi šťastný...<br>
-    - protože jsi nalezl vnitřní klid?<br>
-    - nebo protože Ti připadá život nespravedlivý?
-</h3>
+    <h3>
+        Je Ti tedy jedno zda jsi či nejsi šťastný...<br>
+        - protože jsi nalezl vnitřní klid?<br>
+        - nebo protože Ti připadá život nespravedlivý?
+    </h3>
 
-<div class="answers">
-
-    <<button "Je to tak - ''zahořkl jsem''."
-        "TTI_theLifeIsBitter">><</button>>
-<br><<button "Přestal jsem usilovat - ''jsem osvícený''."
-        "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
-
+    <div class="answers">
+        <<button "Je to tak - ''zahořkl jsem''."
+            "TTI_theLifeIsBitter">><</button>>
+        <br>
+        <<button "Přestal jsem usilovat - ''jsem osvícený''."
+            "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
+    </div>
 </div>
 
 :: TTI_theLifeIsBitter
 
-<h3>
-    Vyhovuje Ti Tvůj cynický postoj?
-</h3>
+<div>
+    <h3>
+        Vyhovuje Ti Tvůj cynický postoj?
+    </h3>
 
-<div class="answers">
-
-    <<button "''Ano'' - nepotřebuji nic měnit."
-        "TTI_bitterEnd">><</button>>
-<br><<button "''Ne'' - bylo by fajn, kdyby přišlo něco jiného."
-        "TTI_howAreYouTryingToGetHappy">><</button>>
-
+    <div class="answers">
+        <<button "''Ano'' - nepotřebuji nic měnit."
+            "TTI_bitterEnd">><</button>>
+        <br>
+        <<button "''Ne'' - bylo by fajn, kdyby přišlo něco jiného."
+            "TTI_howAreYouTryingToGetHappy">><</button>>
+    </div>
 </div>
 
 :: TTI_bitterEnd
 
-<p class="tac">
-  //Pokud už od života nic moc nečekáš<br>
-    ale zároveň si v tom sám se sebou celkem spokojený...<br>
-    pak už Ti asi nemám co nabídnout.//
-</p>
-<p class="tac">
-    ''Hra TěloTaj pro Tebe nyní končí''...<br>
-    můžeš si zkusit možná někdy přečíst můj text<br>
-    [["Veškeré duchovno světa v šesti minutách"|https://vypravime.webnode.cz/strucna-rada-ktera-muze-zmenit-cely-zivot/]]<br>
-    - ale to čtení se Ti spíš nebude líbit.
-</p>
+<div>
+    <p class="tac">
+      //Pokud už od života nic moc nečekáš<br>
+        ale zároveň si v tom sám se sebou celkem spokojený...<br>
+        pak už Ti asi nemám co nabídnout.//
+    </p>
+    <p class="tac">
+        ''Hra TěloTaj pro Tebe nyní končí''...<br>
+        můžeš si zkusit možná někdy přečíst můj text<br>
+        [["Veškeré duchovno světa v šesti minutách"|https://vypravime.webnode.cz/strucna-rada-ktera-muze-zmenit-cely-zivot/]]<br>
+        - ale to čtení se Ti spíš nebude líbit.
+    </p>
 
-<h3>
-    Naši aplikaci nyní zavři,<br>
-    nebo se vrať do úvodního menu...<br>
-    a vyber si tam jinou hru...
-</h3>
+    <h3>
+        Naši aplikaci nyní zavři,<br>
+        nebo se vrať do úvodního menu...<br>
+        a vyber si tam jinou hru...
+    </h3>
 
-<div class="answers">
-    <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
-        <<run UI.restart()>>
-    <</button>>
+    <div class="answers">
+        <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
+            <<run UI.restart()>><</button>>
+    </div>
 </div>
 
 :: TTI_wouldYourBodyAgreeClaimedHarmony
 
-<p class="tac">
-    Dobře tedy...<br>
-    - jsi v rovnováze.
-</p>
+<div>
+    <p class="tac">
+        Dobře tedy...<br>
+        - jsi v rovnováze.
+    </p>
 
-<h3>
-    Ale musíš pro svou rovnováhu ignorovat Tvé tělo?<br>
-    Nebo je Tvé tělo součástí Tvé harmonie?
-</h3>
+    <h3>
+        Ale musíš pro svou rovnováhu ignorovat Tvé tělo?<br>
+        Nebo je Tvé tělo součástí Tvé harmonie?
+    </h3>
 
-<div class="answers">
-
-    <<button "''Jasně, že ignoruji tělo''<br>- tělo je plné nízkých pudů."
-        "TTI_bitterEnd">><</button>>
-<br><<button "''Určitě jsem v souladu i s tělem''<br>- ať už to znamená cokoliv."
-        "TTI_bitterEnd">><</button>>
-<br><<button "Co kdybychom se ''společně těla zeptali''..."
-        >><</button>>
-
+    <div class="answers">
+        <<button "''Jasně, že ignoruji tělo''<br>- tělo je plné nízkých pudů."
+            "TTI_bitterEnd">><</button>>
+        <br>
+        <<button "''Určitě jsem v souladu i s tělem''<br>- ať už to znamená cokoliv."
+            "TTI_bitterEnd">><</button>>
+        <br>
+        <<button "Co kdybychom se ''společně těla zeptali''..."
+            >><</button>>
+    </div>
 </div>
 
 :: TTI_howAreYouTryingToGetHappy
 
-<p class="tac">
-    Takže se Ti život trochu zadřel...<br>
-    - ale byl bys rád, kdyby se to zlepšilo.
-</p>
+<div>
+    <p class="tac">
+        Takže se Ti život trochu zadřel...<br>
+        - ale byl bys rád, kdyby se to zlepšilo.
+    </p>
 
-<h3>Co se teď v Tobě odehrává?</h3>
+    <h3>Co se teď v Tobě odehrává?</h3>
 
-<div class="answers">
+    <div class="answers">
+        <<button "''Vím přesně, co nebo kdo mi vadí''<br>- a snažím se to vyřešit."
+            "TTI_IknowWhatIsAnnoyingMe">><</button>>
+        <br>
+        <<button "''Snažím se přijít na to, v čem je zakopaný pes''<br>- vyrovnaně se necítím, ale nevyznám se v tom."
+            >><</button>>
+        <br>
+        <<button "Tak trochu jsem to vzdal<br>- ''čekám, jestli se to nezlepší samo''."
+            >><</button>>
+    </div>
+</div>
 
-    <<button "''Vím přesně, co nebo kdo mi vadí''<br>- a snažím se to vyřešit."
-        >><</button>>
-<br><<button "''Snažím se přijít na to, v čem je zakopaný pes''<br>- vyrovnaně se necítím, ale nevyznám se v tom."
-        >><</button>>
-<br><<button "Tak trochu jsem to vzdal<br>- ''čekám, jestli se to nezlepší samo''."
-        >><</button>>
+:: TTI_IknowWhatIsAnnoyingMe
