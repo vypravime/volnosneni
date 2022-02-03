@@ -18,7 +18,8 @@ h3 {
     text-align: center;
 }
 .tar,
-.answers {
+.answers,
+.answers button {
     text-align: right;
 }
 

@@ -140,3 +140,61 @@
 </div>
 
 :: TTI_IknowWhatIsAnnoyingMe
+
+<div>
+    <p class="tac">
+    </p>
+
+    <h3>
+        A když nakonec vyřešíš toho, kdo Ti překáží...<br>
+        nebo když nakonec vyřešíš to, co Ti překáží...<br>
+        Bude Ti pak lépe?
+    </h3>
+
+    <div class="answers">
+        <<button "Jasně, že ''ano''!"
+            "TTI_HowLongWillThereBeNothingAnnoying">><</button>>
+        <br>
+        <<button "''Nevím''..."
+            >><</button>>
+    </div>
+</div>
+
+:: TTI_HowLongWillThereBeNothingAnnoying
+
+<div>
+    <h3>
+        A když se Ti po odstranění toho problému uleví...<br>
+        jak dlouho pak potrvá<br>
+        - ''než Ti zase začne vadit něco jiného?''
+    </h3>
+
+    <div class="answers">
+        <<button "Aha - tak na to jsem nemyslel.<br>''Nevím''..."
+            >><</button>>
+        <br>
+        <<button "''To mě nezajímá''...<br>- já hlavně chci vyřešit to, co mi vadí teď."
+            "TTI_annoyingEnd">><</button>>
+    </div>
+</div>
+
+:: TTI_annoyingEnd
+
+<div>
+    <p class="tac">
+        No... jestli jsi tak ponořen<br>
+        do odstraňování svých palčivých problémů...<br>
+        - tak proč ještě ztrácíš čas touto hrou?
+    </p>
+
+    <h3>
+        Vypni nyní naši aplikaci<br>
+        a vrať se, až budeš mít prostor<br>
+        trochu experimentovat se svým postojem...
+    </h3>
+
+    <div class="answers">
+        <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
+            <<run UI.restart()>><</button>>
+    <div>
+</div>
