@@ -14,6 +14,41 @@
 <br><<button "''Ne'', snažím se sice - ale nějak to teď drhne."
         >><</button>>
 <br><<button "Na krásy života jsem už rezignoval - ''je mi to jedno''"
+        "TTI_rezignatedOrZenHoly">><</button>>
+
+</div>
+
+
+:: TTI_rezignatedOrZenHoly
+
+<p class="tac">
+  //Pokud ses dostal do stavu<br>
+    kdy Ti nezáleží na tom,<br>
+    jestli Ti je nebo není dobře...<br>
+    - pak jsi buď nějak budhisticky osvícený,<br>
+    což mi ale přijde nepravděpodobné...<br>
+    protože i osvícení vnáší hluboké dojetí...<br>
+    - nebo Tě spíš minulá traumata dohnala<br>
+    k cynismu, pesimismu a apatii.//
+</p>
+
+<h3>
+    Je Ti tedy jedno zda jsi či nejsi šťastný...<br>
+    - protože jsi nalezl vnitřní klid?<br>
+    - nebo protože Ti připadá život nespravedlivý?
+</h3>
+
+<div class="answers">
+
+    <<button "Je to tak - ''zahořkl jsem''."
+        "TTI_theLifeIsBitter">><</button>>
+<br><<button "Přestal jsem usilovat - ''jsem osvícený''."
         >><</button>>
 
 </div>
+
+:: TTI_theLifeIsBitter
+
+<h3>
+    Vyhovuje Ti Tvůj cynický postoj?
+</h3>
