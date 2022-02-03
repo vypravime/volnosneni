@@ -1,0 +1,39 @@
+:: TTD_whoWillSeeInputs
+
+<p class="tac">
+    Vše, co zde vyplníš, zůstává<br>
+    pouze ve Tvém internetovém prohlížeči<br>
+    na Tvém zařízení (telefonu/tabletu/počítači).
+</p>
+<p class="tac">
+    Nikdo nemá šanci to získat na dálku přes internet,<br>
+    dokonce ani já jako autor aplikace se k tomu nedostanu.
+</p>
+<hr>
+<p class="tal">
+  //Pozor ale na to,<br>
+    že Tvůj průchod hrou TěloTaj<br>
+    se vždy automaticky na pozadí<br>
+    ukládá do Tvého internetového prohlížeče.//
+</p>
+<p class="tal">
+  //Takže když dnes svůj prohlížeč zavřeš...<br>
+    ale za týden tuto naši aplikaci někdo otevře<br>
+    na Tvém zařízení v úplně stejném prohlížeči jako Ty,<br>
+    potom se jej naše aplikace dotáže,<br>
+    zda chce pokračovat v předchozí hře?<br>
+    A takto by někdo Tebou vyplněné trápení<br>
+    mohl později ve Tvém tabletu/telefonu/počítači vidět.//
+</p>
+<p class="tar">
+  //(Chceš-li tomu předejít,<br>
+     pak nevyplňuj své trápení konkrétně,<br>
+     napiš třeba jenom něco jako:<br>
+     "tamto mé trápení"<br>
+     a když se pak v dalším průběhu<br>
+     bude hra TěloTaj odvolávat<br>
+     na "tamto mé trápení"<br>
+     - Ty už si vzpomeneš, co jsi tím myslel<br>
+     - ale nikdo kromě Tebe to vědět nebude.)//
+</p>
+<<dialogCloseButton "Rozumím, vrátit se do hry.">>

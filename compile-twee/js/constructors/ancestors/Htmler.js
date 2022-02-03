@@ -50,7 +50,8 @@ thatProto.autoWrapPassageContent = function (passage) {
         }
         let addedEnding = ''
         if (((passage.title[0] + passage.title[1]) === 'TT')
-                && (passage.title !== 'TT_go')) {
+                && (passage.title !== 'TT_go')
+                && (passage.title[2] !== 'D')) {
             addedEnding =   `
 <div class="pa5"></div>
 <hr>

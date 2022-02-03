@@ -131,10 +131,10 @@
         <<button "Dnes mě trápí či rozrušuje<br>''zcela konkrétní věc či člověk''..."
             "TTI_fillInYourProblem">><</button>>
         <br>
-        <<button "Vyrovnaně se necítím, ale nevyznám se v tom<br>- ''snažím se tomu přijít na kloub''.<br>"
+        <<button "''Nevím'', proč se cítím divně,<br>''a snažím se tomu přijít na kloub''.<br>"
             "TTI_whatAboutNotKnowingWhatTheProblemWas">><</button>>
         <br>
-        <<button "Trochu jsem to vzdal<br>- ''nevím co se děje, ale čekám'',<br>jestli se to nezlepší samo."
+        <<button "Trochu jsem to vzdal<br>- ''netuším'' co se děje, ale ''čekám'',<br>zda se to nezlepší samo."
             >><</button>>
     </div>
 </div>
@@ -286,6 +286,10 @@
         <<button "Dobře... ''Mám to zapsáno''."
             "TTI_IknowWhatIsAnnoyingMe">>
                 <<set $TT.myProblem = $TT.myProblem.trim()>>
+            <</button>>
+        <br>
+        <<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
+                <<passageDialog "Otázka bezpečí" "TTD_whoWillSeeInputs">>
             <</button>>
     </div>
 </div>
