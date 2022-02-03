@@ -132,7 +132,7 @@
             "TTI_IknowWhatIsAnnoyingMe">><</button>>
         <br>
         <<button "''Snažím se přijít na to, v čem je zakopaný pes''<br>- vyrovnaně se necítím, ale nevyznám se v tom."
-            >><</button>>
+            "TTI_whatAboutNotKnowingWhatTheProblemWas">><</button>>
         <br>
         <<button "Tak trochu jsem to vzdal<br>- ''čekám, jestli se to nezlepší samo''."
             >><</button>>
@@ -234,4 +234,22 @@
         <<button "''Tak to teda ne!''<br>Já ten svůj problém musím obstarat stůj, co stůj!"
             "TTI_annoyingEnd">><</button>>
     </div>
+</div>
+
+:: TTI_whatAboutNotKnowingWhatTheProblemWas
+
+<div>
+    <h3>
+        A co kdybych Ti pomohl projít proměnou?<br>
+        Aby se Ti ulevilo a pocítil jsi naplnění<br>
+        - aniž bychom tušili, co Tě trápilo?
+    </h3>
+
+    <div class="answers">
+        <<button "''Tak dobře''<br> - pojďme to zkusit."
+            >><</button>>
+        <br>
+        <<button "''To teda ne''<br> - já potřebuju nejdřív zjistit,<br>proč mi není dobře."
+            >><</button>>    
+    <div>
 </div>

@@ -1869,7 +1869,7 @@ pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
             &quot;TTI_IknowWhatIsAnnoyingMe&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
         &lt;br&gt;
         &lt;&lt;button &quot;&#39;&#39;Snažím se přijít na to, v čem je zakopaný pes&#39;&#39;&lt;br&gt;- vyrovnaně se necítím, ale nevyznám se v tom.&quot;
-            &gt;&gt;&lt;&lt;/button&gt;&gt;
+            &quot;TTI_whatAboutNotKnowingWhatTheProblemWas&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
         &lt;br&gt;
         &lt;&lt;button &quot;Tak trochu jsem to vzdal&lt;br&gt;- &#39;&#39;čekám, jestli se to nezlepší samo&#39;&#39;.&quot;
             &gt;&gt;&lt;&lt;/button&gt;&gt;
@@ -1955,8 +1955,22 @@ pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;Tak to teda ne!&#39;&#39;&lt;br&gt;Já ten svůj problém musím obstarat stůj, co stůj!&quot;
             &quot;TTI_annoyingEnd&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="VS_checkDisallowedThemes" tags="" position="725,475" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="37" name="VS_fantasyEnter" tags="" position="850,475" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="TTI_whatAboutNotKnowingWhatTheProblemWas" tags="" position="725,475" size="100,100">&lt;div&gt;
+    &lt;h3&gt;
+        A co kdybych Ti pomohl projít proměnou?&lt;br&gt;
+        Aby se Ti ulevilo a pocítil jsi naplnění&lt;br&gt;
+        - aniž bychom tušili, co Tě trápilo?
+    &lt;/h3&gt;
+
+    &lt;div class=&quot;answers&quot;&gt;
+        &lt;&lt;button &quot;&#39;&#39;Tak dobře&#39;&#39;&lt;br&gt; - pojďme to zkusit.&quot;
+            &gt;&gt;&lt;&lt;/button&gt;&gt;
+        &lt;br&gt;
+        &lt;&lt;button &quot;&#39;&#39;To teda ne&#39;&#39;&lt;br&gt; - já potřebuju nejdřív zjistit,&lt;br&gt;proč mi není dobře.&quot;
+            &gt;&gt;&lt;&lt;/button&gt;&gt;    
+    &lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="VS_checkDisallowedThemes" tags="" position="850,475" size="100,100">ToDo:
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="38" name="VS_fantasyEnter" tags="" position="975,475" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set _default = $gameCards.current[0].text.trim() ?
@@ -2005,8 +2019,8 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="VS_goForDice" tags="" position="975,475" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="39" name="VS_whoIsOnTurn" tags="alignCenter" position="1100,475" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="VS_goForDice" tags="" position="1100,475" size="100,100">ToDo:
+--Go For Dice--</tw-passagedata><tw-passagedata pid="40" name="VS_whoIsOnTurn" tags="alignCenter" position="1225,475" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;
@@ -2015,7 +2029,7 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="40" name="VS_beforeStartControl" tags="" position="1225,475" size="100,100">/*DEPENDENCIES: */
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="41" name="VS_beforeStartControl" tags="" position="100,600" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _czech = setup.DI_CONT.getService(&#39;czechLang&#39;)&gt;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
 /*\DEPENDENCIES */
@@ -2060,7 +2074,7 @@ pořadí:
 &#39;&#39;&lt;&lt;button [[SOUHLASÍ - ODSTARTOVAT|VS_whoIsOnTurn]]&gt;&gt;
     &lt;&lt;set $roundCounter = 1&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="41" name="VS_setNamesOfPlayers" tags="alignCenter" position="100,600" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="42" name="VS_setNamesOfPlayers" tags="alignCenter" position="225,600" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
 
 &lt;&lt;if $pOrder.length &gt; 1&gt;&gt;
 &lt;h2&gt;Zadej jména hráčů:&lt;/h2&gt;
@@ -2099,7 +2113,7 @@ pořadí:
 &lt;&lt;else&gt;&gt;
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="42" name="VS_setNumbOfPlayers" tags="alignCenter" position="225,600" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="43" name="VS_setNumbOfPlayers" tags="alignCenter" position="350,600" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
 
 &lt;h2&gt;Pro svou novou hru&lt;br&gt;
   //VolnoSnění//&lt;br&gt;
@@ -2147,9 +2161,9 @@ pořadí:
     &lt;&lt;passageDialog &quot;Nastavení hry VolnoSnění&quot; &quot;VSD_settings&quot;&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="43" name="CompLink" tags="widget" position="350,600" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="44" name="CompLink" tags="widget" position="475,600" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="DialogCloseButton" tags="widget" position="475,600" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="DialogCloseButton" tags="widget" position="600,600" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
 /*_args[0] is the TEXT on THE BUTTON*/
 /*_args[1] (optional) if TRUE, outer &lt;p&gt; is omitted, default FALSE*/
     &lt;&lt;if !_args[1]&gt;&gt;
@@ -2159,7 +2173,7 @@ pořadí:
 	&lt;&lt;else&gt;&gt;
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="PassageDialog" tags="widget" position="600,600" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="PassageDialog" tags="widget" position="725,600" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
 /**_args[0] is the HEADING of NEW DIALOG WINDOW
  * _args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW
  * */
@@ -2169,7 +2183,7 @@ pořadí:
 
     &lt;&lt;run _myPage.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="SeeSaw" tags="widget" position="725,600" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="SeeSaw" tags="widget" position="850,600" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
 
     /*strictly boolean
         (if true:
