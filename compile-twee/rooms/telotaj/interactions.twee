@@ -12,7 +12,7 @@
     <<button "''Ano'' - nyní jsem hluboce šťastný."
         "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
 <br><<button "''Ne'', snažím se sice - ale nějak to teď drhne."
-        >><</button>>
+        "TTI_howAreYouTryingToGetHappy">><</button>>
 <br><<button "Na krásy života jsem už rezignoval - ''je mi to jedno''"
         "TTI_rezignatedOrZenHoly">><</button>>
 
@@ -58,7 +58,7 @@
     <<button "''Ano'' - nepotřebuji nic měnit."
         "TTI_bitterEnd">><</button>>
 <br><<button "''Ne'' - bylo by fajn, kdyby přišlo něco jiného."
-        >><</button>>
+        "TTI_howAreYouTryingToGetHappy">><</button>>
 
 </div>
 
@@ -110,3 +110,21 @@
         >><</button>>
 
 </div>
+
+:: TTI_howAreYouTryingToGetHappy
+
+<p class="tac">
+    Takže se Ti život trochu zadřel...<br>
+    - ale byl bys rád, kdyby se to zlepšilo.
+</p>
+
+<h3>Co se teď v Tobě odehrává?</h3>
+
+<div class="answers">
+
+    <<button "''Vím přesně, co nebo kdo mi vadí''<br>- a snažím se to vyřešit."
+        >><</button>>
+<br><<button "Nevím, v čem je zakopaný pes<br>- ''ale snažím se na to přijít''...<br>a vyrovnaně se necítím."
+        >><</button>>
+<br><<button "Tak trochu jsem to vzdal<br>- ''čekám, jestli se to nezlepší samo''."
+        >><</button>>
