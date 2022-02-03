@@ -145,11 +145,21 @@
     <p class="tac">
     </p>
 
-    <h3>
-        A když nakonec vyřešíš toho, kdo Ti překáží...<br>
-        nebo když nakonec vyřešíš to, co Ti překáží...<br>
-        Bude Ti pak lépe?
-    </h3>
+    <<if $TT.myProblem>>
+        <h3>
+            Kdybys ses nakonec zbavil toho, co Tě sužuje:<br>
+            <span style="font-variant: small-caps; font-style: normal;">
+                "$TT.myProblem"
+            </span><br>
+            Bylo by Ti pak lépe?
+        </h3>
+    <<else>>
+        <h3>
+            A když nakonec vyřešíš toho, kdo Ti překáží...<br>
+            nebo když nakonec vyřešíš to, co Ti překáží...<br>
+            Bude Ti pak lépe?
+        </h3>
+    <</if>>
 
     <div class="answers">
         <<button "Jasně, že ''ano''!"
@@ -164,7 +174,7 @@
 
 <div>
     <h3>
-        A když se Ti po odstranění toho problému uleví...<br>
+        A když se Ti po odstranění tohoto problému uleví...<br>
         jak dlouho pak potrvá<br>
         - ''než Ti zase začne vadit něco jiného?''
     </h3>
@@ -220,8 +230,8 @@
     </p>
 
     <h3>
-        Co když teď tedy změníš přístup<br>
-        a zkusíš společně se mnou projít proměnou?<br>
+        Co když teď tedy změníme přístup<br>
+        a zkusíme společně projít proměnou?<br>
         - aby Ti ta Tvá záležitost přestala vadit...<br>
         a Ty sis mohl jen tak žít....<br>
         zatímco se ta záležitost vyřeší tak nějak sama?
@@ -264,8 +274,18 @@
     </h3>
 
     <div class="answers">
-        <<button "''Tak nějak''"
-            "TTI_IknowWhatIsAnnoyingMe">><</button>>
+        <<button "Ano - mrzí mě, ''že se v sobě nevyznám''."
+            "TTI_IknowWhatIsAnnoyingMe">>
+            <<set $TT.myProblem = 'nevyznám se v sobě'>>
+            <</button>>
+        <br>
+        <<button "Spíš mě mrzí, ''že život je zamotaný''."
+            "TTI_IknowWhatIsAnnoyingMe">>
+            <<set $TT.myProblem = 'život nedává smysl'>>
+            <</button>>
+        <br>
+        <<button "Ne - ''problém je v něčem jiném''."
+            "TTI_fillInYourProblem">><</button>>
     </div>
 </div>
 
@@ -275,9 +295,15 @@
 <div>
     <h3>
         Zapiš si tedy prosím teď stručně,<br>
-        co je Tvé trápení:
+        co je ten problém, na který myslíš:
     </h3>
 
+    <p class="tac">
+        (Zaobíráš-li se více obtížemi naráz,<br>
+         vyber si kteroukoliv z nich,<br>
+         která se jeví důležitá.)
+    </p>
+    
     <p class="tac">
         <<textbox "$TT.myProblem" _myProblem `passage()` autofocus>>
     </p>
@@ -288,8 +314,8 @@
                 <<set $TT.myProblem = $TT.myProblem.trim()>>
             <</button>>
         <br>
-        <<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
+      //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
                 <<passageDialog "Otázka bezpečí" "TTD_whoWillSeeInputs">>
-            <</button>>
+            <</button>>//
     </div>
 </div>

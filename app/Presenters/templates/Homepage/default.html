@@ -1917,11 +1917,21 @@ pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
     &lt;p class=&quot;tac&quot;&gt;
     &lt;/p&gt;
 
-    &lt;h3&gt;
-        A když nakonec vyřešíš toho, kdo Ti překáží...&lt;br&gt;
-        nebo když nakonec vyřešíš to, co Ti překáží...&lt;br&gt;
-        Bude Ti pak lépe?
-    &lt;/h3&gt;
+    &lt;&lt;if $TT.myProblem&gt;&gt;
+        &lt;h3&gt;
+            Kdybys ses nakonec zbavil toho, co Tě sužuje:&lt;br&gt;
+            &lt;span style=&quot;font-variant: small-caps; font-style: normal;&quot;&gt;
+                &quot;$TT.myProblem&quot;
+            &lt;/span&gt;&lt;br&gt;
+            Bylo by Ti pak lépe?
+        &lt;/h3&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;h3&gt;
+            A když nakonec vyřešíš toho, kdo Ti překáží...&lt;br&gt;
+            nebo když nakonec vyřešíš to, co Ti překáží...&lt;br&gt;
+            Bude Ti pak lépe?
+        &lt;/h3&gt;
+    &lt;&lt;/if&gt;&gt;
 
     &lt;div class=&quot;answers&quot;&gt;
         &lt;&lt;button &quot;Jasně, že &#39;&#39;ano&#39;&#39;!&quot;
@@ -1932,7 +1942,7 @@ pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
     &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="TTI_HowLongWillThereBeNothingAnnoying" tags="" position="475,475" size="100,100">&lt;div&gt;
     &lt;h3&gt;
-        A když se Ti po odstranění toho problému uleví...&lt;br&gt;
+        A když se Ti po odstranění tohoto problému uleví...&lt;br&gt;
         jak dlouho pak potrvá&lt;br&gt;
         - &#39;&#39;než Ti zase začne vadit něco jiného?&#39;&#39;
     &lt;/h3&gt;
@@ -1980,8 +1990,8 @@ pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
     &lt;/p&gt;
 
     &lt;h3&gt;
-        Co když teď tedy změníš přístup&lt;br&gt;
-        a zkusíš společně se mnou projít proměnou?&lt;br&gt;
+        Co když teď tedy změníme přístup&lt;br&gt;
+        a zkusíme společně projít proměnou?&lt;br&gt;
         - aby Ti ta Tvá záležitost přestala vadit...&lt;br&gt;
         a Ty sis mohl jen tak žít....&lt;br&gt;
         zatímco se ta záležitost vyřeší tak nějak sama?
@@ -2016,16 +2026,32 @@ pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
     &lt;/h3&gt;
 
     &lt;div class=&quot;answers&quot;&gt;
-        &lt;&lt;button &quot;&#39;&#39;Tak nějak&#39;&#39;&quot;
-            &quot;TTI_IknowWhatIsAnnoyingMe&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+        &lt;&lt;button &quot;Ano - mrzí mě, &#39;&#39;že se v sobě nevyznám&#39;&#39;.&quot;
+            &quot;TTI_IknowWhatIsAnnoyingMe&quot;&gt;&gt;
+            &lt;&lt;set $TT.myProblem = &#39;nevyznám se v sobě&#39;&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+        &lt;br&gt;
+        &lt;&lt;button &quot;Spíš mě mrzí, &#39;&#39;že život je zamotaný&#39;&#39;.&quot;
+            &quot;TTI_IknowWhatIsAnnoyingMe&quot;&gt;&gt;
+            &lt;&lt;set $TT.myProblem = &#39;život nedává smysl&#39;&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+        &lt;br&gt;
+        &lt;&lt;button &quot;Ne - &#39;&#39;problém je v něčem jiném&#39;&#39;.&quot;
+            &quot;TTI_fillInYourProblem&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="TTI_fillInYourProblem" tags="" position="1100,475" size="100,100">&lt;&lt;set _myProblem = $TT.myProblem || &#39;mé trápení, však vím co&#39;&gt;&gt;
 &lt;div&gt;
     &lt;h3&gt;
         Zapiš si tedy prosím teď stručně,&lt;br&gt;
-        co je Tvé trápení:
+        co je ten problém, na který myslíš:
     &lt;/h3&gt;
 
+    &lt;p class=&quot;tac&quot;&gt;
+        (Zaobíráš-li se více obtížemi naráz,&lt;br&gt;
+         vyber si kteroukoliv z nich,&lt;br&gt;
+         která se jeví důležitá.)
+    &lt;/p&gt;
+    
     &lt;p class=&quot;tac&quot;&gt;
         &lt;&lt;textbox &quot;$TT.myProblem&quot; _myProblem `passage()` autofocus&gt;&gt;
     &lt;/p&gt;
@@ -2036,9 +2062,9 @@ pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
                 &lt;&lt;set $TT.myProblem = $TT.myProblem.trim()&gt;&gt;
             &lt;&lt;/button&gt;&gt;
         &lt;br&gt;
-        &lt;&lt;button &quot;Nejprve by mě zajímalo&lt;br&gt;- kdo všechno uvidí to,&lt;br&gt;co zde vyplním?&quot;&gt;&gt;
+      //&lt;&lt;button &quot;Nejprve by mě zajímalo&lt;br&gt;- kdo všechno uvidí to,&lt;br&gt;co zde vyplním?&quot;&gt;&gt;
                 &lt;&lt;passageDialog &quot;Otázka bezpečí&quot; &quot;TTD_whoWillSeeInputs&quot;&gt;&gt;
-            &lt;&lt;/button&gt;&gt;
+            &lt;&lt;/button&gt;&gt;//
     &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="VS_checkDisallowedThemes" tags="" position="1225,475" size="100,100">ToDo:
 --Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="41" name="VS_fantasyEnter" tags="" position="100,600" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
