@@ -156,7 +156,7 @@
             "TTI_HowLongWillThereBeNothingAnnoying">><</button>>
         <br>
         <<button "''Nevím''..."
-            >><</button>>
+            "TTI_problemsMakeProblems">><</button>>
     </div>
 </div>
 
@@ -171,7 +171,7 @@
 
     <div class="answers">
         <<button "Aha - tak na to jsem nemyslel.<br>''Nevím''..."
-            >><</button>>
+            "TTI_problemsMakeProblems">><</button>>
         <br>
         <<button "''To mě nezajímá''...<br>- já hlavně chci vyřešit to, co mi vadí teď."
             "TTI_annoyingEnd">><</button>>
@@ -197,4 +197,28 @@
         <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
             <<run UI.restart()>><</button>>
     <div>
+</div>
+
+:: TTI_problemsMakeProblems
+
+<div>
+    <p class="tac">
+      Prozradím Ti jednu věc:
+    </p>
+    <p class="tac">
+      //Ohlédneš-li se zpátky na své životní zkušenosti...<br>
+        zjistíš - že pokaždé, když jsi aktivní snahou<br>
+        odstranil jeden svůj palčivý problém...<br>
+        - tři nové problémy sis tím vyrobíl.//
+    </p>
+    <p class="tac">
+      //Ohlédneš-li se na své dosavadní zkušenosti...<br>
+        pak též zjistíš, že většina Tvých problémů<br>
+        se Ti nakonec vyřešila odlišným způsobem,<br>
+        než jsi původně očekával<br>
+        tak nějak sama od sebe.//
+    </p>
+    <p class="tac">
+
+    </p>
 </div>
