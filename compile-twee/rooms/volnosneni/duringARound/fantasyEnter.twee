@@ -15,7 +15,7 @@
 <p>
 
 //(<<link "číst&nbsp;příklad">>
-	    <<passageDialog "Ukázka:" "VSD_exampleBasic1">>
+	    <<passageDialog "Jak sepsat kartičku?" "VSD_exampleBasic1">>
    <</link>>)&nbsp;&nbsp;&nbsp;(<<link "BÝT&nbsp;VSTŘÍCNÝ">>
 	    <<passageDialog "Zásady společné zábavy:" "VSD_beNiceInfo">>
    <</link>>)&nbsp;&nbsp;&nbsp;(<<link "předešlý&nbsp;děj">>

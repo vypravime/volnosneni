@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5// --><tw-storydata name="Vyprávíme" startnode="25" creator="Tweego" creator-version="2.1.1" ifid="10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">html {
+	<!-- UUID://10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5// --><tw-storydata name="Vyprávíme" startnode="26" creator="Tweego" creator-version="2.1.1" ifid="10C5BAE5-0F05-4E70-8846-DC2E6F3B66E5" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">html {
     font: 16px/1 sans-serif;
 }
 #ui-dialog-body {
@@ -1401,6 +1401,13 @@ a procvičí italštinu.
 &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
 &lt;hr&gt;
 &lt;hr&gt;
+&lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+&lt;p class=&quot;tac&quot;&gt;
+  &lt;&lt;button &quot;&#39;&#39;Podrobný průběh kol...&#39;&#39;&quot;&gt;&gt;
+    &lt;&lt;passageDialog &quot;Fiktivní ukázková hra&quot; &quot;VSD_example3roundsGame&quot;&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
+&lt;/p&gt;
+&lt;&lt;dialogCloseButton &quot;//Zavřít nástěnku//&quot;&gt;&gt;
 
 
 &lt;&lt;done&gt;&gt;
@@ -1515,7 +1522,12 @@ apod.)//
 buď když už jsou &#39;&#39;všichni spokojeni&#39;&#39; a stačí jim,&lt;br&gt;
 nebo když z jakéhokoliv důvodu &#39;&#39;odejde poslední&#39;&#39; přítomný hráč.
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="VSD_exampleBasic1" tags="" position="225,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="VSD_example3roundsGame" tags="" position="225,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;
+    &lt;&lt;button &quot;&#39;&#39;Zobrazit nástěnku příběhu&#39;&#39;&quot;&gt;&gt;
+        &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_cardsBoard&quot;&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+&lt;/p&gt;
+&lt;&lt;dialogCloseButton &quot;//Zavřít ukázkovou hru//&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="VSD_exampleBasic1" tags="" position="350,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
 &lt;div class=&quot;story-card-1&quot;&gt;
 &lt;p&gt;
 &#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39; jede na dovolenou do Itálie,&lt;br&gt;
@@ -1561,7 +1573,7 @@ po čem &#39;&#39;UPŘÍMNĚ&#39;&#39; PRAHNEŠ,&lt;br&gt;
 ať si hru vychutnáš.
 &lt;/p&gt;
 
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="VSD_settings" tags="" position="350,225" size="100,100">//Nutno dodělat :-)//</tw-passagedata><tw-passagedata pid="14" name="AjaxConnectionError" tags="" position="475,225" size="100,100">&lt;p&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="VSD_settings" tags="" position="475,225" size="100,100">//Nutno dodělat :-)//</tw-passagedata><tw-passagedata pid="15" name="AjaxConnectionError" tags="" position="600,225" size="100,100">&lt;p&gt;
   Nepodařilo se spojit se serverem...
 &lt;/p&gt;
 &lt;p&gt;
@@ -1575,12 +1587,12 @@ dejte mi prosím vědět na email uvedený
 v&amp;nbsp;&lt;&lt;link &quot;nápovědě&quot;&gt;&gt;
         &lt;&lt;passageDialog &quot;Nápověda&quot; &quot;Help&quot;&gt;&gt;
       &lt;&lt;/link&gt;&gt;.)//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="15" name="FillInputDialog1" tags="" position="600,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="16" name="FillInputDialog1" tags="" position="725,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;
 Nejprve prosím&lt;br&gt;
 do textového políčka&lt;br&gt;
 vepiš vlastní slova...
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="YouAreToEnterDebugging" tags="" position="725,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="YouAreToEnterDebugging" tags="" position="850,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;
 Opravdu chceš spustit ladící mód?&lt;br&gt;
 Na první pohled je dost nepřehledný.&lt;br&gt;
 Až ho pak budeš chtít opustit,&lt;br&gt;
@@ -1593,7 +1605,7 @@ Až ho pak budeš chtít opustit,&lt;br&gt;
     &lt;&lt;run Engine.restart()&gt;&gt;
 &lt;&lt;/button&gt;&gt;&amp;nbsp;
 &amp;nbsp;&lt;&lt;dialogCloseButton &quot;Storno&quot; true&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="17" name="YouAreToEnterExperimentalPassages" tags="" position="850,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="18" name="YouAreToEnterExperimentalPassages" tags="" position="975,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;
     //(Vstup do testovací místnosti
        v hotové aplikaci skryju, aby se tam uživatel
        nedostal.//&lt;/p&gt;
@@ -1607,7 +1619,7 @@ Až ho pak budeš chtít opustit,&lt;br&gt;
         &lt;&lt;run Dialog.close()&gt;&gt;
     &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;Raději se vrátit zpět&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="WhichNewGame" tags="" position="975,225" size="100,100">&lt;h2&gt;
+&lt;&lt;dialogCloseButton &quot;Raději se vrátit zpět&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="WhichNewGame" tags="" position="1100,225" size="100,100">&lt;h2&gt;
 Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;/h2&gt;
 &lt;p&gt;
@@ -1619,7 +1631,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &#39;&#39;&lt;&lt;button [[TěloTaj|TT_go]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="19" name="PassageFooter" tags="" position="1100,225" size="100,100">/*DEPENDENCIES: */
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="20" name="PassageFooter" tags="" position="1225,225" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set _htmler = setup.DI_CONT.getService(&#39;htmler&#39;)&gt;&gt;
 &lt;&lt;if _app.isDevMode()&gt;&gt;
@@ -1657,7 +1669,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
 &lt;div @id=&quot;_htmler.getAjaxLoadSuperAnimationId()&quot;&gt;
   &lt;&lt;include &quot;AjaxAnim1&quot;&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="PassageHeader" tags="" position="1225,225" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="PassageHeader" tags="" position="100,350" size="100,100">&lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set __baseNav = _app.getSubGameBreadCrumb()&gt;&gt;
 
 &lt;div class=&quot;tal&quot;&gt;
@@ -1684,7 +1696,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
   &lt;&lt;/if&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="StoryCaption" tags="" position="100,350" size="100,100">&lt;&lt;if State.length !== 1 &gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="22" name="StoryCaption" tags="" position="225,350" size="100,100">&lt;&lt;if State.length !== 1 &gt;&gt;
   &lt;span class=&quot;btnpad&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;&lt;button &quot;&amp;laquo;&amp;nbsp;&amp;nbsp;zpět&quot;&gt;&gt;
     &lt;&lt;run Engine.backward()&gt;&gt;
 &lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;span class=&quot;btnpad&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;&lt;if State.length !== State.size&gt;&gt;&lt;&lt;button &quot;vpřed&amp;nbsp;&amp;raquo;&quot;&gt;&gt;
@@ -1696,7 +1708,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;button &quot;Fullscreen zap/vyp&quot;&gt;&gt;
     &lt;&lt;run Fullscreen.toggle()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="22" name="StoryInit" tags="" position="225,350" size="100,100">&lt;&lt;set $players = []&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="23" name="StoryInit" tags="" position="350,350" size="100,100">&lt;&lt;set $players = []&gt;&gt;
 &lt;&lt;set $pOrder = [0,1,2]&gt;&gt;
 &lt;&lt;set $pOrderShuffled = false&gt;&gt;
 &lt;&lt;set $roundCounter = 0&gt;&gt;
@@ -1706,12 +1718,12 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;set $gameCards.givenUp = []&gt;&gt;
 &lt;&lt;set $exampleComplic = true&gt;&gt;
 
-&lt;&lt;set $TT = {}&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="StorySubtitle" tags="" position="350,350" size="100,100">//verze// &#39;&#39;&lt;&lt;= setup.DI_CONT.getService(&#39;app&#39;).getAppVersion()&gt;&gt;&#39;&#39;
+&lt;&lt;set $TT = {}&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="StorySubtitle" tags="" position="475,350" size="100,100">//verze// &#39;&#39;&lt;&lt;= setup.DI_CONT.getService(&#39;app&#39;).getAppVersion()&gt;&gt;&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
 [[www.vypravime.cz|https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/]]
 &lt;/p&gt;
-&lt;hr&gt;</tw-passagedata><tw-passagedata pid="24" name="EX_ajaxTest" tags="" position="475,350" size="100,100">/*DEPENDENCIES: */
+&lt;hr&gt;</tw-passagedata><tw-passagedata pid="25" name="EX_ajaxTest" tags="" position="600,350" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _app = setup.DI_CONT.getService(&#39;app&#39;)&gt;&gt;
 &lt;&lt;set _ajaxAnim = setup.DI_CONT.getService(&#39;ajaxAnimation&#39;)&gt;&gt;
 &lt;&lt;set _myPage = setup.DI_CONT.getService(&#39;myPage&#39;)&gt;&gt;
@@ -1824,7 +1836,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
     &lt;&lt;passageDialog &quot;Restartovat a spustit DEBUGGING?&quot;
                               &quot;YouAreToEnterDebugging&quot;&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="25" name="MM_start" tags="alignCenter" position="600,350" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="MM_start" tags="alignCenter" position="725,350" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;
 &#39;&#39;&lt;&lt;button &quot;NOVÁ HRA&quot;&gt;&gt;
@@ -1836,7 +1848,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
   &lt;&lt;button &quot;Načíst dřívější hru...&quot;&gt;&gt;
     &lt;&lt;run UI.saves()&gt;&gt;
   &lt;&lt;/button&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="TT_go" tags="" position="725,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="27" name="TT_go" tags="" position="850,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
 &lt;p&gt;
 Ve hře tělotaj si klikáním&lt;br&gt;
 na možnosti rozvětveného dialogu&lt;br&gt;
@@ -1855,7 +1867,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 &lt;/p&gt;
 &lt;p class=&quot;tac&quot;&gt;
     //(Hra TěloTaj je &#39;&#39;zdarma&#39;&#39; pro všechny bez rozdílu.)//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="27" name="TTI_start" tags="" position="850,350" size="100,100">&lt;div&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="28" name="TTI_start" tags="" position="975,350" size="100,100">&lt;div&gt;
     &lt;h3&gt;
         Cítíš se právě teď naplněně?&lt;br&gt;
         Je Tvůj život krásný?&lt;br&gt;
@@ -1875,7 +1887,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Dejme stranou, jak mi je - &#39;&#39;hraju&#39;&#39; dnes o 1 svou konkrétní myšlenku...&quot;
             &quot;TTI_fillInYourIdea&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="28" name="TTI_rezignatedOrZenHoly" tags="" position="975,350" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="29" name="TTI_rezignatedOrZenHoly" tags="" position="1100,350" size="100,100">&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
       //Pokud ses dostal do stavu&lt;br&gt;
         kdy Ti nezáleží na tom,&lt;br&gt;
@@ -1900,7 +1912,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Přestal jsem usilovat - &#39;&#39;jsem osvícený&#39;&#39;.&quot;
             &quot;TTI_wouldYourBodyAgreeClaimedHarmony&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="29" name="TTI_theLifeIsBitter" tags="" position="1100,350" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="30" name="TTI_theLifeIsBitter" tags="" position="1225,350" size="100,100">&lt;div&gt;
     &lt;h3&gt;
         Vyhovuje Ti Tvůj cynický postoj?
     &lt;/h3&gt;
@@ -1912,7 +1924,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;Ne&#39;&#39; - bylo by fajn, kdyby přišlo něco jiného.&quot;
             &quot;TTI_howAreYouTryingToGetHappy&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="30" name="TTI_bitterEnd" tags="" position="1225,350" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="31" name="TTI_bitterEnd" tags="" position="100,475" size="100,100">&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
       //Pokud už od života nic moc nečekáš&lt;br&gt;
         ale zároveň si v tom sám se sebou celkem spokojený...&lt;br&gt;
@@ -1935,7 +1947,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;KONEC HRY&#39;&#39;&lt;br&gt;- vrátit se do úvodního menu...&quot;&gt;&gt;
             &lt;&lt;run UI.restart()&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="31" name="TTI_wouldYourBodyAgreeClaimedHarmony" tags="" position="100,475" size="100,100">/*$TT.myIdea may be set by one exit in this passage */
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="32" name="TTI_wouldYourBodyAgreeClaimedHarmony" tags="" position="225,475" size="100,100">/*$TT.myIdea may be set by one exit in this passage */
 &lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
         Dobře tedy...&lt;br&gt;
@@ -1959,7 +1971,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
                 &lt;&lt;set $TT.myIdea = &quot;cítím se vyrovnaně&quot;&gt;&gt;
             &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="32" name="TTI_howAreYouTryingToGetHappy" tags="" position="225,475" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="33" name="TTI_howAreYouTryingToGetHappy" tags="" position="350,475" size="100,100">&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
         Takže se Ti život trochu zadřel...&lt;br&gt;
         - ale byl bys rád, kdyby se to zlepšilo.
@@ -1977,7 +1989,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Trochu jsem to vzdal&lt;br&gt;- &#39;&#39;netuším&#39;&#39; co se děje, ale &#39;&#39;čekám&#39;&#39;,&lt;br&gt;zda se to nezlepší samo.&quot;
             &quot;TTI_waitingWhetherItGetsBetter&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="33" name="TTI_IknowWhatIsAnnoyingMe" tags="" position="350,475" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="TTI_IknowWhatIsAnnoyingMe" tags="" position="475,475" size="100,100">&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
     &lt;/p&gt;
 
@@ -2004,7 +2016,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;Nevím&#39;&#39;...&quot;
             &quot;TTI_problemsMakeProblems&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="TTI_HowLongWillThereBeNothingAnnoying" tags="" position="475,475" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="TTI_HowLongWillThereBeNothingAnnoying" tags="" position="600,475" size="100,100">&lt;div&gt;
     &lt;h3&gt;
         A když se Ti po odstranění tohoto problému uleví...&lt;br&gt;
         jak dlouho pak potrvá&lt;br&gt;
@@ -2018,7 +2030,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;To mě nezajímá&#39;&#39;...&lt;br&gt;- já hlavně chci vyřešit to, co mi vadí teď.&quot;
             &quot;TTI_annoyingEnd&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="35" name="TTI_annoyingEnd" tags="" position="600,475" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="TTI_annoyingEnd" tags="" position="725,475" size="100,100">&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
         No... jestli jsi tak ponořen&lt;br&gt;
         do odstraňování svých palčivých problémů...&lt;br&gt;
@@ -2035,7 +2047,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;KONEC HRY&#39;&#39;&lt;br&gt;- vrátit se do úvodního menu...&quot;&gt;&gt;
             &lt;&lt;run UI.restart()&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="36" name="TTI_problemsMakeProblems" tags="" position="725,475" size="100,100">/* $TT.myIdea may be set by one exit in this passage */
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="TTI_problemsMakeProblems" tags="" position="850,475" size="100,100">/* $TT.myIdea may be set by one exit in this passage */
 &lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
       Prozradím Ti jednu věc:
@@ -2071,7 +2083,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;Tak to teda ne!&#39;&#39;&lt;br&gt;Já ten svůj problém musím obstarat stůj, co stůj!&quot;
             &quot;TTI_annoyingEnd&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="TTI_whatAboutNotKnowingWhatTheProblemWas" tags="" position="850,475" size="100,100">/* $TT.myIdea may be set by one exit in this passage */
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="TTI_whatAboutNotKnowingWhatTheProblemWas" tags="" position="975,475" size="100,100">/* $TT.myIdea may be set by one exit in this passage */
 &lt;div&gt;
     &lt;h3&gt;
         A co kdybych Ti pomohl projít proměnou?&lt;br&gt;
@@ -2088,7 +2100,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;To teda ne&#39;&#39;&lt;br&gt; - já potřebuju nejdřív zjistit,&lt;br&gt;proč mi není dobře.&quot;
             &quot;TTI_itAnnoysMeNotKnowingWhatAnnoysMe&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;    
     &lt;div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="38" name="TTI_itAnnoysMeNotKnowingWhatAnnoysMe" tags="" position="975,475" size="100,100">/* $TT.myProblem may be set by two exits in this passage */
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="TTI_itAnnoysMeNotKnowingWhatAnnoysMe" tags="" position="1100,475" size="100,100">/* $TT.myProblem may be set by two exits in this passage */
 &lt;div&gt;
     &lt;h3&gt;
         To ale znamená...&lt;br&gt;
@@ -2110,7 +2122,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Ne - &#39;&#39;problém je v něčem jiném&#39;&#39;.&quot;
             &quot;TTI_fillInYourProblem&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="39" name="TTI_fillInYourProblem" tags="" position="1100,475" size="100,100">&lt;&lt;set _myProblem = $TT.myProblem || &#39;mé trápení, však vím které&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="TTI_fillInYourProblem" tags="" position="1225,475" size="100,100">&lt;&lt;set _myProblem = $TT.myProblem || &#39;mé trápení, však vím které&#39;&gt;&gt;
 &lt;div&gt;
     &lt;h3&gt;
         Zapiš si tedy prosím teď stručně,&lt;br&gt;
@@ -2137,7 +2149,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
                 &lt;&lt;passageDialog &quot;Otázka bezpečí&quot; &quot;TTD_whoWillSeeInputs&quot;&gt;&gt;
             &lt;&lt;/button&gt;&gt;//
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="40" name="TTI_waitingWhetherItGetsBetter" tags="" position="1225,475" size="100,100">/* $TT.myIdea may be set by one exit in this passage */
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="41" name="TTI_waitingWhetherItGetsBetter" tags="" position="100,600" size="100,100">/* $TT.myIdea may be set by one exit in this passage */
 &lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
         Takže vyčkáváš,&lt;br&gt;jestli se okolnosti vyjasní samy od sebe...
@@ -2158,7 +2170,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Raději &#39;&#39;ne&#39;&#39; - budu dál vyčkávat.&quot;
             &quot;TTI_bitterEnd&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="41" name="TTI_fillInYourIdea" tags="" position="100,600" size="100,100">&lt;&lt;set _myIdea = $TT.myIdea || &#39;má idea, však vím která&#39;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="TTI_fillInYourIdea" tags="" position="225,600" size="100,100">&lt;&lt;set _myIdea = $TT.myIdea || &#39;má idea, však vím která&#39;&gt;&gt;
 &lt;div&gt;
     &lt;h3&gt;
         Výborně, zapiš si tedy teď prosím&lt;br&gt;
@@ -2192,7 +2204,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
  *   ## SECOND PART OF GAME TĚLOTAJ: ##
  *   ##################################
  *   ##################################
- ***/</tw-passagedata><tw-passagedata pid="42" name="TTI_letsPlayFromBody" tags="" position="225,600" size="100,100">&lt;div&gt;
+ ***/</tw-passagedata><tw-passagedata pid="43" name="TTI_letsPlayFromBody" tags="" position="350,600" size="100,100">&lt;div&gt;
     &lt;h3&gt;
         Pojďme teď na vše&lt;br&gt;
         na chvíli zapomenout...&lt;br&gt;
@@ -2206,8 +2218,8 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Ne tak rychle... &#39;&#39;Nejdřív mi vysvětli - proč?&#39;&#39;&quot;
             &gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="VS_checkDisallowedThemes" tags="" position="350,600" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="44" name="VS_fantasyEnter" tags="" position="475,600" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="VS_checkDisallowedThemes" tags="" position="475,600" size="100,100">ToDo:
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="45" name="VS_fantasyEnter" tags="" position="600,600" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set _default = $gameCards.current[0].text.trim() ?
@@ -2222,7 +2234,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 &lt;p&gt;
 
 //(&lt;&lt;link &quot;číst&amp;nbsp;příklad&quot;&gt;&gt;
-	    &lt;&lt;passageDialog &quot;Ukázka:&quot; &quot;VSD_exampleBasic1&quot;&gt;&gt;
+	    &lt;&lt;passageDialog &quot;Jak sepsat kartičku?&quot; &quot;VSD_exampleBasic1&quot;&gt;&gt;
    &lt;&lt;/link&gt;&gt;)&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;&lt;link &quot;BÝT&amp;nbsp;VSTŘÍCNÝ&quot;&gt;&gt;
 	    &lt;&lt;passageDialog &quot;Zásady společné zábavy:&quot; &quot;VSD_beNiceInfo&quot;&gt;&gt;
    &lt;&lt;/link&gt;&gt;)&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;&lt;link &quot;předešlý&amp;nbsp;děj&quot;&gt;&gt;
@@ -2256,8 +2268,8 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="VS_goForDice" tags="" position="600,600" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="46" name="VS_whoIsOnTurn" tags="alignCenter" position="725,600" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="VS_goForDice" tags="" position="725,600" size="100,100">ToDo:
+--Go For Dice--</tw-passagedata><tw-passagedata pid="47" name="VS_whoIsOnTurn" tags="alignCenter" position="850,600" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;
@@ -2266,7 +2278,7 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="47" name="VS_go" tags="" position="850,600" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="48" name="VS_go" tags="" position="975,600" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
 
 &lt;p&gt;
     VolnoSnění dovoluje jednomu či více hráčům&lt;br&gt;
@@ -2297,7 +2309,7 @@ právě teď tah!
 &lt;/p&gt;
 &lt;p class=&quot;tac&quot;&gt;
     //(Hra VolnoSnění je &#39;&#39;zdarma&#39;&#39; pro všechny bez rozdílu.)//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="48" name="VS_beforeStartControl" tags="" position="975,600" size="100,100">/*DEPENDENCIES: */
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="49" name="VS_beforeStartControl" tags="" position="1100,600" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _czech = setup.DI_CONT.getService(&#39;czechLang&#39;)&gt;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
 /*\DEPENDENCIES */
@@ -2342,7 +2354,7 @@ pořadí:
 &#39;&#39;&lt;&lt;button [[SOUHLASÍ - ODSTARTOVAT|VS_whoIsOnTurn]]&gt;&gt;
     &lt;&lt;set $roundCounter = 1&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="49" name="VS_setNamesOfPlayers" tags="alignCenter" position="1100,600" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="50" name="VS_setNamesOfPlayers" tags="alignCenter" position="1225,600" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
 
 &lt;&lt;if $pOrder.length &gt; 1&gt;&gt;
 &lt;h2&gt;Zadej jména hráčů:&lt;/h2&gt;
@@ -2381,7 +2393,7 @@ pořadí:
 &lt;&lt;else&gt;&gt;
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="50" name="VS_setNumbOfPlayers" tags="alignCenter" position="1225,600" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="51" name="VS_setNumbOfPlayers" tags="alignCenter" position="100,725" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
 
 &lt;h2&gt;Pro svou novou hru&lt;br&gt;
   //VolnoSnění//&lt;br&gt;
@@ -2429,9 +2441,9 @@ pořadí:
     &lt;&lt;passageDialog &quot;Nastavení hry VolnoSnění&quot; &quot;VSD_settings&quot;&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="51" name="CompLink" tags="widget" position="100,725" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="52" name="CompLink" tags="widget" position="225,725" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="DialogCloseButton" tags="widget" position="225,725" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="DialogCloseButton" tags="widget" position="350,725" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
 /*_args[0] is the TEXT on THE BUTTON*/
 /*_args[1] (optional) if TRUE, outer &lt;p&gt; is omitted, default FALSE*/
     &lt;&lt;if !_args[1]&gt;&gt;
@@ -2441,7 +2453,7 @@ pořadí:
 	&lt;&lt;else&gt;&gt;
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="PassageDialog" tags="widget" position="350,725" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="PassageDialog" tags="widget" position="475,725" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
 /**_args[0] is the HEADING of NEW DIALOG WINDOW
  * _args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW
  * */
@@ -2451,7 +2463,7 @@ pořadí:
 
     &lt;&lt;run _myPage.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="SeeSaw" tags="widget" position="475,725" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="SeeSaw" tags="widget" position="600,725" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
 
     /*strictly boolean
         (if true:

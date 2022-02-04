@@ -1,0 +1,8 @@
+:: VSD_example3roundsGame
+
+<p class="tac">
+    <<button "''Zobrazit nástěnku příběhu''">>
+        <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
+    <</button>>
+</p>
+<<dialogCloseButton "//Zavřít ukázkovou hru//">>

@@ -77,6 +77,13 @@ a procvičí italštinu.
 <div class="pa5"></div>
 <hr>
 <hr>
+<div class="pa5"></div>
+<p class="tac">
+  <<button "''Podrobný průběh kol...''">>
+    <<passageDialog "Fiktivní ukázková hra" "VSD_example3roundsGame">>
+  <</button>>
+</p>
+<<dialogCloseButton "//Zavřít nástěnku//">>
 
 
 <<done>>
