@@ -97,6 +97,7 @@
 
 :: TTI_wouldYourBodyAgreeClaimedHarmony
 
+/*$TT.myIdea may be set by one exit in this passage */
 <div>
     <p class="tac">
         Dobře tedy...<br>
@@ -116,7 +117,9 @@
             "TTI_bitterEnd">><</button>>
         <br>
         <<button "Co kdybychom se ''společně těla zeptali''..."
-            >><</button>>
+            "TTI_letsPlayFromBody">>
+                <<set $TT.myIdea = "cítím se vyrovnaně">>
+            <</button>>
     </div>
 </div>
 
@@ -214,6 +217,7 @@
 
 :: TTI_problemsMakeProblems
 
+/* $TT.myIdea may be set by one exit in this passage */
 <div>
     <p class="tac">
       Prozradím Ti jednu věc:
@@ -242,7 +246,9 @@
 
     <div class="answers">
         <<button "''Souhlasím''<br>- pojďme to zkusit."
-            >><</button>>
+            "TTI_letsPlayFromBody">>
+                <<set $TT.myIdea = "ale předtím jsem viděl nějaký problém">>
+            <</button>>
         <br>
         <<button "''Tak to teda ne!''<br>Já ten svůj problém musím obstarat stůj, co stůj!"
             "TTI_annoyingEnd">><</button>>
@@ -251,6 +257,7 @@
 
 :: TTI_whatAboutNotKnowingWhatTheProblemWas
 
+/* $TT.myIdea may be set by one exit in this passage */
 <div>
     <h3>
         A co kdybych Ti pomohl projít proměnou?<br>
@@ -260,7 +267,9 @@
 
     <div class="answers">
         <<button "''Tak dobře''<br> - pojďme to zkusit."
-            >><</button>>
+            "TTI_letsPlayFromBody">>
+                <<set $TT.myIdea = "vůbec netušíme, co mě před tím trápilo">>
+            <</button>>
         <br>
         <<button "''To teda ne''<br> - já potřebuju nejdřív zjistit,<br>proč mi není dobře."
             "TTI_itAnnoysMeNotKnowingWhatAnnoysMe">><</button>>    
@@ -269,6 +278,7 @@
 
 :: TTI_itAnnoysMeNotKnowingWhatAnnoysMe
 
+/* $TT.myProblem may be set by two exits in this passage */
 <div>
     <h3>
         To ale znamená...<br>
@@ -325,6 +335,7 @@
 
 :: TTI_waitingWhetherItGetsBetter
 
+/* $TT.myIdea may be set by one exit in this passage */
 <div>
     <p class="tac">
         Takže vyčkáváš,<br>jestli se okolnosti vyjasní samy od sebe...
@@ -338,7 +349,9 @@
 
     <div class="answers">
         <<button "''Dobře'' - zkusit to můžeme."
-            >><</button>>
+            "TTI_letsPlayFromBody">>
+                <<set $TT.myIdea = "čekám, zda se situace zlepší sama od sebe">>
+            <</button>>
         <br>
         <<button "Raději ''ne'' - budu dál vyčkávat."
             "TTI_bitterEnd">><</button>>
@@ -365,12 +378,38 @@
 
     <div class="answers">
         <<button "Dobře... ''Mám to zapsáno''."
-            >>
+            "TTI_letsPlayFromBody">>
                 <<set $TT.myIdea = $TT.myIdea.trim()>>
             <</button>>
         <br>
       //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
                 <<passageDialog "Otázka soukromí" "TTD_whoWillSeeInputs">>
             <</button>>//
+    </div>
+</div>
+
+
+/***
+ *   ################################## 
+ *   ## SECOND PART OF GAME TĚLOTAJ: ##
+ *   ##################################
+ *   ##################################
+ ***/
+
+:: TTI_letsPlayFromBody
+
+<div>
+    <h3>
+        Pojďme teď na vše<br>
+        na chvíli zapomenout...<br>
+        Ať najdeme v našem těle lásku.
+    </h3>
+
+    <div class="answers">
+        <<button "Tak dobře... ''Pojďme na to.''"
+            >><</button>>
+        <br>
+        <<button "Ne tak rychle... ''Nejdřív mi vysvětli - proč?''"
+            >><</button>>
     </div>
 </div>
