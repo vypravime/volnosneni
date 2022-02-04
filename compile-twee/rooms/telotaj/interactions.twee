@@ -407,9 +407,81 @@
 
     <div class="answers">
         <<button "Tak dobře... ''Pojďme na to.''"
-            >><</button>>
+            "TTI_notSituationNorThoughtsButFeelings">><</button>>
         <br>
         <<button "Ne tak rychle... ''Nejdřív mi vysvětli - proč?''"
             >><</button>>
     </div>
+</div>
+
+:: TTI_notSituationNorThoughtsButFeelings
+
+<div>
+    <p class="tac">
+        ''Nacházíš se teď v nějaké vnější situaci'':<br>
+        //(Někde sedíš či stojíš, kráčíš...<br>
+           Nějak jsi oblečený či nejsi...<br>
+           Obklopují Tě předměty či lidé...<br>
+           rostliny či zvířata...<br>
+           Je tam klidno či divoko...<br>
+           Mění se či setrvává počasí...)//<br>
+          Odhlédni na chvíli od toho všeho,<br>
+          nech - ať se to děje tak, jak se to děje.<br>
+        ''Nesnaž se teď na chvíli měnit vnější situaci.''
+    </p>
+
+    <p class="tac">
+        ''Něco se odehrává v Tvé hlavě'':<br>
+        //(Na něco vzpomínáš, či zapomínáš...<br>
+           Derou se tam nepozvané myšlenky...<br>
+           Tlačí Tě termíny či se nudíš...<br>
+           Snažíš se rozhodnout nějaká dilemata...<br>
+           Hledáš odpověď na své otázky...<br>
+           Souhlasíš či nesouhlasíš...)//<br>
+          Nech - ať se to děje tak, jak se to děje.<br>
+        ''Nesnaž se nyní na chvíli měnit způsob,<br>
+          jakým se Ti právě teď odehrávají myšlenky.''<br>
+    </p>
+
+    <p class="tac">
+          Pokud máš nutkání snažit se to měnit,<br>
+          můžeš se nesnažit měnit, že se snažíš to měnit.<br>
+          Nech se snažit se...
+    </p>
+
+    <p class="tac">
+          Pokud to nechápeš,<br>
+          nech se to nechápat...
+    </p>
+
+    <p class="tac">
+          Pokud nevíš, jak na to...<br>
+          Nech se nevědět, jak na to.
+    </p>
+
+    <h3>
+        A pak tu jsou Tvé pocity...<br>
+        Cítíš zrovna teď nějaké pocity?
+    </h3>
+
+    <div class="answers">
+        <<button "''Ano'', zrovna teď nějaké pocity mám."
+            "TTI_weirdFeelingsCollector">><</button>>
+        <br>
+        <<button "''Ne'', v tomto momentě nic moc necítím."
+            "TTI_weirdFeelingsCollector">><</button>>
+        <br>
+        <<button "''Nevím'', jestli něco cítím nebo necítím."
+            "TTI_weirdFeelingsCollector">><</button>>
+    </div>
+</div>
+
+:: TTI_weirdFeelingsCollector
+
+<div>
+    <h3>
+        Děkuji Ti za odpověď...<br>
+        Teď prosím vnímej své dlaně a prsty na rukou.<br>
+        Máš někde v této části těla podivné či nepříjemné pocity?
+    </h3>
 </div>
