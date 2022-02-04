@@ -153,7 +153,7 @@
 
     <<if $TT.myProblem>>
         <h3>
-            Kdybys ses nakonec zbavil toho, co Tě sužuje:<br>
+            Kdyby ses nakonec zbavil toho, co Tě sužuje:<br>
             <span style="font-variant: small-caps; font-style: normal;">
                 "$TT.myProblem"
             </span><br>
