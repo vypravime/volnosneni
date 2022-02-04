@@ -4,7 +4,7 @@
 Kterou hru ze světa "Vyprávíme" si teď přeješ založit?
 </h2>
 <p>
-''<<button [[VolnoSnění|VS_setNumbOfPlayers]]>>
+''<<button [[VolnoSnění|VS_go]]>>
     <<run Dialog.close()>>
   <</button>>''
 </p>

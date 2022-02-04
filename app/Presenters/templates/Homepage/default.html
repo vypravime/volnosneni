@@ -1576,7 +1576,7 @@ Až ho pak budeš chtít opustit,&lt;br&gt;
 Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;/h2&gt;
 &lt;p&gt;
-&#39;&#39;&lt;&lt;button [[VolnoSnění|VS_setNumbOfPlayers]]&gt;&gt;
+&#39;&#39;&lt;&lt;button [[VolnoSnění|VS_go]]&gt;&gt;
     &lt;&lt;run Dialog.close()&gt;&gt;
   &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;/p&gt;
@@ -1813,10 +1813,13 @@ který předkládám k vyzkoušení i v našem
 //(Na rozdíl od VideoKurzu, který je zpoplatněn,&lt;br&gt;
 je tato hra TěloTaj zdarma pro všechny bez rozdílu.&lt;br&gt;
 I tak - jak věřím - může být klikání větveným dialogem&lt;br&gt;
-pro mnohé účinnější, než vstřebávání dvouhodinového videa.)//
+pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 &lt;/p&gt;
 &lt;p class=&quot;tac&quot;&gt;
 &#39;&#39;&lt;&lt;button[[Vstoupit do dialogu|TTI_start]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
+&lt;/p&gt;
+&lt;p class=&quot;tac&quot;&gt;
+    //(Hra TěloTaj je &#39;&#39;zdarma&#39;&#39; pro všechny bez rozdílu.)//
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="27" name="TTI_start" tags="" position="850,350" size="100,100">&lt;div&gt;
     &lt;h3&gt;
         Cítíš se právě teď naplněně?&lt;br&gt;
@@ -2228,7 +2231,24 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="47" name="VS_beforeStartControl" tags="" position="850,600" size="100,100">/*DEPENDENCIES: */
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="47" name="VS_go" tags="" position="850,600" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
+
+&lt;p&gt;
+    VolnoSnění dovoluje jednomu či více hráčům&lt;br&gt;
+    ve svobodném světě společné fantazie&lt;br&gt;
+    vyprávět pomocí kartiček příběh.
+&lt;/p&gt;
+&lt;p&gt;
+    Více se lze dočíst na našem webu zde:&lt;br&gt;
+    [[www.vypravime.cz/zabavne-si-utridit-svoje-touhy-a-vize/|https://vypravime.webnode.cz/zabavne-si-utridit-svoje-touhy-a-vize/]]
+&lt;/p&gt;
+
+&lt;p class=&quot;tac&quot;&gt;
+    &#39;&#39;&lt;&lt;button [[Prohlédnout ukázku z chystaného VolnoSnění|VS_setNumbOfPlayers]]&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
+&lt;/p&gt;
+&lt;p class=&quot;tac&quot;&gt;
+    //(Hra VolnoSnění je &#39;&#39;zdarma&#39;&#39; pro všechny bez rozdílu.)//
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="48" name="VS_beforeStartControl" tags="" position="975,600" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _czech = setup.DI_CONT.getService(&#39;czechLang&#39;)&gt;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
 /*\DEPENDENCIES */
@@ -2273,7 +2293,7 @@ pořadí:
 &#39;&#39;&lt;&lt;button [[SOUHLASÍ - ODSTARTOVAT|VS_whoIsOnTurn]]&gt;&gt;
     &lt;&lt;set $roundCounter = 1&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="48" name="VS_setNamesOfPlayers" tags="alignCenter" position="975,600" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="49" name="VS_setNamesOfPlayers" tags="alignCenter" position="1100,600" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
 
 &lt;&lt;if $pOrder.length &gt; 1&gt;&gt;
 &lt;h2&gt;Zadej jména hráčů:&lt;/h2&gt;
@@ -2312,7 +2332,7 @@ pořadí:
 &lt;&lt;else&gt;&gt;
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="49" name="VS_setNumbOfPlayers" tags="alignCenter" position="1100,600" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="50" name="VS_setNumbOfPlayers" tags="alignCenter" position="1225,600" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
 
 &lt;h2&gt;Pro svou novou hru&lt;br&gt;
   //VolnoSnění//&lt;br&gt;
@@ -2360,9 +2380,9 @@ pořadí:
     &lt;&lt;passageDialog &quot;Nastavení hry VolnoSnění&quot; &quot;VSD_settings&quot;&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="50" name="CompLink" tags="widget" position="1225,600" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="51" name="CompLink" tags="widget" position="100,725" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="DialogCloseButton" tags="widget" position="100,725" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="DialogCloseButton" tags="widget" position="225,725" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
 /*_args[0] is the TEXT on THE BUTTON*/
 /*_args[1] (optional) if TRUE, outer &lt;p&gt; is omitted, default FALSE*/
     &lt;&lt;if !_args[1]&gt;&gt;
@@ -2372,7 +2392,7 @@ pořadí:
 	&lt;&lt;else&gt;&gt;
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="PassageDialog" tags="widget" position="225,725" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="PassageDialog" tags="widget" position="350,725" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
 /**_args[0] is the HEADING of NEW DIALOG WINDOW
  * _args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW
  * */
@@ -2382,7 +2402,7 @@ pořadí:
 
     &lt;&lt;run _myPage.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="SeeSaw" tags="widget" position="350,725" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="SeeSaw" tags="widget" position="475,725" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
 
     /*strictly boolean
         (if true:
