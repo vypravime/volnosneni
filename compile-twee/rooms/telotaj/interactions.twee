@@ -11,11 +11,14 @@
         <<button "''Ano'' - nyní jsem hluboce šťastný."
             "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
         <br>
-        <<button "''Ne'', snažím se sice - ale nějak to teď drhne."
+        <<button "''Ne'' - nějak to teď drhne, i když se snažím."
             "TTI_howAreYouTryingToGetHappy">><</button>>
         <br>
-        <<button "Na krásy života jsem už rezignoval - ''je mi to jedno''"
+        <<button "Na krásy života jsem už rezignoval - ''je mi to jedno''."
             "TTI_rezignatedOrZenHoly">><</button>>
+        <hr>
+        <<button "Dejme stranou, jak mi je - ''hraju'' dnes o 1 svou konkrétní myšlenku..."
+            "TTI_fillInYourIdea">><</button>>
     </div>
 </div>
 
@@ -291,7 +294,7 @@
 
 :: TTI_fillInYourProblem
 
-<<set _myProblem = $TT.myProblem || 'mé trápení, však vím co'>>
+<<set _myProblem = $TT.myProblem || 'mé trápení, však vím které'>>
 <div>
     <h3>
         Zapiš si tedy prosím teď stručně,<br>
@@ -339,5 +342,35 @@
         <br>
         <<button "Raději ''ne'' - budu dál vyčkávat."
             "TTI_bitterEnd">><</button>>
+    </div>
+</div>
+
+:: TTI_fillInYourIdea
+
+<<set _myIdea = $TT.myIdea || 'má idea, však vím která'>>
+<div>
+    <h3>
+        Výborně, zapiš si tedy teď prosím<br>
+        jednu svou konkrétní myšlenku:
+    </h3>
+
+    <p class="tac">
+        (Zaobíráš-li se více myšlenkami naráz,<br>
+         vyber si kteroukoliv jednu z nich.)
+    </p>
+    
+    <p class="tac">
+        <<textbox "$TT.myIdea" _myIdea `passage()` autofocus>>
+    </p>
+
+    <div class="answers">
+        <<button "Dobře... ''Mám to zapsáno''."
+            >>
+                <<set $TT.myIdea = $TT.myIdea.trim()>>
+            <</button>>
+        <br>
+      //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
+                <<passageDialog "Otázka soukromí" "TTD_whoWillSeeInputs">>
+            <</button>>//
     </div>
 </div>

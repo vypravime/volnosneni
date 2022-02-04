@@ -22,17 +22,37 @@
     na Tvém zařízení v úplně stejném prohlížeči jako Ty,<br>
     potom se jej naše aplikace dotáže,<br>
     zda chce pokračovat v předchozí hře?<br>
-    A takto by někdo Tebou vyplněné trápení<br>
+    A takto by někdo Tebou 
+    <<if passage() === 'TTI_fillInYourProblem'>>
+      vyplněné trápení
+    <<else>>
+      vyplněnou myšlenku
+    <</if>><br>
     mohl později ve Tvém tabletu/telefonu/počítači vidět.//
 </p>
 <p class="tar">
   //(Chceš-li tomu předejít,<br>
-     pak nevyplňuj své trápení konkrétně,<br>
+     pak nevyplňuj
+     <<if passage() === 'TTI_fillInYourProblem'>>
+       své trápení
+     <<else>>
+       svou myšlenku
+     <</if>>
+     konkrétně,<br>
      napiš třeba jenom něco jako:<br>
-     "tamto mé trápení"<br>
+     <<if passage() === 'TTI_fillInYourProblem'>>
+       "tamto mé trápení"<br>
+     <<else>>
+       "tamta má myšlenka"
+     <</if>>
      a když se pak v dalším průběhu<br>
      bude hra TěloTaj odvolávat<br>
-     na "tamto mé trápení"<br>
+     na
+     <<if passage() === 'TTI_fillInYourProblem'>>
+       "tamto mé trápení"
+     <<else>>
+       "tamta má myšlenka"
+     <</if>><br>
      - Ty už si vzpomeneš, co jsi tím myslel<br>
      - ale nikdo kromě Tebe to vědět nebude.)//
 </p>
