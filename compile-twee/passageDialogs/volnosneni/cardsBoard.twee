@@ -1,6 +1,31 @@
 :: VSD_cardsBoard
 
-ToDo: Příběhová nástěnka
+<p class="tac">
+  ''Zde se bude v hotové hře zobrazovat<br>
+    společně odvyprávěný příběh.''<br>
+  //(Na nástěnku automaticky přibude<br>
+     každá kartička, kterou hráči<br>
+     úspěšně vloží do děje.)//
+</p>
+
+<p class="tar">
+  //Bohužel však tato nástěnka<br>
+    zatím není funkčí.//
+</p>
+
+<p class="tal">
+    Níže alespoň nalezneš fiktivní příklad,<br>
+    jak by to mohlo vypadat
+    - při hře jediného hráče<br>
+    - po odehraných třech kolech VolnoSnění...
+</p>
+
+<hr>
+<h3>
+Fiktivní ukázka nástěnky:
+</h3>
+<hr>
+<div class="pa5"></div>
 
 <div class="story-card-1">
 <p class="who">
@@ -48,6 +73,12 @@ získá nové přátele<br>
 a procvičí italštinu.
 </p>
 </div>
+
+<div class="pa5"></div>
+<hr>
+<hr>
+
+
 <<done>>
 <<if $exampleComplic === false>>
     <<run $('.complic').addClass('solved')>>
