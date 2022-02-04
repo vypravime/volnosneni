@@ -7,13 +7,27 @@
     ve svobodném světě společné fantazie<br>
     vyprávět pomocí kartiček příběh.
 </p>
+
 <p>
     Více se lze dočíst na našem webu zde:<br>
     [[www.vypravime.cz/zabavne-si-utridit-svoje-touhy-a-vize/|https://vypravime.webnode.cz/zabavne-si-utridit-svoje-touhy-a-vize/]]
 </p>
 
+<p class="tar">
+    //Bohužel hra VolnoSnění zatím není hotová.<br>
+      Nalezneš zde nyní polofunkční úvodní torzo,<br>
+      které slouží jako přehledná ochutnávka toho,<br>
+      jaká hra bude, až její programování dokončím.//
+</p>
+
 <p class="tac">
-    ''<<button [[Prohlédnout ukázku z chystaného VolnoSnění|VS_setNumbOfPlayers]]>><</button>>''
+    //<<button [[Tak to se vrátím jindy - teď jdu zpět do menu|previous()]]>>
+      <</button>>//
+</p>
+
+<p class="tac">
+    ''<<button [[Prohlédnout ukázku z chystaného VolnoSnění|VS_setNumbOfPlayers]]>>
+      <</button>>''
 </p>
 <p class="tac">
     //(Hra VolnoSnění je ''zdarma'' pro všechny bez rozdílu.)//
