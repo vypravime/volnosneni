@@ -8,12 +8,14 @@ setup.c10s.SugarcubeConfigurator = function(
     _stateInstance,
     _metaDater,
     _htmler,
+    _app,
     autosaveBeginTurn = 3,
     savesVersion
 ) {
     this._state = _stateInstance;
     this._metaDater = _metaDater;
     this._htmler = _htmler;
+    this._app = _app;
 
 
     Config.passages.nobr = true;
@@ -41,6 +43,11 @@ setup.c10s.SugarcubeConfigurator = function(
     
     Config.passages.onProcess = (passage)=> {
         return this._htmler.autoWrapPassageContent(passage);
+    };
+
+    /*!! NOT EXPLICITLY DECLARED DEPENDENCY ON _app SERVICE !!*/
+    Config.passages.descriptions = function () {
+            return setup.DI_CONT.getService('app').getBasicGameHeading(true);
     };
     
 

@@ -442,6 +442,14 @@ thatProto.getAppVersion = function() {
     return this.__appVersion;
 };
 
+thatProto.getBasicGameHeading = function(forSave = false) {
+    if (forSave === true) {
+        return `Krok ${this._state.turns}: ${this.getSubGameBreadCrumb()}...`
+    } else {
+        return `Krok&nbsp;${this._state.turns}: //''${this.getSubGameBreadCrumb()}''...//`;
+    }
+}
+
 thatProto.getSubGameBreadCrumb = function() {
 	return this._subGameBreadCrumbs[
 		this.getSubGameClass()
@@ -876,12 +884,14 @@ setup.c10s.SugarcubeConfigurator = function(
     _stateInstance,
     _metaDater,
     _htmler,
+    _app,
     autosaveBeginTurn = 3,
     savesVersion
 ) {
     this._state = _stateInstance;
     this._metaDater = _metaDater;
     this._htmler = _htmler;
+    this._app = _app;
 
 
     Config.passages.nobr = true;
@@ -909,6 +919,11 @@ setup.c10s.SugarcubeConfigurator = function(
     
     Config.passages.onProcess = (passage)=> {
         return this._htmler.autoWrapPassageContent(passage);
+    };
+
+    /*!! NOT EXPLICITLY DECLARED DEPENDENCY ON _app SERVICE !!*/
+    Config.passages.descriptions = function () {
+            return setup.DI_CONT.getService('app').getBasicGameHeading(true);
     };
     
 
@@ -1007,7 +1022,7 @@ let configurateIt = () => ({
     savesVersion: 1,
     /** intiger greater than 0 of turn where autosaves begin,
     or boolean false to disallow autosaves at all*/
-    autosavesBeginTurn: 3
+    autosavesBeginTurn: 4
 });
 
 setup.DI_CONT = {
@@ -1065,6 +1080,7 @@ setup.DI_CONT = {
                 State,
                 this.getService('metaDater'),
                 this.getService('htmler'),
+                this.getService('app'),
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
             );},
@@ -1762,7 +1778,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 
   &lt;&lt;/if&gt;&gt;
 
-  Krok&amp;nbsp;&lt;&lt;= turns()&gt;&gt;: //&#39;&#39;&lt;&lt;= __baseNav&gt;&gt;&#39;&#39;... //
+  &lt;&lt;= _app.getBasicGameHeading()&gt;&gt;
 
   &lt;&lt;if _app.isGivenSubGame(&#39;VS&#39;)&gt;&gt;
   
@@ -1796,8 +1812,7 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;&lt;set $TT.collected = {
     fromBegin: true,
     partsToAsk: [],
-    weird: [],
-    annoying: []
+    weird: []
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="StorySubtitle" tags="" position="475,350" size="100,100">//verze// &#39;&#39;&lt;&lt;= setup.DI_CONT.getService(&#39;app&#39;).getAppVersion()&gt;&gt;&#39;&#39;
 &lt;p class=&quot;mt6 mb6&quot;&gt;
 //stáhni novější://
@@ -1919,15 +1934,21 @@ Kterou hru ze světa &quot;Vyprávíme&quot; si teď přeješ založit?
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="26" name="MM_start" tags="alignCenter" position="725,350" size="100,100">&lt;h1&gt;Svět&lt;br&gt;&quot;Vyprávíme&quot;&lt;/h1&gt;
 
 &lt;p&gt;
-&#39;&#39;&lt;&lt;button &quot;NOVÁ HRA&quot;&gt;&gt;
-    &lt;&lt;passageDialog &quot;Nová hra&quot; &quot;WhichNewGame&quot;&gt;&gt;
-  &lt;&lt;/button&gt;&gt;&#39;&#39;
+  &lt;&lt;button &quot;Začít hru &#39;&#39;VolnoSnění&#39;&#39;&quot; &quot;VS_go&quot;&gt;&gt;
+  &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;
 
 &lt;p&gt;
-  &lt;&lt;button &quot;Načíst dřívější hru...&quot;&gt;&gt;
-    &lt;&lt;run UI.saves()&gt;&gt;
+  &lt;&lt;button &quot;Začít hru &#39;&#39;TěloTaj&#39;&#39;&quot; &quot;TT_go&quot;&gt;&gt;
   &lt;&lt;/button&gt;&gt;
+&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;
+  //&lt;&lt;button &quot;Načíst dřívější hru...&quot;&gt;&gt;
+    &lt;&lt;run UI.saves()&gt;&gt;
+  &lt;&lt;/button&gt;&gt;//
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="27" name="TT_go" tags="" position="850,350" size="100,100">&lt;h1&gt;Vítej ve hře &quot;TěloTaj&quot;&lt;/h1&gt;
 &lt;p&gt;
 Ve hře tělotaj si klikáním&lt;br&gt;

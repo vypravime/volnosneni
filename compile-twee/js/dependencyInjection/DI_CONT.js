@@ -77,7 +77,7 @@ let configurateIt = () => ({
     savesVersion: 1,
     /** intiger greater than 0 of turn where autosaves begin,
     or boolean false to disallow autosaves at all*/
-    autosavesBeginTurn: 3
+    autosavesBeginTurn: 4
 });
 
 setup.DI_CONT = {
@@ -135,6 +135,7 @@ setup.DI_CONT = {
                 State,
                 this.getService('metaDater'),
                 this.getService('htmler'),
+                this.getService('app'),
                 this.configs.autosavesBeginTurn,
                 this.configs.savesVersion
             );},

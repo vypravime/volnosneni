@@ -3,14 +3,20 @@
 <h1>Svět<br>"Vyprávíme"</h1>
 
 <p>
-''<<button "NOVÁ HRA">>
-    <<passageDialog "Nová hra" "WhichNewGame">>
-  <</button>>''
+  <<button "Začít hru ''VolnoSnění''" "VS_go">>
+  <</button>>
 </p>
 
 <p>
-  <<button "Načíst dřívější hru...">>
-    <<run UI.saves()>>
+  <<button "Začít hru ''TěloTaj''" "TT_go">>
   <</button>>
+</p>
+
+<hr>
+
+<p>
+  //<<button "Načíst dřívější hru...">>
+    <<run UI.saves()>>
+  <</button>>//
 </p>
 

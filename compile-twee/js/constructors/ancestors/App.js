@@ -35,6 +35,14 @@ thatProto.getAppVersion = function() {
     return this.__appVersion;
 };
 
+thatProto.getBasicGameHeading = function(forSave = false) {
+    if (forSave === true) {
+        return `Krok ${this._state.turns}: ${this.getSubGameBreadCrumb()}...`
+    } else {
+        return `Krok&nbsp;${this._state.turns}: //''${this.getSubGameBreadCrumb()}''...//`;
+    }
+}
+
 thatProto.getSubGameBreadCrumb = function() {
 	return this._subGameBreadCrumbs[
 		this.getSubGameClass()

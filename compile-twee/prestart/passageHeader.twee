@@ -19,7 +19,7 @@
 
   <</if>>
 
-  Krok&nbsp;<<= turns()>>: //''<<= __baseNav>>''... //
+  <<= _app.getBasicGameHeading()>>
 
   <<if _app.isGivenSubGame('VS')>>
   
