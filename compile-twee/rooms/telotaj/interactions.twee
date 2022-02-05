@@ -572,7 +572,7 @@
         - a chceš se ho zbavit?<br>
         Nebo jsou ty pocity v těle<br>
         některé sice nepříjemné...<br>
-        - ale nepřekáží Ti?
+        - ale nyní Ti nepřekáží?
     </h3>
 <<else>>
     <p class="tac accented">
@@ -587,10 +587,10 @@
     </h3>
 <</if>>
     <div class="answers">
-        <<button "Je to tak - v mém těle mi<br>''teď žádný pocit nepřekáží''."
+        <<button "Je to tak - v mém těle mi ''teď<br>žádný z pocitů nepřekáží''."
             >><</button>>
         <br>
-        <<button "Ve skutečnosti cítím v mém těle<br>''něco - co mi teď vadí''."
+        <<button "Popravdě... v mém těle cítím<br>''něco - co mi teď vadí''."
             >><</button>>
     </div>
 </div>
