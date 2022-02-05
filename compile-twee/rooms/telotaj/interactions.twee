@@ -530,13 +530,48 @@
         s pochybnými či nepříjemnými pocity<br>
         tady po těle:
     </p>
+
     <ul>
         <<for _i, _weirdKey range $TT.collected.weird>>
             <li>
-                někde v <<= setup.teloTaj.bodyParts[_weirdKey][2]>>
+                někde ''v <<= setup.teloTaj.bodyParts[_weirdKey][2]>>''
             </li>
         <</for>>
     </ul>
+
+    <p class="tac">
+        //''A nyní bych od Tebe potřeboval jednu věc:''//
+    </p>
+
+    <p class="tac">
+        Nemusíš být nějak vědecky přísně důsledný...<br>
+        ale buď prosím aspoň trochu k sobě upřímný...<br>
+        Projdi si všechny ty části těla, kde máš<br>
+        podivné či obtížné pocity... a mrkni se,<br>
+        jestli Ti to pocity vadí<br>
+        - jestli máš nutkání se jich zbavit<br>
+        ...<br>
+        nebo jestli ty pocity jsou sice možná nepříjemné,<br>
+        ale zároveň Ti vlastně nepřekáží ani nevadí.
+    </p>
+
+    <p class="tac">
+        (Někdy když například člověka něco byť i hodně bolí<br>
+         mu to vlastně sice trochu nepochopitelně, ale přesto<br>
+         - vůbec nepřekáží - třeba když odpočívá<br>
+         nebo když je zaujatý něčím lákavým...<br>
+         jindy ta samá bolavá část je velmi iritující.)
+    </p>
+
+    <h3>
+        Je v těch částech těla, kde<br>
+        se odehrávájí podivné pochody<br>
+        - byť jeden pocit, který Tě irituje?<br>
+        - a chceš se ho zbavit?<br>
+        Nebo jsou ty pocity v těle<br>
+        některé sice nepříjemné...<br>
+        - ale nepřekáží Ti?
+    </h3>
 <<else>>
     <p class="tac">
         Takže se zdá, že se v celém Tvém těle rozlévá<br>
