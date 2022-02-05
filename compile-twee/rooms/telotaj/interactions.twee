@@ -485,12 +485,6 @@
 
 :: TTI_weirdFeelingsCollector
 
-<<if setup.teloTaj.collectors.overrideFromBegin === true>>
-    <<set setup.teloTaj.collectors.overrideFromBegin = false>>
-    <<set $TT.collected.fromBegin = true>>
-    <<set $TT.collected.weird = []>>
-    <<set $TT.collected.annoying = []>>
-<</if>>
 <<if $TT.collected.fromBegin === true>>
     <<set $TT.collected.fromBegin = false>>
     <<set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)>>
@@ -501,27 +495,35 @@
     <div>
         <h3>
             Děkuji Ti za odpověď...<br>
-            Teď prosím vnímej _thisPartLegends[0].<br>
-            Máš někde v těchto částech těla podivné či nepříjemné pocity?
+            Teď prosím vnímej @@.accented;_thisPartLegends[1]@@.<br>
+            Máš někde v
+            <<= _thisPartLegends[0] === 1 ? "této části" : "těchto částech">>
+            těla podivné či nepříjemné pocity?
         </h3>
 
         <div class="answers">
-            <<button "Ano<br>- _thisPartLegends[1]<br>''mám divné či nepříjemné pocity''"
-                >>
+            <span class="red-btn">
+            <<button "''V _thisPartLegends[2]''<br>- mám na jednom či více místech<br>''divný či nepříjemny pocit''"
+                "TTI_weirdFeelingsCollector">>
                     <<run $TT.collected.weird.pushUnique(_partKey)>>
-                <</button>>
+                <</button>></span>
             <br>
-            <<button "Ne<br>- _thisPartLegends[1]<br>''mám neutrální či pohodové pocity''"
+            <<button "''V _thisPartLegends[2]''<br>- mám všude<br>''neutrální či pohodový pocit''"
                 "TTI_weirdFeelingsCollector">><</button>>
         </div>
     </div>
 <<else>>
-    <<goto "TTI_collectorsFinished">>
+    <<if setup.teloTaj.collectors.lastGotoOverride === true>>
+        <<set setup.teloTaj.collectors.lastGotoOverride = false>>
+        <<run Engine.backward()>>
+    <<else>>
+        <<goto "TTI_collectorsFinished">>
+    <</if>>
 <</if>>
 
 :: TTI_collectorsFinished
 
-<<set setup.teloTaj.collectors.overrideFromBegin = true>>
+<<set setup.teloTaj.collectors.lastGotoOverride = true>>
 <div>
     //Sesbírané části s divnými pocity:<br>
     <<for _i, _weirdKey range $TT.collected.weird>>

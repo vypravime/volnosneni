@@ -34,11 +34,22 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 setup.teloTaj = {
 	bodyParts: {
 		hands: [
-			"obě své<br>dlaně, hřbety rukou a prsty na rukou",
-			"v dlaních, hřbetech rukou či prstech na rukou"
+			2,
+			"obě své<br>DLANĚ, HŘBETY RUKOU A PRSTY NA RUKOU",
+			"dlaních, hřbetech rukou či prstech na rukou"
+		],
+		arms: [
+			2,
+			"obě své<br>PAŽE OD ZÁPĚSTÍ AŽ PO RAMENA",
+			"pažích od zápěstí až po ramena"
+		],
+		neck: [
+			1,
+			"celý svůj KRK",
+			"krku"
 		]
 	},
 	collectors: {
-		overrideFromBegin: false
+		lastGotoOverride: false
 	}
 };

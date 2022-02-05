@@ -84,10 +84,18 @@ button,
     border: 1px solid #350;
     transition: 0.6s;
 }
+.red-btn button {
+    background-color: #600;
+    border-color: #700;
+}
 button:hover,
 .see-saw button:disabled:hover {
     background-color: #250;
     border-color: #461;
+}
+.red-btn button:hover {
+    background-color: #700;
+    border-color: #811;
 }
 button:disabled:hover,
 .see-saw button:hover {
@@ -154,6 +162,9 @@ textarea,
 input[type="text"] {
     background-color: #efc;
     color: #204;
+}
+.accented {
+    color: #c9f;
 }
 textarea,
 input[type="text"]{

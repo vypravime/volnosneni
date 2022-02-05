@@ -184,10 +184,18 @@ button,
     border: 1px solid #350;
     transition: 0.6s;
 }
+.red-btn button {
+    background-color: #600;
+    border-color: #700;
+}
 button:hover,
 .see-saw button:disabled:hover {
     background-color: #250;
     border-color: #461;
+}
+.red-btn button:hover {
+    background-color: #700;
+    border-color: #811;
 }
 button:disabled:hover,
 .see-saw button:hover {
@@ -254,6 +262,9 @@ textarea,
 input[type="text"] {
     background-color: #efc;
     color: #204;
+}
+.accented {
+    color: #c9f;
 }
 textarea,
 input[type="text"]{
@@ -1100,12 +1111,23 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 setup.teloTaj = {
 	bodyParts: {
 		hands: [
-			"obě své<br>dlaně, hřbety rukou a prsty na rukou",
-			"v dlaních, hřbetech rukou či prstech na rukou"
+			2,
+			"obě své<br>DLANĚ, HŘBETY RUKOU A PRSTY NA RUKOU",
+			"dlaních, hřbetech rukou či prstech na rukou"
+		],
+		arms: [
+			2,
+			"obě své<br>PAŽE OD ZÁPĚSTÍ AŽ PO RAMENA",
+			"pažích od zápěstí až po ramena"
+		],
+		neck: [
+			1,
+			"celý svůj KRK",
+			"krku"
 		]
 	},
 	collectors: {
-		overrideFromBegin: false
+		lastGotoOverride: false
 	}
 };
 /* twine-user-script #11: "q-main.js" */
@@ -2301,13 +2323,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
                 &lt;&lt;set $TT.collected.fromBegin = true&gt;&gt;
             &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="TTI_weirdFeelingsCollector" tags="" position="600,600" size="100,100">&lt;&lt;if setup.teloTaj.collectors.overrideFromBegin === true&gt;&gt;
-    &lt;&lt;set setup.teloTaj.collectors.overrideFromBegin = false&gt;&gt;
-    &lt;&lt;set $TT.collected.fromBegin = true&gt;&gt;
-    &lt;&lt;set $TT.collected.weird = []&gt;&gt;
-    &lt;&lt;set $TT.collected.annoying = []&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $TT.collected.fromBegin === true&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="TTI_weirdFeelingsCollector" tags="" position="600,600" size="100,100">&lt;&lt;if $TT.collected.fromBegin === true&gt;&gt;
     &lt;&lt;set $TT.collected.fromBegin = false&gt;&gt;
     &lt;&lt;set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -2317,23 +2333,31 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
     &lt;div&gt;
         &lt;h3&gt;
             Děkuji Ti za odpověď...&lt;br&gt;
-            Teď prosím vnímej _thisPartLegends[0].&lt;br&gt;
-            Máš někde v těchto částech těla podivné či nepříjemné pocity?
+            Teď prosím vnímej @@.accented;_thisPartLegends[1]@@.&lt;br&gt;
+            Máš někde v
+            &lt;&lt;= _thisPartLegends[0] === 1 ? &quot;této části&quot; : &quot;těchto částech&quot;&gt;&gt;
+            těla podivné či nepříjemné pocity?
         &lt;/h3&gt;
 
         &lt;div class=&quot;answers&quot;&gt;
-            &lt;&lt;button &quot;Ano&lt;br&gt;- _thisPartLegends[1]&lt;br&gt;&#39;&#39;mám divné či nepříjemné pocity&#39;&#39;&quot;
-                &gt;&gt;
+            &lt;span class=&quot;red-btn&quot;&gt;
+            &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám na jednom či více místech&lt;br&gt;&#39;&#39;divný či nepříjemny pocit&#39;&#39;&quot;
+                &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;
                     &lt;&lt;run $TT.collected.weird.pushUnique(_partKey)&gt;&gt;
-                &lt;&lt;/button&gt;&gt;
+                &lt;&lt;/button&gt;&gt;&lt;/span&gt;
             &lt;br&gt;
-            &lt;&lt;button &quot;Ne&lt;br&gt;- _thisPartLegends[1]&lt;br&gt;&#39;&#39;mám neutrální či pohodové pocity&#39;&#39;&quot;
+            &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám všude&lt;br&gt;&#39;&#39;neutrální či pohodový pocit&#39;&#39;&quot;
                 &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;&lt;else&gt;&gt;
-    &lt;&lt;goto &quot;TTI_collectorsFinished&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.overrideFromBegin = true&gt;&gt;
+    &lt;&lt;if setup.teloTaj.collectors.lastGotoOverride === true&gt;&gt;
+        &lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = false&gt;&gt;
+        &lt;&lt;run Engine.backward()&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;goto &quot;TTI_collectorsFinished&quot;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt;
 &lt;div&gt;
     //Sesbírané části s divnými pocity:&lt;br&gt;
     &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;
