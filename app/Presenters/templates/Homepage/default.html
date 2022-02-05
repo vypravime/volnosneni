@@ -1056,7 +1056,7 @@ setup.DI_CONT = {
     services: [],
     getService: function(service){
         if(!this.services[service]) {
-            console.log(`DI_CONT... Create service: ${service}`);
+            //console.log(`DI_CONT... Create service: ${service}`);
             this.services[service] = this.createF7s[service].call(setup.DI_CONT);
         }
         return this.services[service];
@@ -2444,10 +2444,31 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
     &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt; /* « for correct history backward going */
 &lt;div&gt;
+&lt;&lt;if $TT.collected.weird.length &gt; 0&gt;&gt;
     //Sesbírané části s divnými pocity:&lt;br&gt;
     &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;
-    &amp;nbsp;&amp;nbsp;&amp;nbsp;_i: _weirdKey&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;_i: _weirdKey&lt;br&gt;
     &lt;&lt;/for&gt;&gt;//
+&lt;&lt;else&gt;&gt;
+    &lt;p class=&quot;tac&quot;&gt;
+        Takže se zdá, že se v celém Tvém těle rozlévá&lt;br&gt;
+        jakýsi pokoj nebo klid či něco příjemného...
+    &lt;/p&gt;
+    
+    &lt;h3&gt;
+        Zásadní je, že teď ve svém těle nejspíš&lt;br&gt;
+        nemáš žádný pocit, jenž by Ti vadil?&lt;br&gt;
+        - pocit, jehož by ses chtěl zbavit?
+    &lt;/h3&gt;
+
+    &lt;div class=&quot;answers&quot;&gt;
+        &lt;&lt;button &quot;Je to tak - v mém těle mi&lt;br&gt;&#39;&#39;teď žádný pocit nepřekáží&#39;&#39;.&quot;
+            &gt;&gt;&lt;&lt;/button&gt;&gt;
+        &lt;br&gt;
+        &lt;&lt;button &quot;Ve skutečnosti cítím v mém těle&lt;br&gt;&#39;&#39;něco - co mi teď vadí&#39;&#39;.&quot;
+            &gt;&gt;&lt;&lt;/button&gt;&gt;
+    &lt;/div&gt;
+&lt;&lt;/if&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="VS_checkDisallowedThemes" tags="" position="850,600" size="100,100">ToDo:
 --Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="48" name="VS_fantasyEnter" tags="" position="975,600" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;

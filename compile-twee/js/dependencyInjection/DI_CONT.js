@@ -86,7 +86,7 @@ setup.DI_CONT = {
     services: [],
     getService: function(service){
         if(!this.services[service]) {
-            console.log(`DI_CONT... Create service: ${service}`);
+            //console.log(`DI_CONT... Create service: ${service}`);
             this.services[service] = this.createF7s[service].call(setup.DI_CONT);
         }
         return this.services[service];

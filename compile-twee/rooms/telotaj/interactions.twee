@@ -524,8 +524,29 @@
 
 <<set setup.teloTaj.collectors.lastGotoOverride = true>> /* « for correct history backward going */
 <div>
+<<if $TT.collected.weird.length > 0>>
     //Sesbírané části s divnými pocity:<br>
     <<for _i, _weirdKey range $TT.collected.weird>>
-    &nbsp;&nbsp;&nbsp;_i: _weirdKey<br>
+        &nbsp;&nbsp;&nbsp;_i: _weirdKey<br>
     <</for>>//
+<<else>>
+    <p class="tac">
+        Takže se zdá, že se v celém Tvém těle rozlévá<br>
+        jakýsi pokoj nebo klid či něco příjemného...
+    </p>
+    
+    <h3>
+        Zásadní je, že teď ve svém těle nejspíš<br>
+        nemáš žádný pocit, jenž by Ti vadil?<br>
+        - pocit, jehož by ses chtěl zbavit?
+    </h3>
+
+    <div class="answers">
+        <<button "Je to tak - v mém těle mi<br>''teď žádný pocit nepřekáží''."
+            >><</button>>
+        <br>
+        <<button "Ve skutečnosti cítím v mém těle<br>''něco - co mi teď vadí''."
+            >><</button>>
+    </div>
+<</if>>
 </div>
