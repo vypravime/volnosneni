@@ -525,10 +525,18 @@
 <<set setup.teloTaj.collectors.lastGotoOverride = true>> /* « for correct history backward going */
 <div>
 <<if $TT.collected.weird.length > 0>>
-    //Sesbírané části s divnými pocity:<br>
-    <<for _i, _weirdKey range $TT.collected.weird>>
-        &nbsp;&nbsp;&nbsp;_i: _weirdKey<br>
-    <</for>>//
+    <p class="tac">
+        Takže se zdá, že se zrovna potýkáš<br>
+        s pochybnými či nepříjemnými pocity<br>
+        tady po těle:
+    </p>
+    <ul>
+        <<for _i, _weirdKey range $TT.collected.weird>>
+            <li>
+                někde v <<= setup.teloTaj.bodyParts[_weirdKey][2]>>
+            </li>
+        <</for>>
+    </ul>
 <<else>>
     <p class="tac">
         Takže se zdá, že se v celém Tvém těle rozlévá<br>

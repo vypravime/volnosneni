@@ -41,7 +41,7 @@ setup.teloTaj = {
 		arms: [
 			2,
 			"obě své<br>PAŽE OD ZÁPĚSTÍ AŽ PO RAMENA",
-			"pažích od zápěstí až po ramena"
+			"pažích od zápěstí po ramena"
 		],
 		neck: [
 			1,
@@ -81,12 +81,12 @@ setup.teloTaj = {
 		legs: [
 			2,
 			"obě své<br>NOHY OD KYČLÍ AŽ PO KOTNÍKY",
-			"nohách od kyčlí až po kotníky"
+			"nohách od kyčlí po kotníky"
 		],
 		foots: [
 			2,
 			"spodky i vršky<br>OBOU SVÝCH CHODIDEL A PRSTŮ NA NOHOU",
-			"chodidlech a prstech na nohou"
+			"chodidlech či prstech na nohou"
 		]
 	},
 	collectors: {

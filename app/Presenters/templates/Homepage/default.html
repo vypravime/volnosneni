@@ -1159,7 +1159,7 @@ setup.teloTaj = {
 		arms: [
 			2,
 			"obě své<br>PAŽE OD ZÁPĚSTÍ AŽ PO RAMENA",
-			"pažích od zápěstí až po ramena"
+			"pažích od zápěstí po ramena"
 		],
 		neck: [
 			1,
@@ -1199,12 +1199,12 @@ setup.teloTaj = {
 		legs: [
 			2,
 			"obě své<br>NOHY OD KYČLÍ AŽ PO KOTNÍKY",
-			"nohách od kyčlí až po kotníky"
+			"nohách od kyčlí po kotníky"
 		],
 		foots: [
 			2,
 			"spodky i vršky<br>OBOU SVÝCH CHODIDEL A PRSTŮ NA NOHOU",
-			"chodidlech a prstech na nohou"
+			"chodidlech či prstech na nohou"
 		]
 	},
 	collectors: {
@@ -2445,10 +2445,18 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt; /* « for correct history backward going */
 &lt;div&gt;
 &lt;&lt;if $TT.collected.weird.length &gt; 0&gt;&gt;
-    //Sesbírané části s divnými pocity:&lt;br&gt;
-    &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;
-        &amp;nbsp;&amp;nbsp;&amp;nbsp;_i: _weirdKey&lt;br&gt;
-    &lt;&lt;/for&gt;&gt;//
+    &lt;p class=&quot;tac&quot;&gt;
+        Takže se zdá, že se zrovna potýkáš&lt;br&gt;
+        s pochybnými či nepříjemnými pocity&lt;br&gt;
+        tady po těle:
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;
+            &lt;li&gt;
+                někde v &lt;&lt;= setup.teloTaj.bodyParts[_weirdKey][2]&gt;&gt;
+            &lt;/li&gt;
+        &lt;&lt;/for&gt;&gt;
+    &lt;/ul&gt;
 &lt;&lt;else&gt;&gt;
     &lt;p class=&quot;tac&quot;&gt;
         Takže se zdá, že se v celém Tvém těle rozlévá&lt;br&gt;
