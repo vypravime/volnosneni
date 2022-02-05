@@ -30,3 +30,15 @@ setup.whoseTurn = function(ifNo, ifYesBeg, ifYesEnd) {
 	var _string = _cond ? ifYesBeg + _who.name + ifYesEnd : ifNo;
 	return  _string;
 };
+
+setup.teloTaj = {
+	bodyParts: {
+		hands: [
+			"obě své<br>dlaně, hřbety rukou a prsty na rukou",
+			"v dlaních, hřbetech rukou či prstech na rukou"
+		]
+	},
+	collectors: {
+		overrideFromBegin: false
+	}
+};

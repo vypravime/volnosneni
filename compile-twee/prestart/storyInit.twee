@@ -11,3 +11,9 @@
 <<set $exampleComplic = true>>
 
 <<set $TT = {}>>
+<<set $TT.collected = {
+    fromBegin: true,
+    partsToAsk: [],
+    weird: [],
+    annoying: []
+}>>

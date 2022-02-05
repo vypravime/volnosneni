@@ -97,7 +97,7 @@
 
 :: TTI_wouldYourBodyAgreeClaimedHarmony
 
-/*$TT.myIdea may be set by one exit in this passage */
+/*$TT.myIdea may be set by one exit of this passage */
 <div>
     <p class="tac">
         Dobře tedy...<br>
@@ -217,7 +217,7 @@
 
 :: TTI_problemsMakeProblems
 
-/* $TT.myIdea may be set by one exit in this passage */
+/* $TT.myIdea may be set by one exit of this passage */
 <div>
     <p class="tac">
       Prozradím Ti jednu věc:
@@ -257,7 +257,7 @@
 
 :: TTI_whatAboutNotKnowingWhatTheProblemWas
 
-/* $TT.myIdea may be set by one exit in this passage */
+/* $TT.myIdea may be set by one exit of this passage */
 <div>
     <h3>
         A co kdybych Ti pomohl projít proměnou?<br>
@@ -278,7 +278,7 @@
 
 :: TTI_itAnnoysMeNotKnowingWhatAnnoysMe
 
-/* $TT.myProblem may be set by two exits in this passage */
+/* $TT.myProblem may be set by two exits of this passage */
 <div>
     <h3>
         To ale znamená...<br>
@@ -416,6 +416,7 @@
 
 :: TTI_notSituationNorThoughtsButFeelings
 
+/* $TT.collected.fromBegin is set to true by all exits of this passage */
 <div>
     <p class="tac">
         ''Nacházíš se teď v nějaké vnější situaci'':<br>
@@ -466,22 +467,64 @@
 
     <div class="answers">
         <<button "''Ano'', zrovna teď nějaké pocity mám."
-            "TTI_weirdFeelingsCollector">><</button>>
+            "TTI_weirdFeelingsCollector">>
+                <<set $TT.collected.fromBegin = true>>
+            <</button>>
         <br>
         <<button "''Ne'', v tomto momentě nic moc necítím."
-            "TTI_weirdFeelingsCollector">><</button>>
+            "TTI_weirdFeelingsCollector">>
+                <<set $TT.collected.fromBegin = true>>
+            <</button>>
         <br>
         <<button "''Nevím'', jestli něco cítím nebo necítím."
-            "TTI_weirdFeelingsCollector">><</button>>
+            "TTI_weirdFeelingsCollector">>
+                <<set $TT.collected.fromBegin = true>>
+            <</button>>
     </div>
 </div>
 
 :: TTI_weirdFeelingsCollector
 
+<<if setup.teloTaj.collectors.overrideFromBegin === true>>
+    <<set setup.teloTaj.collectors.overrideFromBegin = false>>
+    <<set $TT.collected.fromBegin = true>>
+    <<set $TT.collected.weird = []>>
+    <<set $TT.collected.annoying = []>>
+<</if>>
+<<if $TT.collected.fromBegin === true>>
+    <<set $TT.collected.fromBegin = false>>
+    <<set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)>>
+<</if>>
+<<if $TT.collected.partsToAsk.length > 0>>
+    <<set _partKey = $TT.collected.partsToAsk.shift()>>
+    <<set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]>>
+    <div>
+        <h3>
+            Děkuji Ti za odpověď...<br>
+            Teď prosím vnímej _thisPartLegends[0].<br>
+            Máš někde v těchto částech těla podivné či nepříjemné pocity?
+        </h3>
+
+        <div class="answers">
+            <<button "Ano<br>- _thisPartLegends[1]<br>''mám divné či nepříjemné pocity''"
+                >>
+                    <<run $TT.collected.weird.pushUnique(_partKey)>>
+                <</button>>
+            <br>
+            <<button "Ne<br>- _thisPartLegends[1]<br>''mám neutrální či pohodové pocity''"
+                "TTI_weirdFeelingsCollector">><</button>>
+        </div>
+    </div>
+<<else>>
+    <<goto "TTI_collectorsFinished">>
+<</if>>
+
+:: TTI_collectorsFinished
+
+<<set setup.teloTaj.collectors.overrideFromBegin = true>>
 <div>
-    <h3>
-        Děkuji Ti za odpověď...<br>
-        Teď prosím vnímej své dlaně a prsty na rukou.<br>
-        Máš někde v této části těla podivné či nepříjemné pocity?
-    </h3>
+    //Sesbírané části s divnými pocity:<br>
+    <<for _i, _weirdKey range $TT.collected.weird>>
+    &nbsp;&nbsp;&nbsp;_i: _weirdKey<br>
+    <</for>>//
 </div>
