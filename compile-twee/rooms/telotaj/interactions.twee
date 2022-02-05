@@ -485,41 +485,40 @@
 
 :: TTI_weirdFeelingsCollector
 
+/* $TT.collected.weird may be changed by one exit of this passage */
 <<if $TT.collected.fromBegin === true>>
     <<set $TT.collected.fromBegin = false>>
     <<set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)>>
 <</if>>
-<<if $TT.collected.partsToAsk.length > 0>>
-    <<set _partKey = $TT.collected.partsToAsk.shift()>>
-    <<set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]>>
-    <div>
-        <h3>
-            Děkuji Ti za odpověď...<br>
-            Teď prosím vnímej @@.accented;_thisPartLegends[1]@@.<br>
-            Máš někde v
-            <<= _thisPartLegends[0] === 1 ? "této části" : "těchto částech">>
-            těla podivné či nepříjemné pocity?
-        </h3>
-
-        <div class="answers">
-            <span class="red-btn">
-            <<button "''V _thisPartLegends[2]''<br>- mám na jednom či více místech<br>''divný či nepříjemny pocit''"
-                "TTI_weirdFeelingsCollector">>
-                    <<run $TT.collected.weird.pushUnique(_partKey)>>
-                <</button>></span>
-            <br>
-            <<button "''V _thisPartLegends[2]''<br>- mám všude<br>''neutrální či pohodový pocit''"
-                "TTI_weirdFeelingsCollector">><</button>>
-        </div>
-    </div>
-<<else>>
-    <<if setup.teloTaj.collectors.lastGotoOverride === true>>
+<<if setup.teloTaj.collectors.lastGotoOverride === true>>
         <<set setup.teloTaj.collectors.lastGotoOverride = false>>
         <<run Engine.backward()>>
-    <<else>>
+<<elseif $TT.collected.partsToAsk.length === 0>>
         <<goto "TTI_collectorsFinished">>
-    <</if>>
 <</if>>
+<<set _partKey = $TT.collected.partsToAsk.shift() || Object.keys(setup.teloTaj.bodyParts).last()>>
+<<set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]>>
+<div>
+    <h3>
+        Děkuji Ti za odpověď...<br>
+        Teď prosím vnímej @@.accented;_thisPartLegends[1]@@.<br>
+        Máš někde v
+        <<= _thisPartLegends[0] === 1 ? "této části" : "těchto částech">>
+        těla podivné či nepříjemné pocity?
+    </h3>
+    
+    <div class="answers">
+        <span class="red-btn">
+        <<button "''V _thisPartLegends[2]''<br>- mám na jednom či více místech<br>''divný či nepříjemny pocit''"
+            "TTI_weirdFeelingsCollector">>
+                <<run $TT.collected.weird.pushUnique(_partKey)>>
+            <</button>>
+            </span>
+        <br>
+        <<button "''V _thisPartLegends[2]''<br>- mám všude<br>''neutrální či pohodový pocit''"
+            "TTI_weirdFeelingsCollector">><</button>>
+    </div>
+</div>
 
 :: TTI_collectorsFinished
 

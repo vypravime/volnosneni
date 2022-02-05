@@ -2323,41 +2323,40 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
                 &lt;&lt;set $TT.collected.fromBegin = true&gt;&gt;
             &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="TTI_weirdFeelingsCollector" tags="" position="600,600" size="100,100">&lt;&lt;if $TT.collected.fromBegin === true&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="TTI_weirdFeelingsCollector" tags="" position="600,600" size="100,100">/* $TT.collected.weird may be changed by one exit of this passage */
+&lt;&lt;if $TT.collected.fromBegin === true&gt;&gt;
     &lt;&lt;set $TT.collected.fromBegin = false&gt;&gt;
     &lt;&lt;set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if $TT.collected.partsToAsk.length &gt; 0&gt;&gt;
-    &lt;&lt;set _partKey = $TT.collected.partsToAsk.shift()&gt;&gt;
-    &lt;&lt;set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]&gt;&gt;
-    &lt;div&gt;
-        &lt;h3&gt;
-            Děkuji Ti za odpověď...&lt;br&gt;
-            Teď prosím vnímej @@.accented;_thisPartLegends[1]@@.&lt;br&gt;
-            Máš někde v
-            &lt;&lt;= _thisPartLegends[0] === 1 ? &quot;této části&quot; : &quot;těchto částech&quot;&gt;&gt;
-            těla podivné či nepříjemné pocity?
-        &lt;/h3&gt;
-
-        &lt;div class=&quot;answers&quot;&gt;
-            &lt;span class=&quot;red-btn&quot;&gt;
-            &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám na jednom či více místech&lt;br&gt;&#39;&#39;divný či nepříjemny pocit&#39;&#39;&quot;
-                &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;
-                    &lt;&lt;run $TT.collected.weird.pushUnique(_partKey)&gt;&gt;
-                &lt;&lt;/button&gt;&gt;&lt;/span&gt;
-            &lt;br&gt;
-            &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám všude&lt;br&gt;&#39;&#39;neutrální či pohodový pocit&#39;&#39;&quot;
-                &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;&lt;else&gt;&gt;
-    &lt;&lt;if setup.teloTaj.collectors.lastGotoOverride === true&gt;&gt;
+&lt;&lt;if setup.teloTaj.collectors.lastGotoOverride === true&gt;&gt;
         &lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = false&gt;&gt;
         &lt;&lt;run Engine.backward()&gt;&gt;
-    &lt;&lt;else&gt;&gt;
+&lt;&lt;elseif $TT.collected.partsToAsk.length === 0&gt;&gt;
         &lt;&lt;goto &quot;TTI_collectorsFinished&quot;&gt;&gt;
-    &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;set _partKey = $TT.collected.partsToAsk.shift() || Object.keys(setup.teloTaj.bodyParts).last()&gt;&gt;
+&lt;&lt;set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]&gt;&gt;
+&lt;div&gt;
+    &lt;h3&gt;
+        Děkuji Ti za odpověď...&lt;br&gt;
+        Teď prosím vnímej @@.accented;_thisPartLegends[1]@@.&lt;br&gt;
+        Máš někde v
+        &lt;&lt;= _thisPartLegends[0] === 1 ? &quot;této části&quot; : &quot;těchto částech&quot;&gt;&gt;
+        těla podivné či nepříjemné pocity?
+    &lt;/h3&gt;
+    
+    &lt;div class=&quot;answers&quot;&gt;
+        &lt;span class=&quot;red-btn&quot;&gt;
+        &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám na jednom či více místech&lt;br&gt;&#39;&#39;divný či nepříjemny pocit&#39;&#39;&quot;
+            &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;
+                &lt;&lt;run $TT.collected.weird.pushUnique(_partKey)&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+            &lt;/span&gt;
+        &lt;br&gt;
+        &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám všude&lt;br&gt;&#39;&#39;neutrální či pohodový pocit&#39;&#39;&quot;
+            &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt;
 &lt;div&gt;
     //Sesbírané části s divnými pocity:&lt;br&gt;
     &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;
