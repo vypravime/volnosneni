@@ -2445,7 +2445,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt; /* « for correct history backward going */
 &lt;div&gt;
 &lt;&lt;if $TT.collected.weird.length &gt; 0&gt;&gt;
-    &lt;p class=&quot;tac&quot;&gt;
+    &lt;p class=&quot;tac accented&quot;&gt;
         Takže se zdá, že se zrovna potýkáš&lt;br&gt;
         s pochybnými či nepříjemnými pocity&lt;br&gt;
         tady po těle:
@@ -2453,7 +2453,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 
     &lt;ul&gt;
         &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;
-            &lt;li&gt;
+            &lt;li class=&quot;accented&quot;&gt;
                 někde &#39;&#39;v &lt;&lt;= setup.teloTaj.bodyParts[_weirdKey][2]&gt;&gt;&#39;&#39;
             &lt;/li&gt;
         &lt;&lt;/for&gt;&gt;
@@ -2469,10 +2469,12 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         Projdi si všechny ty části těla, kde máš&lt;br&gt;
         podivné či obtížné pocity... a mrkni se,&lt;br&gt;
         jestli Ti to pocity vadí&lt;br&gt;
-        - jestli máš nutkání se jich zbavit&lt;br&gt;
-        ...&lt;br&gt;
+        - jestli máš
+        @@.accented;nutkání se jich zbavit&lt;br&gt;
+        ...@@&lt;br&gt;
         nebo jestli ty pocity jsou sice možná nepříjemné,&lt;br&gt;
-        ale zároveň Ti vlastně nepřekáží ani nevadí.
+        ale zároveň
+        @@.accented;Ti vlastně nepřekáží ani nevadí@@.
     &lt;/p&gt;
 
     &lt;p class=&quot;tac&quot;&gt;
@@ -2493,7 +2495,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         - ale nepřekáží Ti?
     &lt;/h3&gt;
 &lt;&lt;else&gt;&gt;
-    &lt;p class=&quot;tac&quot;&gt;
+    &lt;p class=&quot;tac accented&quot;&gt;
         Takže se zdá, že se v celém Tvém těle rozlévá&lt;br&gt;
         jakýsi pokoj nebo klid či něco příjemného...
     &lt;/p&gt;
@@ -2503,7 +2505,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         nemáš žádný pocit, jenž by Ti vadil?&lt;br&gt;
         - pocit, jehož by ses chtěl zbavit?
     &lt;/h3&gt;
-
+&lt;&lt;/if&gt;&gt;
     &lt;div class=&quot;answers&quot;&gt;
         &lt;&lt;button &quot;Je to tak - v mém těle mi&lt;br&gt;&#39;&#39;teď žádný pocit nepřekáží&#39;&#39;.&quot;
             &gt;&gt;&lt;&lt;/button&gt;&gt;
@@ -2511,7 +2513,6 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Ve skutečnosti cítím v mém těle&lt;br&gt;&#39;&#39;něco - co mi teď vadí&#39;&#39;.&quot;
             &gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="VS_checkDisallowedThemes" tags="" position="850,600" size="100,100">ToDo:
 --Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="48" name="VS_fantasyEnter" tags="" position="975,600" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;

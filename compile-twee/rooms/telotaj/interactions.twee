@@ -525,7 +525,7 @@
 <<set setup.teloTaj.collectors.lastGotoOverride = true>> /* « for correct history backward going */
 <div>
 <<if $TT.collected.weird.length > 0>>
-    <p class="tac">
+    <p class="tac accented">
         Takže se zdá, že se zrovna potýkáš<br>
         s pochybnými či nepříjemnými pocity<br>
         tady po těle:
@@ -533,7 +533,7 @@
 
     <ul>
         <<for _i, _weirdKey range $TT.collected.weird>>
-            <li>
+            <li class="accented">
                 někde ''v <<= setup.teloTaj.bodyParts[_weirdKey][2]>>''
             </li>
         <</for>>
@@ -549,10 +549,12 @@
         Projdi si všechny ty části těla, kde máš<br>
         podivné či obtížné pocity... a mrkni se,<br>
         jestli Ti to pocity vadí<br>
-        - jestli máš nutkání se jich zbavit<br>
-        ...<br>
+        - jestli máš
+        @@.accented;nutkání se jich zbavit<br>
+        ...@@<br>
         nebo jestli ty pocity jsou sice možná nepříjemné,<br>
-        ale zároveň Ti vlastně nepřekáží ani nevadí.
+        ale zároveň
+        @@.accented;Ti vlastně nepřekáží ani nevadí@@.
     </p>
 
     <p class="tac">
@@ -573,7 +575,7 @@
         - ale nepřekáží Ti?
     </h3>
 <<else>>
-    <p class="tac">
+    <p class="tac accented">
         Takže se zdá, že se v celém Tvém těle rozlévá<br>
         jakýsi pokoj nebo klid či něco příjemného...
     </p>
@@ -583,7 +585,7 @@
         nemáš žádný pocit, jenž by Ti vadil?<br>
         - pocit, jehož by ses chtěl zbavit?
     </h3>
-
+<</if>>
     <div class="answers">
         <<button "Je to tak - v mém těle mi<br>''teď žádný pocit nepřekáží''."
             >><</button>>
@@ -591,5 +593,4 @@
         <<button "Ve skutečnosti cítím v mém těle<br>''něco - co mi teď vadí''."
             >><</button>>
     </div>
-<</if>>
 </div>
