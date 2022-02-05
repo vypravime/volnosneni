@@ -1124,6 +1124,46 @@ setup.teloTaj = {
 			1,
 			"celý svůj KRK",
 			"krku"
+		],
+		head: [
+			1,
+			"celou svou HLAVU",
+			"hlavě"
+		],
+		chest: [
+			1,
+			"celou svou HRUĎ",
+			"hrudi"
+		],
+		belly: [
+			1,
+			"celé své BŘICHO",
+			"břiše"
+		],
+		back: [
+			1,
+			"celá svá ZÁDA",
+			"zádech"
+		],
+		pelvis: [
+			1,
+			"oblast své PÁNVE",
+			"pánvi"
+		],
+		genitals: [
+			1,
+			"své PŘIROZENÍ",
+			"přirození"
+		],
+		legs: [
+			2,
+			"obě své<br>NOHY OD KYČLÍ AŽ PO KOTNÍKY",
+			"nohách od kyčlí až po kotníky"
+		],
+		foots: [
+			2,
+			"spodky i vršky<br>OBOU SVÝCH CHODIDEL A PRSTŮ NA NOHOU",
+			"chodidlech a prstech na nohou"
 		]
 	},
 	collectors: {
@@ -2334,7 +2374,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 &lt;&lt;elseif $TT.collected.partsToAsk.length === 0&gt;&gt;
         &lt;&lt;goto &quot;TTI_collectorsFinished&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;set _partKey = $TT.collected.partsToAsk.shift() || Object.keys(setup.teloTaj.bodyParts).last()&gt;&gt;
+&lt;&lt;set _partKey = $TT.collected.partsToAsk.shift() || Object.keys(setup.teloTaj.bodyParts).last() /* « the part after || is for correct history backward going through last iteration of collector */&gt;&gt;
 &lt;&lt;set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]&gt;&gt;
 &lt;div&gt;
     &lt;h3&gt;
@@ -2356,7 +2396,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám všude&lt;br&gt;&#39;&#39;neutrální či pohodový pocit&#39;&#39;&quot;
             &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt; /* « for correct history backward going */
 &lt;div&gt;
     //Sesbírané části s divnými pocity:&lt;br&gt;
     &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;

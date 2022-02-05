@@ -47,6 +47,46 @@ setup.teloTaj = {
 			1,
 			"celý svůj KRK",
 			"krku"
+		],
+		head: [
+			1,
+			"celou svou HLAVU",
+			"hlavě"
+		],
+		chest: [
+			1,
+			"celou svou HRUĎ",
+			"hrudi"
+		],
+		belly: [
+			1,
+			"celé své BŘICHO",
+			"břiše"
+		],
+		back: [
+			1,
+			"celá svá ZÁDA",
+			"zádech"
+		],
+		pelvis: [
+			1,
+			"oblast své PÁNVE",
+			"pánvi"
+		],
+		genitals: [
+			1,
+			"své PŘIROZENÍ",
+			"přirození"
+		],
+		legs: [
+			2,
+			"obě své<br>NOHY OD KYČLÍ AŽ PO KOTNÍKY",
+			"nohách od kyčlí až po kotníky"
+		],
+		foots: [
+			2,
+			"spodky i vršky<br>OBOU SVÝCH CHODIDEL A PRSTŮ NA NOHOU",
+			"chodidlech a prstech na nohou"
 		]
 	},
 	collectors: {

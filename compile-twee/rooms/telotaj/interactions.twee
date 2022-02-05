@@ -496,7 +496,7 @@
 <<elseif $TT.collected.partsToAsk.length === 0>>
         <<goto "TTI_collectorsFinished">>
 <</if>>
-<<set _partKey = $TT.collected.partsToAsk.shift() || Object.keys(setup.teloTaj.bodyParts).last()>>
+<<set _partKey = $TT.collected.partsToAsk.shift() || Object.keys(setup.teloTaj.bodyParts).last() /* « the part after || is for correct history backward going through last iteration of collector */>>
 <<set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]>>
 <div>
     <h3>
@@ -522,7 +522,7 @@
 
 :: TTI_collectorsFinished
 
-<<set setup.teloTaj.collectors.lastGotoOverride = true>>
+<<set setup.teloTaj.collectors.lastGotoOverride = true>> /* « for correct history backward going */
 <div>
     //Sesbírané části s divnými pocity:<br>
     <<for _i, _weirdKey range $TT.collected.weird>>
