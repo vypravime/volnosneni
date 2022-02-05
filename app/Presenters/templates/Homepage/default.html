@@ -2445,20 +2445,6 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt; /* « for correct history backward going */
 &lt;div&gt;
 &lt;&lt;if $TT.collected.weird.length &gt; 0&gt;&gt;
-    &lt;p class=&quot;tac accented&quot;&gt;
-        Takže se zdá, že se zrovna potýkáš&lt;br&gt;
-        s pochybnými či nepříjemnými pocity&lt;br&gt;
-        tady po těle:
-    &lt;/p&gt;
-
-    &lt;ul&gt;
-        &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;
-            &lt;li class=&quot;accented&quot;&gt;
-                někde &#39;&#39;v &lt;&lt;= setup.teloTaj.bodyParts[_weirdKey][2]&gt;&gt;&#39;&#39;
-            &lt;/li&gt;
-        &lt;&lt;/for&gt;&gt;
-    &lt;/ul&gt;
-
     &lt;p class=&quot;tac&quot;&gt;
         //&#39;&#39;A nyní bych od Tebe potřeboval jednu věc:&#39;&#39;//
     &lt;/p&gt;
@@ -2484,6 +2470,20 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
          nebo když je zaujatý něčím lákavým...&lt;br&gt;
          jindy ta samá bolavá část je velmi iritující.)
     &lt;/p&gt;
+
+    &lt;p class=&quot;tac accented&quot;&gt;
+        Zdá se, že se zrovna potýkáš&lt;br&gt;
+        s pochybnými či obtížnými&lt;br&gt;
+        pocity tady po těle:
+    &lt;/p&gt;
+
+    &lt;ul&gt;
+        &lt;&lt;for _i, _weirdKey range $TT.collected.weird&gt;&gt;
+            &lt;li class=&quot;accented&quot;&gt;
+                někde &#39;&#39;v &lt;&lt;= setup.teloTaj.bodyParts[_weirdKey][2]&gt;&gt;&#39;&#39;
+            &lt;/li&gt;
+        &lt;&lt;/for&gt;&gt;
+    &lt;/ul&gt;
 
     &lt;h3&gt;
         Je v těch částech těla, kde&lt;br&gt;

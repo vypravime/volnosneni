@@ -525,20 +525,6 @@
 <<set setup.teloTaj.collectors.lastGotoOverride = true>> /* « for correct history backward going */
 <div>
 <<if $TT.collected.weird.length > 0>>
-    <p class="tac accented">
-        Takže se zdá, že se zrovna potýkáš<br>
-        s pochybnými či nepříjemnými pocity<br>
-        tady po těle:
-    </p>
-
-    <ul>
-        <<for _i, _weirdKey range $TT.collected.weird>>
-            <li class="accented">
-                někde ''v <<= setup.teloTaj.bodyParts[_weirdKey][2]>>''
-            </li>
-        <</for>>
-    </ul>
-
     <p class="tac">
         //''A nyní bych od Tebe potřeboval jednu věc:''//
     </p>
@@ -564,6 +550,20 @@
          nebo když je zaujatý něčím lákavým...<br>
          jindy ta samá bolavá část je velmi iritující.)
     </p>
+
+    <p class="tac accented">
+        Zdá se, že se zrovna potýkáš<br>
+        s pochybnými či obtížnými<br>
+        pocity tady po těle:
+    </p>
+
+    <ul>
+        <<for _i, _weirdKey range $TT.collected.weird>>
+            <li class="accented">
+                někde ''v <<= setup.teloTaj.bodyParts[_weirdKey][2]>>''
+            </li>
+        <</for>>
+    </ul>
 
     <h3>
         Je v těch částech těla, kde<br>
