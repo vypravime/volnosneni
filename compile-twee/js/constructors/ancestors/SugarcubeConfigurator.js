@@ -60,7 +60,32 @@ setup.c10s.SugarcubeConfigurator = function(
         }
     })();
 
+    Save.onLoad.add(function (save) {
+        if (save.version > 1) {
+            let e = {};
+            e.message = `
+<h3>
+    Načtěte prosím tuto hru<br>
+    v AKTUALIZOVANÉ VERZI APLIKACE...
+</h3>
+<p>
+    Pokoušíte se načíst hru<br>
+    pocházející z <strong>novější verze</strong><br>
+    aplikace "Vyprávíme".<br>
+</p>
+<p>
+    <a target="_blank" class="link-external" href="https://vypravime.webnode.cz/stahnout-ci-spustit-aplikaci/" tabindex="0">
+        STÁHNĚTE SI NEJNOVĚJŠÍ VERZI aplikace Vyprávíme
+    </a>
     
+</p>
+<p>
+<em>(lze stáhnout i pomocí odkazu v levém rozbalovacím panelu)</em>
+</p>        `;
+            throw e;
+        }
+    });
+
 }
 
 
