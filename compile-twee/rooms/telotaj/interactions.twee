@@ -377,9 +377,14 @@
     </p>
 
     <div class="answers">
-        <<button "Dobře... ''Mám to zapsáno''."
-            "TTI_letsPlayFromBody">>
+        <<button "Dobře... ''Mám to zapsáno''.">>
                 <<set $TT.myIdea = $TT.myIdea.trim()>>
+                <<if $TT.myIdea>>
+                    <<goto "TTI_letsPlayFromBody">>
+                <<else>>
+                    <<passageDialog "Vyplň prosím políčko!" 
+                                         "FillInputDialog1">>
+                <</if>>
             <</button>>
         <br>
       //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
@@ -397,6 +402,9 @@
  ***/
 
 :: TTI_letsPlayFromBody
+/* every player, who gets to this passage through previous exits
+ *      - should have set manually or by system at least $TT.myIdea
+ */
 
 <div>
     <h3>
@@ -524,7 +532,7 @@
 
 <<set setup.teloTaj.collectors.lastGotoOverride = true>> /* « for correct history backward going */
 <div>
-<<if $TT.collected.weird.length > 0>>
+  <<if $TT.collected.weird.length > 0>>
     <p class="tac">
         //''A nyní bych od Tebe potřeboval jednu věc:''//
     </p>
@@ -574,7 +582,7 @@
         některé sice nepříjemné...<br>
         - ale nyní Ti nepřekáží?
     </h3>
-<<else>>
+  <<else>>
     <p class="tac accented">
         Takže se zdá, že se v celém Tvém těle rozlévá<br>
         jakýsi pokoj nebo klid či něco příjemného...
@@ -585,7 +593,7 @@
         nemáš žádný pocit, jenž by Ti vadil?<br>
         - pocit, jehož by ses chtěl zbavit?
     </h3>
-<</if>>
+  <</if>>
     <div class="answers">
         <<button "Je to tak - v mém těle mi ''teď<br>žádný z pocitů nepřekáží''."
             >><</button>>

@@ -2328,9 +2328,14 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
     &lt;/p&gt;
 
     &lt;div class=&quot;answers&quot;&gt;
-        &lt;&lt;button &quot;Dobře... &#39;&#39;Mám to zapsáno&#39;&#39;.&quot;
-            &quot;TTI_letsPlayFromBody&quot;&gt;&gt;
+        &lt;&lt;button &quot;Dobře... &#39;&#39;Mám to zapsáno&#39;&#39;.&quot;&gt;&gt;
                 &lt;&lt;set $TT.myIdea = $TT.myIdea.trim()&gt;&gt;
+                &lt;&lt;if $TT.myIdea&gt;&gt;
+                    &lt;&lt;goto &quot;TTI_letsPlayFromBody&quot;&gt;&gt;
+                &lt;&lt;else&gt;&gt;
+                    &lt;&lt;passageDialog &quot;Vyplň prosím políčko!&quot; 
+                                         &quot;FillInputDialog1&quot;&gt;&gt;
+                &lt;&lt;/if&gt;&gt;
             &lt;&lt;/button&gt;&gt;
         &lt;br&gt;
       //&lt;&lt;button &quot;Nejprve by mě zajímalo&lt;br&gt;- kdo všechno uvidí to,&lt;br&gt;co zde vyplním?&quot;&gt;&gt;
@@ -2345,7 +2350,11 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
  *   ## SECOND PART OF GAME TĚLOTAJ: ##
  *   ##################################
  *   ##################################
- ***/</tw-passagedata><tw-passagedata pid="43" name="TTI_letsPlayFromBody" tags="" position="350,600" size="100,100">&lt;div&gt;
+ ***/</tw-passagedata><tw-passagedata pid="43" name="TTI_letsPlayFromBody" tags="" position="350,600" size="100,100">/* every player, who gets to this passage through previous exits
+ *      - should have set manually or by system at least $TT.myIdea
+ */
+
+&lt;div&gt;
     &lt;h3&gt;
         Pojďme teď na vše&lt;br&gt;
         na chvíli zapomenout...&lt;br&gt;
@@ -2459,7 +2468,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
     &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt; /* « for correct history backward going */
 &lt;div&gt;
-&lt;&lt;if $TT.collected.weird.length &gt; 0&gt;&gt;
+  &lt;&lt;if $TT.collected.weird.length &gt; 0&gt;&gt;
     &lt;p class=&quot;tac&quot;&gt;
         //&#39;&#39;A nyní bych od Tebe potřeboval jednu věc:&#39;&#39;//
     &lt;/p&gt;
@@ -2509,7 +2518,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         některé sice nepříjemné...&lt;br&gt;
         - ale nyní Ti nepřekáží?
     &lt;/h3&gt;
-&lt;&lt;else&gt;&gt;
+  &lt;&lt;else&gt;&gt;
     &lt;p class=&quot;tac accented&quot;&gt;
         Takže se zdá, že se v celém Tvém těle rozlévá&lt;br&gt;
         jakýsi pokoj nebo klid či něco příjemného...
@@ -2520,7 +2529,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         nemáš žádný pocit, jenž by Ti vadil?&lt;br&gt;
         - pocit, jehož by ses chtěl zbavit?
     &lt;/h3&gt;
-&lt;&lt;/if&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
     &lt;div class=&quot;answers&quot;&gt;
         &lt;&lt;button &quot;Je to tak - v mém těle mi &#39;&#39;teď&lt;br&gt;žádný z pocitů nepřekáží&#39;&#39;.&quot;
             &gt;&gt;&lt;&lt;/button&gt;&gt;
