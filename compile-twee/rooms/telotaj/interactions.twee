@@ -503,6 +503,7 @@
 
 <<if $TT.collected.fromBegin === true>>
     <<set $TT.collected.fromBegin = false>>
+    <<set $TT.collected.weird = []>>
     <<set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)>>
 <</if>>
 <<if $TT.collected.partsToAsk.length === 0>>
@@ -726,9 +727,8 @@
     </p>
 
     <h3>
-        Chceš zažít, jak naloží<br> 
-        Tvá harmonie z těla<br>
-        - s výše zmíněnou myšlenkou?
+        Chceš zažít, jak Tvá harmonie z těla<br> 
+        - naloží s výše zmíněnou myšlenkou?
     </h3>
 
     <div class="answers">
@@ -736,7 +736,10 @@
             >><</button>>
         <br>
         <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
-            >><</button>>
+            "TTI_beforeLongReturnToNewIdea">>
+                <<set $TT.myIdea.idea = ''>>
+                <<set $TT.myIdea.playerInput = false>>
+            <</button>>
     </div>
 </div>
 
@@ -757,9 +760,8 @@
     </p>
 
     <h3>
-        Chceš zažít, jak naloží<br> 
-        Tvá harmonie z těla<br>
-        - s výše zmíněnou obtížnou myšlenkou?
+        Chceš zažít, jak Tvá harmonie z těla<br> 
+        - naloží s výše zmíněnou obtížnou myšlenkou?
     </h3>
 
     <div class="answers">
@@ -767,6 +769,31 @@
             >><</button>>
         <br>
         <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
-            >><</button>>
+            "TTI_beforeLongReturnToNewIdea">>
+                <<set $TT.myProblem.problem = ''>>
+                <<set $TT.myProblem.playerInput = false>>
+                <<set $TT.myIdea.idea = ''>>
+                <<set $TT.myIdea.playerInput = false>>
+            <</button>>
+    </div>
+</div>
+
+:: TTI_beforeLongReturnToNewIdea
+
+<div>
+    <h3>
+        Souhlasím s Tebou...<br>
+        přidej tedy do hry svou novou myšlenku<br>
+        - ale až tu svou novou ideu přidáš,<br>
+        se Tě pro jistotu ještě jednou od začátku<br>
+        přeptám na pocity ve všech částech Tvého těla.<br>
+        Až v návaznosti na to se případně<br>
+        oddáme té Tvojí nové myšlence,<br>
+        budeš-li mít ještě dnes náladu.
+    </h3>
+
+    <div class="answers">
+        <<button "''Hmmm...''"
+            "TTI_fillInYourIdea">><</button>>
     </div>
 </div>
