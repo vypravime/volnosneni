@@ -596,9 +596,87 @@
   <</if>>
     <div class="answers">
         <<button "Je to tak - v mém těle mi ''teď<br>žádný z pocitů nepřekáží''."
-            >><</button>>
+            "TTI_OKFeelingsInAllBody">><</button>>
         <br>
         <<button "Popravdě... v mém těle cítím<br>''něco - co mi teď vadí''."
             >><</button>>
+    </div>
+</div>
+
+:: TTI_OKFeelingsInAllBody
+
+<div>
+    <p class="tac">
+        To, co Ti dovoluje být<br>
+        zadobře s celým Tvým tělem<br>
+        - je nejspíš Tobě vrozená Láska.<br>
+    </p>
+
+    <p class="tac">
+        Ta Láska se nejspíš nevnucuje...<br>
+        jen se tiše přelévá na pozadí<br>
+        - každou částí Tvého těla.<br>
+        Je každý den a každou chvíli trochu jiná...<br>
+        ale má zcela specifické zabarvení či odstín,<br>
+        jenž Tě vystihuje a jenž není podobný<br>
+        žádnému jinému člověku na světě.<br>
+        Je v tom Tvá originalita.
+    </p>
+
+    <p class="tac">
+        Ale přestaňme se bavit o Lásce,<br>
+        protože je nepochopitelná...<br>
+        a protože mluvit či přemýšlet o ní,<br>
+        nic moc nepřináší.
+    </p>
+
+    <p class="tac">
+        Důležité je, že se Ti teď pocity
+        v těle rozlévají v jakési harmonii.
+    </p>
+
+    <h3>
+        Ještě bych Ti rád ukázal,<br>
+        jak můžeme tělesnou pohodu<br>
+        nechat vstoupit do našich myšlenek...<br>
+        - pokud souhlasíš?
+    </h3>
+
+    <div class="answers">
+        <<button "Pro dnešek už raději končím...<br>- ''další ukázky nechme na jindy''."
+            "TTI_experiencedEnd">><</button>>
+        <br>
+        <<button "Souhlasím... ještě mi<br>- ''ukaž prosím pokračování''."
+            >><</button>>
+    </div>
+</div>
+
+:: TTI_experiencedEnd
+
+<div>
+    <p class="tac">
+    Tak teď už máš určitou zkušenost<br>
+    - co že je to ta
+        <span class="accented">
+            hra TěloTaj...
+        </span>
+    </p>
+
+    <p class="tac">
+    Možná, že Tě to neoslovilo...<br>
+    v tom případě to klidně nech být...<br>
+    - avšak pokud Tě to aspoň trochu zaujalo,<br>
+    vzpomeň si třeba zase za pár hodin, dní či týdnů...<br>
+    a přijď si opět zahrát.
+    </p>
+
+    <h3>
+        Tak ať se Tí daří...<br>
+        a případně někdy na shledanou!
+    </h3>
+
+    <div class="answers">
+        <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
+            <<run UI.restart()>><</button>>
     </div>
 </div>
