@@ -1,5 +1,6 @@
 :: TTI_start
 
+/*$TT.myIdea.idea may be set by one exit of this passage */
 <div>
     <h3>
         Cítíš se právě teď naplněně?<br>
@@ -9,7 +10,9 @@
 
     <div class="answers">
         <<button "''Ano'' - nyní jsem hluboce šťastný."
-            "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
+            "TTI_wouldYourBodyAgreeClaimedHarmony">>
+                <<set $TT.myIdea.idea = "Já jsem hluboce šťastný.">>
+            <</button>>
         <br>
         <<button "''Ne'' - nějak to teď drhne, i když se snažím."
             "TTI_howAreYouTryingToGetHappy">><</button>>
@@ -25,6 +28,7 @@
 
 :: TTI_rezignatedOrZenHoly
 
+/*$TT.myIdea.idea may be set by one exit of this passage */
 <div>
     <p class="tac">
       //Pokud ses dostal do stavu<br>
@@ -48,7 +52,9 @@
             "TTI_theLifeIsBitter">><</button>>
         <br>
         <<button "Přestal jsem usilovat - ''jsem osvícený''."
-            "TTI_wouldYourBodyAgreeClaimedHarmony">><</button>>
+            "TTI_wouldYourBodyAgreeClaimedHarmony">>
+                <<set $TT.myIdea.idea = "Já jsem osvícený.">>
+            <</button>>
     </div>
 </div>
 
@@ -97,7 +103,6 @@
 
 :: TTI_wouldYourBodyAgreeClaimedHarmony
 
-/*$TT.myIdea may be set by one exit of this passage */
 <div>
     <p class="tac">
         Dobře tedy...<br>
@@ -117,9 +122,7 @@
             "TTI_bitterEnd">><</button>>
         <br>
         <<button "Co kdybychom se ''společně těla zeptali''..."
-            "TTI_letsPlayFromBody">>
-                <<set $TT.myIdea = "cítím se vyrovnaně">>
-            <</button>>
+            "TTI_letsPlayFromBody">><</button>>
     </div>
 </div>
 
@@ -217,7 +220,7 @@
 
 :: TTI_problemsMakeProblems
 
-/* $TT.myIdea may be set by one exit of this passage */
+/* $TT.myIdea.idea may be set by one exit of this passage */
 <div>
     <p class="tac">
       Prozradím Ti jednu věc:
@@ -247,7 +250,7 @@
     <div class="answers">
         <<button "''Souhlasím''<br>- pojďme to zkusit."
             "TTI_letsPlayFromBody">>
-                <<set $TT.myIdea = "ale předtím jsem viděl nějaký problém">>
+                <<set $TT.myIdea.idea = "Ale ze začátku jsem viděl nějaký problém.">>
             <</button>>
         <br>
         <<button "''Tak to teda ne!''<br>Já ten svůj problém musím obstarat stůj, co stůj!"
@@ -257,7 +260,7 @@
 
 :: TTI_whatAboutNotKnowingWhatTheProblemWas
 
-/* $TT.myIdea may be set by one exit of this passage */
+/* $TT.myIdea.idea may be set by one exit of this passage */
 <div>
     <h3>
         A co kdybych Ti pomohl projít proměnou?<br>
@@ -268,7 +271,7 @@
     <div class="answers">
         <<button "''Tak dobře''<br> - pojďme to zkusit."
             "TTI_letsPlayFromBody">>
-                <<set $TT.myIdea = "vůbec netušíme, co mě před tím trápilo">>
+                <<set $TT.myIdea.idea = "Vůbec netušíme, co mě před tím trápilo.">>
             <</button>>
         <br>
         <<button "''To teda ne''<br> - já potřebuju nejdřív zjistit,<br>proč mi není dobře."
@@ -335,7 +338,7 @@
 
 :: TTI_waitingWhetherItGetsBetter
 
-/* $TT.myIdea may be set by one exit in this passage */
+/* $TT.myIdea.idea may be set by one exit in this passage */
 <div>
     <p class="tac">
         Takže vyčkáváš,<br>jestli se okolnosti vyjasní samy od sebe...
@@ -350,7 +353,7 @@
     <div class="answers">
         <<button "''Dobře'' - zkusit to můžeme."
             "TTI_letsPlayFromBody">>
-                <<set $TT.myIdea = "čekám, zda se situace zlepší sama od sebe">>
+                <<set $TT.myIdea.idea = "Čekal jsem, zda se situace zlepší sama od sebe.">>
             <</button>>
         <br>
         <<button "Raději ''ne'' - budu dál vyčkávat."
@@ -360,7 +363,8 @@
 
 :: TTI_fillInYourIdea
 
-<<set _myIdea = $TT.myIdea || 'má idea, však vím která'>>
+/* $TT.myIdea.playerInput is set by the only exit of this passage */
+<<set _myIdea = $TT.myIdea.idea || 'má idea, však vím která'>>
 <div>
     <h3>
         Výborně, zapiš si tedy teď prosím<br>
@@ -373,13 +377,14 @@
     </p>
     
     <p class="tac">
-        <<textbox "$TT.myIdea" _myIdea `passage()` autofocus>>
+        <<textbox "$TT.myIdea.idea" _myIdea `passage()` autofocus>>
     </p>
 
     <div class="answers">
         <<button "Dobře... ''Mám to zapsáno''.">>
-                <<set $TT.myIdea = $TT.myIdea.trim()>>
-                <<if $TT.myIdea>>
+                <<set $TT.myIdea.idea = $TT.myIdea.idea.trim()>>
+                <<if $TT.myIdea.idea>>
+                    <<set $TT.myIdea.playerInput = true>>
                     <<goto "TTI_letsPlayFromBody">>
                 <<else>>
                     <<passageDialog "Vyplň prosím políčko!" 
@@ -403,7 +408,7 @@
 
 :: TTI_letsPlayFromBody
 /* every player, who gets to this passage through previous exits
- *      - should have set manually or by system at least $TT.myIdea
+ *      - should have set manually or by system at least $TT.myIdea.idea
  */
 
 <div>
@@ -685,10 +690,15 @@
 
 <div>
     <p class="tac">
-        Z úvodních částí hry TěloTaj,<br>
-        bych tu měl jednu myšlenku,<br>
-        která se Tě možná týkala:<br>
-      ''@@.accented;"$TT.myIdea"@@''
+        <<if $TT.myIdea.playerInput === true>>
+            V úvodní části hry Tělotaj<br>
+            jsi zmínil tuto svou myšlenku:<br>
+        <<else>>
+            Z úvodních částí hry TěloTaj<br>
+            bych tu měl jednu myšlenku,<br>
+            která se Tě možná týkala:<br>
+        <</if>>
+      ''@@.accented;"$TT.myIdea.idea"@@''
     </p>
 
     <h3>

@@ -10,10 +10,20 @@
 <<set $gameCards.givenUp = []>>
 <<set $exampleComplic = true>>
 
-<<set $TT = {}>>
-<<set $TT.collected = {
-    fromBegin: true,
-    partsToAsk: [],
-    weird: []
+<<set $TT = {
+    myIdea: {
+        idea: '',
+        playerInput: false
+    },
+    myProblem: {
+        problem: '',
+        playerInput: false
+    },
+    collected: {
+        fromBegin: true,
+        partsToAsk: [],
+        weird: []
+    }
 }>>
+
 <<set $EX = {}>>

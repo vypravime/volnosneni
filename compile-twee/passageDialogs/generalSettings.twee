@@ -4,6 +4,8 @@
 <<set _app = setup.DI_CONT.getService('app')>>
 /*\DECLARE DEPENDENCIES */
 
+<hr>
+<hr>
 <h3>Nastavení:</h3>
 <hr>
 <p>
@@ -27,15 +29,16 @@
 <p>//(lze použít i "Fullscreen zap/vyp"
        tlačítko na levém panelu)//</p>
 <hr>
+<hr>
 <div class="pa5"></div>
 
-''<<dialogCloseButton "Vrátit se do hry">>''
+''<<dialogCloseButton "&nbsp;OK&nbsp;">>''
 
 <<if _app.isNOTProductionRelease() && !_app.isGivenSubGame('EX')>>
   <p class="tac">
-    //<<button "Vstoupit do testovací místnosti">>
+    //(<<link "Vstoupit do testovací místnosti">>
         <<passageDialog "Dočasně povoleno" 
               "YouAreToEnterExperimentalPassages">>
-      <</button>>//
+      <</link>>)//
   </p>
 <</if>>

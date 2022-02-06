@@ -104,6 +104,7 @@
  testovací spínač ajaxové animace)//</p>
 </p>
 <hr>
+<hr>
 <div class="pa5"></div>
 <p class="tac">
   ''<<button [[Přijmout a vrátit se|previous()]]>><</button>>''
