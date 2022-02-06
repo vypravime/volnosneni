@@ -16,3 +16,4 @@
     partsToAsk: [],
     weird: []
 }>>
+<<set $EX = {}>>

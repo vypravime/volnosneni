@@ -1,0 +1,23 @@
+:: EX_go
+
+<<set _prevPassage = previous()>>
+<<if (_prevPassage[0] + _prevPassage[1]) != 'EX'>>
+    <<set $EX.lastNotEXpassage = previous()>>
+<</if>>
+<h1>
+    Testovací část<br>
+    aplikace "Vyprávíme"
+</h1>
+
+<p>
+    <<button "Test ''spojení se serverem''" "EX_ajaxTest">>
+    <</button>>
+</p>
+
+<hr>
+
+<p class="tac">
+  //<<button 
+        [[Přijmout a opustit testovací část|$EX.lastNotEXpassage]]>>
+    <</button>>//
+</p>

@@ -1,5 +1,9 @@
 :: GeneralSettings
 
+/*DECLARE DEPENDENCIES: */
+<<set _app = setup.DI_CONT.getService('app')>>
+/*\DECLARE DEPENDENCIES */
+
 <h3>Nastavení:</h3>
 <hr>
 <p>
@@ -24,12 +28,14 @@
        tlačítko na levém panelu)//</p>
 <hr>
 <div class="pa5"></div>
+
 ''<<dialogCloseButton "Vrátit se do hry">>''
-<<if _app.isNOTProductionRelease() 
-      && (passage() !== "EX_ajaxTest")>>
-<p class="tac">
-<<button "Vstoupit do testovací místnosti">>
-  <<passageDialog "Dočasně povoleno" "YouAreToEnterExperimentalPassages">>
-<</button>>
-</p>
+
+<<if _app.isNOTProductionRelease() && !_app.isGivenSubGame('EX')>>
+  <p class="tac">
+    //<<button "Vstoupit do testovací místnosti">>
+        <<passageDialog "Dočasně povoleno" 
+              "YouAreToEnterExperimentalPassages">>
+      <</button>>//
+  </p>
 <</if>>
