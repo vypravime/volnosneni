@@ -482,37 +482,39 @@
     </h3>
 
     <div class="answers">
-        <<button "''Ano'', zrovna teď nějaké pocity mám."
-            "TTI_weirdFeelingsCollector">>
+        <<button "''Ano'', zrovna teď nějaké pocity mám.">>
                 <<set $TT.collected.fromBegin = true>>
+                <<run Engine.play("TTI_switchCollectorVsCollected", true)>>
             <</button>>
         <br>
-        <<button "''Ne'', v tomto momentě nic moc necítím."
-            "TTI_weirdFeelingsCollector">>
+        <<button "''Ne'', v tomto momentě nic moc necítím.">>
                 <<set $TT.collected.fromBegin = true>>
+                <<run Engine.play("TTI_switchCollectorVsCollected", true)>>
             <</button>>
         <br>
-        <<button "''Nevím'', jestli něco cítím nebo necítím."
-            "TTI_weirdFeelingsCollector">>
+        <<button "''Nevím'', jestli něco cítím nebo necítím.">>
                 <<set $TT.collected.fromBegin = true>>
+                <<run Engine.play("TTI_switchCollectorVsCollected", true)>>
             <</button>>
     </div>
 </div>
 
-:: TTI_weirdFeelingsCollector
+:: TTI_switchCollectorVsCollected
 
-/* $TT.collected.weird may be changed by one exit of this passage */
 <<if $TT.collected.fromBegin === true>>
     <<set $TT.collected.fromBegin = false>>
     <<set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)>>
 <</if>>
-<<if setup.teloTaj.collectors.lastGotoOverride === true>>
-        <<set setup.teloTaj.collectors.lastGotoOverride = false>>
-        <<run Engine.backward()>>
-<<elseif $TT.collected.partsToAsk.length === 0>>
+<<if $TT.collected.partsToAsk.length === 0>>
         <<goto "TTI_collectorsFinished">>
+<<else>>
+        <<goto "TTI_weirdFeelingsCollector">>
 <</if>>
-<<set _partKey = $TT.collected.partsToAsk.shift() || Object.keys(setup.teloTaj.bodyParts).last() /* « the part after || is for correct history backward going through last iteration of collector */>>
+
+:: TTI_weirdFeelingsCollector
+
+/* $TT.collected.weird may be changed by one exit of this passage */
+<<set _partKey = $TT.collected.partsToAsk.shift()>>
 <<set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]>>
 <div>
     <h3>
@@ -525,20 +527,20 @@
     
     <div class="answers">
         <span class="red-btn">
-        <<button "''V _thisPartLegends[2]''<br>- mám na jednom či více místech<br>''divný či nepříjemny pocit''"
-            "TTI_weirdFeelingsCollector">>
+        <<button "''V _thisPartLegends[2]''<br>- mám na jednom či více místech<br>''divný či nepříjemny pocit''">>
                 <<run $TT.collected.weird.pushUnique(_partKey)>>
+                <<run Engine.play("TTI_switchCollectorVsCollected", true)>>
             <</button>>
             </span>
         <br>
-        <<button "''V _thisPartLegends[2]''<br>- mám všude<br>''neutrální či pohodový pocit''"
-            "TTI_weirdFeelingsCollector">><</button>>
+        <<button "''V _thisPartLegends[2]''<br>- mám všude<br>''neutrální či pohodový pocit''">>
+                <<run Engine.play("TTI_switchCollectorVsCollected", true)>>
+            <</button>>
     </div>
 </div>
 
 :: TTI_collectorsFinished
 
-<<set setup.teloTaj.collectors.lastGotoOverride = true>> /* « for correct history backward going */
 <div>
   <<if $TT.collected.weird.length > 0>>
     <p class="tac">
@@ -550,7 +552,7 @@
         ale buď prosím aspoň trochu k sobě upřímný...<br>
         Projdi si všechny ty části těla, kde máš<br>
         podivné či obtížné pocity... a mrkni se,<br>
-        jestli Ti to pocity vadí<br>
+        jestli Ti ty pocity vadí<br>
         - jestli máš
         @@.accented;nutkání se jich zbavit<br>
         ...@@<br>
@@ -616,7 +618,8 @@
 <div>
     <p class="tac">
         To, co Ti dovoluje být<br>
-        zadobře s celým Tvým tělem<br>
+        zadobře s celým Tvým tělem,<br>
+        ať už se v něm odehrávají jakékoli pocity<br>
         - je nejspíš Tobě vrozená Láska.<br>
     </p>
 
@@ -639,12 +642,20 @@
     </p>
 
     <p class="tac">
-        Důležité je, že se Ti teď pocity
-        v těle rozlévají v jakési harmonii.
+        Důležité je, že se Ti teď v těle rozlévá<br>
+        tiše skrze všechny pocity jakási harmonie.
+    </p>
+
+    <p class="tac">
+        ...
+    </p>
+
+    <p class="tac">
+        ...
     </p>
 
     <h3>
-        Ještě bych Ti rád ukázal,<br>
+        Nyní bych Ti rád ukázal,<br>
         jak můžeme tělesnou pohodu<br>
         nechat vstoupit do našich myšlenek...<br>
         - pokud souhlasíš?
@@ -664,7 +675,7 @@
 
 <div>
     <p class="tac">
-    Tak teď už máš určitou zkušenost<br>
+    Nyní už máš určitou zkušenost<br>
     - co že je to ta
         <span class="accented">
             hra TěloTaj...
@@ -700,6 +711,7 @@
 
 :: TTI_fromFirstPartsIdea
 
+/* almost any text improve of this passage should go also to TTI_fromFirstPartsProblem */
 <div>
     <p class="tac">
         <<if $TT.myIdea.playerInput === true>>
@@ -715,7 +727,7 @@
 
     <h3>
         Chceš zažít, jak naloží<br> 
-        Tvá harmonie těla<br>
+        Tvá harmonie z těla<br>
         - s výše zmíněnou myšlenkou?
     </h3>
 
@@ -730,6 +742,7 @@
 
 :: TTI_fromFirstPartsProblem
 
+/* almost any text improve of this passage should go also to TTI_fromFirstPartsIdea */
 <div>
     <p class="tac">
         <<if $TT.myProblem.playerInput === true>>
@@ -745,7 +758,7 @@
 
     <h3>
         Chceš zažít, jak naloží<br> 
-        Tvá harmonie těla<br>
+        Tvá harmonie z těla<br>
         - s výše zmíněnou obtížnou myšlenkou?
     </h3>
 

@@ -1206,9 +1206,6 @@ setup.teloTaj = {
 			"spodky i vršky<br>OBOU SVÝCH CHODIDEL A PRSTŮ NA NOHOU",
 			"chodidlech či prstech na nohou"
 		]
-	},
-	collectors: {
-		lastGotoOverride: false
 	}
 };
 /* twine-user-script #11: "q-main.js" */
@@ -2440,33 +2437,31 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
     &lt;/h3&gt;
 
     &lt;div class=&quot;answers&quot;&gt;
-        &lt;&lt;button &quot;&#39;&#39;Ano&#39;&#39;, zrovna teď nějaké pocity mám.&quot;
-            &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;
+        &lt;&lt;button &quot;&#39;&#39;Ano&#39;&#39;, zrovna teď nějaké pocity mám.&quot;&gt;&gt;
                 &lt;&lt;set $TT.collected.fromBegin = true&gt;&gt;
+                &lt;&lt;run Engine.play(&quot;TTI_switchCollectorVsCollected&quot;, true)&gt;&gt;
             &lt;&lt;/button&gt;&gt;
         &lt;br&gt;
-        &lt;&lt;button &quot;&#39;&#39;Ne&#39;&#39;, v tomto momentě nic moc necítím.&quot;
-            &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;
+        &lt;&lt;button &quot;&#39;&#39;Ne&#39;&#39;, v tomto momentě nic moc necítím.&quot;&gt;&gt;
                 &lt;&lt;set $TT.collected.fromBegin = true&gt;&gt;
+                &lt;&lt;run Engine.play(&quot;TTI_switchCollectorVsCollected&quot;, true)&gt;&gt;
             &lt;&lt;/button&gt;&gt;
         &lt;br&gt;
-        &lt;&lt;button &quot;&#39;&#39;Nevím&#39;&#39;, jestli něco cítím nebo necítím.&quot;
-            &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;
+        &lt;&lt;button &quot;&#39;&#39;Nevím&#39;&#39;, jestli něco cítím nebo necítím.&quot;&gt;&gt;
                 &lt;&lt;set $TT.collected.fromBegin = true&gt;&gt;
+                &lt;&lt;run Engine.play(&quot;TTI_switchCollectorVsCollected&quot;, true)&gt;&gt;
             &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="TTI_weirdFeelingsCollector" tags="" position="600,600" size="100,100">/* $TT.collected.weird may be changed by one exit of this passage */
-&lt;&lt;if $TT.collected.fromBegin === true&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="45" name="TTI_switchCollectorVsCollected" tags="" position="600,600" size="100,100">&lt;&lt;if $TT.collected.fromBegin === true&gt;&gt;
     &lt;&lt;set $TT.collected.fromBegin = false&gt;&gt;
     &lt;&lt;set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if setup.teloTaj.collectors.lastGotoOverride === true&gt;&gt;
-        &lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = false&gt;&gt;
-        &lt;&lt;run Engine.backward()&gt;&gt;
-&lt;&lt;elseif $TT.collected.partsToAsk.length === 0&gt;&gt;
+&lt;&lt;if $TT.collected.partsToAsk.length === 0&gt;&gt;
         &lt;&lt;goto &quot;TTI_collectorsFinished&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;set _partKey = $TT.collected.partsToAsk.shift() || Object.keys(setup.teloTaj.bodyParts).last() /* « the part after || is for correct history backward going through last iteration of collector */&gt;&gt;
+&lt;&lt;else&gt;&gt;
+        &lt;&lt;goto &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_weirdFeelingsCollector" tags="" position="725,600" size="100,100">/* $TT.collected.weird may be changed by one exit of this passage */
+&lt;&lt;set _partKey = $TT.collected.partsToAsk.shift()&gt;&gt;
 &lt;&lt;set _thisPartLegends = setup.teloTaj.bodyParts[_partKey]&gt;&gt;
 &lt;div&gt;
     &lt;h3&gt;
@@ -2479,17 +2474,17 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
     
     &lt;div class=&quot;answers&quot;&gt;
         &lt;span class=&quot;red-btn&quot;&gt;
-        &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám na jednom či více místech&lt;br&gt;&#39;&#39;divný či nepříjemny pocit&#39;&#39;&quot;
-            &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;
+        &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám na jednom či více místech&lt;br&gt;&#39;&#39;divný či nepříjemny pocit&#39;&#39;&quot;&gt;&gt;
                 &lt;&lt;run $TT.collected.weird.pushUnique(_partKey)&gt;&gt;
+                &lt;&lt;run Engine.play(&quot;TTI_switchCollectorVsCollected&quot;, true)&gt;&gt;
             &lt;&lt;/button&gt;&gt;
             &lt;/span&gt;
         &lt;br&gt;
-        &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám všude&lt;br&gt;&#39;&#39;neutrální či pohodový pocit&#39;&#39;&quot;
-            &quot;TTI_weirdFeelingsCollector&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+        &lt;&lt;button &quot;&#39;&#39;V _thisPartLegends[2]&#39;&#39;&lt;br&gt;- mám všude&lt;br&gt;&#39;&#39;neutrální či pohodový pocit&#39;&#39;&quot;&gt;&gt;
+                &lt;&lt;run Engine.play(&quot;TTI_switchCollectorVsCollected&quot;, true)&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="TTI_collectorsFinished" tags="" position="725,600" size="100,100">&lt;&lt;set setup.teloTaj.collectors.lastGotoOverride = true&gt;&gt; /* « for correct history backward going */
-&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="TTI_collectorsFinished" tags="" position="850,600" size="100,100">&lt;div&gt;
   &lt;&lt;if $TT.collected.weird.length &gt; 0&gt;&gt;
     &lt;p class=&quot;tac&quot;&gt;
         //&#39;&#39;A nyní bych od Tebe potřeboval jednu věc:&#39;&#39;//
@@ -2500,7 +2495,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         ale buď prosím aspoň trochu k sobě upřímný...&lt;br&gt;
         Projdi si všechny ty části těla, kde máš&lt;br&gt;
         podivné či obtížné pocity... a mrkni se,&lt;br&gt;
-        jestli Ti to pocity vadí&lt;br&gt;
+        jestli Ti ty pocity vadí&lt;br&gt;
         - jestli máš
         @@.accented;nutkání se jich zbavit&lt;br&gt;
         ...@@&lt;br&gt;
@@ -2559,10 +2554,11 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Popravdě... v mém těle cítím&lt;br&gt;&#39;&#39;něco - co mi teď vadí&#39;&#39;.&quot;
             &gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="TTI_OKFeelingsInAllBody" tags="" position="850,600" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="48" name="TTI_OKFeelingsInAllBody" tags="" position="975,600" size="100,100">&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
         To, co Ti dovoluje být&lt;br&gt;
-        zadobře s celým Tvým tělem&lt;br&gt;
+        zadobře s celým Tvým tělem,&lt;br&gt;
+        ať už se v něm odehrávají jakékoli pocity&lt;br&gt;
         - je nejspíš Tobě vrozená Láska.&lt;br&gt;
     &lt;/p&gt;
 
@@ -2585,12 +2581,20 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
     &lt;/p&gt;
 
     &lt;p class=&quot;tac&quot;&gt;
-        Důležité je, že se Ti teď pocity
-        v těle rozlévají v jakési harmonii.
+        Důležité je, že se Ti teď v těle rozlévá&lt;br&gt;
+        tiše skrze všechny pocity jakási harmonie.
+    &lt;/p&gt;
+
+    &lt;p class=&quot;tac&quot;&gt;
+        ...
+    &lt;/p&gt;
+
+    &lt;p class=&quot;tac&quot;&gt;
+        ...
     &lt;/p&gt;
 
     &lt;h3&gt;
-        Ještě bych Ti rád ukázal,&lt;br&gt;
+        Nyní bych Ti rád ukázal,&lt;br&gt;
         jak můžeme tělesnou pohodu&lt;br&gt;
         nechat vstoupit do našich myšlenek...&lt;br&gt;
         - pokud souhlasíš?
@@ -2604,9 +2608,9 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
                 &lt;&lt;run Engine.play(&#39;TTI_switchProblemsVsIdeas&#39;, true)&gt;&gt;
             &lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="48" name="TTI_experiencedEnd" tags="" position="975,600" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="TTI_experiencedEnd" tags="" position="1100,600" size="100,100">&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
-    Tak teď už máš určitou zkušenost&lt;br&gt;
+    Nyní už máš určitou zkušenost&lt;br&gt;
     - co že je to ta
         &lt;span class=&quot;accented&quot;&gt;
             hra TěloTaj...
@@ -2630,11 +2634,12 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;&#39;&#39;KONEC HRY&#39;&#39;&lt;br&gt;- vrátit se do úvodního menu...&quot;&gt;&gt;
             &lt;&lt;run UI.restart()&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="49" name="TTI_switchProblemsVsIdeas" tags="" position="1100,600" size="100,100">&lt;&lt;if $TT.myProblem.problem&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="50" name="TTI_switchProblemsVsIdeas" tags="" position="1225,600" size="100,100">&lt;&lt;if $TT.myProblem.problem&gt;&gt;
     &lt;&lt;goto &quot;TTI_fromFirstPartsProblem&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
     &lt;&lt;goto &quot;TTI_fromFirstPartsIdea&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="TTI_fromFirstPartsIdea" tags="" position="1225,600" size="100,100">&lt;div&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="TTI_fromFirstPartsIdea" tags="" position="100,725" size="100,100">/* almost any text improve of this passage should go also to TTI_fromFirstPartsProblem */
+&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
         &lt;&lt;if $TT.myIdea.playerInput === true&gt;&gt;
             V úvodní části hry Tělotaj&lt;br&gt;
@@ -2649,7 +2654,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 
     &lt;h3&gt;
         Chceš zažít, jak naloží&lt;br&gt; 
-        Tvá harmonie těla&lt;br&gt;
+        Tvá harmonie z těla&lt;br&gt;
         - s výše zmíněnou myšlenkou?
     &lt;/h3&gt;
 
@@ -2660,7 +2665,8 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Raději bych do hry vložil&lt;br&gt;&#39;&#39;jinou svoji myšlenku&#39;&#39;&quot;
             &gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="51" name="TTI_fromFirstPartsProblem" tags="" position="100,725" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="52" name="TTI_fromFirstPartsProblem" tags="" position="225,725" size="100,100">/* almost any text improve of this passage should go also to TTI_fromFirstPartsIdea */
+&lt;div&gt;
     &lt;p class=&quot;tac&quot;&gt;
         &lt;&lt;if $TT.myProblem.playerInput === true&gt;&gt;
             V úvodní části hry Tělotaj&lt;br&gt;
@@ -2675,7 +2681,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 
     &lt;h3&gt;
         Chceš zažít, jak naloží&lt;br&gt; 
-        Tvá harmonie těla&lt;br&gt;
+        Tvá harmonie z těla&lt;br&gt;
         - s výše zmíněnou obtížnou myšlenkou?
     &lt;/h3&gt;
 
@@ -2686,8 +2692,8 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Raději bych do hry vložil&lt;br&gt;&#39;&#39;jinou svoji myšlenku&#39;&#39;&quot;
             &gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="52" name="VS_checkDisallowedThemes" tags="" position="225,725" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="53" name="VS_fantasyEnter" tags="" position="350,725" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="53" name="VS_checkDisallowedThemes" tags="" position="350,725" size="100,100">ToDo:
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="54" name="VS_fantasyEnter" tags="" position="475,725" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set _default = $gameCards.current[0].text.trim() ?
@@ -2736,8 +2742,8 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="VS_goForDice" tags="" position="475,725" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="55" name="VS_whoIsOnTurn" tags="alignCenter" position="600,725" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="VS_goForDice" tags="" position="600,725" size="100,100">ToDo:
+--Go For Dice--</tw-passagedata><tw-passagedata pid="56" name="VS_whoIsOnTurn" tags="alignCenter" position="725,725" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;
@@ -2746,7 +2752,7 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="56" name="VS_go" tags="" position="725,725" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="57" name="VS_go" tags="" position="850,725" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
 
 &lt;p&gt;
     VolnoSnění dovoluje jednomu či více hráčům&lt;br&gt;
@@ -2777,7 +2783,7 @@ právě teď tah!
 &lt;/p&gt;
 &lt;p class=&quot;tac&quot;&gt;
     //(Hra VolnoSnění je &#39;&#39;zdarma&#39;&#39; pro všechny bez rozdílu.)//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="57" name="VS_beforeStartControl" tags="" position="850,725" size="100,100">/*DEPENDENCIES: */
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="58" name="VS_beforeStartControl" tags="" position="975,725" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _czech = setup.DI_CONT.getService(&#39;czechLang&#39;)&gt;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
 /*\DEPENDENCIES */
@@ -2822,7 +2828,7 @@ pořadí:
 &#39;&#39;&lt;&lt;button [[SOUHLASÍ - ODSTARTOVAT|VS_whoIsOnTurn]]&gt;&gt;
     &lt;&lt;set $roundCounter = 1&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="58" name="VS_setNamesOfPlayers" tags="alignCenter" position="975,725" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="59" name="VS_setNamesOfPlayers" tags="alignCenter" position="1100,725" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
 
 &lt;&lt;if $pOrder.length &gt; 1&gt;&gt;
 &lt;h2&gt;Zadej jména hráčů:&lt;/h2&gt;
@@ -2861,7 +2867,7 @@ pořadí:
 &lt;&lt;else&gt;&gt;
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="59" name="VS_setNumbOfPlayers" tags="alignCenter" position="1100,725" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="60" name="VS_setNumbOfPlayers" tags="alignCenter" position="1225,725" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
 
 &lt;h2&gt;Pro svou novou hru&lt;br&gt;
   //VolnoSnění//&lt;br&gt;
@@ -2909,9 +2915,9 @@ pořadí:
     &lt;&lt;passageDialog &quot;Nastavení hry VolnoSnění&quot; &quot;VSD_settings&quot;&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="60" name="CompLink" tags="widget" position="1225,725" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="61" name="CompLink" tags="widget" position="100,850" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="DialogCloseButton" tags="widget" position="100,850" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="DialogCloseButton" tags="widget" position="225,850" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
 /*_args[0] is the TEXT on THE BUTTON*/
 /*_args[1] (optional) if TRUE, outer &lt;p&gt; is omitted, default FALSE*/
     &lt;&lt;if !_args[1]&gt;&gt;
@@ -2921,7 +2927,7 @@ pořadí:
 	&lt;&lt;else&gt;&gt;
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="PassageDialog" tags="widget" position="225,850" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="PassageDialog" tags="widget" position="350,850" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
 /**_args[0] is the HEADING of NEW DIALOG WINDOW
  * _args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW
  * */
@@ -2931,7 +2937,7 @@ pořadí:
 
     &lt;&lt;run _myPage.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="SeeSaw" tags="widget" position="350,850" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="SeeSaw" tags="widget" position="475,850" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
 
     /*strictly boolean
         (if true:

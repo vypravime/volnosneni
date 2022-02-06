@@ -88,8 +88,5 @@ setup.teloTaj = {
 			"spodky i vršky<br>OBOU SVÝCH CHODIDEL A PRSTŮ NA NOHOU",
 			"chodidlech či prstech na nohou"
 		]
-	},
-	collectors: {
-		lastGotoOverride: false
 	}
 };
