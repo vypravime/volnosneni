@@ -1,5 +1,8 @@
 :: TTD_exampleFeelingVsAttitude
 
+<hr>
+<hr>
+
 <h3 class="tac">
     Řekněme, že mě příjemně hřeje na hrudi.
 </h3>
@@ -35,3 +38,10 @@
     A @@.accented;druhou@@ složkou je<br>
     @@.accented;moje uraženost@@ vůči tomu.
 </p>
+
+<hr>
+<hr>
+
+<div class="pa5"></div>
+
+<<dialogCloseButton "&nbsp;0K&nbsp;">>

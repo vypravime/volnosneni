@@ -893,6 +893,27 @@
             >><</button>>
         <br>
         <<button "Ne<br>- nějak mi to ''nejde''."
-            >><</button>>
+            "TTI_notAbleToGetFeelingVsAttitude">><</button>>
+    </div>
+</div>
+
+:: TTI_notAbleToGetFeelingVsAttitude
+
+<div>
+    <h3>
+        Jestli Ti to teď nejde,<br>
+        tak si buď zapiš jiný tělesný pocit,<br>
+        který Ti překáží<br>
+        - máš-li jich na výběr nyní více...<br>
+        nebo si dej pauzu<br>
+        - a vrať se ke hře TěloTaj jindy.
+    </h3>
+
+    <div class="answers">
+        <<button "Dám si pauzu<br>- pro dnešek ''končím''"
+            "TTI_experiencedEnd">><</button>>
+        <br>
+        <<button "Zkusím si vybrat ''jiný<br>- z pocitů'', které mě štvou."
+            "TTI_fillInAnnoyingBodyFeeling">><</button>>
     </div>
 </div>
