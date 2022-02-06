@@ -840,6 +840,57 @@
 
 <div>
     <p class="tac">
-        $TT.myResistance.resistance
+        Takže sis zapsal tento pocit:<br>
+        @@.accented;$TT.myResistance.resistance@@
     </p>
+
+    <p class="tac">
+        A teď si zkus všimnout,<br>
+        že tam jsou dvě různé složky.<br>
+        Jednak je tam ten ''tělesný pochod'',<br>
+        který se nějak ozývá - to je ta první složka.<br>
+    </p>
+
+    <p class="tac">
+        A pak - jako druhá složka - je tam to,<br>
+        že Ti ten tělesný pochod ''vadí''.
+    </p>
+
+    <p class="tac">
+        Takže první složka je to, co se
+        ''@@.accented;děje v těle@@''.<br>
+        A druhá složka je
+        ''@@.accented;Tvůj postoj@@'' vůči tomu.
+    </p>
+
+    <p class="tac">
+        (Tvůj postoj je teď takový, že Ti něco vadí.)
+    </p>
+
+    <p class="tac">
+        Nemusíš se snažit to měnit.<br>
+        A nemusíš se nějak urputně přemáhat,<br>
+        abys to odhalil...<br>
+        Jen si tak zlehka zkus všimnout,<br>
+        jestli to je nebo není tak, jak píšu.
+    </p>
+
+    <h3>
+        Máš to?<br>
+        Všimnul sis, že v tom, co sis zapsal<br>
+        - jednak cítíš ten tělesný pochod...<br>
+        a pak vedle toho stojí trochu navíc<br>
+        - Tvůj postoj, že Ti to vadí?
+    </h3>
+
+    <div class="answers">
+        <<button "Asi bych potřeboval<br>- ''nějaký příklad''..."
+            >><</button>>
+        <br>
+        <<button "Ano<br>- ''mám to.''"
+            >><</button>>
+        <br>
+        <<button "Ne<br>- nějak mi to ''nejde''."
+            >><</button>>
+    </div>
 </div>
