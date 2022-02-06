@@ -154,11 +154,11 @@
     <p class="tac">
     </p>
 
-    <<if $TT.myProblem>>
+    <<if $TT.myProblem.problem>>
         <h3>
             Kdyby ses nakonec zbavil toho, co Tě sužuje:<br>
             <span style="font-variant: small-caps; font-style: normal;">
-                "$TT.myProblem"
+                "$TT.myProblem.problem"
             </span><br>
             Bylo by Ti pak lépe?
         </h3>
@@ -281,7 +281,7 @@
 
 :: TTI_itAnnoysMeNotKnowingWhatAnnoysMe
 
-/* $TT.myProblem may be set by two exits of this passage */
+/* $TT.myProblem.problem may be set by two exits of this passage */
 <div>
     <h3>
         To ale znamená...<br>
@@ -292,12 +292,12 @@
     <div class="answers">
         <<button "Ano - mrzí mě, ''že se v sobě nevyznám''."
             "TTI_IknowWhatIsAnnoyingMe">>
-            <<set $TT.myProblem = 'nevyznám se v sobě'>>
+            <<set $TT.myProblem.problem = 'nevyznám se v sobě'>>
             <</button>>
         <br>
         <<button "Spíš mě mrzí, ''že život je zamotaný''."
             "TTI_IknowWhatIsAnnoyingMe">>
-            <<set $TT.myProblem = 'život nedává smysl'>>
+            <<set $TT.myProblem.problem = 'život nedává smysl'>>
             <</button>>
         <br>
         <<button "Ne - ''problém je v něčem jiném''."
@@ -307,7 +307,7 @@
 
 :: TTI_fillInYourProblem
 
-<<set _myProblem = $TT.myProblem || 'mé trápení, však vím které'>>
+<<set _myProblem = $TT.myProblem.problem || 'mé trápení, však vím které'>>
 <div>
     <h3>
         Zapiš si tedy prosím teď stručně,<br>
@@ -321,13 +321,16 @@
     </p>
     
     <p class="tac">
-        <<textbox "$TT.myProblem" _myProblem `passage()` autofocus>>
+        <<textbox "$TT.myProblem.problem" _myProblem `passage()` autofocus>>
     </p>
 
     <div class="answers">
         <<button "Dobře... ''Mám to zapsáno''."
             "TTI_IknowWhatIsAnnoyingMe">>
-                <<set $TT.myProblem = $TT.myProblem.trim()>>
+                <<set $TT.myProblem.problem = $TT.myProblem.problem.trim()>>
+                <<if $TT.myProblem.problem>>
+                    <<set $TT.myProblem.playerInput = true>>
+                <</if>>
             <</button>>
         <br>
       //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
@@ -651,8 +654,9 @@
         <<button "Pro dnešek už raději končím...<br>- ''další ukázky nechme na jindy''."
             "TTI_experiencedEnd">><</button>>
         <br>
-        <<button "Souhlasím... ještě mi<br>- ''ukaž prosím pokračování''."
-            "TTI_fromFirstPartsIdea">><</button>>
+        <<button "Souhlasím... ještě mi<br>- ''ukaž prosím pokračování''.">>
+                <<run Engine.play('TTI_switchProblemsVsIdeas', true)>>
+            <</button>>
     </div>
 </div>
 
@@ -686,6 +690,14 @@
     </div>
 </div>
 
+:: TTI_switchProblemsVsIdeas
+
+<<if $TT.myProblem.problem>>
+    <<goto "TTI_fromFirstPartsProblem">>
+<<else>>
+    <<goto "TTI_fromFirstPartsIdea">>
+<</if>>
+
 :: TTI_fromFirstPartsIdea
 
 <div>
@@ -709,6 +721,36 @@
 
     <div class="answers">
         <<button "Ano... použijme tedy<br>''výše zmíněnou myšlenku''"
+            >><</button>>
+        <br>
+        <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
+            >><</button>>
+    </div>
+</div>
+
+:: TTI_fromFirstPartsProblem
+
+<div>
+    <p class="tac">
+        <<if $TT.myProblem.playerInput === true>>
+            V úvodní části hry Tělotaj<br>
+            jsi zmínil tuto obtíž:<br>
+        <<else>>
+            Z úvodních částí hry TěloTaj<br>
+            bych tu měl jednu obtíž,<br>
+            která se Tě možná týkala:<br>
+        <</if>>
+      ''@@.accented;"$TT.myProblem.problem"@@''
+    </p>
+
+    <h3>
+        Chceš zažít, jak naloží<br> 
+        Tvá harmonie těla<br>
+        - s výše zmíněnou obtížnou myšlenkou?
+    </h3>
+
+    <div class="answers">
+        <<button "Ano... použijme tedy<br>''výše zmíněnou obtížnou myšlenku''"
             >><</button>>
         <br>
         <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
