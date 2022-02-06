@@ -109,9 +109,3 @@
 <p class="tac">
   ''<<button [[Přijmout a vrátit se|previous()]]>><</button>>''
 </p>
-<p class="tac">
-  <<button "Restartovat a jednorázově spustit SugarCubeDebugger">>
-    <<passageDialog "Restartovat a spustit DEBUGGING?"
-                              "YouAreToEnterDebugging">>
-  <</button>>
-</p>

@@ -1,5 +1,9 @@
 :: YouAreToEnterDebugging
 
+/* DEPENDENCIES: */
+<<set _metaDater = setup.DI_CONT.getService('metaDater')>>
+/* \DEPENDENCIES */
+
 <p class="tac">
 Opravdu chceš spustit ladící mód?<br>
 Na první pohled je dost nepřehledný.<br>

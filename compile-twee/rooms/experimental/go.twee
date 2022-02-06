@@ -10,6 +10,13 @@
 </h1>
 
 <p>
+  <<button "Restartovat a jednorázově ''spustit SugarCubeDebugger''">>
+    <<passageDialog "Restartovat a spustit DEBUGGING?"
+                              "YouAreToEnterDebugging">>
+  <</button>>
+</p>
+
+<p>
     <<button "Test ''spojení se serverem''" "EX_ajaxTest">>
     <</button>>
 </p>

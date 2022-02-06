@@ -890,7 +890,7 @@
         <</button>>
         <br>
         <<button "Ano<br>- ''mám to.''"
-            >><</button>>
+            "TTI_gotFeelingVsAttitude">><</button>>
         <br>
         <<button "Ne<br>- nějak mi to ''nejde''."
             "TTI_notAbleToGetFeelingVsAttitude">><</button>>
@@ -916,4 +916,12 @@
         <<button "Zkusím si vybrat ''jiný<br>- z pocitů'', které mě štvou."
             "TTI_fillInAnnoyingBodyFeeling">><</button>>
     </div>
+</div>
+
+:: TTI_gotFeelingVsAttitude
+
+<div>
+    <p class="tac">
+
+    </p>
 </div>
