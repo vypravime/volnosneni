@@ -647,7 +647,7 @@
             "TTI_experiencedEnd">><</button>>
         <br>
         <<button "Souhlasím... ještě mi<br>- ''ukaž prosím pokračování''."
-            >><</button>>
+            "TTI_fromFirstPartsIdea">><</button>>
     </div>
 </div>
 
@@ -678,5 +678,30 @@
     <div class="answers">
         <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
             <<run UI.restart()>><</button>>
+    </div>
+</div>
+
+:: TTI_fromFirstPartsIdea
+
+<div>
+    <p class="tac">
+        Z úvodních částí hry TěloTaj,<br>
+        bych tu měl jednu myšlenku,<br>
+        která se Tě možná týkala:<br>
+      ''@@.accented;"$TT.myIdea"@@''
+    </p>
+
+    <h3>
+        Chceš zažít, jak naloží<br> 
+        Tvá harmonie těla<br>
+        - s výše zmíněnou myšlenkou?
+    </h3>
+
+    <div class="answers">
+        <<button "Ano... použijme tedy<br>''výše zmíněnou myšlenku''"
+            >><</button>>
+        <br>
+        <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
+            >><</button>>
     </div>
 </div>
