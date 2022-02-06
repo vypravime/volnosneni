@@ -852,8 +852,8 @@
     </p>
 
     <p class="tac">
-        A pak - jako druhá složka - je tam to,<br>
-        že Ti ten tělesný pochod ''vadí''.
+        A pak - jako druhá složka<br>
+        - je tam to, že Ti to ''vadí''.
     </p>
 
     <p class="tac">
@@ -884,8 +884,10 @@
     </h3>
 
     <div class="answers">
-        <<button "Asi bych potřeboval<br>- ''nějaký příklad''..."
-            >><</button>>
+        <<button "Asi bych potřeboval<br>- ''nějaký příklad''...">>
+            <<passageDialog "Příklad dvou složek:" 
+                    "TTD_exampleFeelingVsAttitude">>
+        <</button>>
         <br>
         <<button "Ano<br>- ''mám to.''"
             >><</button>>

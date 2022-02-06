@@ -1,0 +1,37 @@
+:: TTD_exampleFeelingVsAttitude
+
+<h3 class="tac">
+    Řekněme, že mě příjemně hřeje na hrudi.
+</h3>
+
+<p class="tal">
+    Pak @@.accented;první@@ složkou je<br>
+    ten tělesný pochod...<br>
+    - to že ta hruď<br>
+    z nějakého důvodu<br>
+    @@.accented;jakoby hřeje@@.
+</p>
+
+<p class="tar">
+    A @@.accented;druhou@@ složkou je<br>
+    @@.accented;moje vděčnost@@ za to.
+</p>
+
+<hr>
+
+<h3 class="tac">
+    Řekněme, že mě nepříjemně pálí na hrudi.
+</h3>
+
+<p class="tal">
+    Pak @@.accented;první@@ složkou je<br>
+    ten tělesný pochod...<br>
+    - to že ta hruď<br>
+    z nějakého důvodu<br>
+    @@.accented;jakoby hřeje@@.
+</p>
+
+<p class="tar">
+    A @@.accented;druhou@@ složkou je<br>
+    @@.accented;moje uraženost@@ vůči tomu.
+</p>
