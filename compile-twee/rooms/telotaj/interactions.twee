@@ -555,7 +555,7 @@
         podivné či obtížné pocity... a mrkni se,<br>
         jestli Ti ty pocity vadí<br>
         - jestli máš
-        @@.accented;nutkání se jich zbavit<br>
+        @@.accented;nutkání se Těch pocitů zbavit<br>
         ...@@<br>
         nebo jestli ty pocity jsou sice možná nepříjemné,<br>
         ale zároveň
@@ -610,7 +610,7 @@
             "TTI_OKFeelingsInAllBody">><</button>>
         <br>
         <<button "Popravdě... v mém těle cítím<br>''něco - co mi teď vadí''."
-            >><</button>>
+            "TTI_fillInAnnoyingBodyFeeling">><</button>>
     </div>
 </div>
 
@@ -666,7 +666,7 @@
         <<button "Pro dnešek už raději končím...<br>- ''další ukázky nechme na jindy''."
             "TTI_experiencedEnd">><</button>>
         <br>
-        <<button "Souhlasím... ještě mi<br>- ''ukaž prosím pokračování''.">>
+        <<button "Souhlasím... ještě mi prosím ukaž<br>- ''to pokračování s myšlenkami''.">>
                 <<run Engine.play('TTI_switchProblemsVsIdeas', true)>>
             <</button>>
     </div>
@@ -796,4 +796,50 @@
         <<button "''Hmmm...''"
             "TTI_fillInYourIdea">><</button>>
     </div>
+</div>
+
+:: TTI_fillInAnnoyingBodyFeeling
+
+<<set _resistance = $TT.myResistance.resistance || 'ten pocit, co mě tak štve'>>
+<div>
+    <h3>
+        Zapiš si tedy prosím teď stručně,<br>
+        co je zač ten pocit, který se nyní<br>
+        odehrává v některé z částí Tvého těla<br>
+        - pocit, kterého se teď chceš zbavit:
+    </h3>
+
+    <p class="tac">
+        (Vadí-li Ti víc různých pocitů,<br>
+         vyber si kterýkoliv z nich,<br>
+         který Ti přijde výrazný.)
+    </p>
+    
+    <p class="tac">
+        <<textbox "$TT.myResistance.resistance" _resistance `passage()` autofocus>>
+    </p>
+
+    <div class="answers">
+        <<button "Dobře... ''Mám to zapsáno''.">>
+                <<set $TT.myResistance.resistance = $TT.myResistance.resistance.trim()>>
+                <<if $TT.myResistance.resistance>>
+                    <<goto "TTI_soWeHaveResistance">>
+                <<else>>
+                    <<passageDialog "Vyplň prosím políčko!" 
+                                         "FillInputDialog1">>
+                <</if>>
+            <</button>>
+        <br>
+      //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
+                <<passageDialog "Otázka soukromí" "TTD_whoWillSeeInputs">>
+            <</button>>//
+    </div>
+</div>
+
+:: TTI_soWeHaveResistance
+
+<div>
+    <p class="tac">
+        $TT.myResistance.resistance
+    </p>
 </div>

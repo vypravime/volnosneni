@@ -19,6 +19,9 @@
         problem: '',
         playerInput: false
     },
+    myResistance: {
+        resistance: ''
+    },
     collected: {
         fromBegin: true,
         partsToAsk: [],
