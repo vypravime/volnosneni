@@ -903,7 +903,7 @@
     <h3>
         Jestli Ti to teď nejde,<br>
         tak si buď zapiš jiný tělesný pocit,<br>
-        který Ti překáží<br>
+        který Ti překáží... a zkus to s ním<br>
         - máš-li jich na výběr nyní více...<br>
         nebo si dej pauzu<br>
         - a vrať se ke hře TěloTaj jindy.
@@ -915,6 +915,10 @@
         <br>
         <<button "Zkusím si vybrat ''jiný<br>- z pocitů'', které mě štvou."
             "TTI_fillInAnnoyingBodyFeeling">><</button>>
+        <br>
+        <<button "Nebyl by tu ještě nějaký<br>- odlišný druh ''inspirace''?">>
+                
+            <</button>>
     </div>
 </div>
 
@@ -1003,6 +1007,54 @@
 :: TTI_gotLove
 
 <div>
+    <p class="tac">
+        Takže tu máme toto:<br>
+        @@.accented;$TT.myResistance.resistance@@
+    </p>
+
+    <p class="tac">
+        A víme, že v tom je<br>
+        jak ten @@.accented;telesný pochod@@, jenž cítíme<br>
+        tak @@.accented;náš postoj k tomu@@, co cítíme
+    </p>
+
+    <p class="tac">
+        A pak je kdesi v těle nebo uvnitř v nás<br>
+        přítomná také @@.accented;Láska...<br>
+        ač tichý, i tak ten nejkrásnější pocit,<br>
+        který známe a který nás dojímá@@.
+    </p>
+
+    <p class="tac">
+        Můžeš... ale také nemusíš zkoušet měnit<br>
+        - to co se děje v těle, že to cítíš...<br>
+        - nebo Tvůj postoj k tomu.
+    </p>
+
+    <h3>
+        Zkus se však prosím chvíli,<br>
+        jen tak volně a tiše dívat<br>
+        na tu Lásku v Tobě.<br>
+        Jen se na ni dívej.<br>
+        Možná, že ta Láska v Tobě<br>
+        sama od sebe třeba<br>
+        jaksi nepochopitelně<br>
+        usmíří Tvůj postoj vůči tomu,<br>
+        co cítíš, že se děje v Tvém těle.<br>
+        Možná, že po chvíli dívání se<br>
+        na Lásku v Tobě zjistíš...<br>
+        - že ten pocit ve Tvém těle<br>
+        se sice vůbec nezměnil<br>
+        - ale že už Ti nepřekáží?
+    </h3>
+
+    <div class="answers">
+        <<button "Jejda... ''změnilo'' se to.<br>Ten pocit v těle<br>už mi opravdu ''nevadí''."
+            >><</button>>
+        <br>
+        <<button "Ba ne... nic se ''nezměnilo''.<br>To, co se děje v těle,<br>mi pořád ''překáží''."
+            "TTI_notAbleToGetFeelingVsAttitude">><</button>>
+    </div>
 </div>
 
 :: TTI_giveLove
