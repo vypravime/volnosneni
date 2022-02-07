@@ -741,7 +741,7 @@
 
     <div class="answers">
         <<button "Ano... použijme tedy<br>''výše zmíněnou myšlenku''"
-            >><</button>>
+            "TTI_ideasBeingFilledByBodyFeelings">><</button>>
         <br>
         <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
             "TTI_beforeLongReturnToNewIdea">>
@@ -774,7 +774,7 @@
 
     <div class="answers">
         <<button "Ano... použijme tedy<br>''výše zmíněnou obtížnou myšlenku''"
-            >><</button>>
+            "TTI_ideasBeingFilledByBodyFeelings">><</button>>
         <br>
         <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
             "TTI_beforeLongReturnToNewIdea">>
@@ -1325,4 +1325,42 @@
         <<button "''Ne''"
             "TTI_notAbleToGetFeelingVsAttitude">><</button>>
     </div>
+</div>
+
+:: TTI_ideasBeingFilledByBodyFeelings
+
+<div>
+    <p class="tac">
+        Pokud máš někde po těle pocit,<br>
+        kterého máš zrovna teď<br>
+        nutkání se nejradši zbavit...<br>
+        - <<link "začni hru TěloTaj opět od začátku">>
+                <<run UI.restart()>>
+            <</link>><br>
+        - @@.accented;nebo si dej pauzu a zkus to jiný den@@.
+    </p>
+
+    <p class="tac">
+        Do další části hry TěloTaj<br>
+        je daleko smysluplnější<br>
+      //(a někdy i bezpečnější)//<br>
+        - @@.accented;vstupovat ve chvílích,<br>
+        kdy jsi zadobře se svým tělem@@...<br>
+        neboť se neoddáš nevědomým strachům,<br>
+        nýbrž se odevzdáš moudrosti a rovnováze.
+    </p>
+
+    <p class="tac">
+     //(Může se v těle dít něco nepříjemného,<br>
+        ale je žádoucí, aby Ti to jaksi<br>
+        dojemně nepřekáželo<br>
+        - ne že se nutíš, aby to nepřekáželo<br>
+        - nýbrž že to je v pořádku samo od sebe,<br>
+        bez námahy.)//
+    </p>
+
+    <p class="tac">
+        <<button "''Vstup''"
+            >><</button>>
+    </p>
 </div>
