@@ -1278,4 +1278,30 @@
 :: TTI_knownGiftLoveObstacle
 
 <div>
+    <p class="tac">
+        Takže jsme si řekli podmínku,<br>
+        proč by sis možná nemohl dát Lásku...
+    </p>
+
+    <p class="tac">
+        ... a následujícím trikem se<br>
+        letmo dotkneme toho, že Láska<br>
+        - je bezpodmínečná ...
+    </p>
+
+    <h3 class="accented">
+        Teď si prosím řekni,<br>
+        že sám sobě Lásku dáváš,<br>
+        i když ta Tvá podmínka,<br>
+        není splněná:
+    </h3>
+
+    <div class="answers">
+        <<button "Tak já si teda Lásku dávám,<br>i když $TT.myObstacle.obstacle!<br><br>I přesto,<br>že $TT.myObstacle.obstacle,<br>si nyní dávám Lásku."
+            >><</button>>
+        <br>
+        <br>
+        <<button "Omlouvám se...<br>ale toto si teď říci nedokážu..."
+            "TTI_experiencedEnd">><</button>>
+    </div>
 </div>
