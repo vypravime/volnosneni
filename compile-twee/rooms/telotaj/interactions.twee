@@ -573,7 +573,8 @@
     <p class="tac">
         (Někdy když například člověka něco byť i hodně bolí<br>
          mu to vlastně sice trochu nepochopitelně, ale přesto<br>
-         - vůbec nepřekáží - třeba když odpočívá<br>
+         - vůbec nepřekáží...<br>
+         třeba když odpočívá...<br>
          nebo když je zaujatý něčím lákavým...<br>
          jindy ta samá bolavá část je velmi iritující.)
     </p>
@@ -1361,6 +1362,91 @@
 
     <p class="tac">
         <<button "''Vstup''"
-            >><</button>>
+            "TTI_connectedInnerWorld">><</button>>
     </p>
+</div>
+
+:: TTI_connectedInnerWorld
+
+<div>
+    <p class="tac">
+        Dále Tě čeká<br>
+        v podstatě dost obyčejný<br>
+        na první pohled skoro až fádní<br>
+        experiment.
+    </p>
+
+    <p class="tac">
+        Naučili jsme se snažit se držet<br>
+        své myšlenky a své pocity odděleně.<br>
+    </p>
+
+    <p class="tac">
+        A teď to zkusíme zase spojit.
+    </p>
+
+    <p class="tac">
+        Tady máš svou myšlenku:<br>
+        @@.accented;$TT.myIdea.idea@@
+    </p>
+
+    <p class="tac">
+        Možná, že tato myšlenka<br>
+        se v reálném životě týká<br>
+        různých osob, situací, termínů...<br>
+        Ale pro tuto chvíli je to jen myšlenka,<br>
+        která visí kdesi uvnitř Tebe:
+    </p>
+
+    <p class="tac">
+        @@.accented;$TT.myIdea.idea@@
+    </p>
+
+    <p class="tac">
+        Přečetl sis ji... a protože umíš jazyk,<br>
+        ve kterém je formulovaná - žije teď v Tobě.<br>
+    </p>
+
+    <p class="tac">
+        A spolu s ní žijí uvnitř Tebe<br>
+        všechny Ty tělesné pocity,<br>
+        kterými jsme se do teď zabývali.<br>
+    </p>
+
+    <p class="tac">
+        Nech ty pocity,<br>
+        aby sdílely prostor s tou myšlenkou.<br>
+        Nemusíš pro to nic dělat...<br>
+        takto se to děje odjakživa a vždy.<br>
+        Jen to tak nech a chvíli se dívej.
+    </p>
+
+    <p class="tac">
+        Možná, že se nestane vůbec nic.
+    </p>
+
+    <p class="tac">
+        Možná, že ne všechny, ale jen některý pocit<br>
+        se dotkne té myšlenky... a změní ji...<br>
+        otevře ji... zbaví hranic...<br>
+        dodá jí jinou chuť.
+    </p>
+
+    <h3>
+        Zkusil jsi to?<br>
+        Nemusíš to nijak řídit,<br>
+        Ono se to umí řídit samo.<br>
+        Nech tomu čas.<br>
+        A když už Ti to po volné chvíli<br>
+        bude stačit... prozraď mi poté<br>
+        - jestli jsi to alespoň zkusil?
+    </h3>
+
+    <div class="answers">
+        <<button "''Ano...''"
+            "TTI_experiencedEnd">><</button>>
+        <br>
+        <<button "''Ne...''"
+            "TTI_experiencedEnd">><</button>>
+    </div>
 </div>
