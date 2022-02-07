@@ -1014,7 +1014,7 @@
 
     <p class="tac">
         A víme, že v tom je<br>
-        jak ten @@.accented;telesný pochod@@, jenž cítíme<br>
+        jak ten @@.accented;tělesný pochod@@, jenž cítíme<br>
         tak @@.accented;náš postoj k tomu@@, co cítíme
     </p>
 
@@ -1078,6 +1078,71 @@
 </div>
 
 :: TTI_giveLove
+
+<div>
+    <p class="tac">
+        Pokud teď Lásku necítíš...<br>
+        - tak si ji zkus dát...<br>
+        daruj sobě Lásku,<br>
+        - abys ji pocítil.
+    </p>
+
+    <p class="tac">
+        Nevíš sice přesně, co to Láska je...<br>
+        - ale to je v pořádku<br>
+        - nikdo z nás nevíme, co to Láska je.
+    </p>
+
+    <p class="tac">
+        Nevíš sice vůbec, jak si Lásku dát...
+        - ale to je v pořádku<br>
+        - nikdo z nás nevíme, jak si Lásku dát.
+    </p>
+
+    <p class="tac">
+        Nechápeš to...<br>
+        - to je však v pořádku<br>
+        - nikdo z nás to nechápeme.
+    </p>
+
+    <h3>
+        I tak si teď Lásku dej.<br>
+        Daruj si ji.<br>
+        Nemusíš se urputně snažit.<br>
+        Udělej to jen tak zlehka.
+    </h3>
+
+    <div class="answers">
+        <<button "Tak já jsem si tedy ''Lásku''<br>bezvýhradně ''daroval''."
+            "TTI_afterLoveGift">><</button>>
+        <br>
+        <<button "Měl bych sice<br>nějaké výhrady<br>či pochybnosti,<br>ale i tak jsem si<br>''zkusil Lásku dát''."
+            "TTI_afterLoveGift">><</button>>
+    </div>
+</div>
+
+:: TTI_afterLoveGift
+
+<div>
+    <h3>
+        Cítíš teď v sobě<br>
+        alespoň v náznaku<br>
+        třeba na pozadí<br>
+        Lásku?<br>
+        - ten tichý krásný pocit?<br>
+        - jenž Tě zaopatřuje a dojímá?
+    </h3>
+
+    <div class="answers">
+        <<button "''Ano''"
+            "TTI_gotLove">><</button>>
+        <br>
+        <<button "''Ne''"
+            "TTI_loveGiftDidNotWork">><</button>>
+    </div>
+</div>
+
+:: TTI_loveGiftDidNotWork
 
 <div>
 </div>

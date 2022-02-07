@@ -2977,7 +2977,7 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
 
     &lt;p class=&quot;tac&quot;&gt;
         A víme, že v tom je&lt;br&gt;
-        jak ten @@.accented;telesný pochod@@, jenž cítíme&lt;br&gt;
+        jak ten @@.accented;tělesný pochod@@, jenž cítíme&lt;br&gt;
         tak @@.accented;náš postoj k tomu@@, co cítíme
     &lt;/p&gt;
 
@@ -3035,8 +3035,65 @@ pro mnohé účinnější než vstřebávání dvouhodinového videa.)//
             &quot;TTI_fillInAnnoyingBodyFeeling&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="62" name="TTI_giveLove" tags="" position="225,850" size="100,100">&lt;div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="63" name="VS_checkDisallowedThemes" tags="" position="350,850" size="100,100">ToDo:
---Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="64" name="VS_fantasyEnter" tags="" position="475,850" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
+    &lt;p class=&quot;tac&quot;&gt;
+        Pokud teď Lásku necítíš...&lt;br&gt;
+        - tak si ji zkus dát...&lt;br&gt;
+        daruj sobě Lásku,&lt;br&gt;
+        - abys ji pocítil.
+    &lt;/p&gt;
+
+    &lt;p class=&quot;tac&quot;&gt;
+        Nevíš sice přesně, co to Láska je...&lt;br&gt;
+        - ale to je v pořádku&lt;br&gt;
+        - nikdo z nás nevíme, co to Láska je.
+    &lt;/p&gt;
+
+    &lt;p class=&quot;tac&quot;&gt;
+        Nevíš sice vůbec, jak si Lásku dát...
+        - ale to je v pořádku&lt;br&gt;
+        - nikdo z nás nevíme, jak si Lásku dát.
+    &lt;/p&gt;
+
+    &lt;p class=&quot;tac&quot;&gt;
+        Nechápeš to...&lt;br&gt;
+        - to je však v pořádku&lt;br&gt;
+        - nikdo z nás to nechápeme.
+    &lt;/p&gt;
+
+    &lt;h3&gt;
+        I tak si teď Lásku dej.&lt;br&gt;
+        Daruj si ji.&lt;br&gt;
+        Nemusíš se urputně snažit.&lt;br&gt;
+        Udělej to jen tak zlehka.
+    &lt;/h3&gt;
+
+    &lt;div class=&quot;answers&quot;&gt;
+        &lt;&lt;button &quot;Tak já jsem si tedy &#39;&#39;Lásku&#39;&#39;&lt;br&gt;bezvýhradně &#39;&#39;daroval&#39;&#39;.&quot;
+            &quot;TTI_afterLoveGift&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+        &lt;br&gt;
+        &lt;&lt;button &quot;Měl bych sice&lt;br&gt;nějaké výhrady&lt;br&gt;či pochybnosti,&lt;br&gt;ale i tak jsem si&lt;br&gt;&#39;&#39;zkusil Lásku dát&#39;&#39;.&quot;
+            &quot;TTI_afterLoveGift&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="63" name="TTI_afterLoveGift" tags="" position="350,850" size="100,100">&lt;div&gt;
+    &lt;h3&gt;
+        Cítíš teď v sobě&lt;br&gt;
+        alespoň v náznaku&lt;br&gt;
+        třeba na pozadí&lt;br&gt;
+        Lásku?&lt;br&gt;
+        - ten tichý krásný pocit?&lt;br&gt;
+        - jenž Tě zaopatřuje a dojímá?
+    &lt;/h3&gt;
+
+    &lt;div class=&quot;answers&quot;&gt;
+        &lt;&lt;button &quot;&#39;&#39;Ano&#39;&#39;&quot;
+            &quot;TTI_gotLove&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+        &lt;br&gt;
+        &lt;&lt;button &quot;&#39;&#39;Ne&#39;&#39;&quot;
+            &quot;TTI_loveGiftDidNotWork&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="64" name="TTI_loveGiftDidNotWork" tags="" position="475,850" size="100,100">&lt;div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="65" name="VS_checkDisallowedThemes" tags="" position="600,850" size="100,100">ToDo:
+--Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="66" name="VS_fantasyEnter" tags="" position="725,850" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set _default = $gameCards.current[0].text.trim() ?
@@ -3085,8 +3142,8 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="VS_goForDice" tags="" position="600,850" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="66" name="VS_whoIsOnTurn" tags="alignCenter" position="725,850" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="VS_goForDice" tags="" position="850,850" size="100,100">ToDo:
+--Go For Dice--</tw-passagedata><tw-passagedata pid="68" name="VS_whoIsOnTurn" tags="alignCenter" position="975,850" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;
@@ -3095,7 +3152,7 @@ právě teď tah!
 	&quot;VS_fantasyEnter&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;br&gt;&amp;nbsp;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="67" name="VS_go" tags="" position="850,850" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="69" name="VS_go" tags="" position="1100,850" size="100,100">&lt;h1&gt;Vítej ve hře &quot;VolnoSnění&quot;&lt;/h1&gt;
 
 &lt;p&gt;
     VolnoSnění dovoluje jednomu či více hráčům&lt;br&gt;
@@ -3126,7 +3183,7 @@ právě teď tah!
 &lt;/p&gt;
 &lt;p class=&quot;tac&quot;&gt;
     //(Hra VolnoSnění je &#39;&#39;zdarma&#39;&#39; pro všechny bez rozdílu.)//
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="68" name="VS_beforeStartControl" tags="" position="975,850" size="100,100">/*DEPENDENCIES: */
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="70" name="VS_beforeStartControl" tags="" position="1225,850" size="100,100">/*DEPENDENCIES: */
 &lt;&lt;set _czech = setup.DI_CONT.getService(&#39;czechLang&#39;)&gt;&gt;
 &lt;&lt;set _fPAm = setup.fPStartADefault&gt;&gt;
 /*\DEPENDENCIES */
@@ -3171,7 +3228,7 @@ pořadí:
 &#39;&#39;&lt;&lt;button [[SOUHLASÍ - ODSTARTOVAT|VS_whoIsOnTurn]]&gt;&gt;
     &lt;&lt;set $roundCounter = 1&gt;&gt;
 &lt;&lt;/button&gt;&gt;&#39;&#39;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="69" name="VS_setNamesOfPlayers" tags="alignCenter" position="1100,850" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="71" name="VS_setNamesOfPlayers" tags="alignCenter" position="100,975" size="100,100">&lt;&lt;set _nextRoom = &#39;VS_beforeStartControl&#39;&gt;&gt;
 
 &lt;&lt;if $pOrder.length &gt; 1&gt;&gt;
 &lt;h2&gt;Zadej jména hráčů:&lt;/h2&gt;
@@ -3210,7 +3267,7 @@ pořadí:
 &lt;&lt;else&gt;&gt;
     &#39;&#39;&lt;&lt;button &quot;HRÁT sám/sama BEZ SPOLUHRÁČŮ&quot; _nextRoom&gt;&gt;&lt;&lt;set $pOrderShuffled = false&gt;&gt;&lt;&lt;/button&gt;&gt;&#39;&#39;
 &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="70" name="VS_setNumbOfPlayers" tags="alignCenter" position="1225,850" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="72" name="VS_setNumbOfPlayers" tags="alignCenter" position="225,975" size="100,100">&lt;&lt;set _count = $pOrder.length&gt;&gt;
 
 &lt;h2&gt;Pro svou novou hru&lt;br&gt;
   //VolnoSnění//&lt;br&gt;
@@ -3258,9 +3315,9 @@ pořadí:
     &lt;&lt;passageDialog &quot;Nastavení hry VolnoSnění&quot; &quot;VSD_settings&quot;&gt;&gt;
   &lt;&lt;/link&gt;&gt;
 
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="71" name="CompLink" tags="widget" position="100,975" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="73" name="CompLink" tags="widget" position="350,975" size="100,100">&lt;&lt;widget &quot;compLink&quot; container&gt;&gt;
     &lt;&lt;link _contents&gt;&gt;_args[0]&lt;&lt;/link&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="DialogCloseButton" tags="widget" position="225,975" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="DialogCloseButton" tags="widget" position="475,975" size="100,100">&lt;&lt;widget &quot;dialogCloseButton&quot;&gt;&gt;
 /*_args[0] is the TEXT on THE BUTTON*/
 /*_args[1] (optional) if TRUE, outer &lt;p&gt; is omitted, default FALSE*/
     &lt;&lt;if !_args[1]&gt;&gt;
@@ -3270,7 +3327,7 @@ pořadí:
 	&lt;&lt;else&gt;&gt;
 	    &lt;&lt;include &quot;TempDialCloseButton&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="PassageDialog" tags="widget" position="350,975" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="PassageDialog" tags="widget" position="600,975" size="100,100">&lt;&lt;widget &quot;passageDialog&quot;&gt;&gt;
 /**_args[0] is the HEADING of NEW DIALOG WINDOW
  * _args[1] is the NAME of PASSAGE to OPEN in DIALOG WINDOW
  * */
@@ -3280,7 +3337,7 @@ pořadí:
 
     &lt;&lt;run _myPage.openPassageDialog(_args[0], _args[1])&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="SeeSaw" tags="widget" position="475,975" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="SeeSaw" tags="widget" position="725,975" size="100,100">&lt;&lt;widget &quot;seeSaw&quot; container&gt;&gt;
 
     /*strictly boolean
         (if true:
