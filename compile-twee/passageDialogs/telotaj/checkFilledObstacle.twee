@@ -1,0 +1,21 @@
+:: TTD_checkFilledObstacle
+
+<<goto `passage()`>>
+<p class="tal">
+    Výplnil jsi tedy tuto překážku:
+</p>
+
+<p class="tac accented">
+    //V otázce dát sobě Lásku,<br>
+    mi možná brání to,<br>
+    že&nbsp;$TT.myObstacle.obstacle!//
+</p>
+
+<p class="tac">
+    <<button "Ano...<br>to ''souhlasí''."
+        "TTI_knownGiftLoveObstacle">>
+        <<run Dialog.close()>>
+    <</button>>
+</p>
+
+<<dialogCloseButton "Aha...<br> ''potřebuji to opravit''.">>

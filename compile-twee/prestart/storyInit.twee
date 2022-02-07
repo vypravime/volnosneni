@@ -22,6 +22,9 @@
     myResistance: {
         resistance: ''
     },
+    myObstacle: {
+        obstacle: ''
+    },
     collected: {
         fromBegin: true,
         partsToAsk: [],

@@ -307,7 +307,7 @@
 
 :: TTI_fillInYourProblem
 
-<<set _myProblem = $TT.myProblem.problem || 'mé trápení, však vím které'>>
+<<set _myProblem = $TT.myProblem.problem>>
 <div>
     <h3>
         Zapiš si tedy prosím teď stručně,<br>
@@ -321,7 +321,7 @@
     </p>
     
     <p class="tac">
-        <<textbox "$TT.myProblem.problem" _myProblem `passage()` autofocus>>
+        <<textbox "$TT.myProblem.problem" _myProblem `passage()`>>
     </p>
 
     <div class="answers">
@@ -338,6 +338,10 @@
             <</button>>//
     </div>
 </div>
+<<done>>
+    <<run $('input').attr(
+      'placeholder', 'mé trápení, však vím které')>>
+<</done>>
 
 :: TTI_waitingWhetherItGetsBetter
 
@@ -367,7 +371,7 @@
 :: TTI_fillInYourIdea
 
 /* $TT.myIdea.playerInput is set by the only exit of this passage */
-<<set _myIdea = $TT.myIdea.idea || 'má idea, však vím která'>>
+<<set _myIdea = $TT.myIdea.idea>>
 <div>
     <h3>
         Výborně, zapiš si tedy teď prosím<br>
@@ -380,7 +384,7 @@
     </p>
     
     <p class="tac">
-        <<textbox "$TT.myIdea.idea" _myIdea `passage()` autofocus>>
+        <<textbox "$TT.myIdea.idea" _myIdea `passage()`>>
     </p>
 
     <div class="answers">
@@ -400,6 +404,10 @@
             <</button>>//
     </div>
 </div>
+<<done>>
+    <<run $('input').attr(
+      'placeholder', 'má idea, však vím která')>>
+<</done>>
 
 
 /***
@@ -800,7 +808,7 @@
 
 :: TTI_fillInAnnoyingBodyFeeling
 
-<<set _resistance = $TT.myResistance.resistance || 'ten pocit, co mě tak štve'>>
+<<set _resistance = $TT.myResistance.resistance>>
 <div>
     <h3>
         Zapiš si tedy prosím teď stručně,<br>
@@ -816,7 +824,7 @@
     </p>
     
     <p class="tac">
-        <<textbox "$TT.myResistance.resistance" _resistance `passage()` autofocus>>
+        <<textbox "$TT.myResistance.resistance" _resistance `passage()`>>
     </p>
 
     <div class="answers">
@@ -835,6 +843,10 @@
             <</button>>//
     </div>
 </div>
+<<done>>
+    <<run $('input').attr(
+      'placeholder', 'ten pocit, co mě tak štve')>>
+<</done>>
 
 :: TTI_soWeHaveResistance
 
@@ -1144,6 +1156,7 @@
 
 :: TTI_loveGiftDidNotWork
 
+<<set _myObstacle = $TT.myObstacle.obstacle>>
 <div>
     <p class="tac">
         Takže sis Lásku daroval...<br>
@@ -1196,20 +1209,73 @@
     </p>
 
     <p class="tac">
-    Takže problém je, že<br>
-    - se mnou nesouhlasíš...<br>
-    - na Lásku vůbec nevěříš...<br>
-    - Lásku nikdo nedává Tobě...<br>
-    - nechápeš, o čem to tu píšu...<br>
-    - tomu nerozumíš...<br>
-    - jsi to netrénoval dost dlouho...<br>
-    - nevíš, jak to udělat...<br>
-    - Tě ruší ten hluk kolem...<br>
-    - ten pocit v těle je příliš strašný...<br>
-    - Tě tlačí termíny...<br>
-    - Tě včera seřval šéf...<br>
-    - sis neodpustil...<br>
-    - nevíš, proč to nezafungovalo<br>
-    - ...
+        Takže problém je, že<br>
+        - se mnou nesouhlasíš...<br>
+        - na Lásku vůbec nevěříš...<br>
+        - Lásku nikdo nedává Tobě...<br>
+        - nechápeš, o čem to tu píšu...<br>
+        - tomu nerozumíš...<br>
+        - jsi to netrénoval dost dlouho...<br>
+        - nevíš, jak to udělat...<br>
+        - Tě ruší ten hluk kolem...<br>
+        - ten pocit v těle je příliš strašný...<br>
+        - Tě tlačí termíny...<br>
+        - Tě včera seřval šéf...<br>
+        - sis neodpustil...<br>
+        - nevíš, proč to nezafungovalo<br>
+        - ...
     </p>
+    
+    <p class="tac">
+        //(Všechny příklady výše<br>
+         - jsou fiktivní...<br>
+         a nemusí se Tě týkat.)//
+    </p>
+    
+    <h3>
+        Sděl mi prosím,<br>
+        v čem by mohla být<br>
+        Tvá skutečná překážka<br>
+        - proč si teď nemůžeš lásku dát?<br>
+        Vím,<br>
+        že to nejde říci s jistotou.<br>
+        Něco si tipni...<br>
+        ale buď prosím<br>
+        - aspoň trochu upřímný:
+    </h3>
+    <p class="tac">
+        (Napadá-li tě víc možných překážek,<br>
+         vyber si tu,<br>
+         která je asi jedna z hlavních.)
+    </p>
+    
+    <p class="tac">
+        Překáží mi,
+        že&nbsp;<<textbox "$TT.myObstacle.obstacle" _myObstacle `passage()`>>!
+    </p>
+
+    <div class="answers">
+        <<button "Dobře... ''Mám to zapsáno''.">>
+                <<set $TT.myObstacle.obstacle = $TT.myObstacle.obstacle.trim()>>
+                <<if $TT.myObstacle.obstacle>>
+                    <<passageDialog "Mínil jsi to tak?" "TTD_checkFilledObstacle">>
+                <<else>>
+                    <<passageDialog "Vyplň prosím políčko!" 
+                                         "FillInputDialog1">>
+                <</if>>
+            <</button>>
+        <br>
+      //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
+                <<passageDialog "Otázka soukromí" "TTD_whoWillSeeInputs">>
+            <</button>>//
+    </div>
+</div>
+<<done>>
+    <<run $('input').attr(
+      'placeholder', 'jsem tak nervózní')>>
+<</done>>
+
+:: TTI_knownGiftLoveObstacle
+
+<div>
 </div>
