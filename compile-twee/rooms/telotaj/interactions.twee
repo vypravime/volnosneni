@@ -1298,10 +1298,31 @@
 
     <div class="answers">
         <<button "Tak já si teda Lásku dávám,<br>i když $TT.myObstacle.obstacle!<br><br>I přesto,<br>že $TT.myObstacle.obstacle,<br>si nyní dávám Lásku."
-            >><</button>>
+            "TTI_loveGivenEvenWithObstacle">><</button>>
         <br>
         <br>
         <<button "Omlouvám se...<br>ale toto si teď říci nedokážu..."
             "TTI_experiencedEnd">><</button>>
+    </div>
+</div>
+
+:: TTI_loveGivenEvenWithObstacle
+
+<div>
+    <h3>
+        Cítíš teď v sobě<br>
+        alespoň v náznaku<br>
+        třeba na pozadí<br>
+        Lásku?<br>
+        - ten tichý krásný pocit?<br>
+        - jenž Tě zaopatřuje a dojímá?
+    </h3>
+
+    <div class="answers">
+        <<button "''Ano''"
+            "TTI_gotLove">><</button>>
+        <br>
+        <<button "''Ne''"
+            "TTI_notAbleToGetFeelingVsAttitude">><</button>>
     </div>
 </div>

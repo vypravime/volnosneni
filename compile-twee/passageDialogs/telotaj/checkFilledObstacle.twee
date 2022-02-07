@@ -1,6 +1,5 @@
 :: TTD_checkFilledObstacle
 
-<<goto `passage()`>>
 <p class="tal">
     Výplnil jsi tedy tuto překážku:
 </p>
