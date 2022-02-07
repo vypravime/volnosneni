@@ -922,6 +922,46 @@
 
 <div>
     <p class="tac">
+        Takže máme toto:<br>
+        @@.accented;$TT.myResistance.resistance@@
+    </p>
 
+    <p class="tac">
+        A vidíme v tom dvě složky:
+    </p>
+    
+    <ul>
+        <li>
+            @@.accented;Vnímáme@@,<br>
+            že se v těle něco děje.
+        </li>
+        <li>
+            @@.accented;Stavíme se k tomu@@ tak,<br>
+            že nám to vadí.
+        </li>
+    </ul>
+
+    <p class="tac">
+        Můžeme to nechat tak,<br>
+        jak to je.<br>
+        I to, že to vnímáme.<br>
+        I to, jak se k tomu stavíme.<br>
+        Nemusíme se vůbec snažit to měnit.<br>
+    </p>
+
+    <p class="tac">
+        ... ... ...
+    </p>
+
+    <p class="tac">
+        A teď si navíc potřebujeme všimnout,<br>
+        že tam je ještě něco dalšího:<br>
+        //ten nejkrásnější pocit,<br>
+        jaký známe:<br>
+        @@.accented;Láska@@//
+    </p>
+
+    <p class="tac">
+        ...
     </p>
 </div>
