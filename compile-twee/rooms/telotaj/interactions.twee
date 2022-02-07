@@ -917,7 +917,7 @@
             "TTI_fillInAnnoyingBodyFeeling">><</button>>
         <br>
         <<button "Nebyl by tu ještě nějaký<br>- odlišný druh ''inspirace''?">>
-                
+                <<passageDialog "Alternativa" "TTD_readIn6minutes">>
             <</button>>
     </div>
 </div>
