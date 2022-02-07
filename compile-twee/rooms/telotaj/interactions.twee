@@ -1049,11 +1049,31 @@
     </h3>
 
     <div class="answers">
-        <<button "Jejda... ''změnilo'' se to.<br>Ten pocit v těle<br>už mi opravdu ''nevadí''."
-            >><</button>>
+        <<button "Jejda... ''změnilo'' se to.<br>Toto: //\"$TT.myResistance.resistance\"//<br>- mi nyní jaksi nepochopitelně ''přestalo vadit''."
+            "TTI_feelYourBodyFree">><</button>>
         <br>
-        <<button "Ba ne... nic se ''nezměnilo''.<br>To, co se děje v těle,<br>mi pořád ''překáží''."
+        <<button "Ba ne... nic se ''nezměnilo''.<br>Toto: //\"$TT.myResistance.resistance\"//<br>- mi pořád ''překáží''."
             "TTI_notAbleToGetFeelingVsAttitude">><</button>>
+    </div>
+</div>
+
+:: TTI_feelYourBodyFree
+
+<div>
+    <h3>
+        A jak to máš nyní<br>
+        s ostatními pocity po těle?<br>
+        Možná, že ani ostatní tělesné pochody<br>
+        - byť by některé mohly být i nepříjemné<br>
+        - Ti už jaksi nepochopitelně nepřekáží?
+    </h3>
+
+    <div class="answers">
+        <<button "V těle už ''nezůstalo nic''<br>- čeho bych nyní měl<br>''nutkání se zbavit''"
+            "TTI_OKFeelingsInAllBody">><</button>>
+        <br>
+        <<button "''Jeden či více''<br>pocitů po těle<br>- ''mi teď stále vadí''."
+            "TTI_fillInAnnoyingBodyFeeling">><</button>>
     </div>
 </div>
 
