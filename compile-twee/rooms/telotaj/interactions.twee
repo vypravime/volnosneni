@@ -1368,6 +1368,7 @@
 
 :: TTI_connectedInnerWorld
 
+<<set _theIdea = $TT.myProblem.problem || $TT.myIdea.idea>>
 <div>
     <p class="tac">
         Dále Tě čeká<br>
@@ -1387,7 +1388,7 @@
 
     <p class="tac">
         Tady máš svou myšlenku:<br>
-        @@.accented;$TT.myIdea.idea@@
+        @@.accented;_theIdea@@
     </p>
 
     <p class="tac">
@@ -1399,7 +1400,7 @@
     </p>
 
     <p class="tac">
-        @@.accented;$TT.myIdea.idea@@
+        @@.accented;_theIdea@@
     </p>
 
     <p class="tac">
