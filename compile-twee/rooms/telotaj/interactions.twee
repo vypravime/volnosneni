@@ -964,4 +964,48 @@
     <p class="tac">
         ...
     </p>
+
+    <p class="tac">
+        Ten nejkrásnější pocit, jaký známe<br>
+        - je tichý a nevnucuje se...<br>
+        - je živý a pokaždé trochu jiný...
+    </p>
+
+    <p class="tac">
+        (někdy je klidný, jindy náruživý)<br>
+        (někdy je pomalý, jindy svižný)<br>
+        (a podobně)
+    </p>
+
+    <p class="tac">
+        Ale v těle nebo kdesi uvnitř v nás<br>
+        je nám vždy vlídně k mání...<br>
+        přináší hluboké dojetí.
+    </p>
+
+    <h3>
+        Všimnul sis, že kdesi v Tobě<br>
+        je přítomna také Láska?<br>
+        - ten nejkrásnější
+        pocit, jaký kdy znáš?<br>
+        - a který Tě tiše dojímá?
+    </h3>
+
+    <div class="answers">
+        <<button "''Ano''..."
+            "TTI_gotLove">><</button>>
+        <br>
+        <<button "''Ne''..."
+            "TTI_giveLove">><</button>>
+    </div>
+</div>
+
+:: TTI_gotLove
+
+<div>
+</div>
+
+:: TTI_giveLove
+
+<div>
 </div>
