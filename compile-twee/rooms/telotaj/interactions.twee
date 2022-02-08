@@ -439,7 +439,7 @@
             "TTI_notSituationNorThoughtsButFeelings">><</button>>
         <br>
         <<button "Ne tak rychle... ''Nejdřív mi vysvětli - proč?''"
-            >><</button>>
+            "TTI_fillInYourThing">><</button>>
     </div>
 </div>
 
@@ -1548,3 +1548,52 @@
      Tvá idea ať je nespokojená<br>
      i veskrze spokojená ...)
 </p>
+
+:: TTI_fillInYourThing
+
+<<set _myThing = $TT.myThing.thing>>
+<div>
+    <h3>
+        Vyber si teď ze svého života<br>
+        jednu situaci nebo osobu,<br>
+        nebo část svého těla,<br>
+        či jakoukoliv jednu záležitost<br>
+        případně jeden fenomén...<br>
+        - a pár slovy si to označ:
+    </h3>
+
+    <p class="tac">
+        <<textbox "$TT.myThing.thing" _myThing `passage()`>>
+    </p>
+
+    <div class="answers">
+        <<button "Dobře... ''Mám to zapsáno''.">>
+                <<set $TT.myThing.thing = $TT.myThing.thing.trim()>>
+                <<if $TT.myThing.thing>>
+                    <<goto "TTI_fillInYourBlaBlaBla">>
+                <<else>>
+                    <<passageDialog "Vyplň prosím políčko!" 
+                                         "FillInputDialog1">>
+                <</if>>
+            <</button>>
+        <br>
+      //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
+                <<passageDialog "Otázka soukromí" "TTD_whoWillSeeInputs">>
+            <</button>>//
+    </div>
+</div>
+
+<<done>>
+    <<run $('input').attr(
+      'placeholder', 'ten náš zvláštní soused')>>
+<</done>>
+
+:: TTI_fillInYourBlaBlaBla
+
+<div>
+</div>
+
+:: TTI_whyThroughTheBody
+
+<div>
+</div>

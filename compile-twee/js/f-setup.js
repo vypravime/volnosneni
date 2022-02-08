@@ -99,6 +99,12 @@ setup.teloTaj = {
 		myObstacle: {
 			obstacle: ''
 		},
+		myThing: {
+			thing: ''
+		},
+		myBlaBlaBla: {
+			blablabla: ''
+		},
 		collected: {
 			fromBegin: true,
 			partsToAsk: [],
