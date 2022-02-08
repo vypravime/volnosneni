@@ -162,9 +162,7 @@
     <<if $TT.myProblem.problem>>
         <h3>
             Kdyby ses nakonec zbavil toho, co Tě sužuje:<br>
-            <span style="font-variant: small-caps; font-style: normal;">
-                "$TT.myProblem.problem"
-            </span><br>
+            @@.accented.fvsc.fsn;"$TT.myProblem.problem"@@<br>
             Bylo by Ti pak lépe?
         </h3>
     <<else>>
@@ -330,12 +328,13 @@
     </p>
 
     <div class="answers">
-        <<button "Dobře... ''Mám to zapsáno''."
-            "TTI_IknowWhatIsAnnoyingMe">>
+        <<button "Dobře... ''Mám to zapsáno''.">>
                 <<set $TT.myProblem.problem = $TT.myProblem.problem.trim()>>
                 <<if $TT.myProblem.problem>>
+                    <<goto `passage()`>>
                     <<set $TT.myProblem.playerInput = true>>
                 <</if>>
+                <<goto "TTI_IknowWhatIsAnnoyingMe">>
             <</button>>
         <br>
       //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
@@ -396,6 +395,7 @@
         <<button "Dobře... ''Mám to zapsáno''.">>
                 <<set $TT.myIdea.idea = $TT.myIdea.idea.trim()>>
                 <<if $TT.myIdea.idea>>
+                    <<goto `passage()`>>
                     <<set $TT.myIdea.playerInput = true>>
                     <<goto "TTI_letsPlayFromBody">>
                 <<else>>
@@ -835,6 +835,7 @@
         <<button "Dobře... ''Mám to zapsáno''.">>
                 <<set $TT.myResistance.resistance = $TT.myResistance.resistance.trim()>>
                 <<if $TT.myResistance.resistance>>
+                    <<goto `passage()`>>
                     <<goto "TTI_soWeHaveResistance">>
                 <<else>>
                     <<passageDialog "Vyplň prosím políčko!" 
@@ -1570,6 +1571,7 @@
         <<button "Dobře... ''Mám to zapsáno''.">>
                 <<set $TT.myThing.thing = $TT.myThing.thing.trim()>>
                 <<if $TT.myThing.thing>>
+                    <<goto `passage()`>>
                     <<goto "TTI_fillInYourBlaBlaBla">>
                 <<else>>
                     <<passageDialog "Vyplň prosím políčko!" 
@@ -1590,8 +1592,51 @@
 
 :: TTI_fillInYourBlaBlaBla
 
+<<set _blabla = $TT.myBlaBlaBla.blablabla>>
 <div>
+    <h3>
+        Prima...<br>
+        teď si prosím představ,<br>
+        že jsem Tvůj dobrý kamarád,<br>
+        nebo že jsem Tvůj známý či kolega...<br>
+        - a že jsme se někde potkali...<br>
+        <br>
+        a já se Tě zeptám:<br>
+        @@.accented.fvsc.fsn;"Ahoj, heleď...<br>
+        jak to teď vlastně máš s tím svým:<br>
+        &raquo;$TT.myThing.thing&laquo;<br>
+        co mi k tomu dneš řekneš?"@@
+    </h3>
+
+    <p class="tac">
+    </p>
+
+    <p class="tac">
+        <<textarea "$TT.myBlaBlaBla.blablabla" _blabla>>
+    </p>
+
+    <div class="answers">
+        <<button "Dobře... ''Odpověděl jsem''.">>
+                <<set $TT.myBlaBlaBla.blablabla = $TT.myBlaBlaBla.blablabla.trim()>>
+                <<if $TT.myBlaBlaBla.blablabla>>
+                    <<goto `passage()`>>
+                    <<goto "TTI_whyThroughTheBody">>
+                <<else>>
+                    <<passageDialog "Vyplň prosím políčko!" 
+                                         "FillInputDialog1">>
+                <</if>>
+            <</button>>
+        <br>
+      //<<button "Nejprve by mě zajímalo<br>- kdo všechno uvidí to,<br>co zde vyplním?">>
+                <<passageDialog "Otázka soukromí" "TTD_whoWillSeeInputs">>
+            <</button>>//
+    </div>
+
 </div>
+<<done>>
+    <<run $('textarea').attr(
+      'placeholder', `TADY mi prosím NAPIŠ TVOU DNEŠNÍ ODPOVĚĎ ohledně toho Tvého:\r\n»${State.variables.TT.myThing.thing}«`)>>
+<</done>>
 
 :: TTI_whyThroughTheBody
 

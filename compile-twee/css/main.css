@@ -7,6 +7,12 @@ html {
 h3 {
     font-style: italic;
 }
+.fsn {
+    font-style: normal;
+}
+.fvsc {
+    font-variant: small-caps;
+}
 
 .tal {
     text-align: left;

@@ -11,9 +11,10 @@
 </p>
 
 <p class="tac">
-    <<button "Ano...<br>to ''souhlasí''."
-        "TTI_knownGiftLoveObstacle">>
+    <<button "Ano...<br>to ''souhlasí''.">>
+        <<goto `passage()`>>
         <<run Dialog.close()>>
+        <<goto "TTI_knownGiftLoveObstacle">>
     <</button>>
 </p>
 

@@ -107,6 +107,12 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 h3 {
     font-style: italic;
 }
+.fsn {
+    font-style: normal;
+}
+.fvsc {
+    font-variant: small-caps;
+}
 
 .tal {
     text-align: left;
@@ -1422,9 +1428,10 @@ setup.myPage.registerAllCustomEventsHandlers();
 &lt;/p&gt;
 
 &lt;p class=&quot;tac&quot;&gt;
-    &lt;&lt;button &quot;Ano...&lt;br&gt;to &#39;&#39;souhlasí&#39;&#39;.&quot;
-        &quot;TTI_knownGiftLoveObstacle&quot;&gt;&gt;
+    &lt;&lt;button &quot;Ano...&lt;br&gt;to &#39;&#39;souhlasí&#39;&#39;.&quot;&gt;&gt;
+        &lt;&lt;goto `passage()`&gt;&gt;
         &lt;&lt;run Dialog.close()&gt;&gt;
+        &lt;&lt;goto &quot;TTI_knownGiftLoveObstacle&quot;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;
 
@@ -2242,9 +2249,7 @@ mnohdy jasnější než vstřebávání dvouhodinového videa.)//
     &lt;&lt;if $TT.myProblem.problem&gt;&gt;
         &lt;h3&gt;
             Kdyby ses nakonec zbavil toho, co Tě sužuje:&lt;br&gt;
-            &lt;span style=&quot;font-variant: small-caps; font-style: normal;&quot;&gt;
-                &quot;$TT.myProblem.problem&quot;
-            &lt;/span&gt;&lt;br&gt;
+            @@.accented.fvsc.fsn;&quot;$TT.myProblem.problem&quot;@@&lt;br&gt;
             Bylo by Ti pak lépe?
         &lt;/h3&gt;
     &lt;&lt;else&gt;&gt;
@@ -2386,12 +2391,13 @@ mnohdy jasnější než vstřebávání dvouhodinového videa.)//
     &lt;/p&gt;
 
     &lt;div class=&quot;answers&quot;&gt;
-        &lt;&lt;button &quot;Dobře... &#39;&#39;Mám to zapsáno&#39;&#39;.&quot;
-            &quot;TTI_IknowWhatIsAnnoyingMe&quot;&gt;&gt;
+        &lt;&lt;button &quot;Dobře... &#39;&#39;Mám to zapsáno&#39;&#39;.&quot;&gt;&gt;
                 &lt;&lt;set $TT.myProblem.problem = $TT.myProblem.problem.trim()&gt;&gt;
                 &lt;&lt;if $TT.myProblem.problem&gt;&gt;
+                    &lt;&lt;goto `passage()`&gt;&gt;
                     &lt;&lt;set $TT.myProblem.playerInput = true&gt;&gt;
                 &lt;&lt;/if&gt;&gt;
+                &lt;&lt;goto &quot;TTI_IknowWhatIsAnnoyingMe&quot;&gt;&gt;
             &lt;&lt;/button&gt;&gt;
         &lt;br&gt;
       //&lt;&lt;button &quot;Nejprve by mě zajímalo&lt;br&gt;- kdo všechno uvidí to,&lt;br&gt;co zde vyplním?&quot;&gt;&gt;
@@ -2444,6 +2450,7 @@ mnohdy jasnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Dobře... &#39;&#39;Mám to zapsáno&#39;&#39;.&quot;&gt;&gt;
                 &lt;&lt;set $TT.myIdea.idea = $TT.myIdea.idea.trim()&gt;&gt;
                 &lt;&lt;if $TT.myIdea.idea&gt;&gt;
+                    &lt;&lt;goto `passage()`&gt;&gt;
                     &lt;&lt;set $TT.myIdea.playerInput = true&gt;&gt;
                     &lt;&lt;goto &quot;TTI_letsPlayFromBody&quot;&gt;&gt;
                 &lt;&lt;else&gt;&gt;
@@ -2836,6 +2843,7 @@ mnohdy jasnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Dobře... &#39;&#39;Mám to zapsáno&#39;&#39;.&quot;&gt;&gt;
                 &lt;&lt;set $TT.myResistance.resistance = $TT.myResistance.resistance.trim()&gt;&gt;
                 &lt;&lt;if $TT.myResistance.resistance&gt;&gt;
+                    &lt;&lt;goto `passage()`&gt;&gt;
                     &lt;&lt;goto &quot;TTI_soWeHaveResistance&quot;&gt;&gt;
                 &lt;&lt;else&gt;&gt;
                     &lt;&lt;passageDialog &quot;Vyplň prosím políčko!&quot; 
@@ -3511,6 +3519,7 @@ mnohdy jasnější než vstřebávání dvouhodinového videa.)//
         &lt;&lt;button &quot;Dobře... &#39;&#39;Mám to zapsáno&#39;&#39;.&quot;&gt;&gt;
                 &lt;&lt;set $TT.myThing.thing = $TT.myThing.thing.trim()&gt;&gt;
                 &lt;&lt;if $TT.myThing.thing&gt;&gt;
+                    &lt;&lt;goto `passage()`&gt;&gt;
                     &lt;&lt;goto &quot;TTI_fillInYourBlaBlaBla&quot;&gt;&gt;
                 &lt;&lt;else&gt;&gt;
                     &lt;&lt;passageDialog &quot;Vyplň prosím políčko!&quot; 
@@ -3527,8 +3536,51 @@ mnohdy jasnější než vstřebávání dvouhodinového videa.)//
 &lt;&lt;done&gt;&gt;
     &lt;&lt;run $(&#39;input&#39;).attr(
       &#39;placeholder&#39;, &#39;ten náš zvláštní soused&#39;)&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="TTI_fillInYourBlaBlaBla" tags="" position="350,975" size="100,100">&lt;div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="74" name="TTI_whyThroughTheBody" tags="" position="475,975" size="100,100">&lt;div&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="TTI_fillInYourBlaBlaBla" tags="" position="350,975" size="100,100">&lt;&lt;set _blabla = $TT.myBlaBlaBla.blablabla&gt;&gt;
+&lt;div&gt;
+    &lt;h3&gt;
+        Prima...&lt;br&gt;
+        teď si prosím představ,&lt;br&gt;
+        že jsem Tvůj dobrý kamarád,&lt;br&gt;
+        nebo že jsem Tvůj známý či kolega...&lt;br&gt;
+        - a že jsme se někde potkali...&lt;br&gt;
+        &lt;br&gt;
+        a já se Tě zeptám:&lt;br&gt;
+        @@.accented.fvsc.fsn;&quot;Ahoj, heleď...&lt;br&gt;
+        jak to teď vlastně máš s tím svým:&lt;br&gt;
+        &amp;raquo;$TT.myThing.thing&amp;laquo;&lt;br&gt;
+        co mi k tomu dneš řekneš?&quot;@@
+    &lt;/h3&gt;
+
+    &lt;p class=&quot;tac&quot;&gt;
+    &lt;/p&gt;
+
+    &lt;p class=&quot;tac&quot;&gt;
+        &lt;&lt;textarea &quot;$TT.myBlaBlaBla.blablabla&quot; _blabla&gt;&gt;
+    &lt;/p&gt;
+
+    &lt;div class=&quot;answers&quot;&gt;
+        &lt;&lt;button &quot;Dobře... &#39;&#39;Odpověděl jsem&#39;&#39;.&quot;&gt;&gt;
+                &lt;&lt;set $TT.myBlaBlaBla.blablabla = $TT.myBlaBlaBla.blablabla.trim()&gt;&gt;
+                &lt;&lt;if $TT.myBlaBlaBla.blablabla&gt;&gt;
+                    &lt;&lt;goto `passage()`&gt;&gt;
+                    &lt;&lt;goto &quot;TTI_whyThroughTheBody&quot;&gt;&gt;
+                &lt;&lt;else&gt;&gt;
+                    &lt;&lt;passageDialog &quot;Vyplň prosím políčko!&quot; 
+                                         &quot;FillInputDialog1&quot;&gt;&gt;
+                &lt;&lt;/if&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+        &lt;br&gt;
+      //&lt;&lt;button &quot;Nejprve by mě zajímalo&lt;br&gt;- kdo všechno uvidí to,&lt;br&gt;co zde vyplním?&quot;&gt;&gt;
+                &lt;&lt;passageDialog &quot;Otázka soukromí&quot; &quot;TTD_whoWillSeeInputs&quot;&gt;&gt;
+            &lt;&lt;/button&gt;&gt;//
+    &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;&lt;done&gt;&gt;
+    &lt;&lt;run $(&#39;textarea&#39;).attr(
+      &#39;placeholder&#39;, `TADY mi prosím NAPIŠ TVOU DNEŠNÍ ODPOVĚĎ ohledně toho Tvého:\r\n»${State.variables.TT.myThing.thing}«`)&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="TTI_whyThroughTheBody" tags="" position="475,975" size="100,100">&lt;div&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="VS_checkDisallowedThemes" tags="" position="600,975" size="100,100">ToDo:
 --Check Disallowed Themes--</tw-passagedata><tw-passagedata pid="76" name="VS_fantasyEnter" tags="" position="725,975" size="100,100">&lt;&lt;if !$gameCards.current[0]&gt;&gt;
     &lt;&lt;set $gameCards.current[0] = setup.addGameCard()&gt;&gt;
