@@ -17,10 +17,13 @@
     Níže alespoň nalezneš fiktivní příklad,<br>
     jak by to mohlo vypadat
     - při hře jediného hráče<br>
-    - po odehraných třech kolech VolnoSnění...
+    - po odehraných třech kolech VolnoSnění:
 </p>
 
+<div class="pa5"></div>
 <hr>
+<hr>
+
 <h3>
 Fiktivní ukázka nástěnky:
 </h3>
@@ -79,7 +82,7 @@ a procvičí italštinu.
 <hr>
 <div class="pa5"></div>
 <p class="tac">
-  <<button "''Podrobný průběh kol...''">>
+  <<button "''Zobrazit podrobný popis<br>průběhu fiktivní hry,<br> během níž vznikly<br>výše uvedené kartičky...''">>
     <<passageDialog "Fiktivní ukázková hra" "VSD_example3roundsGame">>
   <</button>>
 </p>

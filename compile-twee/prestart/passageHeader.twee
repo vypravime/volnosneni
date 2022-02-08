@@ -13,7 +13,7 @@
       <</button>>&nbsp;
   
       <<button "Hráči">>
-      
+        <<passageDialog "Seznam hráčů" "VSD_playersList">>
       <</button>>&nbsp;
     <</if>>
 

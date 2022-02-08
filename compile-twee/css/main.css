@@ -116,6 +116,12 @@ button:disabled,
 .see-saw {
     display: inline-block;
 }
+.see-saw button {
+    color: #c9f;
+}
+.see-saw button:disabled {
+    color: #ef4;
+}
 #story-caption button,
 #story-caption button:hover,
 #menu li a:hover {

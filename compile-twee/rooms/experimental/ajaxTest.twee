@@ -95,7 +95,7 @@
     ]`
     `[_myPage, 'onDevModeChange']`
 
-  >>''EXPERIMENTÁLNÍ REŽIM''<br>
+  >>@@.accented;''EXPERIMENTÁLNÍ REŽIM''@@<br>
     //(spustí se po změně místnosti - bez restartu)//
   <</seeSaw>>
 <p>//(stiskni nejprve tlačítko "ZAP",<br>
