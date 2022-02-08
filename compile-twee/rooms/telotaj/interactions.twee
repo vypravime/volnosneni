@@ -1352,16 +1352,17 @@
     </p>
 
     <p class="tac">
-     //(Může se v těle dít něco nepříjemného,<br>
-        ale je žádoucí, aby Ti to jaksi<br>
-        dojemně nepřekáželo<br>
-        - ne že se nutíš, aby to nepřekáželo<br>
+     //(Můžeš i<br>
+        @@.accented;v těle cítit cosi nepříjemného,<br>
+        je však třeba, ať to jaksi<br>
+        dojemně nepřekáží@@<br>
+        - ne že se nutíš, ať Ti to nepřekáží<br>
         - nýbrž že to je v pořádku samo od sebe,<br>
-        bez námahy.)//
+        @@.accented;bez křeče@@.)//
     </p>
 
     <p class="tac">
-        <<button "''Vstup''"
+        <<button "''Vstoupit''"
             "TTI_connectedInnerWorld">><</button>>
     </p>
 </div>
@@ -1435,13 +1436,13 @@
 
     <p class="tac">
         Možná,<br>že některý z těch všech<br>
-        @@.accented;POCITŮ@@<br>
+        @@.accented;POCITŮ TĚLA@@<br>
         se<br>
         @@.accented;DOTKNE TÉ MYŠLENKY@@...<br>
         @@.accented;VSTOUPÍ DO NÍ@@...<br>
         @@.accented;OTEVŘE JI@@...<br>
         zbaví hranic...<br>
-        @@.accented;dodá jí jinou chuť@@.
+        @@.accented;dodá jí novou chuť@@.
     </p>
 
     <p class="tac">
@@ -1478,9 +1479,42 @@
 
     <div class="answers">
         <<button "''Ano...''"
-            "TTI_experiencedEnd">><</button>>
+            "TTI_willYouTryItOnceAgain">><</button>>
         <br>
         <<button "''Ne...''"
             "TTI_experiencedEnd">><</button>>
     </div>
 </div>
+
+:: TTI_willYouTryItOnceAgain
+
+<div>
+    <h3>
+        Chceš to zkusit ještě jednou<br>
+        s další svou myšlenkou?<br>
+    </h3>
+
+    <<include "TTI_whichIdeasCanBePlayed">>
+
+    <div class="answers">
+        <<button "''Končím''<br>- pro dnešek mi už stačí."
+            "TTI_experiencedEnd">><</button>>
+        <br>
+        <<button "''Míním pokračovat''<br>- s další svou ideou."
+            "TTI_beforeLongReturnToNewIdea">><</button>>
+    </div>
+</div>
+
+:: TTI_whichIdeasCanBePlayed [noAutoWrapDiv]
+
+<p class="tac">
+    (Vlož do hry,<br>
+     cokoli Tě napadá:<br>
+     @@.accented;
+     //Tvůj spor, postoj, dotaz,<br>
+     Tvojí touhu, sen, vizi, potřebu,<br>
+     zmínku osoby, kterou znáš i neznáš,<br>
+     popis situace, věci, činnosti, ...//@@<br>
+     Tvá idea ať je nespokojená<br>
+     i veskrze spokojená ...)
+</p>
