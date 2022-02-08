@@ -1,5 +1,82 @@
 :: VSD_example3roundsGame
 
+<hr>
+<hr>
+<h3>
+    Podrobný průběh<br>
+    jednotlivých kol hry:
+</h3>
+<hr>
+<p>
+    Před startem si ''<<= setup.whoseTurn()>>''<br>
+    vyplní své jméno<br>
+    a ponechá všechna doporučená nastavení,<br>
+    takže začne se třemi osudovými kameny.
+</p>
+<hr>
+<p>
+    V prvním kole si ''<<= setup.whoseTurn()>>''<br>
+    sepíše tuto příběhovou kartičku:
+</p>
+<div class="story-card-1">
+<p>
+''<<=setup.whoseTurn()>>'' jede na dovolenou do Itálie,<br>
+vezme si s sebou nové tyrkysové plavky,<br>
+cestou si koupí perfektní pizzu<br>
+a ubytuje se v soukromém apartmá<br>
+s výhledem na malebný mořský záliv.
+</p>
+</div>
+<p>
+Když má kartičku hotovou,<br>
+hodí si šestistěnnou kostkou,<br>
+a padne mu číslo 2.
+</p>
+<p>
+Číslo 2 na kostce značí,<br>
+že výše sepsanou kartičku<br>
+zatím NESMÍ umístit do DĚJE.
+</p>
+
+<p>
+V tomto kole SMÍ pouze odvyprávět,<br>
+že se v příběhu obyčejně chystá<br>
+či připravuje na uskutečnění toho,<br>
+co bylo uvedeno na původní kartičce.
+</p>
+
+<p>
+Tomáš tento výsledek hodu kostkou přijme,<br>
+za což za odměnu získá jeden osudový kámen...<br>
+//(takže má teď celkem čtyři kameny)//<br>
+a sepíše náhradní kartičku o tom, jak se chystá:
+</p>
+
+<div class="story-card-1">
+<p>
+''<<=setup.whoseTurn()>>'' přemýšlí o tom,<br>
+že vyrazí někam do zahraničí,<br>
+chodí po obchodech<br>
+a pokukuje po hezkých plavkách<br>
+a na internetu si prohlíží<br>
+fotky lákavých destinací.
+</p>
+</div>
+
+<p>
+Tuto náhradní kartičku umístí ''<<=setup.whoseTurn()>>''<br>
+úspěšně do DĚJE<br>
+//(Kartička je odteď<br>
+na příběhové nástěnce)//
+</p>
+
+<p>
+Tímto končí první kolo.
+</p>
+
+<hr>
+<hr>
+
 <p class="tac">
     <<button "''Zobrazit nástěnku příběhu''">>
         <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>

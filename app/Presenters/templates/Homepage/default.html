@@ -1754,7 +1754,84 @@ apod.)//
 buď když už jsou &#39;&#39;všichni spokojeni&#39;&#39; a stačí jim,&lt;br&gt;
 nebo když z jakéhokoliv důvodu &#39;&#39;odejde poslední&#39;&#39; přítomný hráč.
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="VSD_example3roundsGame" tags="" position="600,225" size="100,100">&lt;p class=&quot;tac&quot;&gt;
+&lt;&lt;dialogCloseButton &quot;OK&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="VSD_example3roundsGame" tags="" position="600,225" size="100,100">&lt;hr&gt;
+&lt;hr&gt;
+&lt;h3&gt;
+    Podrobný průběh&lt;br&gt;
+    jednotlivých kol hry:
+&lt;/h3&gt;
+&lt;hr&gt;
+&lt;p&gt;
+    Před startem si &#39;&#39;&lt;&lt;= setup.whoseTurn()&gt;&gt;&#39;&#39;&lt;br&gt;
+    vyplní své jméno&lt;br&gt;
+    a ponechá všechna doporučená nastavení,&lt;br&gt;
+    takže začne se třemi osudovými kameny.
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;
+    V prvním kole si &#39;&#39;&lt;&lt;= setup.whoseTurn()&gt;&gt;&#39;&#39;&lt;br&gt;
+    sepíše tuto příběhovou kartičku:
+&lt;/p&gt;
+&lt;div class=&quot;story-card-1&quot;&gt;
+&lt;p&gt;
+&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39; jede na dovolenou do Itálie,&lt;br&gt;
+vezme si s sebou nové tyrkysové plavky,&lt;br&gt;
+cestou si koupí perfektní pizzu&lt;br&gt;
+a ubytuje se v soukromém apartmá&lt;br&gt;
+s výhledem na malebný mořský záliv.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Když má kartičku hotovou,&lt;br&gt;
+hodí si šestistěnnou kostkou,&lt;br&gt;
+a padne mu číslo 2.
+&lt;/p&gt;
+&lt;p&gt;
+Číslo 2 na kostce značí,&lt;br&gt;
+že výše sepsanou kartičku&lt;br&gt;
+zatím NESMÍ umístit do DĚJE.
+&lt;/p&gt;
+
+&lt;p&gt;
+V tomto kole SMÍ pouze odvyprávět,&lt;br&gt;
+že se v příběhu obyčejně chystá&lt;br&gt;
+či připravuje na uskutečnění toho,&lt;br&gt;
+co bylo uvedeno na původní kartičce.
+&lt;/p&gt;
+
+&lt;p&gt;
+Tomáš tento výsledek hodu kostkou přijme,&lt;br&gt;
+za což za odměnu získá jeden osudový kámen...&lt;br&gt;
+//(takže má teď celkem čtyři kameny)//&lt;br&gt;
+a sepíše náhradní kartičku o tom, jak se chystá:
+&lt;/p&gt;
+
+&lt;div class=&quot;story-card-1&quot;&gt;
+&lt;p&gt;
+&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39; přemýšlí o tom,&lt;br&gt;
+že vyrazí někam do zahraničí,&lt;br&gt;
+chodí po obchodech&lt;br&gt;
+a pokukuje po hezkých plavkách&lt;br&gt;
+a na internetu si prohlíží&lt;br&gt;
+fotky lákavých destinací.
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+Tuto náhradní kartičku umístí &#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;&lt;br&gt;
+úspěšně do DĚJE&lt;br&gt;
+//(Kartička je odteď&lt;br&gt;
+na příběhové nástěnce)//
+&lt;/p&gt;
+
+&lt;p&gt;
+Tímto končí první kolo.
+&lt;/p&gt;
+
+&lt;hr&gt;
+&lt;hr&gt;
+
+&lt;p class=&quot;tac&quot;&gt;
     &lt;&lt;button &quot;&#39;&#39;Zobrazit nástěnku příběhu&#39;&#39;&quot;&gt;&gt;
         &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_cardsBoard&quot;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
