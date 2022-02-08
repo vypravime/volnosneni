@@ -1603,13 +1603,11 @@
         <br>
         a já se Tě zeptám:<br>
         @@.accented.fvsc.fsn;"Ahoj, heleď...<br>
-        jak to teď vlastně máš s tím svým:<br>
+        jak to teď vlastně máš s tímto:<br>
         &raquo;$TT.myThing.thing&laquo;<br>
-        co mi k tomu dneš řekneš?"@@
+        je tam něco nového?<br>
+        Co mi dnes k tomu řekneš?"@@
     </h3>
-
-    <p class="tac">
-    </p>
 
     <p class="tac">
         <<textarea "$TT.myBlaBlaBla.blablabla" _blabla>>
@@ -1635,10 +1633,183 @@
 </div>
 <<done>>
     <<run $('textarea').attr(
-      'placeholder', `TADY mi prosím NAPIŠ TVOU DNEŠNÍ ODPOVĚĎ ohledně toho Tvého:\r\n»${State.variables.TT.myThing.thing}«`)>>
+      'placeholder', `TADY mi prosím NAPIŠ TVOU DNEŠNÍ ODPOVĚĎ ohledně tohoto:\r\n»${State.variables.TT.myThing.thing}«`)>>
 <</done>>
 
 :: TTI_whyThroughTheBody
 
 <div>
+    <p class="tac">
+        Takže k Tvému životnímu fenoménu:<br>
+        @@.accented;"$TT.myThing.thing"<br>@@
+        - jsi sdělil následující:<br>
+        @@.accented;"$TT.myBlaBlaBla.blablabla"@@
+    </p>
+
+    <p class="tac">
+        Tím, co jsi sdělil<br>
+        - vyjadřuješ buď @@.accented;svůj strach@@<br>
+        - nebo tím vyjadřuješ @@.accented;svou lásku@@.
+    </p>
+
+    <p class="tac">
+        //(jiná možnost není)//
+    </p>
+
+    <p class="tac">
+        Strach se pozná tak,<br>
+        že je pevný, ohraničený,<br>
+        strach je jasně definovaný.
+    </p>
+
+    <p class="tac">
+        Takže pokud jsi své sdělení řekl ze strachu,<br>
+        //(ať už ze strachu k tomu, o čems mluvil<br>
+        nebo ze strachu ke mně či k sobě<br>
+        či ze strachu k čemukoliv jinému...)//<br>
+        - potom je nanejvýš pravděpodobné,<br>
+        že něco velmi obdobného bys mi sdělil<br>
+        i před hodinou, včera, před týdnem,<br>
+        před měsícem či před rokem, ...
+    </p>
+
+    <p class="tac">
+        Strach je neměnný.
+        Proto je frustrující.
+    </p>
+
+    <p class="tac">
+        Ve strachu se sice mylně domníváme,<br>
+        že neměnné je to, co se děje mimo nás...<br>
+        Naopak... ve strachu je neměnné to,<br>
+        co si my sami myslíme (o daném ději),<br>
+        aniž bychom byli schopni si to přiznat.
+    </p>
+
+    <p class="tac">
+        Ve strachu si myslíme pevně definované věci<br>
+        pořád dokola... a proto nejsme schopni<br>
+        si všímat drobných proměn v nás i kolem<br>
+        a být za ně vděční.
+    </p>
+
+    <p class="tac">
+        ...
+    </p>
+
+    <p class="tac">
+        Láska naopak je nepolapitelná,<br>
+        nedefinovatelná... lásku lze cítit,<br>
+        ale nelze ji pojmout či pochopit.
+    </p>
+
+    <p class="tac">
+        Pokud cokoliv miluješ,<br>
+        ať už je to člověk,<br>
+        rostlina, zvíře, záliba,<br>
+        krajina, nějaké jídlo,<br>
+        či něco jiného...<br>
+        - pak nejsi schopen říci<br>
+        jednoznačně, jaké to je...<br>
+        někdy Tě to naštve, jindy potěší<br>
+        a každý den Tě to překvapuje.
+    </p>
+
+    <p class="tac">
+        Proto pokud jsi to své sdělení výše<br>
+        vyplodil ze své lásky...<br>
+        - pak je nanejvýš pravděpodobné,<br>
+        že bys mi k tomu řekl něco jiného<br>
+        před hodinou... a něco jiného včera...<br>
+        opět něco jiného před týdnem,<br>
+        před měsícem či rokem.
+    </p>
+
+    <p class="tac">
+        Láska je zábavná...
+    </p>
+
+    <p class="tac">
+        Pokaždé, když něco děláš<br>
+        i když něco někomu říkáš...<br>
+        se hraje o to<br>
+        - zda to říkáš či děláš<br>
+        ze strachu či z lásky.
+    </p>
+
+    <p class="tac">
+        Dokonce i když říkáš něco sám sobě,<br>
+        to říkáš buď ze strachu, nebo z lásky.<br>
+        A teď si vezmi, jak často přes den<br>
+        v tichu svých myšlenek<br>
+        sobě sděliš o ostatních<br>
+        či o sobě samém nějaké tvrzení.<br>
+        Tisíckrát? Nebo stokrát?
+    </p>
+
+    <p class="tac">
+        Člověku, který je uvězněn<br>
+        ve svém vlastním uvyklém strachu<br>
+        nepomůže - když bojuje s tím,<br>
+        čeho se obává.
+    </p>
+
+    <p class="tac">
+        Kdykoliv po vyčerpávající snaze<br>
+        jednu svou bitvu vyhraje,<br>
+        jeho strach si vzápětí najde<br>
+        nového nepřítele - a nová bitva začíná.
+    </p>
+
+    <p class="tac">
+        Takto vystresovanému člověku<br>
+        velmi pomůže, když opět<br>
+        pocítí svou lásku.
+    </p>
+
+    <p class="tac">
+        Kde ale lásku hledat?
+    </p>
+
+    <p class="tac">
+        V mysli to moc nejde...<br>
+        Mysl je nepřehledná,<br>
+        zašmodrchaná sama do sebe...<br>
+        mysl nemá začátek a konec.<br>
+        Když Tě mysl nenápadně<br>
+        vodí stále dokola...<br>
+        nepoznáš to.
+    </p>
+
+    <p class="tac">
+        Naopak naše tělo<br>
+        je malé a přehledné...<br>
+        když Ti řeknu:<br>
+        Projdi si všechny části těla<br>
+        odhora dolů...<br>
+        jsi za minutu hotov...<br>
+        víš, kde Ti tělo začíná<br>
+        a kde končí.
+    </p>
+
+    <p class="tac">
+        Proto nejprve zkusíme,<br>
+        pocítit lásku v těle.<br>
+        Až potom případně<br>
+        Ti mohu ukázat jednu z cest,<br>
+        jakou Tvá láska z těla<br>
+        vstoupí do Tvých myšlenek.
+    </p>
+
+    <p class="tac">
+        A Tobě nezbývá,<br>
+        než prakticky okusit,<br>
+        jestli a jak se tím<br>
+        promění Tvůj reálný život.
+    </p>
+
+    <p class="tac">
+        <<button "''Hmmm...''"
+            "TTI_letsPlayFromBody">><</button>>
+    </p>
 </div>
