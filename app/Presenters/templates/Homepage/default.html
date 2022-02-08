@@ -1811,6 +1811,19 @@ ať si hru vychutnáš.
     Statistiky:
 &lt;/h3&gt;
 &lt;hr&gt;
+&lt;ul&gt;
+&lt;&lt;for _i = 0; _i &lt; $pOrder.length; _i++&gt;&gt;
+    &lt;li&gt;
+        @@.accented;&#39;&#39;&lt;&lt;=$players[$pOrder[_i]].name&gt;&gt;&#39;&#39;@@&lt;br&gt;
+        //osudových kamenů//: &#39;&#39;3&#39;&#39;&lt;br&gt;
+        //odehraných kartiček//: &#39;&#39;&lt;&lt;= _i === 0 ? 3 : 0&gt;&gt;&#39;&#39;
+    &lt;/li&gt;
+    &lt;&lt;if (_i + 1) &lt; $pOrder.length&gt;&gt;
+        &lt;hr&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;hr&gt;</tw-passagedata><tw-passagedata pid="18" name="VSD_settings" tags="" position="975,225" size="100,100">//Nutno dodělat :-)//</tw-passagedata><tw-passagedata pid="19" name="AjaxConnectionError" tags="" position="1100,225" size="100,100">&lt;p&gt;
   Nepodařilo se spojit se serverem...
 &lt;/p&gt;
