@@ -1749,7 +1749,7 @@
 
     <p class="tac">
         Člověku, který je uvězněn<br>
-        ve svém vlastním uvyklém strachu<br>
+        ve svém vlastním uvyklém strachu,<br>
         nepomůže - když bojuje s tím,<br>
         čeho se obává.
     </p>
@@ -1808,8 +1808,10 @@
         promění Tvůj reálný život.
     </p>
 
+    <div class="pa5"></div>
+
     <p class="tac">
-        <<button "''Hmmm...''"
+        <<button "''Pokračovat''"
             "TTI_letsPlayFromBody">><</button>>
     </p>
 </div>
