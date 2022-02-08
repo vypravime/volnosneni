@@ -30,7 +30,7 @@ s výhledem na malebný mořský záliv.
 <p>
 Když má kartičku hotovou,<br>
 hodí si šestistěnnou kostkou,<br>
-a padne mu číslo 2.
+padne číslo 2.
 </p>
 <p>
 Číslo 2 na kostce značí,<br>
@@ -74,6 +74,121 @@ na příběhové nástěnce)//
 Tímto končí první kolo.
 </p>
 
+<hr>
+
+<p>
+//(Nyní by přišli na řadu spoluhráči,<br>
+které však ''<<=setup.whoseTurn()>>'' v této hře nemá,<br>
+takže opět přebírá tah a pokračuje<br>
+druhým kolem...)//
+</p>
+
+<hr>
+
+<p>
+Ve druhém kole se ''<<=setup.whoseTurn()>>'' rozhodne<br>
+opět použít původní kartičku...<br>
+protože ho dovolená v Itálii<br>
+už delší dobu láká.
+</p>
+
+<p>
+Nepatrně poupraví<br>
+začátek původní kartičky,<br>
+aby navazovala na DĚJ prvního kola,<br>
+takže teď vypadá takto:
+</p>
+<div class="story-card-1">
+<p>
+Nakonec jede ''<<=setup.whoseTurn()>>''<br>
+na dovolenou do Itálie...<br>
+vezme si s sebou nové tyrkysové plavky,<br>
+cestou si koupí perfektní pizzu<br>
+a ubytuje se v soukromém apartmá<br>
+s výhledem na malebný mořský záliv.
+</p>
+</div>
+<p>
+Pak si ''<<=setup.whoseTurn()>>''<br>
+opět v tomto kole<br>
+hodí šestistěnnou kostkou.
+</p>
+<p>
+Padne číslo 3,<br>
+což je o trochu lepší výsledek,<br>
+než padl v předchozím kole.
+</p>
+<p>
+Číslo 3 na kostce<br>
+již DOVOLUJE umístit kartičku do DĚJE,<br>
+ale jen pokud k ní ''<<=setup.whoseTurn()>>''<br>
+připíše nějaké ALE...<br>
+v příběhu se tedy musí objevit<br>
+nějaký nemilý zvrat či komplikace.
+</p>
+<p>
+''<<=setup.whoseTurn()>>'' výsledek hodu kostkou přijme,<br>
+takže opět získá za odměnu<br>
+další osudový kámen,<br>
+má jich teď tedy u sebe celkem pět.
+</p>
+<p>
+''<<=setup.whoseTurn()>>'' chvíli přemýšlí,<br>
+jaké příběhové ALE si natropí...<br>
+a nakonec vyrukuje s tímto:
+</p>
+<div class="story-card-1">
+<p class="complic">
+Ale když přijede a ubytuje se, zjistí,<br>
+že ani v peněžence, ani na účtu<br>
+nemá vůbec žádné peníze...
+</p>
+</div>
+<p>
+Být v Itálii bez peněz,<br>
+může být nepříjemné,<br>
+ale zároveň to může<br>
+zajímavě nastartovat další DĚJ.
+</p>
+<p>
+Celá výsledná kartička<br>
+tedy vypadá takto:
+</p>
+<div class="story-card-1">
+<p>
+Nakonec jede ''<<=setup.whoseTurn()>>''<br>
+na dovolenou do Itálie...<br>
+vezme si s sebou nové tyrkysové plavky,<br>
+cestou si koupí perfektní pizzu<br>
+a ubytuje se v soukromém apartmá<br>
+s výhledem na malebný mořský záliv.
+</p>
+<p class="complic">
+Ale když přijede a ubytuje se, zjistí,<br>
+že ani v peněžence, ani na účtu<br>
+nemá vůbec žádné peníze...
+</p>
+</div>
+<p>
+a ''<<=setup.whoseTurn()>>'' ji úspěšně<br>
+umístí do děje,<br>
+takže se automaticky objeví<br>
+na příběhové nástěnce...
+</p>
+<p>
+... tímto končí druhé kolo.
+</p>
+<hr>
+<p>
+//(Nyní by se opět na řadu<br>
+dostali spoluhráči,<br>
+které však ''<<=setup.whoseTurn()>>''<br>
+v této hře nemá.)//
+</p>
+<hr>
+<p>
+Začíná třetí kolo...
+</p>
 <hr>
 <hr>
 
