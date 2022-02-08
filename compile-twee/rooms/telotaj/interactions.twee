@@ -1393,9 +1393,9 @@
 
     <p class="tac">
         Možná, že tato myšlenka<br>
-        se v reálném životě týká<br>
-        různých osob, situací, termínů...<br>
-        Ale pro tuto chvíli je to jen myšlenka,<br>
+        se v Tvém reálném životě týká<br>
+        osob, které znáš, situací, dějů, termínů...<br>
+        pro tuto malou chvíli je to však jen myšlenka,<br>
         která visí kdesi uvnitř Tebe:
     </p>
 
@@ -1422,25 +1422,58 @@
         Jen to tak nech a chvíli se dívej.
     </p>
 
+    <p class="tac accented">
+        ... ať Tvé pocity<br>
+        sdílí prostor<br>
+        s tou myšlenkou ...
+    </p>
+
     <p class="tac">
+        Možná, že se cosi pohne - povolí.<br>
         Možná, že se nestane vůbec nic.
     </p>
 
     <p class="tac">
-        Možná, že ne všechny, ale jen některý pocit<br>
-        se dotkne té myšlenky... a změní ji...<br>
-        otevře ji... zbaví hranic...<br>
-        dodá jí jinou chuť.
+        Možná,<br>že některý z těch všech<br>
+        @@.accented;POCITŮ@@<br>
+        se<br>
+        @@.accented;DOTKNE TÉ MYŠLENKY@@...<br>
+        @@.accented;VSTOUPÍ DO NÍ@@...<br>
+        @@.accented;OTEVŘE JI@@...<br>
+        zbaví hranic...<br>
+        @@.accented;dodá jí jinou chuť@@.
+    </p>
+
+    <p class="tac">
+        A ty od toho okamžiku...<br>
+        @@.accented;ZVOLÍŠ JINOU CESTU@@<br>
+        než dosud.
     </p>
 
     <h3>
         Zkusil jsi to?<br>
         Nemusíš to nijak řídit,<br>
-        Ono se to umí řídit samo.<br>
+        Ono se to umí řídit samo.
+    </h3>
+
+    <hr>
+    <hr>
+
+    <h3 class="tac">
+        ...<br>
         Nech tomu čas.<br>
-        A když už Ti to po volné chvíli<br>
-        bude stačit... prozraď mi poté<br>
-        - jestli jsi to alespoň zkusil?
+        Pozoruj to.<br>
+        ...
+    </h3>
+
+    <hr>
+    <hr>
+
+    <h3>
+        Až po chvíli,<br>
+        když už Ti bude stačit...<br>
+        prozraď mi poté,<br>
+        zda jsi to - alespoň zkusil?
     </h3>
 
     <div class="answers">
