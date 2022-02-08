@@ -83,5 +83,26 @@ setup.teloTaj = {
 			"spodky i vršky<br>OBOU SVÝCH CHODIDEL A PRSTŮ NA NOHOU",
 			"chodidlech či prstech na nohou"
 		]
-	}
+	},
+	initGame: ()=> ({
+		myIdea: {
+			idea: '',
+			playerInput: false
+		},
+		myProblem: {
+			problem: '',
+			playerInput: false
+		},
+		myResistance: {
+			resistance: ''
+		},
+		myObstacle: {
+			obstacle: ''
+		},
+		collected: {
+			fromBegin: true,
+			partsToAsk: [],
+			weird: []
+		}
+	})
 };

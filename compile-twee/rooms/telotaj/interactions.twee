@@ -20,7 +20,12 @@
         <<button "Na krásy života jsem už rezignoval - ''je mi to jedno''."
             "TTI_rezignatedOrZenHoly">><</button>>
         <hr>
-        <<button "Dejme stranou, jak mi je - ''hraju'' dnes o 1 svou konkrétní myšlenku..."
+        <<button "BUĎME KREATIVNĚJŠÍ:<br>Dejme stranou, jak mi je - ''hraju'' dnes o 1 svou konkrétní ideu..."
+            "TTI_fillInYourIdea">><</button>>
+    </div>
+    <<include "TTI_whichIdeasCanBePlayed">>
+    <div class="answers">
+        <<button "BUĎME KREATIVNĚJŠÍ:<br>Dejme stranou, jak mi je - ''hraju'' dnes o 1 svou konkrétní ideu..."
             "TTI_fillInYourIdea">><</button>>
     </div>
 </div>
@@ -509,16 +514,18 @@
 
 :: TTI_switchCollectorVsCollected
 
-<<if $TT.collected.fromBegin === true>>
-    <<set $TT.collected.fromBegin = false>>
-    <<set $TT.collected.weird = []>>
-    <<set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)>>
-<</if>>
-<<if $TT.collected.partsToAsk.length === 0>>
-        <<goto "TTI_collectorsFinished">>
-<<else>>
-        <<goto "TTI_weirdFeelingsCollector">>
-<</if>>
+<<silently>>
+    <<if $TT.collected.fromBegin === true>>
+        <<set $TT.collected.fromBegin = false>>
+        <<set $TT.collected.weird = []>>
+        <<set $TT.collected.partsToAsk = Object.keys(setup.teloTaj.bodyParts)>>
+    <</if>>
+    <<if $TT.collected.partsToAsk.length === 0>>
+            <<goto "TTI_collectorsFinished">>
+    <<else>>
+            <<goto "TTI_weirdFeelingsCollector">>
+    <</if>>
+<</silently>>
 
 :: TTI_weirdFeelingsCollector
 
@@ -713,11 +720,13 @@
 
 :: TTI_switchProblemsVsIdeas
 
-<<if $TT.myProblem.problem>>
-    <<goto "TTI_fromFirstPartsProblem">>
-<<else>>
-    <<goto "TTI_fromFirstPartsIdea">>
-<</if>>
+<<silently>>
+    <<if $TT.myProblem.problem>>
+        <<goto "TTI_fromFirstPartsProblem">>
+    <<else>>
+        <<goto "TTI_fromFirstPartsIdea">>
+    <</if>>
+<</silently>>
 
 :: TTI_fromFirstPartsIdea
 
@@ -745,10 +754,7 @@
             "TTI_ideasBeingFilledByBodyFeelings">><</button>>
         <br>
         <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
-            "TTI_beforeLongReturnToNewIdea">>
-                <<set $TT.myIdea.idea = ''>>
-                <<set $TT.myIdea.playerInput = false>>
-            <</button>>
+            "TTI_beforeLongReturnToNewIdea">><</button>>
     </div>
 </div>
 
@@ -778,12 +784,7 @@
             "TTI_ideasBeingFilledByBodyFeelings">><</button>>
         <br>
         <<button "Raději bych do hry vložil<br>''jinou svoji myšlenku''"
-            "TTI_beforeLongReturnToNewIdea">>
-                <<set $TT.myProblem.problem = ''>>
-                <<set $TT.myProblem.playerInput = false>>
-                <<set $TT.myIdea.idea = ''>>
-                <<set $TT.myIdea.playerInput = false>>
-            <</button>>
+            "TTI_beforeLongReturnToNewIdea">><</button>>
     </div>
 </div>
 
@@ -803,7 +804,9 @@
 
     <div class="answers">
         <<button "''Hmmm...''"
-            "TTI_fillInYourIdea">><</button>>
+            "TTI_fillInYourIdea">>
+                <<set $TT = setup.teloTaj.initGame()>>
+            <</button>>
     </div>
 </div>
 
@@ -1054,10 +1057,37 @@
         jaksi nepochopitelně<br>
         usmíří Tvůj postoj vůči tomu,<br>
         co cítíš, že se děje v Tvém těle.<br>
+        ...<br>
+        ... ...<br>
         Možná, že po chvíli dívání se<br>
         na Lásku v Tobě zjistíš...<br>
         - že ten pocit ve Tvém těle<br>
         se sice vůbec nezměnil<br>
+        - ale že už Ti nepřekáží...
+    </h3>
+
+    <hr>
+    <hr>
+
+    <h3 class="tac">
+        ...<br>
+        Nech tomu čas.<br>
+        Pozoruj<br>
+        ten tichý<br>
+        nejkrásnější<br>
+        pocit v Tobě.<br>
+        ...
+    </h3>
+
+    <hr>
+    <hr>
+
+    <h3>
+        Až po chvíli,<br>
+        když už Ti bude stačit...<br>
+        prozraď mi poté,<br>
+        zda ten pocit ve Tvém těle<br>
+        se sice možná vůbec nezměnil<br>
         - ale že už Ti nepřekáží?
     </h3>
 

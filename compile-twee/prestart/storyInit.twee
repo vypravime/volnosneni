@@ -10,26 +10,6 @@
 <<set $gameCards.givenUp = []>>
 <<set $exampleComplic = true>>
 
-<<set $TT = {
-    myIdea: {
-        idea: '',
-        playerInput: false
-    },
-    myProblem: {
-        problem: '',
-        playerInput: false
-    },
-    myResistance: {
-        resistance: ''
-    },
-    myObstacle: {
-        obstacle: ''
-    },
-    collected: {
-        fromBegin: true,
-        partsToAsk: [],
-        weird: []
-    }
-}>>
+<<set $TT = setup.teloTaj.initGame()>>
 
 <<set $EX = {}>>
