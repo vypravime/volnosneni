@@ -89,8 +89,8 @@ druhým kolem...)//
 <p>
 Ve druhém kole se ''<<=setup.whoseTurn()>>'' rozhodne<br>
 opět použít původní kartičku...<br>
-protože ho dovolená v Itálii<br>
-už delší dobu láká.
+protože představa dovolené v Itálii<br>
+je už delší dobu z více důvodů lákavá.
 </p>
 
 <p>
@@ -111,8 +111,7 @@ s výhledem na malebný mořský záliv.
 </div>
 <p>
 Pak si ''<<=setup.whoseTurn()>>''<br>
-opět v tomto kole<br>
-hodí šestistěnnou kostkou.
+opět hodí šestistěnnou kostkou.
 </p>
 <p>
 Padne číslo 3,<br>
@@ -171,8 +170,8 @@ nemá vůbec žádné peníze...
 </p>
 </div>
 <p>
-a ''<<=setup.whoseTurn()>>'' ji úspěšně<br>
-umístí do děje,<br>
+a ''<<=setup.whoseTurn()>>'' tuto kartičku<br>
+úspěšně umístí do děje,<br>
 takže se automaticky objeví<br>
 na příběhové nástěnce...
 </p>
@@ -192,8 +191,8 @@ Začíná třetí kolo...
 </p>
 <p>
 ''<<=setup.whoseTurn()>>'' zamýšlí nyní sepsat kartičku,<br>
-která jednak pro italskou dovolenou<br>
-znamená něco barvitě poutavého...<br>
+která jednak italskou dovolenou<br>
+obohatí něčím barvitě poutavým...<br>
 ale která také vyřeší tu komplikaci s penězi<br>
 z předchozího kola.
 </p>
@@ -217,17 +216,19 @@ na které opět padne číslo 3.
 </p>
 <p>
 Ale ''<<=setup.whoseTurn()>>'' teď<br>
-vážně nemá náladu dávat do příběhu<br>
-nové komplikace... k čemuž jej<br>
-číslo 3 na kostce - zavazuje.
+vážně nemá náladu<br>
+dávat do příběhu nové komplikace...<br>
+k čemuž by zavazovalo to,<br>
+že na kostce padlo číslo 3.
 </p>
 <p>
-... spotřebuje tedy dva ze svých pěti<br>
-osudových kamenů, takže mu sice<br>
-do dalších kol zůstanou kameny jenom tři...<br>
-ale teď smí výměnou za dva<br>
-spotřebované osudové kameny<br>
-navýšit výsledek na kostce<br>
+... spotřebuje tedy<br>
+dva ze svých pěti osudových kamenů,<br>
+takže sice do dalších kol<br>
+má už jenom tři kameny...<br>
+ale teď smí výměnou<br>
+za dva spotřebované osudové kameny<br>
+navýšit výsledek hodu koskou<br>
 z trojky, která padla - na pětku.
 </p>
 <p>
@@ -254,15 +255,14 @@ a procvičí italštinu.
 </p>
 </div>
 <p>
-Tedy nyní úspěšně vstupuje do DĚJE.<br>
+tedy nyní úspěšně vstupuje do DĚJE.<br>
 //(automaticky se tím objeví<br>
 na příběhové nástěnce)//
 </p>
 <hr>
 <p>
-Před koncem tohoto kola<br>
-si ''<<=setup.whoseTurn()>>'' ještě<br>
-na nástěnce odklikne,<br>
+Před koncem tohoto kola si ''<<=setup.whoseTurn()>>''<br>
+navíc odklikne na nástěnce,<br>
 že poslední do DĚJE vložená kartička<br>
 vyřešila starší komplikaci s penězi...<br>
 </p>
@@ -296,8 +296,8 @@ a má tedy nyní celkem kameny čtyři.
 </p>
 <p class="tac">
     Daleko zajímavější je,<br>
-    když své kartičky skládá<br>
-    dohromady několik lidí.
+    když tři nebo čtyři lidé<br>
+    své kartičky skládají dohromady.
 </p>
 
 <p class="tac">
@@ -319,7 +319,7 @@ a má tedy nyní celkem kameny čtyři.
 
 <p class="tar">
     //(Můžeš si ještě v textu výše všimnout<br>
-    že čerstvá aktuální komplikace<br>
+    že čerstvá trvající komplikace<br>
     je na kartičkách označena<br>
     ''oranžově'' tečkovaným rámečkem,<br>
     kdežto starší příběhová ALE,<br>
@@ -329,21 +329,24 @@ a má tedy nyní celkem kameny čtyři.
 </p>
 
 <p class="tar">
-    //(Když se pomocí tlačítka níže<br>
-    vrátíš na příběhovou nástěnku,<br>
-    můžeš si na nástěnce zkusit kliknout<br>
-    dovnitř oranžově tečkovaného rámečku.<br>
-    Kliknutím se tečkovaný rámeček<br>
+    //(Když opustíš podrobný popis hry výše<br> 
+    a
+    <<link "vrátíš se na příběhovou nástěnku">>
+        <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
+    <</link>><br>
+    můžeš si na nástěnce @@.accented;zkusit kliknout<br>
+    dovnitř@@ oranžově @@.accented;tečkovaného rámečku@@.<br>
+    Tvým kliknutím se tečkovaný rámeček<br>
     přebarví na zeleno...<br>
-    a příběhová komplikace z tohoto rámečku,<br>
-    je od té chvíle považována za již vyřešenou.)//
+    zelenými tečkami ohraničené ALE,<br>
+    je pak považováno za příběhově překonané.)//
 </p>
 
 <hr>
 <hr>
 
 <p class="tac">
-    <<button "''Zobrazit nástěnku příběhu''">>
+    <<button "''Vrátit se na nástěnku příběhu''">>
         <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
     <</button>>
 </p>
