@@ -71,8 +71,8 @@ A pokud Ti @@.accented;padne číslo@@:
 
 <p class="tac">
     //(Chceš-li si přečíst rozsáhlý příklad průběhu hry,<br>
-    zkus prosím úplně nahoře kliknout na tlačítko
+    zkus prosím kliknout na tlačítko
     <<link "DĚJ">>
         <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
-    <</link>>.)//
+    <</link>> na vršku této stránky.)//
 </p>

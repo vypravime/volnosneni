@@ -2154,27 +2154,29 @@ a má tedy nyní celkem kameny čtyři.
 
 &lt;p class=&quot;tar&quot;&gt;
     //(Můžeš si ještě v textu výše všimnout&lt;br&gt;
-    že čerstvá trvající komplikace&lt;br&gt;
+    že čerstvá komplikace,&lt;br&gt;
+    která v příběhu stále ještě &#39;&#39;trvá&#39;&#39;,&lt;br&gt;
     je na kartičkách označena&lt;br&gt;
     &#39;&#39;oranžově&#39;&#39; tečkovaným rámečkem,&lt;br&gt;
-    kdežto starší příběhová ALE,&lt;br&gt;
-    která již byla dalším vyprávěním&lt;br&gt;
-    zažehnána - jsou označena&lt;br&gt;
+    kdežto starší příběhové ALE,&lt;br&gt;
+    které již bylo pozdějším vyprávěním&lt;br&gt;
+    &#39;&#39;zažehnáno&#39;&#39; - je označeno&lt;br&gt;
     &#39;&#39;zeleně&#39;&#39; tečkovaným rámečkem.)//
 &lt;/p&gt;
 
+&lt;div class=&quot;story-card-1&quot;&gt;
+&lt;p class=&quot;complic&quot; id=&quot;example-complic-test-click&quot;&gt;
+ZKUS SEM KLIKNOUT
+&lt;/p&gt;
+&lt;/div&gt;
+
 &lt;p class=&quot;tar&quot;&gt;
-    //(Když opustíš podrobný popis hry výše&lt;br&gt; 
-    a
-    &lt;&lt;link &quot;vrátíš se na příběhovou nástěnku&quot;&gt;&gt;
+    //(Zkus si&lt;br&gt;
+    @@.accented;kliknout do barevně tečkovaného@@&lt;br&gt;
+    rámečku&lt;br&gt;
+    i &lt;&lt;link &quot;na příběhové nástěnce&quot;&gt;&gt;
         &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_cardsBoard&quot;&gt;&gt;
-    &lt;&lt;/link&gt;&gt;&lt;br&gt;
-    můžeš si na nástěnce @@.accented;zkusit kliknout&lt;br&gt;
-    dovnitř@@ oranžově @@.accented;tečkovaného rámečku@@.&lt;br&gt;
-    Tvým kliknutím se tečkovaný rámeček&lt;br&gt;
-    přebarví na zeleno...&lt;br&gt;
-    zelenými tečkami ohraničené ALE,&lt;br&gt;
-    je pak považováno za příběhově překonané.)//
+    &lt;&lt;/link&gt;&gt;.)//
 &lt;/p&gt;
 
 &lt;hr&gt;
@@ -2185,7 +2187,13 @@ a má tedy nyní celkem kameny čtyři.
         &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_cardsBoard&quot;&gt;&gt;
     &lt;&lt;/button&gt;&gt;
 &lt;/p&gt;
-&lt;&lt;dialogCloseButton &quot;//Zavřít ukázkovou hru//&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="VSD_exampleBasic1" tags="" position="975,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
+&lt;&lt;dialogCloseButton &quot;//Zavřít ukázkovou hru//&quot;&gt;&gt;
+
+&lt;&lt;done&gt;&gt;
+&lt;&lt;run $(&#39;#example-complic-test-click&#39;).ariaClick(function() {
+    $(this).toggleClass(&#39;solved&#39;);
+});&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="VSD_exampleBasic1" tags="" position="975,225" size="100,100">&lt;h3&gt;Příběhová kartička&lt;/h3&gt;
 &lt;div class=&quot;story-card-1&quot;&gt;
 &lt;p&gt;
 &#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39; jede na dovolenou do Itálie,&lt;br&gt;
@@ -4345,10 +4353,10 @@ A pokud Ti @@.accented;padne číslo@@:
 
 &lt;p class=&quot;tac&quot;&gt;
     //(Chceš-li si přečíst rozsáhlý příklad průběhu hry,&lt;br&gt;
-    zkus prosím úplně nahoře kliknout na tlačítko
+    zkus prosím kliknout na tlačítko
     &lt;&lt;link &quot;DĚJ&quot;&gt;&gt;
         &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_cardsBoard&quot;&gt;&gt;
-    &lt;&lt;/link&gt;&gt;.)//
+    &lt;&lt;/link&gt;&gt; na vršku této stránky.)//
 &lt;/p&gt;</tw-passagedata><tw-passagedata pid="82" name="VS_whoIsOnTurn" tags="alignCenter" position="225,1100" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;

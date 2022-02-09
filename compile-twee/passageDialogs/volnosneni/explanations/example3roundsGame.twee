@@ -319,27 +319,29 @@ a má tedy nyní celkem kameny čtyři.
 
 <p class="tar">
     //(Můžeš si ještě v textu výše všimnout<br>
-    že čerstvá trvající komplikace<br>
+    že čerstvá komplikace,<br>
+    která v příběhu stále ještě ''trvá'',<br>
     je na kartičkách označena<br>
     ''oranžově'' tečkovaným rámečkem,<br>
-    kdežto starší příběhová ALE,<br>
-    která již byla dalším vyprávěním<br>
-    zažehnána - jsou označena<br>
+    kdežto starší příběhové ALE,<br>
+    které již bylo pozdějším vyprávěním<br>
+    ''zažehnáno'' - je označeno<br>
     ''zeleně'' tečkovaným rámečkem.)//
 </p>
 
+<div class="story-card-1">
+<p class="complic" id="example-complic-test-click">
+ZKUS SEM KLIKNOUT
+</p>
+</div>
+
 <p class="tar">
-    //(Když opustíš podrobný popis hry výše<br> 
-    a
-    <<link "vrátíš se na příběhovou nástěnku">>
+    //(Zkus si<br>
+    @@.accented;kliknout do barevně tečkovaného@@<br>
+    rámečku<br>
+    i <<link "na příběhové nástěnce">>
         <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
-    <</link>><br>
-    můžeš si na nástěnce @@.accented;zkusit kliknout<br>
-    dovnitř@@ oranžově @@.accented;tečkovaného rámečku@@.<br>
-    Tvým kliknutím se tečkovaný rámeček<br>
-    přebarví na zeleno...<br>
-    zelenými tečkami ohraničené ALE,<br>
-    je pak považováno za příběhově překonané.)//
+    <</link>>.)//
 </p>
 
 <hr>
@@ -351,3 +353,9 @@ a má tedy nyní celkem kameny čtyři.
     <</button>>
 </p>
 <<dialogCloseButton "//Zavřít ukázkovou hru//">>
+
+<<done>>
+<<run $('#example-complic-test-click').ariaClick(function() {
+    $(this).toggleClass('solved');
+});>>
+<</done>>
