@@ -70,7 +70,7 @@ let setParameters = () => ({
 
 let configurateIt = () => ({
     /** boolean */
-    productionRelease: false,
+    productionRelease: true,
     /** string MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault() IN THE NAME FOR DOWNLOAD FORCED FILE */
     appVersion: '0.2.1', //MUST ALSO CHANGE in NETTE DownloadPresenter->actionDefault()
     /** integer */
