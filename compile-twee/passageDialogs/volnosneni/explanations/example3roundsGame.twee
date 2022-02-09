@@ -11,7 +11,7 @@
     Před startem si ''<<= setup.whoseTurn()>>''<br>
     vyplní své jméno<br>
     a ponechá všechna doporučená nastavení,<br>
-    takže začne se třemi osudovými kameny.
+    takže hru začíná se třemi osudovými kameny.
 </p>
 <hr>
 <p>
@@ -30,7 +30,7 @@ s výhledem na malebný mořský záliv.
 <p>
 Když má kartičku hotovou,<br>
 hodí si šestistěnnou kostkou,<br>
-padne číslo 2.
+na které padne číslo 2.
 </p>
 <p>
 Číslo 2 na kostce značí,<br>
@@ -46,20 +46,21 @@ co bylo uvedeno na původní kartičce.
 </p>
 
 <p>
-Tomáš tento výsledek hodu kostkou přijme,<br>
+''<<=setup.whoseTurn()>>'' tento výsledek hodu kostkou přijme,<br>
 za což za odměnu získá jeden osudový kámen...<br>
-//(takže má teď celkem čtyři kameny)//<br>
+//(má teď tedy celkem čtyři kameny)//<br>
 a sepíše náhradní kartičku o tom, jak se chystá:
 </p>
 
 <div class="story-card-1">
 <p>
 ''<<=setup.whoseTurn()>>'' přemýšlí o tom,<br>
-že vyrazí někam do zahraničí,<br>
-chodí po obchodech<br>
-a pokukuje po hezkých plavkách<br>
-a na internetu si prohlíží<br>
-fotky lákavých destinací.
+že vyrazí někam do zahraničí.<br>
+Na internetu si prohlíží<br>
+fotky lákavých destinací<br>
+a také chodí po obchodech,<br>
+kde hledá pohodlné sandále<br>
+a stylové sluneční brýle.
 </p>
 </div>
 
@@ -151,8 +152,8 @@ ale zároveň to může<br>
 zajímavě nastartovat další DĚJ.
 </p>
 <p>
-Celá výsledná kartička<br>
-tedy vypadá takto:
+Pro toto kolo vypadá<br>
+celá výsledná kartička takto:
 </p>
 <div class="story-card-1">
 <p>
@@ -189,6 +190,58 @@ v této hře nemá.)//
 <p>
 Začíná třetí kolo...
 </p>
+<p>
+''<<=setup.whoseTurn()>>'' zamýšlí nyní<br>
+sepsat kartičku, která jednak<br>
+znamená něco barvitě poutavého<br>
+pro italskou dovolenou...<br>
+ale která také vyřeší<br>
+tu komplikaci s penězi<br>
+z předchozího kola.
+</p>
+<p>
+Nakonec se ''<<=setup.whoseTurn()>>'' rozhodne pro toto:
+</p>
+<div class="story-card-1">
+<p>
+Naštěstí se v blízkém italském městečku<br>
+rozkřikne, že ''<<=setup.whoseTurn()>>'' umí ladit piana.<br>
+Přičemž je o to takový zájem,<br>
+že ''<<=setup.whoseTurn()>>'' má teď peněz na rozdávání...<br>
+Také si při ladění pian<br>
+získá nové přátele<br>
+a procvičí italštinu.
+</p>
+</div>
+<p>
+Nyní si ''<<=setup.whoseTurn()>>'' hodí kostkou,<br>
+na které opět padne číslo 3.
+</p>
+<p>
+Ale ''<<=setup.whoseTurn()>>'' teď<br>
+vážně nemá náladu dávat<br>
+do příběhu nové komplikace...
+</p>
+<p>
+... a tak utratí dva ze svých pěti<br>
+osudových kaménů, takže mu sice<br>
+do dalších kol zůstanou jenom tři...<br>
+ale teď smí výměnou za dva<br>
+spotřebované osudové kameny<br>
+navýšit výsledek na kostce<br>
+z trojky, která padla - na pětku.
+</p>
+<p>
+Neboť s pětkou na kostce je<br>
+vložení kartičky do DĚJE snazší.<br>
+</p>
+<p>
+Pětka na kostce značí,<br>
+že přichystaná kartička do DĚJE<br>
+vstoupí beze změny - tak, jak je.<br>
+</p>
+
+
 <hr>
 <hr>
 
