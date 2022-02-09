@@ -200,6 +200,7 @@ textarea:not(:disabled):hover {
     padding: 0.1rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    max-width: 444px;
 }
 .story-card-1 p {
     padding: 0.5rem;

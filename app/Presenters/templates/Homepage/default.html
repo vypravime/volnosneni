@@ -300,6 +300,7 @@ textarea:not(:disabled):hover {
     padding: 0.1rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    max-width: 444px;
 }
 .story-card-1 p {
     padding: 0.5rem;
@@ -4273,8 +4274,82 @@ SEM VEPIŠ NOVOU PŘÍBĚHOVOU KARTIČKU:\r\n
       &#39;placeholder&#39;, _preDefault).attr(
       &#39;rows&#39;, 6)&gt;&gt;
 
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="VS_goForDice" tags="" position="100,1100" size="100,100">ToDo:
---Go For Dice--</tw-passagedata><tw-passagedata pid="82" name="VS_whoIsOnTurn" tags="alignCenter" position="225,1100" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="VS_goForDice" tags="" position="100,1100" size="100,100">&lt;h2&gt;
+    A teď si o Tvou kartičku&lt;br&gt;
+    zahrajeme KOSTKY!
+&lt;/h2&gt;
+
+&lt;p class=&quot;tac&quot;&gt;
+    //Hodíš si jednou šestistěnnou kostkou...&lt;br&gt;
+    Nebo si kliknutím vylosuješ z šesti kartiček&lt;br&gt;
+    - přímo v této aplikaci...//
+&lt;/p&gt;
+
+&lt;p class=&quot;tal&quot;&gt;
+A pokud Ti @@.accented;padne číslo@@:
+&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;
+        @@.accented;6 -@@ budeš muset na svou kartičku přidat alespoň jeden další lákavý detail, abys tu kartičku udělal ještě velkolepější.
+    &lt;/li&gt;
+    &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+    &lt;li&gt;
+        @@.accented;5 -@@ vložíš svou kartičku do děje tak, jak je.
+    &lt;/li&gt;
+    &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+    &lt;li&gt;
+        @@.accented;4 -@@ budeš muset ze své kartičky něco málo ubrat, aby byla aspoň trochu fádnější.&lt;br&gt;//(pokud tu výzvu přijmeš,vyděláš na tom 1 kámen osudu)//
+    &lt;/li&gt;
+    &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+    &lt;li&gt;
+        @@.accented;3 -@@ vložíš do děje svou kartičku tak, jak je... ale budeš muset jako doplněk navíc odvyprávět, že se v příběhu něco nečekaně zajímavě zvrtlo.&lt;br&gt;//(pokud tu výzvu přijmeš,vyděláš na tom 1 kámen osudu)//
+    &lt;/li&gt;
+    &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+    &lt;li&gt;
+        @@.accented;2 -@@ nesmíš svou kartičku do děje vkládat - můžeš tak maximálně v příběhu odvyprávět, jak se obyčejně chystáš či připravuješ na to, co obsahuje Tvá původní kartička.&lt;br&gt;//(pokud tu výzvu přijmeš,vyděláš na tom 1 kámen osudu)//
+    &lt;/li&gt;
+    &lt;div class=&quot;pa5&quot;&gt;&lt;/div&gt;
+    &lt;li&gt;
+        @@.accented;1 -@@ co jednička na kostce způsobí s Tvou kartičkou? To se mi teď nechce vysvětlovat. Budeš se muset nechat překvapit.
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;tar&quot;&gt;
+    Když Ti to padne nešikovně,&lt;br&gt;
+    máš naštěstí již od předtím&lt;br&gt;
+    nachystané své osudové kameny&lt;br&gt;
+    - jejich utrácením si kupuješ&lt;br&gt;
+    lepší výsledek na kostce.&lt;br&gt;
+    //(V základu za každý osudový kámen, který utratíš,&lt;br&gt;
+        navýšíš výsledek svého hodu o 1.)&lt;br&gt;
+        (Pak jsou tu i hazardnější způsoby,&lt;br&gt;
+        jak osudové kameny používat,&lt;br&gt;
+        ty se mi teď ale nechce vysvětlovat.)//
+&lt;/p&gt;
+&lt;p class=&quot;tac&quot;&gt;
+    (Kdykoliv to můžeš vzdát... a říci, že s vkládáním své kartičky - této či nové - počkáš do dalšího kola... kde si ale opět budeš házet kostkou či losovat.)
+&lt;/p&gt;
+
+&lt;h3 class=&quot;tac&quot;&gt;
+    Bohužel v tomto místě hra VolnoSnění končí&lt;br&gt;
+    házet kostkou či losovat a pokračovat do dalších kol&lt;br&gt;
+    v této verzi aplikace &quot;Vyprávíme&quot; zatím nejde...&lt;br&gt;
+    Budeme si muset počkat na chvíli,&lt;br&gt;
+    kdy hru VolnoSnění dodělám k plné funkčnosti.&lt;br&gt;
+&lt;/h3&gt;
+
+&lt;p class=&quot;tac&quot;&gt;
+    (Děkuji za pochopení..)
+&lt;/p&gt;
+
+&lt;p class=&quot;tac&quot;&gt;
+    //(Chceš-li si přečíst rozsáhlý příklad průběhu hry,&lt;br&gt;
+    zkus prosím úplně nahoře kliknout na tlačítko
+    &lt;&lt;link &quot;DĚJ&quot;&gt;&gt;
+        &lt;&lt;passageDialog &quot;Nástěnka příběhu&quot; &quot;VSD_cardsBoard&quot;&gt;&gt;
+    &lt;&lt;/link&gt;&gt;.)//
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="82" name="VS_whoIsOnTurn" tags="alignCenter" position="225,1100" size="100,100">&lt;h2&gt;//&#39;&#39;&lt;&lt;=setup.whoseTurn()&gt;&gt;&#39;&#39;// přebírá&lt;br&gt;
 právě teď tah!
 &lt;/h2&gt;
 &lt;p&gt;

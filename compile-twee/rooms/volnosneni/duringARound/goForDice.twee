@@ -1,4 +1,78 @@
 :: VS_goForDice
 
-ToDo:
---Go For Dice--
+<h2>
+    A teď si o Tvou kartičku<br>
+    zahrajeme KOSTKY!
+</h2>
+
+<p class="tac">
+    //Hodíš si jednou šestistěnnou kostkou...<br>
+    Nebo si kliknutím vylosuješ z šesti kartiček<br>
+    - přímo v této aplikaci...//
+</p>
+
+<p class="tal">
+A pokud Ti @@.accented;padne číslo@@:
+</p>
+
+<ul>
+    <li>
+        @@.accented;6 -@@ budeš muset na svou kartičku přidat alespoň jeden další lákavý detail, abys tu kartičku udělal ještě velkolepější.
+    </li>
+    <div class="pa5"></div>
+    <li>
+        @@.accented;5 -@@ vložíš svou kartičku do děje tak, jak je.
+    </li>
+    <div class="pa5"></div>
+    <li>
+        @@.accented;4 -@@ budeš muset ze své kartičky něco málo ubrat, aby byla aspoň trochu fádnější.<br>//(pokud tu výzvu přijmeš,vyděláš na tom 1 kámen osudu)//
+    </li>
+    <div class="pa5"></div>
+    <li>
+        @@.accented;3 -@@ vložíš do děje svou kartičku tak, jak je... ale budeš muset jako doplněk navíc odvyprávět, že se v příběhu něco nečekaně zajímavě zvrtlo.<br>//(pokud tu výzvu přijmeš,vyděláš na tom 1 kámen osudu)//
+    </li>
+    <div class="pa5"></div>
+    <li>
+        @@.accented;2 -@@ nesmíš svou kartičku do děje vkládat - můžeš tak maximálně v příběhu odvyprávět, jak se obyčejně chystáš či připravuješ na to, co obsahuje Tvá původní kartička.<br>//(pokud tu výzvu přijmeš,vyděláš na tom 1 kámen osudu)//
+    </li>
+    <div class="pa5"></div>
+    <li>
+        @@.accented;1 -@@ co jednička na kostce způsobí s Tvou kartičkou? To se mi teď nechce vysvětlovat. Budeš se muset nechat překvapit.
+    </li>
+</ul>
+
+<p class="tar">
+    Když Ti to padne nešikovně,<br>
+    máš naštěstí již od předtím<br>
+    nachystané své osudové kameny<br>
+    - jejich utrácením si kupuješ<br>
+    lepší výsledek na kostce.<br>
+    //(V základu za každý osudový kámen, který utratíš,<br>
+        navýšíš výsledek svého hodu o 1.)<br>
+        (Pak jsou tu i hazardnější způsoby,<br>
+        jak osudové kameny používat,<br>
+        ty se mi teď ale nechce vysvětlovat.)//
+</p>
+<p class="tac">
+    (Kdykoliv to můžeš vzdát... a říci, že s vkládáním své kartičky - této či nové - počkáš do dalšího kola... kde si ale opět budeš házet kostkou či losovat.)
+</p>
+
+<h3 class="tac">
+    Bohužel v tomto místě hra VolnoSnění končí<br>
+    házet kostkou či losovat a pokračovat do dalších kol<br>
+    v této verzi aplikace "Vyprávíme" zatím nejde...<br>
+    Budeme si muset počkat na chvíli,<br>
+    kdy hru VolnoSnění dodělám k plné funkčnosti.<br>
+</h3>
+
+<p class="tac">
+    (Děkuji za pochopení..)
+</p>
+
+<p class="tac">
+    //(Chceš-li si přečíst rozsáhlý příklad průběhu hry,<br>
+    zkus prosím úplně nahoře kliknout na tlačítko
+    <<link "DĚJ">>
+        <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
+    <</link>>.)//
+</p>
