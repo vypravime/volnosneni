@@ -10,7 +10,7 @@
     Nebo si kliknutím vylosuješ z šesti kartiček<br>
     - přímo v této aplikaci...//
 </p>
-
+<hr>
 <p class="tal">
 A pokud Ti @@.accented;padne číslo@@:
 </p>
@@ -40,27 +40,37 @@ A pokud Ti @@.accented;padne číslo@@:
         @@.accented;1 -@@ co jednička na kostce způsobí s Tvou kartičkou? To se mi teď nechce vysvětlovat. Budeš se muset nechat překvapit.
     </li>
 </ul>
-
+<hr>
 <p class="tar">
     Když Ti to padne nešikovně,<br>
     máš naštěstí již od předtím<br>
-    nachystané své osudové kameny<br>
+    nachystané své kameny osudu<br>
     - jejich utrácením si kupuješ<br>
-    lepší výsledek na kostce.<br>
-    //(V základu za každý osudový kámen, který utratíš,<br>
-        navýšíš výsledek svého hodu o 1.)<br>
-        (Pak jsou tu i hazardnější způsoby,<br>
-        jak osudové kameny používat,<br>
-        ty se mi teď ale nechce vysvětlovat.)//
+    lepší výsledek na kostce.
 </p>
+<p class="tar">
+     //(V základu za každý osudový<br>
+        kámen, který utratíš, navýšíš<br>
+        výsledek svého hodu o 1.)//
+</p>
+<p class="tar">
+     //(Pak jsou tu i hazardnější způsoby,<br>
+        jak osudové kameny používat,<br>
+        ty teď však nebudu vysvětlovat.)//
+</p>
+<hr>
 <p class="tac">
     (Kdykoliv to můžeš vzdát... a říci, že s vkládáním své kartičky - této či nové - počkáš do dalšího kola... kde si ale opět budeš házet kostkou či losovat.)
 </p>
-
-<h3 class="tac">
-    Bohužel v tomto místě hra VolnoSnění končí<br>
-    házet kostkou či losovat a pokračovat do dalších kol<br>
-    v této verzi aplikace "Vyprávíme" zatím nejde...<br>
+<hr>
+<hr>
+<div class="pa5"></div>
+<h3 class="tac accented">
+    Bohužel v tomto místě hra VolnoSnění zatím končí.
+</h3>
+<h3>
+    Házet kostkou či losovat a pokračovat do dalších kol<br>
+    v této verzi aplikace zatím nejde...<br>
     Budeme si muset počkat na chvíli,<br>
     kdy hru VolnoSnění dodělám k plné funkčnosti.<br>
 </h3>
@@ -68,11 +78,20 @@ A pokud Ti @@.accented;padne číslo@@:
 <p class="tac">
     (Děkuji za pochopení..)
 </p>
-
+<hr>
 <p class="tac">
     //(Chceš-li si přečíst rozsáhlý příklad průběhu hry,<br>
     zkus prosím kliknout na tlačítko
     <<link "DĚJ">>
         <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
     <</link>> na vršku této stránky.)//
+</p>
+<div class="pa5"></div>
+<hr>
+<hr>
+<div class="pa5"></div>
+<p class="tac red-btn">
+    <<button "Prozatímní ''KONEC HRY''<br>- vrátit se do úvodního menu...">>
+        <<run UI.restart()>>
+    <</button>>
 </p>

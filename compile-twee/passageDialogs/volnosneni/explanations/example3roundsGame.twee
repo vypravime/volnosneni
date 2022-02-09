@@ -294,6 +294,13 @@ a má tedy nyní celkem kameny čtyři.
     Tímto náš ukázkový fiktivní<br>
     průběh hry VolnoSnění končí...
 </p>
+<hr>
+<hr>
+<div class="pa5"></div>
+<h3>
+    Poznámky:
+</h3>
+<hr>
 <p class="tac">
     Daleko zajímavější je,<br>
     když tři nebo čtyři lidé<br>
@@ -316,7 +323,7 @@ a má tedy nyní celkem kameny čtyři.
     až si to budeme moci společně<br>
     zahrát v praxi.
 </p>
-
+<hr>
 <p class="tar">
     //(Můžeš si ještě v textu výše všimnout<br>
     že čerstvá komplikace,<br>
@@ -346,7 +353,7 @@ ZKUS SEM KLIKNOUT
 
 <hr>
 <hr>
-
+<div class="pa5"></div>
 <p class="tac">
     <<button "''Vrátit se na nástěnku příběhu''">>
         <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
