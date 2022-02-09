@@ -16,7 +16,7 @@
 
 //(<<link "číst&nbsp;příklad">>
 	    <<passageDialog "Jak sepsat kartičku?" "VSD_exampleBasic1">>
-   <</link>>)&nbsp;&nbsp;&nbsp;(<<link "BÝT&nbsp;VSTŘÍCNÝ">>
+   <</link>>)&nbsp;&nbsp;&nbsp;(<<link "VSTŘÍCNĚ">>
 	    <<passageDialog "Zásady společné zábavy:" "VSD_beNiceInfo">>
    <</link>>)&nbsp;&nbsp;&nbsp;(<<link "předešlý&nbsp;děj">>
       <<passageDialog "Nástěnka příběhu" "VSD_cardsBoard">>
@@ -28,9 +28,9 @@
       <<if !$gameCards.current[0].text.trim()>>
         <<passageDialog "Vyplň prosím políčko!" "FillInputDialog1">>
       <<elseif ($gameCards.givenUp.length > 0) || ($gameCards.waiting.length > 0)>>
-        <<goto [[VS_checkDisallowedThemes]]>>
+        <<goto "VS_checkDisallowedThemes">>
       <<else>>
-        <<goto [[passage()]]>>
+        <<passageDialog "Tvá kartička" "VSD_checkFilledStoryCard">>
       <</if>>
     <</button>>''
 

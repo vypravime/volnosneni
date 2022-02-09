@@ -10,7 +10,7 @@
 <<for _i = 0; _i < $pOrder.length; _i++>>
     <li>
         @@.accented;''<<=$players[$pOrder[_i]].name>>''@@<br>
-        //osudových kamenů//: ''3''<br>
+        //osudových kamenů//: ''<<= _i === 0 ? 4 : 3>>''<br>
         //odehraných kartiček//: ''<<= _i === 0 ? 3 : 0>>''
     </li>
     <<if (_i + 1) < $pOrder.length>>

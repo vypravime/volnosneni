@@ -1,0 +1,24 @@
+:: VSD_checkFilledStoryCard
+
+<p class="tal">
+    Sepsal jsi tedy tuto kartičku:
+</p>
+
+<div class="story-card-1">
+<p class="who">
+<<=setup.whoseTurn()>>:
+</p>
+<p>
+$gameCards.current[0].text
+</p>
+</div>
+
+<p class="tac">
+    <<button "Ano...<br>to ''souhlasí''.">>
+        <<goto `passage()`>>
+        <<run Dialog.close()>>
+        <<goto "VS_goForDice">>
+    <</button>>
+</p>
+
+<<dialogCloseButton "Jejda...<br> ''potřebuji to opravit''.">>
