@@ -27,6 +27,8 @@
     <div class="answers">
         <<button "BUĎME KREATIVNĚJŠÍ:<br>Dejme stranou, jak mi je - ''hraju'' dnes o 1 svou konkrétní ideu..."
             "TTI_fillInYourIdea">><</button>>
+        <br>
+        <<include "TTI_whatIsThePurposeButton">>
     </div>
 </div>
 
@@ -102,7 +104,10 @@
 
     <div class="answers">
         <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
-            <<run UI.restart()>><</button>>
+                <<run UI.restart()>>
+            <</button>>
+        <br>
+        <<include "TTI_whatIsThePurposeButton">>
     </div>
 </div>
 
@@ -217,7 +222,10 @@
 
     <div class="answers">
         <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
-            <<run UI.restart()>><</button>>
+                <<run UI.restart()>>
+            <</button>>
+        <br>
+        <<include "TTI_whatIsThePurposeButton">>
     <div>
 </div>
 
@@ -714,7 +722,10 @@
 
     <div class="answers">
         <<button "''KONEC HRY''<br>- vrátit se do úvodního menu...">>
-            <<run UI.restart()>><</button>>
+                <<run UI.restart()>>
+            <</button>>
+        <br>
+        <<include "TTI_whatIsThePurposeButton">>
     </div>
 </div>
 
@@ -1815,3 +1826,11 @@
             "TTI_letsPlayFromBody">><</button>>
     </p>
 </div>
+
+:: TTI_whatIsThePurposeButton [noAutoWrapDiv]
+
+<span class="red-btn">
+    <<button "Ještě by mě zajímalo...<br>co je účelem této hry?">>
+        <<passageDialog "Co mi to dá?" "TTD_whatIsThePurpose">>
+    <</button>>
+</span>
