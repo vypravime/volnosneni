@@ -191,12 +191,10 @@ v této hře nemá.)//
 Začíná třetí kolo...
 </p>
 <p>
-''<<=setup.whoseTurn()>>'' zamýšlí nyní<br>
-sepsat kartičku, která jednak<br>
-znamená něco barvitě poutavého<br>
-pro italskou dovolenou...<br>
-ale která také vyřeší<br>
-tu komplikaci s penězi<br>
+''<<=setup.whoseTurn()>>'' zamýšlí nyní sepsat kartičku,<br>
+která jednak pro italskou dovolenou<br>
+znamená něco barvitě poutavého...<br>
+ale která také vyřeší tu komplikaci s penězi<br>
 z předchozího kola.
 </p>
 <p>
@@ -219,13 +217,14 @@ na které opět padne číslo 3.
 </p>
 <p>
 Ale ''<<=setup.whoseTurn()>>'' teď<br>
-vážně nemá náladu dávat<br>
-do příběhu nové komplikace...
+vážně nemá náladu dávat do příběhu<br>
+nové komplikace... k čemuž jej<br>
+číslo 3 na kostce - zavazuje.
 </p>
 <p>
-... a tak utratí dva ze svých pěti<br>
-osudových kaménů, takže mu sice<br>
-do dalších kol zůstanou jenom tři...<br>
+... spotřebuje tedy dva ze svých pěti<br>
+osudových kamenů, takže mu sice<br>
+do dalších kol zůstanou kameny jenom tři...<br>
 ale teď smí výměnou za dva<br>
 spotřebované osudové kameny<br>
 navýšit výsledek na kostce<br>
@@ -240,7 +239,105 @@ Pětka na kostce značí,<br>
 že přichystaná kartička do DĚJE<br>
 vstoupí beze změny - tak, jak je.<br>
 </p>
+<p>
+Tato kartička:
+</p>
+<div class="story-card-1">
+<p>
+Naštěstí se v blízkém italském městečku<br>
+rozkřikne, že ''<<=setup.whoseTurn()>>'' umí ladit piana.<br>
+Přičemž je o to takový zájem,<br>
+že ''<<=setup.whoseTurn()>>'' má teď peněz na rozdávání...<br>
+Také si při ladění pian<br>
+získá nové přátele<br>
+a procvičí italštinu.
+</p>
+</div>
+<p>
+Tedy nyní úspěšně vstupuje do DĚJE.<br>
+//(automaticky se tím objeví<br>
+na příběhové nástěnce)//
+</p>
+<hr>
+<p>
+Před koncem tohoto kola<br>
+si ''<<=setup.whoseTurn()>>'' ještě<br>
+na nástěnce odklikne,<br>
+že poslední do DĚJE vložená kartička<br>
+vyřešila starší komplikaci s penězi...<br>
+</p>
+<p>
+//(Za každou starší komplikaci,<br>
+kterou hráč ve svém kole překoná,<br>
+získává hráč za odměnu<br>
+1 nový osudový kámen.)//
+</p>
+<p>
+Jelikož ''<<=setup.whoseTurn()>>'' v tomto kole<br>
+svým vyprávěním zneutralizuje<br>
+toto jedno starší ALE:
+</p>
+<div class="story-card-1">
+<p class="complic solved">
+Ale když přijede a ubytuje se, zjistí,<br>
+že ani v peněžence, ani na účtu<br>
+nemá vůbec žádné peníze...
+</p>
+</div>
+<p>
+Dostane ''<<=setup.whoseTurn()>>'' za odměnu,<br>
+jeden nový osudový kámen<br>
+a má tedy nyní celkem kameny čtyři.
+</p>
+<hr>
+<p class="tac">
+    Tímto náš ukázkový fiktivní<br>
+    průběh hry VolnoSnění končí...
+</p>
+<p class="tac">
+    Daleko zajímavější je,<br>
+    když své kartičky skládá<br>
+    dohromady několik lidí.
+</p>
 
+<p class="tac">
+    Tito hráči se pak vzájemně<br>
+    inspirují a doplňují.<br>
+    A kamarádi bývají nejednou překvapeni<br>
+    o jaké věci vlastně jejich přátelé<br>
+    v životě stojí... a jaká témata<br>
+    tedy ve svých herních kartičkách tvoří.
+</p>
+
+<p class="tac">
+    Ale než abych složitě vymýšlel<br>
+    fiktivní příklad hry více osob naráz,<br>
+    raději si počkejme...<br>
+    až si to budeme moci společně<br>
+    zahrát v praxi.
+</p>
+
+<p class="tar">
+    //(Můžeš si ještě v textu výše všimnout<br>
+    že čerstvá aktuální komplikace<br>
+    je na kartičkách označena<br>
+    ''oranžově'' tečkovaným rámečkem,<br>
+    kdežto starší příběhová ALE,<br>
+    která již byla dalším vyprávěním<br>
+    zažehnána - jsou označena<br>
+    ''zeleně'' tečkovaným rámečkem.)//
+</p>
+
+<p class="tar">
+    //(Když se pomocí tlačítka níže<br>
+    vrátíš na příběhovou nástěnku,<br>
+    můžeš si na nástěnce zkusit kliknout<br>
+    dovnitř oranžově tečkovaného rámečku.<br>
+    Kliknutím se tečkovaný rámeček<br>
+    přebarví na zeleno...<br>
+    a příběhová komplikace z tohoto rámečku,<br>
+    je od té chvíle považována za již vyřešenou.)//
+</p>
 
 <hr>
 <hr>
